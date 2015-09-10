@@ -4,34 +4,32 @@
  * @param $mdLog
  * @constructor
  */
-function CatalogController( $mdSidenav, $log ) {
-  $log = $log.getInstance( "UsersController" );
-  $log.debug( "instanceOf() ");
+class CatalogController {
 
-  var self = this;
+  constructor($mdSidenav, $log) {
+    $log = $log.getInstance("CatalogController");
+    $log.debug("instanceOf()");
+    $log.debug($mdSidenav);
+    $log.debug($log);
 
-  self.categories = [ 
-    { title: 'Feature'},
-    { title: 'Latest'},
-    { title: 'Fashion'},
-    { title: 'Furniture'},
-    { title: 'Beauty'},
-    { title: 'Food'},
-    { title: 'Travel'},
-    { title: 'Kids'}
-  ];
-  self.selected = self.categories[0];
-  self.toggleMenu = toggleMenu;
-  self.selectCategory = selectCategory;
+    var self = this;
 
-  // *********************************
-  // Internal methods
-  // *********************************
+    self.categories = [
+      { title: 'Feature'},
+      { title: 'Latest'},
+      { title: 'Fashion'},
+      { title: 'Furniture'},
+      { title: 'Beauty'},
+      { title: 'Food'},
+      { title: 'Travel'},
+      { title: 'Kids'}
+    ];
+  }
 
   /**
    * Hide or Show the category menu.
    */
-  function toggleMenu($event) {
+  toggleMenu($event) {
     $log.debug( "toggleMenu() ");
     $mdSidenav('left').toggle();
   }
@@ -40,7 +38,7 @@ function CatalogController( $mdSidenav, $log ) {
    * Select a category.
    * @param category
    */
-  function selectCategory ( category ) {
+  selectCategory ( category ) {
     $log.debug( "selectCategory( {title} ) ", category);
 
     self.selected = angular.isNumber(user) ? $scope.users[user] : user;
@@ -48,8 +46,6 @@ function CatalogController( $mdSidenav, $log ) {
   }
 }
 
-export default [
-  '$mdSidenav', '$log', '$log',
-  CatalogController
-];
+CatalogController.$inject = [ '$mdSidenav', '$log' ]
 
+export default CatalogController;
