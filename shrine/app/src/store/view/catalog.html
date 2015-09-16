@@ -21,11 +21,14 @@
   <md-content>
     <md-tabs hide-sm class="md-whiteframe-z2">
       <md-tab ng-repeat="tab in catalog.categories"
-              ng-disabled="tab.disabled"
+              md-on-select="catalog.selectCategory($index)"
               label="{{tab.title}}">
-        Content for {{tab.title}}
+        <md-tab-body></md-tab-body>
       </md-tab>
     </md-tabs>
+    <md-content>
+      Showing {{catalog.currentCategory().title}}
+    </md-content>
   </md-content>
 
   <!-- Just show the title on mobile. -->
@@ -34,7 +37,12 @@
   </md-subheader>
 
   <md-sidenav md-component-id="left" class="md-sidenav-left">
-    <div ng-repeat="tab in catalog.categories">{{tab.title}}</div>
+    <md-list>
+      <md-list-item ng-repeat="category in catalog.categories"
+                    ng-click="catalog.selectCategory($index)">
+        <md-title>{{category.title}}</md-title>
+      </md-list-item>
+    </md-list>
   </md-sidenav>
 
 </div>

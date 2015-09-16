@@ -1,20 +1,15 @@
 /**
  * Main App Controller for the Angular Material Starter App
- * @param $mdSidenav
- * @param $mdLog
- * @constructor
  */
 class CatalogController {
-
   constructor($mdSidenav, $log) {
-    $log = $log.getInstance("CatalogController");
-    $log.debug("instanceOf()");
-    $log.debug($mdSidenav);
-    $log.debug($log);
+    this.$mdSidenav = $mdSidenav;
+    this.$log = $log.getInstance("CatalogController");
+    this.$log.debug("instanceOf()");
+    this.$log.debug($mdSidenav);
+    this.$log.debug($log);
 
-    var self = this;
-
-    self.categories = [
+    this.categories = [
       { title: 'Feature'},
       { title: 'Latest'},
       { title: 'Fashion'},
@@ -30,22 +25,25 @@ class CatalogController {
    * Hide or Show the category menu.
    */
   toggleMenu($event) {
-    $log.debug( "toggleMenu() ");
-    $mdSidenav('left').toggle();
+    this.$log.debug( "toggleMenu() ");
+    this.$mdSidenav('left').toggle();
   }
 
   /**
    * Select a category.
-   * @param category
+   * @param index Index of the selected category.
    */
-  selectCategory ( category ) {
-    $log.debug( "selectCategory( {title} ) ", category);
+  selectCategory(index) {
+    this.$log.debug( "selectCategory({})", index);
 
-    self.selected = angular.isNumber(user) ? $scope.users[user] : user;
-    self.toggleMenu();
+    this.selectedIdx = index;
+    this.$mdSidenav('left').close()
+  }
+
+  currentCategory() {
+    return this.categories[this.selectedIdx];
   }
 }
 
-CatalogController.$inject = [ '$mdSidenav', '$log' ]
-
+CatalogController.$inject = [ '$mdSidenav', '$log' ];
 export default CatalogController;
