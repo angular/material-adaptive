@@ -23,7 +23,7 @@
   </md-content>
 
   <md-content>
-    <md-tabs hide-sm class="md-whiteframe-z2">
+    <md-tabs hide-sm class="md-whiteframe-z2" md-selected="catalog.selectedIdx">
       <md-tab ng-repeat="tab in catalog.categories"
               md-on-select="catalog.selectCategory($index)"
               label="{{tab.title}}">
