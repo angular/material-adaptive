@@ -1,14 +1,14 @@
 <!-- Responsive catalog. Tabbed view in widescreen, sidenav for selection on phone.  -->
 
 <div flex layout="column" ng-controller="CatalogController as catalog">
-  <md-toolbar layout="row" class="md-whiteframe-z2">
+  <md-toolbar layout="row">
     <!-- Hide sidebar button on phone. -->
     <md-button hide-gt-sm class="md-icon-button" ng-click="catalog.toggleMenu()" aria-label="Show Category List">
       <md-icon md-svg-icon="menu"></md-icon>
     </md-button>
 
     <span flex></span>
-
+    
     <md-button class="md-icon-button" ng-click="catalog.openCart($event)" aria-label="Show Shopping Cart">
       <md-icon md-svg-icon="shopping_cart"></md-icon>
     </md-button>
@@ -17,6 +17,10 @@
       <md-icon md-svg-icon="more_vert"></md-icon>
     </md-button>
   </md-toolbar>
+
+  <md-content hide-gt-sm class="md-headline" layout-padding layout-margin>
+      {{catalog.currentCategory().title.toUpperCase()}}
+  </md-content>
 
   <md-content>
     <md-tabs hide-sm class="md-whiteframe-z2">
