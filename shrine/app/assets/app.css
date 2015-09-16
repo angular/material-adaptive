@@ -75,6 +75,14 @@ md-list .md-button {
   height:36px;
 }
 
+md-toolbar {
+  background-color:white !important;
+}
+
+md-tabs md-ink-bar {
+  background: black
+}
+
 md-button.menuBtn > md-icon {
   fill:white;
   width:24px;

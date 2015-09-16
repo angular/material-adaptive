@@ -22,7 +22,15 @@ let moduleName = angular
           .icon('menu', URL_ICON_MENU, 24)
           .icon('shopping_cart', URL_ICON_SHOPPING, 24)
           .icon('more_vert', URL_ICON_MORE, 24);
-
+      })
+      .config( ($mdThemingProvider) => {
+        $mdThemingProvider.definePalette('white',
+          $mdThemingProvider.extendPalette('grey', {'500': '#FFFFFF'}));
+        $mdThemingProvider.definePalette('black',
+          $mdThemingProvider.extendPalette('grey', {'500': '#000000'}));
+        $mdThemingProvider.theme('default')
+          .primaryPalette('black')
+          .accentPalette('black');
       })
       .name;
 
