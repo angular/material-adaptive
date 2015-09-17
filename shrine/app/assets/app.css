@@ -152,10 +152,6 @@ md-list md-list-item button.md-button:not(.selected):not([disabled]) {
   background-color:  white;
 }
 
-.large-grid {
-  width: 30%;
-}
-
 .grid {
   background-color: lightgrey;
 }
