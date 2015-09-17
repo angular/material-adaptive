@@ -4,6 +4,7 @@ const URL_ICON_SHOPPING  = 'assets/svg/shopping_cart.svg';
 const URL_ICON_MORE  = 'assets/svg/more_vert.svg';
 
 import CatalogController from 'store/CatalogController'
+import ItemsService from 'store/ItemsService'
 
 import { ExternalLogger } from 'utils/LogDecorator';
 
@@ -14,6 +15,7 @@ let $log = new ExternalLogger();
 let moduleName = angular
       .module( "store", [ ] )
       .controller("CatalogController" , CatalogController )
+      .service("ItemsService" , ItemsService )
       .config( ($mdIconProvider) => {
         $log.debug( "Configuring $mdIconProvider" );
 
