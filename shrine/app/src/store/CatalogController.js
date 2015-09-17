@@ -2,12 +2,14 @@
  * Main App Controller for the Angular Material Starter App
  */
 class CatalogController {
-  constructor($mdSidenav, $log) {
-    this.$mdSidenav = $mdSidenav;
+  constructor($mdSidenav, $log, itemsService) {
     this.$log = $log.getInstance("CatalogController");
     this.$log.debug("instanceOf()");
-    this.$log.debug($mdSidenav);
-    this.$log.debug($log);
+    this.$log.debug(itemsService);
+
+    this.items = itemsService.items;
+    this.$mdSidenav = $mdSidenav;
+    console.log(itemsService.items)
 
     this.categories = [
       { title: 'Feature'},
@@ -45,5 +47,5 @@ class CatalogController {
   }
 }
 
-CatalogController.$inject = [ '$mdSidenav', '$log' ];
+CatalogController.$inject = [ '$mdSidenav', '$log', 'ItemsService' ];
 export default CatalogController;
