@@ -1,4 +1,4 @@
-## Snapshots for the PEST Adaptive Template:
+## Snapshots for the PESTO Adaptive Template:
 
 
 #### Progressive Enhancement - Main View (Gridlist with Cards)
