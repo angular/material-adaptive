@@ -1,4 +1,6 @@
-## Snapshots for the PESTO Adaptive Template:
+## Adaptive Template: PESTO
+
+Below are some design snapshots; prepared as target guides for implementation with Angular Material and Angular v1.4.6 (or greater).
 
 
 #### Progressive Enhancement - Main View (Gridlist with Cards)
