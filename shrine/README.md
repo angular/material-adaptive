@@ -19,5 +19,5 @@
 
 ##### SideBar and BottomSheet Views
 
-![shrine_r4_c1](https://cloud.githubusercontent.com/assets/210413/9978373/d7aaf2aa-5eef-11e5-8e37-4f53e16631d8.jpg
+![shrine_r4_c1](https://cloud.githubusercontent.com/assets/210413/9978373/d7aaf2aa-5eef-11e5-8e37-4f53e16631d8.jpg)
 
