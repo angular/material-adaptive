@@ -1,4 +1,6 @@
-> Below are some design snapshots; prepared as target guides for implementation with Angular Material and Angular v1.4.6 (or greater).
+> Below are some design snapshots; prepared as target guides for implementation with 
+*  Angular Material (HEAD), and 
+*  Angular v1.4.6 (or greater).
 
 
 ## Adaptive Template: CRANE
