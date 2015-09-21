@@ -153,7 +153,7 @@ md-list md-list-item button.md-button:not(.selected):not([disabled]) {
 }
 
 .grid {
-  background-color: lightgrey;
+  background-color: #F3F3F3;
 }
 
 .grid md-grid-tile {

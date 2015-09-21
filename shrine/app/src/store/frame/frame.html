@@ -1,0 +1,70 @@
+<div>
+  <md-toolbar layout="column" 
+              
+              id="maintoolbar">
+    <!-- Top Toolbar -->
+    <div flex layout="row">
+      <md-button hide-gt-sm 
+                 class="md-icon-button" 
+                 ng-click="ctrl.toggleMenu()"
+                 aria-label="Show Category List">
+        <md-icon md-svg-icon="menu"></md-icon>
+      </md-button>
+
+      <span flex></span>
+      
+      <md-button class="md-icon-button"
+                 ng-click="ctrl.openSearch($event)" 
+                 aria-label="Show Search Dialog">
+        <md-icon md-svg-icon="search"></md-icon>
+      </md-button>
+
+      <md-button class="md-icon-button" 
+                 ng-click="ctrl.openCart($event)" 
+                 aria-label="Show Shopping Cart">
+        <md-icon md-svg-icon="shopping_cart"></md-icon>
+      </md-button>
+
+      <md-button class="md-icon-button"  ng-click="ctrl.ExtraActionMenu($event)" aria-label="More Actions">
+        <md-icon md-svg-icon="more_vert"></md-icon>
+      </md-button>
+    </div>
+    <!-- Selected Section -->
+    <div hide-gt-sm layout="row" flex ng-hide="ctrl.isSearch">
+      <h1 class="md-display-2"
+          flex offset="10">
+        {{ctrl.currentCategory().title | uppercase}}
+      </h1>
+    </div>
+    <!-- Search Box -->
+    <div layout="row" flex
+         ng-if="ctrl.isSearch">
+      <md-input-container>
+        <input type="text" ngModel='ctrl.searchTerm'>
+      </md-input-container>
+    </div>
+
+  </md-toolbar >
+  <!-- Selection Tabs -->
+  <md-tabs hide show-gt-sm md-selected="ctrl.selectedIdx"
+           ng-hide="ctrl.isSearch">
+    <md-tab ng-repeat="tab in ctrl.categories"
+            md-on-select="ctrl.selectCategory($index)"
+            label="{{tab.title}}">
+            <md-tab-body></md-tab-body>
+    </md-tab>
+  </md-tabs>
+  <md-sidenav layout="column"
+              md-component-id="left" 
+              class="md-sidenav-left">
+    <md-toolbar class="md-tall" flex></md-toolbar>
+    <md-content flex>
+      <md-list>
+        <md-list-item ng-repeat="category in ctrl.categories"
+                      ng-click="ctrl.selectCategory($index)">
+          <md-title>{{category.title}}</md-title>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </md-sidenav>
+</div>
