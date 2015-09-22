@@ -6,25 +6,10 @@ html, body {
   padding: 0px;
 }
 
-/* Toolbar area */
-
-.menu {
-  background-color: transparent;
-  border: none;
-  height: 38px;
-  margin: 16px;
-  width: 36px;
+html {
+  overflow-y: scroll;
 }
 
-md-toolbar h1 {
-  margin: auto;
-}
-
-md-toolbar md-icon.md-default-theme {
-  fill: white;
-}
-
-/* Sidenav area */
 
 md-list .md-button {
   color: inherit;
@@ -32,124 +17,6 @@ md-list .md-button {
   text-align: left;
   width: 100%;
   padding-top:10px;
-}
-  md-list .md-button.selected {
-    color: #03a9f4;
-  }
-
-  md-sidenav  md-list {
-    padding: 0px 0px 8px 0px;
-  }
-
-
-/* Primary content area */
-
-#content {
-  overflow: hidden;
-}
-
-#content  {
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 5px;
-}
-
-#content .md-button.share {
-  background-color: transparent;
-  border: none;
-  width: 48px;
-  height: 48px;
-  margin: 8px auto 16px 0;
-  position: absolute;
-  top: 10px;
-  right: 25px;
-}
-
-#content md-icon.avatar {
-  margin-top: 0;
-}
-
-#content .md-button.share > md-icon {
-  fill:black;
-  width:36px;
-  height:36px;
-}
-
-md-toolbar {
-  background-color:white !important;
-}
-
-md-tabs md-ink-bar {
-  background: black
-}
-
-md-button.menuBtn > md-icon {
-  fill:white;
-  width:24px;
-  height:24px;
-}
-
-#content .md-button.share:active > md-icon {
-  background-color: #dadada;
-  border-radius: 75%;
-  padding:4px;
-  transition: all 100ms ease-out 30ms;
-}
-
-#content img {
-  display: block;
-  height: auto;
-  max-width: 500px;
-}
-
-/* Utils */
-
-.content-wrapper {
-  position: relative;
-}
-
-/* Typography support coming in 0.8.0 */
-
-md-toolbar h1 {
-  font-size: 1.250em;
-  font-weight: 400;
-}
-
-.avatar {
-  position: relative;
-  width: 75px;
-  height: 75px;
-  border: 1px solid #ddd;
-  border-radius: 50%;
-  display: inline-block;
-  overflow: hidden;
-  margin: 0px;
-  vertical-align: middle;
-}
-
-
-md-bottom-sheet  md-icon {
-  margin-right:20px;
-}
-
-span.name {
-  font-weight: bold;
-  font-size:1.1em;
-  padding-left:5px;
-}
-
-md-list-item .md-button {
-  margin: 0;
-}
-
-
-md-list .md-button.selected {
-  color: #03A9F7;
-  background-color: #EFF1F2;
-}
-
-md-list md-list-item button.md-button:not(.selected):not([disabled]) {
-  background-color:  white;
 }
 
 .grid {

@@ -1,6 +1,6 @@
 <div>
   <md-toolbar layout="column" 
-              
+              class="md-medium md-menu-toolbar"
               id="maintoolbar">
     <!-- Top Toolbar -->
     <div flex layout="row">
@@ -13,38 +13,62 @@
 
       <span flex></span>
       
-      <md-button class="md-icon-button"
-                 ng-click="ctrl.openSearch($event)" 
-                 aria-label="Show Search Dialog">
-        <md-icon md-svg-icon="search"></md-icon>
-      </md-button>
+      <span ng-if="!ctrl.isSearch">
+        <md-button class="md-icon-button"
+                   ng-click="ctrl.openSearch($event)" 
+                   aria-label="Show Search Dialog">
+          <md-icon md-svg-icon="search"></md-icon>
+        </md-button>
 
-      <md-button class="md-icon-button" 
-                 ng-click="ctrl.openCart($event)" 
-                 aria-label="Show Shopping Cart">
-        <md-icon md-svg-icon="shopping_cart"></md-icon>
-      </md-button>
+        <md-button class="md-icon-button" 
+                   ng-click="ctrl.openCart($event)" 
+                   aria-label="Show Shopping Cart">
+          <md-icon md-svg-icon="shopping_cart"></md-icon>
+        </md-button>
 
-      <md-button class="md-icon-button"  ng-click="ctrl.ExtraActionMenu($event)" aria-label="More Actions">
-        <md-icon md-svg-icon="more_vert"></md-icon>
-      </md-button>
+        <md-menu md-position-mode="target-right target" >
+          <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="ctrl.openShareMenu() || $mdOpenMenu($event)">
+            <md-icon md-menu-origin
+                     md-svg-icon="more_vert"></md-icon>
+          </md-button>
+          <md-menu-content width="4">
+            <md-menu-item ng-repeat="option in ctrl.sharingOptions">
+              <md-button>
+                  <div layout="row">
+                    <p flex>{{option.label}}</p>
+                    <md-icon md-menu-align-target
+                             md-svg-icon="{{option.icon}}"></md-icon>
+                  </div>
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+      </span>
     </div>
     <!-- Selected Section -->
-    <div hide-gt-sm layout="row" flex ng-hide="ctrl.isSearch">
+    <div hide-gt-sm
+         layout="row"
+         flex
+         ng-hide="ctrl.isSearch">
       <h1 class="md-display-2"
           flex offset="10">
         {{ctrl.currentCategory().title | uppercase}}
       </h1>
     </div>
+  </md-toolbar >
+
+  <md-toolbar ng-if="ctrl.isSearch"
+              class="md-menu-toolbar">
     <!-- Search Box -->
-    <div layout="row" flex
-         ng-if="ctrl.isSearch">
-      <md-input-container>
+    <div layout="row" flex>
+      <md-input-container flex offset="10">
+        <label>SEARCH</label>
         <input type="text" ngModel='ctrl.searchTerm'>
       </md-input-container>
+      <span hide-sm flex='33'></span>
+      <span flex='5'></span>
     </div>
-
-  </md-toolbar >
+  </md-toolbar>  
   <!-- Selection Tabs -->
   <md-tabs hide show-gt-sm md-selected="ctrl.selectedIdx"
            ng-hide="ctrl.isSearch">
@@ -57,7 +81,7 @@
   <md-sidenav layout="column"
               md-component-id="left" 
               class="md-sidenav-left">
-    <md-toolbar class="md-tall" flex></md-toolbar>
+    <md-toolbar class="md-tall md-menu-toolbar" flex></md-toolbar>
     <md-content flex>
       <md-list>
         <md-list-item ng-repeat="category in ctrl.categories"
