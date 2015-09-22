@@ -8,8 +8,7 @@ import 'assets/app.css!'
 // Load Angular libraries
 
 
-import ngRoute from 'angular-route'
-import * as uirouter from 'angular-ui-router'
+import uirouter from 'angular-ui-router'
 import material from 'angular-material'
 
 // Load custom application modules
