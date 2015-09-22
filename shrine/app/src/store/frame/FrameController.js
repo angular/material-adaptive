@@ -2,16 +2,19 @@
  * Main App Controller for the Angular Material Starter App
  */
 class FrameController {
-  //let $location = null;
 
-  constructor($mdSidenav, $log, $location, $state, $stateParams) {
-    this.searchTerm = $stateParams.searchTerm;
+  constructor($mdSidenav, $mdMedia, $mdBottomSheet, $log, $location, $state, SharingService) {
+    this.searchTerm = $state.params.searchTerm;
     let stateData = $state.current.views.frame.data;
     this.isSearch = stateData.isSearch;
+    
+
     this.$location = $location;
     this.$log = $log.getInstance("FrameController");
     this.$log.debug("instanceOf()");
     this.$mdSidenav = $mdSidenav;
+    this.$mdMedia = $mdMedia;
+    this.$mdBottomSheet = $mdBottomSheet;
     
     this.categories = [
       { title: 'Feature'},
@@ -23,10 +26,33 @@ class FrameController {
       { title: 'Travel'},
       { title: 'Kids'}
     ];
+
+    this.sharingOptions = SharingService.sharingOptions;
   }
 
+  /**
+   * Navigates to the search page.
+   */
   openSearch() {
     this.$location.url('search/');
+  }
+
+  /**
+   * Navigates to the search page.
+   */
+  openShareMenu() {
+    if (this.$mdMedia('sm')) {
+      this.$mdBottomSheet.show({
+        templateUrl: 'src/store/frame/share-bottom-sheet.html',
+        locals: {
+          sharingOptions: this.sharingOptions
+        },
+        controller: function($scope, sharingOptions) {
+          $scope.sharingOptions = sharingOptions;
+        }
+      });
+      return true;
+    }
   }
 
   /**
@@ -53,5 +79,5 @@ class FrameController {
   }
 }
 
-FrameController.$inject = [ '$mdSidenav', '$log', '$location', '$state', '$stateParams' ];
+FrameController.$inject = [ '$mdSidenav', '$mdMedia', '$mdBottomSheet', '$log', '$location', '$state', 'SharingService'];
 export default FrameController;
