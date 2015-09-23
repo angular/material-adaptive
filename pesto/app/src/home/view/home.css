@@ -1,0 +1,74 @@
+/* Enter/exit animations don't quite work.
+.pesto-home-page.ng-leave {
+  -webkit-animation:slideOutLeft 0.5s both ease-in;
+  -moz-animation:slideOutLeft 0.5s both ease-in;
+  animation:slideOutLeft 0.5s both ease-in;   
+}
+
+.pesto-home-page.ng-enter {
+  -webkit-animation:slideInRight 0.5s both ease-in;
+  -moz-animation:slideInRight 0.5s both ease-in;
+  animation:slideInRight 0.5s both ease-in;    
+}
+*/
+
+.pesto-home-header {
+}
+
+.pesto-home-header .pesto-menu {
+  float: left;
+}
+
+.pesto-home-header .pesto-search {
+  float: right;
+}
+
+.pesto-sidebar-header {
+  background: rgb(0, 170, 141);
+  text-align: left;
+}
+
+.pesto-home-grid-container {
+  background: rgb(0, 137, 111);
+  padding: 10px;
+}
+
+.pesto-home-grid {
+  display: inline-block;
+  max-width: 720px;
+  width: 90%;
+}
+
+img.pesto-banner {
+  width: 50%;
+  max-width: 190px;
+}
+
+.pesto-home-grid md-grid-tile {
+  background: purple;
+  max-width: 350px;
+  padding: 5px;
+}
+
+.pesto-home-grid md-grid-tile img.recipe-image {
+  height: 250px;
+  width: 100%;
+}
+
+.pesto-home-grid md-grid-tile md-grid-tile-footer {
+  background: white;
+  color: #333;
+  padding-left: 10px;
+  text-align: left;
+}
+
+.pesto-recipe-title {
+  color: #333;
+  font-size: 18px;
+}
+
+.pesto-recipe-author {
+  color: #888;
+  font-size: 14px;
+  padding-top: 5px;
+}

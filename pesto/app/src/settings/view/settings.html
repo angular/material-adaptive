@@ -1,0 +1,67 @@
+<div class="pesto-page pesto-settings-page">
+  <div class="pesto-settings-header">
+    <md-button class="pesto-settings-cancel md-icon-button" ng-click="settings.goBack()">
+      <md-icon md-svg-icon="assets/pesto-settings-cancel.svg" aria-label="Cancel"></md-icon>
+    </md-button>
+    <span class="pesto-settings-title">Settings</span>
+    <md-button class="pesto-settings-save md-icon-button" ng-click="settings.goBack()">
+      <md-icon md-svg-icon="assets/pesto-settings-save.svg" aria-label="Save"></md-icon>
+    </md-button>
+  </div>
+  
+  <div class="pesto-settings-content">
+    <div class="pesto-settings-section-title">
+      Account
+    </div>
+    <div class="pesto-settings-account-name">
+      Zack Gibson
+    </div>
+    <md-list>
+      <!--
+        If the checkbox and switch are in the same md-list-item, selecting one triggers
+        the other and the ngModel value flips twice, resulting in no change.
+      -->
+      <md-list-item class="pesto-checkbox-row" ng-class="{'selected': settings.preferences.publicProfile}">
+        <p>Public profile</p>
+        <md-checkbox ng-model="settings.preferences.publicProfile"></md-checkbox>
+      </md-list-item>
+      <md-list-item class="pesto-switch-row" ng-class="{'selected': settings.preferences.publicProfile}">
+        <p>Public profile</p>
+        <md-switch ng-model="settings.preferences.publicProfile"></md-switch>
+      </md-list-item>
+
+      <md-list-item class="pesto-checkbox-row" ng-class="{'selected': settings.preferences.dailyDigest}">
+        <p>Subscribe to daily digest</p>
+        <md-checkbox ng-model="settings.preferences.dailyDigest"></md-checkbox>
+      </md-list-item>
+      <md-list-item class="pesto-switch-row" ng-class="{'selected': settings.preferences.dailyDigest}">
+        <p>Subscribe to daily digest</p>
+        <md-switch ng-model="settings.preferences.dailyDigest"></md-switch>
+      </md-list-item>
+    </md-list>
+
+    <div class="pesto-settings-section-title">
+      Notifications
+    </div>
+    <md-list>
+      <md-list-item class="pesto-checkbox-row" ng-class="{'selected': settings.preferences.emailNotifications}">
+        <p>Get email notifications</p>
+        <md-checkbox ng-model="settings.preferences.emailNotifications"></md-checkbox>
+      </md-list-item>
+      <md-list-item class="pesto-switch-row" ng-class="{'selected': settings.preferences.emailNotifications}">
+        <p>Get email notifications</p>
+        <md-switch ng-model="settings.preferences.emailNotifications"></md-switch>
+      </md-list-item>
+
+      <md-list-item class="pesto-checkbox-row" ng-class="{'selected': settings.preferences.textNotifications}">
+        <p>Get text notifications</p>
+        <md-checkbox ng-model="settings.preferences.textNotifications"></md-checkbox>
+      </md-list-item>
+      <md-list-item class="pesto-switch-row" ng-class="{'selected': settings.preferences.textNotifications}">
+        <p>Get text notifications</p>
+        <md-switch ng-model="settings.preferences.textNotifications"></md-switch>
+      </md-list-item>
+    </md-list>
+
+  </div>
+</div>
