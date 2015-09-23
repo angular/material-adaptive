@@ -22,24 +22,26 @@
   </md-button>
 </div>
 
-<div class="pesto-home-banner">
-  <img class="pesto-banner" src="assets/pesto-banner.png">
-</div>
+<div class="pesto-home-scrollable">
+  <div class="pesto-home-banner">
+    <img class="pesto-banner" src="assets/pesto-banner.png">
+  </div>
 
-<md-divider></md-divider>
+  <md-divider></md-divider>
 
-<div class="pesto-home-grid-container">
-<div class="pesto-home-grid">
-  <md-grid-list md-cols="2" md-cols-sm="1" md-row-height="250px" md-gutter="8px">
-    <md-grid-tile ng-repeat="recipe in home.recipes">
-      <div>
-        <img class="recipe-image" ng-src="{{recipe.imageUrl}}" />
-      </div>
-      <md-grid-tile-footer class="recipe-info">
-        <div class="pesto-recipe-title">{{recipe.name}}</div>
-        <div class="pesto-recipe-author">by {{recipe.author}}</div>
-      </div>
-    </md-grid-tile>
-  </md-grid-list>
-</div>
+  <div class="pesto-home-grid-container">
+    <div class="pesto-home-grid">
+      <md-grid-list md-cols="2" md-cols-sm="1" md-row-height="250px" md-gutter="8px">
+        <md-grid-tile ng-repeat="recipe in home.recipes">
+          <div>
+            <img class="recipe-image" ng-src="{{recipe.imageUrl}}" />
+          </div>
+          <md-grid-tile-footer class="recipe-info">
+            <div class="pesto-recipe-title">{{recipe.name}}</div>
+            <div class="pesto-recipe-author">by {{recipe.author}}</div>
+          </md-grid-tile-footer>
+        </md-grid-tile>
+      </md-grid-list>
+    </div>
+  </div>
 </div>

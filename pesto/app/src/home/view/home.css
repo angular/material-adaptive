@@ -1,3 +1,8 @@
+.pesto-home-page {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Enter/exit animations don't quite work.
 .pesto-home-page.ng-leave {
   -webkit-animation:slideOutLeft 0.5s both ease-in;
@@ -13,6 +18,7 @@
 */
 
 .pesto-home-header {
+  flex-shrink: 0;
 }
 
 .pesto-home-header .pesto-menu {
@@ -23,9 +29,19 @@
   float: right;
 }
 
+.pesto-home-banner {
+  background: rgb(0, 170, 141);
+  flex-shrink: 0;
+}
+
 .pesto-sidebar-header {
   background: rgb(0, 170, 141);
   text-align: left;
+}
+
+.pesto-home-scrollable {
+  flex-grow: 1;
+  overflow: auto;
 }
 
 .pesto-home-grid-container {
