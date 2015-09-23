@@ -26,3 +26,21 @@
 ##### Card Timer Modal
 
 ![pesto_r5_c1](https://cloud.githubusercontent.com/assets/210413/9977762/4b626114-5ed8-11e5-94f3-bfb08dba3850.jpg)
+
+
+# Getting started
+
+Clone the repo and run the following commands:
+
+```
+npm install jspm -g
+npm install
+jspm install
+```
+
+Start the dev server like so.
+
+```
+npm install http-server
+http-server app/
+```
