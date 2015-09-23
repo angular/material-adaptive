@@ -1,0 +1,45 @@
+<md-sidenav md-component-id="left" class="md-sidenav-left">
+  <div class="pesto-sidebar-header">
+    <md-button class="pesto-menu md-icon-button" aria-label="Close" ng-click="home.toggleSideNav()">
+      <md-icon md-svg-icon="assets/pesto-arrow-back.svg"></md-icon>
+    </md-button>
+  </div>
+  <md-list>
+    <md-list-item>Home</md-list-item>
+    <md-list-item>Favorite</md-list-item>
+    <md-list-item>Saved</md-list-item>
+    <md-list-item>Trending</md-list-item>
+    <md-list-item ng-click="home.gotoSettings()">Settings</md-list-item>
+  </md-list>
+</md-sidenav>
+
+<div class="pesto-home-header">
+  <md-button class="pesto-menu md-icon-button" ng-click="home.toggleSideNav()">
+    <md-icon md-svg-icon="assets/pesto-menu.svg" aria-label="Menu"></md-icon>
+  </md-button>
+  <md-button class="pesto-search md-icon-button">
+    <md-icon md-svg-icon="assets/pesto-search.svg" aria-label="Search"></md-icon>
+  </md-button>
+</div>
+
+<div class="pesto-home-banner">
+  <img class="pesto-banner" src="assets/pesto-banner.png">
+</div>
+
+<md-divider></md-divider>
+
+<div class="pesto-home-grid-container">
+<div class="pesto-home-grid">
+  <md-grid-list md-cols="2" md-cols-sm="1" md-row-height="250px" md-gutter="8px">
+    <md-grid-tile ng-repeat="recipe in home.recipes">
+      <div>
+        <img class="recipe-image" ng-src="{{recipe.imageUrl}}" />
+      </div>
+      <md-grid-tile-footer class="recipe-info">
+        <div class="pesto-recipe-title">{{recipe.name}}</div>
+        <div class="pesto-recipe-author">by {{recipe.author}}</div>
+      </div>
+    </md-grid-tile>
+  </md-grid-list>
+</div>
+</div>

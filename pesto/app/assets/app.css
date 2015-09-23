@@ -1,0 +1,33 @@
+html.pesto, body.pesto {
+  background: rgb(0, 170, 141);
+  font-family: 'Roboto', sans-serif;
+  font-size:14px;
+  height:100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+div[ng-view] {
+  text-align: center;
+}
+
+.pesto-page {
+  height: 100%;
+}
+
+.pesto-page.ng-leave {
+  z-index:9999;
+}
+.pesto-page.ng-enter {
+  z-index:8888;
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+	from 	{ transform:translateX(100%); }
+	to 		{ transform: translateX(0); }
+}
+
+@keyframes slideOutLeft {
+	to 		{ transform: translateX(-100%); }
+}
