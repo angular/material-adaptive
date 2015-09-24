@@ -5,6 +5,9 @@
      layout="row"
      layout-sm="column">
   <div flex=50>
+    <md-icon ng-if="catalog.showingDetail"  
+            md-svg-icon="back"
+            ng-click="catalog.hideDetail()"></md-icon>
     <img src="assets/{{catalog.selectedItem.img}}">
   </div>
   <div>
