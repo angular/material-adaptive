@@ -22,16 +22,31 @@
     <md-grid-list flex=33 class="grid" md-cols="2" md-gutter="0.5em" md-row-height="4:3">
       <md-grid-tile ng-repeat="item in catalog.items"> 
         <md-icon class="md-light checked" md-svg-icon="checked"
-                 ng-if="$index == catalog.selectedItem">
+                 ng-if="item.name == catalog.selectedItem.name">
 
         </md-icon>
         <img class="tile" src="assets/{{item.img}}" 
              md-colspan="1" md-rowspan="1"
-             ng-click="catalog.selectItem($index)">
+             ng-click="catalog.selectItem(item)">
       </md-grid-tile>
     </md-grid-list>
     <!-- Show the detail panel in laptop -->
-    <md-content flex ui-view="detail">
-    </md-content>
+    <div class="detail"
+         flex
+         layout-margin
+         layout-padding
+         layout="row">
+      <div flex=50>
+        <img src="assets/{{catalog.selectedItem.img}}">
+      </div>
+      <div>
+        <div class="md-display-1">
+          {{catalog.selectedItem.name | uppercase}}
+        </div>
+        <div>
+          {{catalog.selectedItem.description}}
+        </div>
+      </div>
+    </div>
   </md-content>
 </md-content>

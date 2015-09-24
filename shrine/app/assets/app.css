@@ -40,3 +40,7 @@ md-icon.checked {
   bottom: 5px;
   right: 5px;
 }
+
+.detail img {
+  max-width: 100%;
+}

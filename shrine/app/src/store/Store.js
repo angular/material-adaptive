@@ -59,7 +59,7 @@ let moduleName = angular
               'main': { 
                 templateUrl: 'src/store/view/catalog.html',
                 controller: 'CatalogController as catalog',
-              }
+              },
             }
           })
           .state('default', {
