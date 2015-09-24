@@ -9,10 +9,20 @@ class CatalogController {
 
     this.items = itemsService.items;
     this.selectedItem = this.items[0];
+    this.showingDetail = false;
   }
 
   selectItem(item) {
     this.selectedItem = item;
+  }
+
+  showDetail(item) {
+    this.selectItem(item);
+    this.showingDetail = true;
+  }
+
+  hideDetail() {
+    this.showingDetail = false;
   }
 }
 

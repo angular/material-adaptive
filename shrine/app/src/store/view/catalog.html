@@ -8,14 +8,17 @@
             layout="column">
   <!-- Tablet and phone view. -->
   <md-content hide-lg hide-gt-lg>
-    <md-grid-list class="grid" md-cols-sm="2" md-cols-gt-sm="4" md-gutter="0.5em" md-row-height="4:3">
+    <md-grid-list class="grid" md-cols-sm="2" md-cols-gt-sm="4" 
+                  md-gutter="0.5em" md-row-height="4:3"
+                  ng-if="!catalog.showingDetail">
       <md-grid-tile ng-repeat="item in catalog.items" 
                     md-colspan="{{$first ? 2 : 1}}"
                     md-rowspan="{{$first ? 2 : 1}}">
-        <img class="tile" src="assets/{{item.img}}">
+        <img class="tile" src="assets/{{item.img}}"
+             ng-click="catalog.showDetail(item)">
       </md-grid-tile>
     </md-grid-list>
-    <ng-include src="'src/store/view/detail.html'"></ng-include>
+    <ng-include src="'src/store/view/detail.html'" ng-if="catalog.showingDetail"></ng-include>
   </md-content>
 
   <!-- Laptop view. -->
