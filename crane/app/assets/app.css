@@ -1,0 +1,105 @@
+html, body {
+  font-family: 'Roboto', sans-serif;
+  font-size:14px;
+  height:100%;
+  margin: 0px;
+  font-weight: bold;
+}
+
+/* Blue text default everywhere */
+body,
+md-input-container label,
+md-icon,
+.md-datepicker-expand-triangle,
+.md-datepicker-input,
+md-input-container:not(.md-input-invalid).md-input-has-value label,
+md-input-container .md-input,
+md-select .md-select-value.md-select-placeholder,
+.md-button.md-accent.md-raised
+{
+  color: #1E5488;
+  font-weight: bold;
+}
+
+.md-datepicker-expand-triangle,
+.md-datepicker-triangle-button:hover .md-datepicker-expand-triangle {
+  border-top-color: #1E5488;
+}
+
+::-webkit-input-placeholder {
+  color: #1E5488;
+  font-weight: bold;
+}
+
+::-moz-placeholder {
+  color: #1E5488;
+  font-weight: bold;
+}
+
+:-ms-input-placeholder {
+  color: #1E5488;
+  font-weight: bold;
+}
+
+/* Tighten up md-selects, since we don't have validation errors or floating
+ * labels on them */
+md-select {
+  margin: 0;
+}
+
+md-card.search-card {
+  width: 345px;
+  position: absolute;
+  left: 120px;
+  top: 90px;
+  z-index: 10;
+}
+
+md-autocomplete.city-search {
+  font-size: 38px;
+  font-weight: bold;
+}
+
+md-autocomplete.city-search md-input-container label {
+  transform: translate3d(0, 45px, 0) scale(1);
+}
+
+md-toolbar.md-tall.extra-tall {
+  height: 230px;
+  min-height: 300px;
+  max-height: 300px;
+}
+
+md-radio-group.options-inline > md-radio-button {
+  display: inline-block;
+}
+
+div.price-badge {
+  background: linear-gradient(rgba(0, 0, 0, .4),
+                              rgba(0, 0, 0, .2) 30%,
+                              transparent);
+  color: white;
+  font-weight: bold;
+  font-size: 45px;
+  padding: 50px;
+}
+
+div.price-badge > div.more {
+  font-size: 10px;
+  color: rgba(255, 255, 255, .5);
+  padding-left: 6px;
+}
+
+div.price-badge div.city {
+  font-size: 25px;
+}
+
+.space-between > :not(:last-child) {
+  margin-right: 10px;
+}
+
+.destination {
+  background-size: cover;
+  background-position: center;
+}
+
