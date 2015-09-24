@@ -3,19 +3,18 @@ html, body {
   font-size:14px;
   height:100%;
   margin: 0px;
-  font-weight: bold;
 }
 
 /* Blue text default everywhere */
-body,
-md-input-container label,
-md-icon,
-.md-datepicker-expand-triangle,
-.md-datepicker-input,
-md-input-container:not(.md-input-invalid).md-input-has-value label,
-md-input-container .md-input,
-md-select .md-select-value.md-select-placeholder,
-.md-button.md-accent.md-raised
+.search-card,
+.search-card md-input-container label,
+.search-card md-icon,
+.search-card .md-datepicker-expand-triangle,
+.search-card .md-datepicker-input,
+.search-card md-input-container:not(.md-input-invalid).md-input-has-value label,
+.search-card md-input-container .md-input,
+.search-card md-select .md-select-value.md-select-placeholder,
+.search-card .md-button.md-accent.md-raised
 {
   color: #1E5488;
   font-weight: bold;
@@ -103,3 +102,20 @@ div.price-badge div.city {
   background-position: center;
 }
 
+.seat-picker {
+  padding: 24px;
+}
+
+.seat-picker button.md-icon-button {
+  margin: -4px;
+}
+.seat-picker button.md-icon-button md-icon {
+  width: auto;
+  height: auto;
+  font-size: 32px;
+  color: rgba(0, 0, 0, .25);
+}
+
+md-tabs {
+  border-radius: 0;
+}

@@ -21,7 +21,7 @@
   <body ng-cloak layout="column">
     <link rel="stylesheet" href="assets/app.css" />
 
-    <md-toolbar class="md-tall extra-tall">
+    <md-toolbar ng-class="{'md-tall': $mdMedia('gt-md')}">
       <div class="md-toolbar-tools">
         <md-button class="md-icon-button">
           <md-icon class="material-icons">menu</md-icon>
