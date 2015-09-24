@@ -8,6 +8,12 @@ class CatalogController {
     this.$log.debug(itemsService);
 
     this.items = itemsService.items;
+    this.selectedItem = 0;
+  }
+
+  selectItem(itemIdx) {
+    this.$log.debug(itemIdx);
+    this.selectedItem = itemIdx;
   }
 }
 

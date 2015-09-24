@@ -19,7 +19,7 @@ class ItemsService {
       { name: "Fleyonce Knowles",
         img: "cat5.jpg",
         description: LOREM },
-      { name: "George Benard Paw",
+      { name: "George Bernard Paw",
         img: "cat6.jpg",
         description: LOREM },
     ]
