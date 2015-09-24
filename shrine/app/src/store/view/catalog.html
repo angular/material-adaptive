@@ -15,6 +15,7 @@
         <img class="tile" src="assets/{{item.img}}">
       </md-grid-tile>
     </md-grid-list>
+    <ng-include src="'src/store/view/detail.html'"></ng-include>
   </md-content>
 
   <!-- Laptop view. -->
@@ -31,22 +32,6 @@
       </md-grid-tile>
     </md-grid-list>
     <!-- Show the detail panel in laptop -->
-    <div class="detail"
-         flex
-         layout-margin
-         layout-padding
-         layout="row">
-      <div flex=50>
-        <img src="assets/{{catalog.selectedItem.img}}">
-      </div>
-      <div>
-        <div class="md-display-1">
-          {{catalog.selectedItem.name | uppercase}}
-        </div>
-        <div>
-          {{catalog.selectedItem.description}}
-        </div>
-      </div>
-    </div>
+    <ng-include src="'src/store/view/detail.html'"></ng-include>
   </md-content>
 </md-content>

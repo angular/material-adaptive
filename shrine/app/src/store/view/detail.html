@@ -1,0 +1,18 @@
+<div class="detail"
+     flex
+     layout-margin
+     layout-padding
+     layout="row"
+     layout-sm="column">
+  <div flex=50>
+    <img src="assets/{{catalog.selectedItem.img}}">
+  </div>
+  <div>
+    <div class="md-display-1">
+      {{catalog.selectedItem.name | uppercase}}
+    </div>
+    <div>
+      {{catalog.selectedItem.description}}
+    </div>
+  </div>
+</div>
