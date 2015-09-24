@@ -1,6 +1,7 @@
+<md-toolbar class="md-tall"></md-toolbar>
 <md-card class="search-card">
   <md-card-content>
-    <form>
+    <form ng-submit="homeCtrl.goToSearch()">
       <md-radio-group ng-model="homeCtrl.roundTrip" class="md-primary options-inline">
         <md-radio-button value="true">Round Trip</md-radio-button>
         <md-radio-button value="false">One Way</md-radio-button>
@@ -72,12 +73,12 @@
           <md-option>Evening</md-option>
         </md-select>
       </div>
+      <div class="md-actions" layout="row" layout-align="end">
+        <md-button class="md-raised md-accent">
+         Search
+        </md-button>
+      </div>
     </form>
-    <div class="md-actions" layout="row" layout-align="end">
-      <md-button class="md-raised md-accent">
-       Search
-      </md-button>
-    </div>
   </md-card-content>
 </md-card>
 <md-content flex
