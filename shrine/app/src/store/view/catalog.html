@@ -6,23 +6,32 @@
             flex
             style="background: #F3F3F3" 
             layout="column">
+  <!-- Tablet and phone view. -->
   <md-content hide-lg hide-gt-lg>
-      <md-grid-list class="grid" md-cols-sm="2" md-cols-gt-sm="4" md-gutter="0.5em" md-row-height="4:3">
-        <md-grid-tile ng-repeat="item in catalog.items" 
-                      md-colspan="{{$first ? 2 : 1}}"
-                      md-rowspan="{{$first ? 2 : 1}}">
-          <img class="tile" src="assets/{{item.img}}">
-        </md-grid-tile>
-      </md-grid-list>
+    <md-grid-list class="grid" md-cols-sm="2" md-cols-gt-sm="4" md-gutter="0.5em" md-row-height="4:3">
+      <md-grid-tile ng-repeat="item in catalog.items" 
+                    md-colspan="{{$first ? 2 : 1}}"
+                    md-rowspan="{{$first ? 2 : 1}}">
+        <img class="tile" src="assets/{{item.img}}">
+      </md-grid-tile>
+    </md-grid-list>
+  </md-content>
+
+  <!-- Laptop view. -->
+  <md-content hide-sm hide-md layout="row">
+    <md-grid-list flex=33 class="grid" md-cols="2" md-gutter="0.5em" md-row-height="4:3">
+      <md-grid-tile ng-repeat="item in catalog.items"> 
+        <md-icon class="md-light checked" md-svg-icon="checked"
+                 ng-if="$index == catalog.selectedItem">
+
+        </md-icon>
+        <img class="tile" src="assets/{{item.img}}" 
+             md-colspan="1" md-rowspan="1"
+             ng-click="catalog.selectItem($index)">
+      </md-grid-tile>
+    </md-grid-list>
+    <!-- Show the detail panel in laptop -->
+    <md-content flex ui-view="detail">
     </md-content>
-    <md-content hide-sm hide-md layout="row">
-      <md-grid-list flex=33 class="grid" md-cols="2" md-gutter="0.5em" md-row-height="4:3">
-        <md-grid-tile ng-repeat="item in catalog.items"> 
-          <img class="tile" src="assets/{{item.img}}" md-colspan="1" md-rowspan="1">
-        </md-grid-tile>
-      </md-grid-list>
-      <md-content flex>
-        Cat description
-      </md-content>
-    </md-content>
+  </md-content>
 </md-content>
