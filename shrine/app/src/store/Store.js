@@ -8,6 +8,7 @@ const URL_ICON_EMAIL  = 'assets/svg/email.svg';
 const URL_ICON_MESSAGE  = 'assets/svg/message.svg';
 const URL_ICON_FACEBOOK  = 'assets/svg/facebook.svg';
 const URL_ICON_CHECKED  = 'assets/svg/check_circle.svg';
+const URL_ICON_BACK  = 'assets/svg/arrow_back.svg';
 
 import FrameController from 'store/frame/FrameController'
 import CatalogController from 'store/CatalogController'
@@ -39,6 +40,7 @@ let moduleName = angular
           .icon('message', URL_ICON_MESSAGE, 24)
           .icon('facebook', URL_ICON_SEARCH, 24)
           .icon('search', URL_ICON_SEARCH, 24)
+          .icon('back', URL_ICON_BACK, 24)
           .icon('checked', URL_ICON_CHECKED, 24);
       })
       .config( ($stateProvider, $urlRouterProvider) => {
