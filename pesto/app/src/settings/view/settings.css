@@ -63,22 +63,8 @@
   color: rgb(25, 166, 139);
 }
 
-.pesto-settings-content .pesto-switch-row {
-  display: none;
-}
-
-@media screen and (max-width: 600px) {
-  .pesto-settings-content {
-    margin-top: 10px;
-    width: 100%;
-    max-width: inherit;
-  }
-
-  .pesto-settings-content .pesto-switch-row {
-    display: inherit;
-  }
-  .pesto-settings-content .pesto-checkbox-row {
-    display: none;
-  }
-
+.pesto-settings-content.small {
+  margin-top: 10px;
+  width: 100%;
+  max-width: inherit;
 }
