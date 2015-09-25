@@ -12,6 +12,7 @@ const URL_ICON_BACK  = 'assets/svg/arrow_back.svg';
 
 import FrameController from 'store/frame/FrameController'
 import CatalogController from 'store/CatalogController'
+import DetailController from 'store/DetailController'
 import ItemsService from 'store/ItemsService'
 import SharingService from 'store/SharingService'
 
@@ -25,6 +26,7 @@ let moduleName = angular
       .module( 'store', [ ] )
       .controller('FrameController' , FrameController )
       .controller('CatalogController' , CatalogController )
+      .controller('DetailController' , DetailController )
       .service('ItemsService' , ItemsService )
       .service('SharingService' , SharingService )
       .config( ($mdIconProvider) => {
@@ -43,45 +45,54 @@ let moduleName = angular
           .icon('back', URL_ICON_BACK, 24)
           .icon('checked', URL_ICON_CHECKED, 24);
       })
-      .config( ($stateProvider, $urlRouterProvider) => {
-        $log.debug( 'Configuring $routeProvider' );
-
-        // Register `action` iconset & icons for $mdIcon service lookups
+      .config( ($stateProvider, $urlRouterProvider, $locationProvider) => {
         $stateProvider
-          .state('search', {
-            url: '/search/:searchTerm?', 
+          .state('root', {
+            data: {
+               isSearch: false,
+               hasBack: false
+            },
+            abstract: true,
             views: {
               'frame': { 
                 templateUrl: 'src/store/frame/frame.html',
                 controller: 'FrameController as ctrl',
-                data: {
-                  isSearch: true
-                }  
-              },
-              'main': { 
-                templateUrl: 'src/store/view/catalog.html',
-                controller: 'CatalogController as catalog',
               },
             }
           })
-          .state('default', {
+          .state('root.search', {
+            url: '/search/:searchTerm?', 
+            data: {
+               isSearch: true,
+               hasBack: true
+            },
+            views: {
+              'main@': { 
+                templateUrl: 'src/store/view/catalog.html',
+              },
+            }
+          })
+          .state('root.category', {
             url: '/:category', 
             views: {
-              'frame': { 
-                templateUrl: 'src/store/frame/frame.html',
-                controller: 'FrameController as ctrl',
-                data: {
-                  isSearch: false
-                }  
-              },
-              'main': { 
+              'main@': { 
                 templateUrl: 'src/store/view/catalog.html',
-                controller: 'CatalogController as catalog',
+              }
+            }
+          })
+          .state('root.category.detail', {
+            url: '/:detail', 
+            data: {
+              hasBack: true
+            },
+            views: {
+              'main@': { 
+                templateUrl: 'src/store/view/detail.html',
               }
             }
           })
         
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/featured');
       })
       .config( ($mdThemingProvider) => {
         $mdThemingProvider.definePalette('white',

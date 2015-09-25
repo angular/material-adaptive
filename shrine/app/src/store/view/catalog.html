@@ -1,40 +1,20 @@
-<!-- Responsive catalog. Tabbed view in widescreen, sidenav for selection on phone.  -->
-
 <md-content layout-margin 
             layout-fill 
-            layout-padding 
+            layout-padding
             flex
-            style="background: #F3F3F3" 
-            layout="column">
-  <!-- Tablet and phone view. -->
-  <md-content hide-lg hide-gt-lg>
-    <md-grid-list class="grid" md-cols-sm="2" md-cols-gt-sm="4" 
-                  md-gutter="0.5em" md-row-height="4:3"
-                  ng-if="!catalog.showingDetail">
-      <md-grid-tile ng-repeat="item in catalog.items" 
-                    md-colspan="{{$first ? 2 : 1}}"
-                    md-rowspan="{{$first ? 2 : 1}}">
-        <img class="tile" src="assets/{{item.img}}"
-             ng-click="catalog.showDetail(item)">
-      </md-grid-tile>
-    </md-grid-list>
-    <ng-include src="'src/store/view/detail.html'" ng-if="catalog.showingDetail"></ng-include>
-  </md-content>
-
-  <!-- Laptop view. -->
-  <md-content hide-sm hide-md layout="row">
-    <md-grid-list flex=33 class="grid" md-cols="2" md-gutter="0.5em" md-row-height="4:3">
-      <md-grid-tile ng-repeat="item in catalog.items"> 
-        <md-icon class="md-light checked" md-svg-icon="checked"
-                 ng-if="item.name == catalog.selectedItem.name">
-
-        </md-icon>
-        <img class="tile" src="assets/{{item.img}}" 
-             md-colspan="1" md-rowspan="1"
-             ng-click="catalog.selectItem(item)">
-      </md-grid-tile>
-    </md-grid-list>
-    <!-- Show the detail panel in laptop -->
-    <ng-include src="'src/store/view/detail.html'"></ng-include>
-  </md-content>
+            ng-controller="CatalogController as catalog">
+  <md-grid-list class="grid" 
+                md-cols-sm="2"
+                md-cols-gt-sm="4"
+                md-cols-gt-md="6"
+                md-cols="4"
+                md-gutter="0.5em"
+                md-row-height="4:3">
+    <md-grid-tile ng-repeat="item in catalog.items" 
+                  md-colspan="{{$first ? 2 : 1}}"
+                  md-rowspan="{{$first ? 2 : 1}}">
+      <img class="tile" ng-src="{{item.img}}"
+           ng-click="catalog.showDetail(item)">
+    </md-grid-tile>
+  </md-grid-list>
 </md-content>

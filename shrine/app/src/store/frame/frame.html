@@ -4,11 +4,19 @@
               id="maintoolbar">
     <!-- Top Toolbar -->
     <div flex layout="row">
-      <md-button hide-gt-sm 
+      <md-button hide-gt-sm
+                 ng-if="!ctrl.hasBack"
                  class="md-icon-button" 
                  ng-click="ctrl.toggleMenu()"
                  aria-label="Show Category List">
         <md-icon md-svg-icon="menu"></md-icon>
+      </md-button>
+
+      <md-button ng-if="ctrl.hasBack"
+                 class="md-icon-button" 
+                 ng-click="ctrl.goBack()"
+                 aria-label="Go Back">
+        <md-icon md-svg-icon="back"></md-icon>
       </md-button>
 
       <span flex></span>
@@ -52,7 +60,7 @@
          ng-hide="ctrl.isSearch">
       <h1 class="md-display-2"
           flex offset="10">
-        {{ctrl.currentCategory().title | uppercase}}
+        {{ctrl.currentCategory().name | uppercase}}
       </h1>
     </div>
   </md-toolbar >
@@ -63,18 +71,19 @@
     <div layout="row" flex>
       <md-input-container flex offset="10">
         <label>SEARCH</label>
-        <input type="text" ngModel='ctrl.searchTerm'>
+        <input type="text" ng-model='ctrl.$state.params.searchTerm'>
       </md-input-container>
       <span hide-sm flex='33'></span>
       <span flex='5'></span>
     </div>
   </md-toolbar>  
   <!-- Selection Tabs -->
-  <md-tabs hide show-gt-sm md-selected="ctrl.selectedIdx"
+  <md-tabs hide show-gt-sm 
+           md-selected="ctrl.selectedIdx"
            ng-hide="ctrl.isSearch">
-    <md-tab ng-repeat="tab in ctrl.categories"
-            md-on-select="ctrl.selectCategory($index)"
-            label="{{tab.title}}">
+    <md-tab ng-repeat="category in ctrl.categories"
+            md-on-select="ctrl.selectCategory(category)"
+            label="{{category.name}}">
             <md-tab-body></md-tab-body>
     </md-tab>
   </md-tabs>
@@ -85,8 +94,8 @@
     <md-content flex>
       <md-list>
         <md-list-item ng-repeat="category in ctrl.categories"
-                      ng-click="ctrl.selectCategory($index)">
-          <md-title>{{category.title}}</md-title>
+                      ng-click="ctrl.selectCategory(category)">
+          <md-title>{{category.name}}</md-title>
         </md-list-item>
       </md-list>
     </md-content>
