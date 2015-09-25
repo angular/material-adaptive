@@ -1,30 +1,43 @@
 /**
- * Main App Controller for the Angular Material Starter App
+ * Controller for the Catalog view.
  */
 class CatalogController {
-  constructor($log, itemsService) {
+  constructor($scope, $log, $state, $location, itemsService) {
     this.$log = $log.getInstance("CatalogController");
     this.$log.debug("instanceOf()");
     this.$log.debug(itemsService);
 
-    this.items = itemsService.items;
-    this.selectedItem = this.items[0];
-    this.showingDetail = false;
-  }
+    this.$state = $state;
 
-  selectItem(item) {
-    this.selectedItem = item;
+    var originalItems = itemsService.getItems($state.params.category);
+    
+    if (this.$state.current.data.isSearch) {
+      $scope.$watch(
+        function() {
+          return $state.params.searchTerm
+        },
+        angular.bind(this, function(searchTerm) {
+          searchTerm = $state.params.searchTerm.toLowerCase();
+          var items = [];
+          angular.forEach(originalItems, function(item) {
+            var itemName = item.name.toLowerCase();
+            itemName.includes(searchTerm) && items.push(item);
+          })
+          this.items = items;
+        }));
+    } else {
+      this.items = angular.copy(originalItems);
+    }
   }
 
   showDetail(item) {
-    this.selectItem(item);
-    this.showingDetail = true;
-  }
-
-  hideDetail() {
-    this.showingDetail = false;
+    var stateOptions = {
+      category: item.category,
+      detail: item.url
+    }
+    this.$state.transitionTo('root.category.detail', stateOptions, {reload: true});
   }
 }
 
-CatalogController.$inject = [ '$log', 'ItemsService' ];
+CatalogController.$inject = ['$scope', '$log', '$state', '$location', 'ItemsService' ];
 export default CatalogController;

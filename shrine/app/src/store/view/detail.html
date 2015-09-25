@@ -1,21 +1,22 @@
-<div class="detail"
-     flex
-     layout-margin
-     layout-padding
-     layout="row"
-     layout-sm="column">
-  <div flex=50>
-    <md-icon ng-if="catalog.showingDetail"  
-            md-svg-icon="back"
-            ng-click="catalog.hideDetail()"></md-icon>
-    <img src="assets/{{catalog.selectedItem.img}}">
-  </div>
-  <div>
-    <div class="md-display-1">
-      {{catalog.selectedItem.name | uppercase}}
+<div flex layout="row" 
+     ng-controller="DetailController as detail">
+  <ng-include flex="40" hide-sm src="'src/store/view/catalog.html'"></ng-include>
+  <div class="detail"
+       flex
+       layout-margin
+       layout-padding
+       layout="row"
+       layout-sm="column">
+    <div flex=50>
+      <img ng-src="{{detail.selectedItem.img}}">
     </div>
     <div>
-      {{catalog.selectedItem.description}}
+      <div class="md-display-1">
+        {{detail.selectedItem.name | uppercase}}
+      </div>
+      <div>
+        {{detail.selectedItem.description}}
+      </div>
     </div>
   </div>
 </div>
