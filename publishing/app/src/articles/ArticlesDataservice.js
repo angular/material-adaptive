@@ -7,20 +7,19 @@
  * @constructor
  */
 function ArticlesDataservice($q, $log) {
-  var articles = [
-        {
+  var articles = [{
+          id: 'tooling_up',
           title: 'Tooling Up',
-          image: 'tooling_up',
           color: 'rgb(53, 72, 82)',
           rowspan: 2,
           colspan: 2
         }, {
+          id: 'pixate',
           title: 'Pixate and Form 1.3',
-          image: 'pixate',
           color: 'rgb(139, 139, 139)'
         }, {
+          id: 'imagery',
           title: 'Google Imagery',
-          image: 'imagery',
           color: 'rgb(255, 166, 78)'
         }
       ];

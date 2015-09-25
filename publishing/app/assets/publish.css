@@ -24,7 +24,11 @@ md-toolbar h1 {
 
 .summary-image {
   height: calc(100% - 48px);
-  padding-bottom: 48px;
+  margin-bottom: 48px;
+}
+
+.summary-image > img {
+  height: 100%;
   width: 100%;
 }
 
