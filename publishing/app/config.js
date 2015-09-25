@@ -14,7 +14,8 @@ System.config({
     "angular": "github:angular/bower-angular@1.4.1",
     "angular-animate": "github:angular/bower-angular-animate@1.4.1",
     "angular-aria": "github:angular/bower-angular-aria@1.4.1",
-    "angular-material": "github:angular/bower-material@master",
+    "angular-material": "github:angular/bower-material@v0.11.0",
+    "angular-route": "github:angular/bower-angular-route@1.4.1",
     "css": "github:systemjs/plugin-css@0.1.13",
     "json": "github:systemjs/plugin-json@0.1.0",
     "text": "github:systemjs/plugin-text@0.0.2",
@@ -26,7 +27,10 @@ System.config({
     "github:angular/bower-angular-aria@1.4.1": {
       "angular": "github:angular/bower-angular@1.4.1"
     },
-    "github:angular/bower-material@master": {
+    "github:angular/bower-angular-route@1.4.1": {
+      "angular": "github:angular/bower-angular@1.4.1"
+    },
+    "github:angular/bower-material@v0.11.0": {
       "angular": "github:angular/bower-angular@1.4.1",
       "angular-animate": "github:angular/bower-angular-animate@1.4.1",
       "angular-aria": "github:angular/bower-angular-aria@1.4.1",

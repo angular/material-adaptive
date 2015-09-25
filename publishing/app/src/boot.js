@@ -9,6 +9,7 @@ import 'assets/publish.css!'
 
 import angular from 'angular'
 import material from 'angular-material'
+import route from 'angular-route';
 
 // Load custom application modules
 
@@ -35,11 +36,10 @@ angular
 
     let body = document.getElementsByTagName("body")[0];
     let app  = angular
-          .module( appName, [ material, main ] )
+          .module( appName, [ 'ngRoute', material, main ] )
           .config( ['$provide', LogDecorator] );
 
     angular.bootstrap( body, [ app.name ], { strictDi: false })
-
   });
 
 
