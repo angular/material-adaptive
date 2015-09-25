@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <title>CraneAir</title>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700|Material+Icons'>
+
+    <style type="text/css">
+        /**
+         * Hide when Angular is not yet loaded and initialized
+         */
+        [ng-cloak] {
+            display: none;
+        }
+    </style>
+  </head>
+
+  <body ng-cloak layout="column">
+    <link rel="stylesheet" href="assets/app.css" />
+
+    <md-toolbar ng-class="{'md-tall': $mdMedia('gt-md')}">
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button">
+          <md-icon class="material-icons">menu</md-icon>
+        </md-button>
+        <span flex></span>
+        <h1>CraneAir</h1>
+      </div>
+    </md-toolbar>
+
+    <ng-view flex layout="column"></ng-view>
+
+    <script src="./jspm_packages/system.js" type="text/javascript"></script>
+    <script src="./config.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        System
+            .import('app/boot')
+            .catch( console.error.bind(console) ); // make sure any errors print to console
+    </script>
+
+  </body>
+</html>
