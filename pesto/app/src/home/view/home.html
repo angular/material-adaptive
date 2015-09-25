@@ -28,9 +28,10 @@
   </div>
 
   <md-divider></md-divider>
-
+  
   <div class="pesto-home-grid-container">
-    <div class="pesto-home-grid">
+    <div class="pesto-home-grid" ng-class="{small: home.isScreenSmall()}">
+      <!-- How to make height scale to content size? "fit" doesn't work. -->
       <md-grid-list md-cols="2" md-cols-sm="1" md-row-height="250px" md-gutter="8px">
         <md-grid-tile ng-repeat="recipe in home.recipes">
           <div>
@@ -45,3 +46,9 @@
     </div>
   </div>
 </div>
+
+<!-- Floating action button, should this change position for desktop/mobile? -->
+<md-button class="md-fab pesto-new-button" aria-label="New Recipe">
+  <md-icon md-svg-src="assets/pesto-add.svg"></md-icon>
+</md-button>
+

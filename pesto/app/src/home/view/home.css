@@ -55,6 +55,10 @@
   width: 90%;
 }
 
+.pesto-home-grid.small {
+  width: 350px;
+}
+
 img.pesto-banner {
   width: 50%;
   max-width: 190px;
@@ -87,4 +91,10 @@ img.pesto-banner {
   color: #888;
   font-size: 14px;
   padding-top: 5px;
+}
+
+button.pesto-new-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
 }
