@@ -1,0 +1,73 @@
+html, body {
+  font-family: 'Rubik', sans-serif;
+}
+
+md-toolbar h1 {
+  font-size: 56px;
+  font-weight: 900;
+  margin: 8px 0;
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  md-toolbar h1 {
+    font-size: 52px;
+    margin: 0;
+  }
+}
+
+.summary {
+  color: white;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.summary-image {
+  height: calc(100% - 48px);
+  margin-bottom: 48px;
+}
+
+.summary-image > img {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  border-top: solid 1px rgba(0,0,0, 0.16);
+}
+
+.articles {
+  padding: 1.5em;
+}
+
+@media only screen and (max-width: 600px) {
+  .articles {
+    padding: 0.75em;
+  }
+}
+
+/* Hacks for sidenav */
+md-sidenav.md-locked-open.left-sidenav {
+  max-width: 200px;
+  width: 200px;
+  min-width: 200px;
+}
+
+md-sidenav.md-closed.md-locked-open-add-active.left-sidenav {
+  width: 200px;
+  min-width: 200px;
+}
+
+.left-sidenav button.md-button {
+  text-transform: none;
+  text-align: left;
+  font-weight: 700;
+  margin: 6px 0px;
+  padding: 0 1.5em;
+}
+
+@media only screen and (max-width: 600px) {
+  .left-sidenav button.md-button {
+    font-size: 20px;
+  }
+}

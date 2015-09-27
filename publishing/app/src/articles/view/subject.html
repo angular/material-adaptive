@@ -1,0 +1,30 @@
+<div flex layout="column">
+  <md-toolbar layout="row" layout-wrap layout-align="space-between start"
+      class="md-primary md-hue-3">
+    <md-button class="md-icon-button" aria-label="Settings" flex-order="1"
+        ng-click="actrl.leftOpen = !actrl.leftOpen">
+      <md-icon ng-if="!actrl.leftOpen" md-svg-icon="menu" ></md-icon>
+      <md-icon ng-if="actrl.leftOpen" md-svg-icon="back" ></md-icon>
+    </md-button>
+    <h1 flex-order-gt-sm="2" flex-sm="100" flex-order="3">
+      ZUPERKÜLBLOG
+    </h1>
+    <md-button class="md-icon-button" aria-label="Details"
+        flex-order-gt-sm="3" flex-order="2">
+      <md-icon md-svg-icon="list"></md-icon>
+    </md-button>
+  </md-toolbar>
+
+  <section layout="row" flex class="container">
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2 left-sidenav" md-component-id="left"
+        md-is-open="actrl.leftOpen" md-is-locked-open="actrl.leftOpen && !$mdMedia('sm')" layout="column">
+      <md-content class="md-hue-2" layout="column" layout-fill flex layout-align="start start">
+        <md-button class="md-primary" layout-fill ng-repeat="item in actrl.menuItems">
+          {{ item }} 
+        </md-button>
+      </md-content>
+    </md-sidenav>
+    <md-content flex layout="row">
+    </md-content>
+  </section>
+</div>
