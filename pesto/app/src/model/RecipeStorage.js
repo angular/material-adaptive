@@ -23,7 +23,7 @@ STORE[1] = Recipe.fromJson({
 });
 
 STORE[2] = Recipe.fromJson({
-  id: 1,
+  id: 2,
   name: 'Chocolate chip cookies',
   author: 'Bob Smith',
   imageUrl: 'https://www.gstatic.com/xads/snippets/animals/cats/square/42.jpg',

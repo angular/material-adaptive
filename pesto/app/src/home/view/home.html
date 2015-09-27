@@ -17,14 +17,28 @@
   <md-button class="pesto-menu md-icon-button" ng-click="home.toggleSideNav()">
     <md-icon md-svg-icon="assets/pesto-menu.svg" aria-label="Menu"></md-icon>
   </md-button>
-  <md-button class="pesto-search md-icon-button">
-    <md-icon md-svg-icon="assets/pesto-search.svg" aria-label="Search"></md-icon>
-  </md-button>
+  <span class="pesto-search">
+    <span class="pesto-search-controls" ng-if="home.isSearchVisible">
+      <md-input-container md-no-float>
+        <input type="text" ng-change="home.fetchRecipes()" ng-model="home.searchString" placeholder="Search" />
+      </md-input-container>
+      <md-icon ng-click="home.clearSearch()" md-svg-icon="assets/pesto-cancel.svg" aria-label="Clear"></md-icon>
+    </span>
+    <md-button class="md-icon-button" ng-click="home.toggleSearchVisible()">
+      <md-icon md-svg-icon="assets/pesto-search.svg" aria-label="Search"></md-icon>
+    </md-button>
+  </span>
 </div>
 
+<img ng-hide="home.isSearchVisible && home.isScreenSmall()"
+    class="pesto-sticky-logo" src="assets/pesto-banner-top.png" />
+
 <div class="pesto-home-scrollable">
-  <div class="pesto-home-banner">
-    <img class="pesto-banner" src="assets/pesto-banner.png">
+  <div class="pesto-home-banner top">
+    <img class="pesto-banner-top" src="assets/pesto-banner-top.png">
+  </div>
+  <div class="pesto-home-banner bottom">
+    <img class="pesto-banner-bottom" src="assets/pesto-banner-bottom.png">
   </div>
 
   <md-divider></md-divider>
@@ -33,7 +47,7 @@
     <div class="pesto-home-grid" ng-class="{small: home.isScreenSmall()}">
       <!-- How to make height scale to content size? "fit" doesn't work. -->
       <md-grid-list md-cols="2" md-cols-sm="1" md-row-height="250px" md-gutter="8px">
-        <md-grid-tile ng-repeat="recipe in home.recipes">
+        <md-grid-tile ng-repeat="recipe in home.recipes" ng-click="home.gotoRecipe(recipe)">
           <div>
             <img class="recipe-image" ng-src="{{recipe.imageUrl}}" />
           </div>
