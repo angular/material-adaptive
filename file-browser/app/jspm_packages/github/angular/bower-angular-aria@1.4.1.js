@@ -1,0 +1,1 @@
+module.exports = require("github:angular/bower-angular-aria@1.4.1/angular-aria");
