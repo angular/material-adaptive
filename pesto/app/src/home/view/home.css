@@ -19,6 +19,7 @@
 
 .pesto-home-header {
   flex-shrink: 0;
+  overflow-x: hidden;
 }
 
 .pesto-home-header .pesto-menu {
@@ -29,9 +30,43 @@
   float: right;
 }
 
+.pesto-home-header .pesto-search md-input-container {
+  display: inline-block;
+  padding-bottom: 0;
+}
+
+.pesto-search-controls.ng-enter {
+  position: relative;
+  left: 300px;
+  transition:0.25s linear all;
+  opacity:0;
+}
+
+.pesto-search-controls.ng-enter.ng-enter-active {
+  opacity: 1;
+  left: 0;
+}
+
+.pesto-search-controls.ng-leave {
+  transition: 0.25s linear all;
+}
+
+.pesto-search-controls.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+img.pesto-sticky-logo {
+  position: fixed;
+  width: 0;
+  height: 0;
+}
+
 .pesto-home-banner {
   background: rgb(0, 170, 141);
-  flex-shrink: 0;
+}
+
+.pesto-home-banner.bottom {
+  padding-top: 8px;
 }
 
 .pesto-sidebar-header {
@@ -56,16 +91,22 @@
 }
 
 .pesto-home-grid.small {
-  width: 350px;
+  max-width: 350px;
 }
 
-img.pesto-banner {
+img.pesto-banner-top {
+  width: 20%;
+  max-width: 76px;
+}
+
+img.pesto-banner-bottom {
   width: 50%;
   max-width: 190px;
 }
 
 .pesto-home-grid md-grid-tile {
   background: purple;
+  cursor: pointer;
   max-width: 350px;
   padding: 5px;
 }

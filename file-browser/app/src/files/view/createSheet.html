@@ -1,0 +1,22 @@
+<md-bottom-sheet class="md-list md-has-header">
+  <md-subheader>
+    Create
+  </md-subheader>
+  <md-list>
+    <md-item ng-repeat="ft in cf.fileTypes">
+      <md-button ng-click="cf.performAction(ft)">
+        <md-icon md-svg-icon="{{ft.icon}}"></md-icon>
+        {{ft.label}}
+      </md-button>
+    </md-item>
+
+    <md-divider></md-divider>
+
+    <md-item ng-repeat="ut in cf.uploadTypes">
+      <md-button ng-click="cf.performAction(ut)">
+        <md-icon md-icon="{{ut.icon}}"></md-icon>
+        {{ut.label}}
+      </md-button>
+    </md-item>
+  </md-list>
+</md-bottom-sheet>
