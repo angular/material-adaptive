@@ -1,6 +1,24 @@
 <div flex layout="row" 
      ng-controller="DetailController as detail">
-  <ng-include flex="40" hide-sm src="'src/store/view/catalog.html'"></ng-include>
+  <md-content layout-margin 
+              layout-fill 
+              layout-padding
+              hide
+              show-lg
+              flex="30">
+    <md-grid-list class="grid" 
+                  md-cols="2"
+                  md-gutter="0.5em"
+                  md-row-height="4:3">
+      <md-grid-tile ng-repeat="item in detail.items" 
+                    md-colspan="'1'"
+                    md-rowspan="'1'">
+        <img class="tile" 
+             ng-src="{{item.img}}"
+             ng-click="detail.showDetail(item)">
+      </md-grid-tile>
+    </md-grid-list>
+  </md-content>
   <div class="detail"
        flex
        layout-margin
