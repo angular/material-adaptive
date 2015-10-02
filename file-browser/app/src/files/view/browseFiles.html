@@ -1,0 +1,181 @@
+<div flex layout="row" ng-controller="FilesController as ul" >
+
+  <!-- Sidenav -->
+  <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left" layout="column">
+    <md-toolbar layout="row">
+    </md-toolbar>
+    <md-toolbar class="toolbar2"></md-toolbar>
+    <md-list layout="column">
+      <md-list-item>
+        <md-icon md-svg-icon="folder"></md-icon>
+        <p>My files</p>
+      </md-list-item>
+      <md-list-item>
+        <md-icon md-svg-icon="share"></md-icon>
+        <p>Shared with me</p>
+      </md-list-item>
+      <md-list-item>
+        <md-icon md-svg-icon="star"></md-icon>
+        <p>Starred</p>
+      </md-list-item>
+      <md-list-item>
+        <md-icon md-svg-icon="recent"></md-icon>
+        <p>Recent</p>
+      </md-list-item>
+      <md-list-item>
+        <md-icon md-svg-icon="pin"></md-icon>
+        <p>Offline</p>
+      </md-list-item>
+      <md-list-item>
+        <md-icon md-svg-icon="upload"></md-icon>
+        <p>Uploads</p>
+      </md-list-item>
+    </md-list>
+  </md-sidenav>
+
+  <!-- Page content container -->
+  <div flex layout="row">
+
+    <!-- File list container -->
+    <div layout="column" flex ng-show="!ul.small || !ul.selected">
+
+      <!-- File list toolbar -->
+      <md-toolbar layout="row">
+        <div class="md-toolbar-tools">
+          <md-button class="menu" ng-if="ul.small" ng-click="ul.toggleList()" aria-label="Show File List">
+            <md-icon md-svg-icon="menu" ></md-icon>
+          </md-button>
+          <span flex></span>
+          <md-button class="md-icon-button" aria-label="Search Files">
+            <md-icon md-svg-icon="search" ></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Show List View" ng-click="ul.toggleLayout()">
+            <md-icon md-svg-icon="{{ul.layout == 'list' ? 'grid' : 'list'}}" ></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Show File Info">
+            <md-icon md-svg-icon="info" ></md-icon>
+          </md-button>
+        </div>
+      </md-toolbar>
+      <md-toolbar class="toolbar2"><h1>My Files > Photos > Vacation</h1></md-toolbar>
+
+      <md-menu class="md-list md-has-header" ng-if="!ul.small">
+        <md-button class="md-fab" aria-label="Create (menu)" ng-click="$mdOpenMenu($event)">
+          <md-icon md-svg-icon="add"></md-icon>
+        </md-button>
+        <md-menu-content>
+          <md-subheader>Create</md-subheader>
+          <md-menu-item ng-repeat="ft in ul.fileTypes">
+            <md-button>
+              <md-icon md-svg-icon="{{ft.icon}}"></md-icon>
+              {{ft.label}}
+            </md-button>
+          </md-menu-item>
+
+          <md-menu-divider></md-menu-divider>
+
+          <md-menu-item ng-repeat="ut in ul.uploadTypes">
+            <md-button>
+              <md-icon md-svg-icon="{{ut.icon}}"></md-icon>
+              {{ut.label}}
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+
+      <md-button class="md-fab" ng-if="ul.small"
+          aria-label="Create (bottom sheet)" ng-click="ul.createWithSheet($event)" >
+        <md-icon md-svg-icon="add"></md-icon>
+      </md-button>
+
+
+
+      <!-- File list content -->
+      <md-content id="content">
+
+        <md-list ng-if="ul.layout != 'grid'">
+          <md-subheader>File</md-subheader>
+          <md-list-item ng-repeat="it in ul.files" ng-click="ul.selectFile(it)" ng-class="{'selected' : it === ul.selected }">
+            <img src="assets/photo/{{it.name}}" class="file-avatar"></img>
+            {{it.name}}
+          </md-list-item>
+        </md-list>
+
+        <md-grid-list ng-if="ul.layout == 'grid'"
+              md-cols="4" md-row-height="1:1"
+              md-gutter="8px">
+          <md-grid-tile ng-repeat="it in ul.files">
+            <img src="assets/photo/{{it.name}}" style="height: auto; width: 100%;"></img>
+          </md-grid-tile>
+        </md-grid-list>
+      </md-content>
+    </div>
+
+    <!-- File detail container -->
+    <div layout="column" ng-show="ul.selected">
+
+      <!-- File detail toolbar -->
+      <md-toolbar layout="row">
+        <div class="md-toolbar-tools">
+          <md-button ng-if="ul.small" class="md-icon-button" aria-label="Back to file list" ng-click="ul.selected = null">
+            <md-icon md-svg-icon="back" ></md-icon>
+          </md-button>
+          <span flex></span>
+          <md-button class="md-icon-button" aria-label="Add Permission">
+            <md-icon md-svg-icon="person_add" ></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Delete File">
+            <md-icon md-svg-icon="delete" ></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Download File" ng-click="ul.downloadFile(ul.selected)">
+            <md-icon md-svg-icon="download" ></md-icon>
+          </md-button>
+          <md-menu>
+            <md-button aria-label="Open file details menu" class="md-icon-button" ng-click="ul.openMenu($mdOpenMenu, $event)">
+              <md-icon md-menu-origin md-svg-icon="more"></md-icon>
+            </md-button>
+            <md-menu-content width="4">
+              <md-menu-item><md-button>Archive</md-button></md-menu-item>
+              <md-menu-item><md-button>Move to...</md-button></md-menu-item>
+              <md-menu-item><md-button>Download</md-button></md-menu-item>
+              <md-menu-item><md-button>Get link</md-button></md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </div>
+      </md-toolbar>
+      <md-toolbar class="toolbar2">
+        <h2 class="md-title md-primary">{{ul.selected.name}}</h2>
+        <p class="md-subhead">{{ul.selected.modified|date}}</p>
+      </md-toolbar>
+
+      <!-- File detail content -->
+      <div>
+        <img src="assets/photo/{{ul.selected.name}}" class="preview"></img>
+        <div layout="row">
+          <p layout="column" flex>Available offline</p>
+          <div layout="column">
+            <md-checkbox ng-if="!ul.small" ng-model="ul.selected.offline" aria-label="Available offline">
+            </md-checkbox>
+            <md-switch ng-if="ul.small" ng-model="ul.selected.offline" aria-label="Available offline">
+            </md-switch>
+          </div>
+        </div>
+        <md-divider></md-divider>
+
+        <md-subheader>Info</md-subheader>
+        <md-divider></md-divider>
+
+        <md-list>
+          <md-subheader>Who has access</md-subheader>
+          <md-list-item class="md-2-line">
+            <div class="md-list-item-text">
+              <h3>Private</h3>
+              <p>people listed can access</p>
+            </div>
+          </md-list-item>
+        </md-list>
+      </div>
+    </div>
+
+  </div>
+</div>
