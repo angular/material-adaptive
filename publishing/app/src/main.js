@@ -4,6 +4,10 @@ import { ExternalLogger } from 'utils/LogDecorator';
 const URL_ICON_MENU    = 'assets/svg/menu.svg';
 const URL_ICON_LIST    = 'assets/svg/list.svg';
 const URL_ICON_BACK    = 'assets/svg/back.svg';
+const URL_ICON_FORWARD = 'assets/svg/forward.svg';
+const URL_ICON_EMAIL    = 'assets/svg/email.svg';
+const URL_ICON_MESSAGE = 'assets/svg/message.svg';
+const URL_ICON_RIGHT = 'assets/svg/right.svg';
 
 
 let $log = new ExternalLogger();
@@ -19,7 +23,11 @@ let moduleName = angular.module('main', [ articles] )
         $mdIconProvider
           .icon('menu' ,URL_ICON_MENU, 24)
           .icon('list' ,URL_ICON_LIST, 24)
-          .icon('back' ,URL_ICON_BACK, 24);
+          .icon('back' ,URL_ICON_BACK, 24)
+          .icon('forward' ,URL_ICON_FORWARD, 24)
+          .icon('email' ,URL_ICON_EMAIL, 24)
+          .icon('message' ,URL_ICON_MESSAGE, 24)
+          .icon('right' ,URL_ICON_RIGHT, 24);
 
         $mdThemingProvider.theme('default')
           .primaryPalette('grey', {
