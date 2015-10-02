@@ -6,20 +6,33 @@ class DetailController {
     this.$log = $log.getInstance("DetailController");
     this.$log.debug("instanceOf()");
     this.$log.debug(itemsService);
+
+    this.$state = $state;
     
-    if (!$state.params.detail) {
-      $state.go('^', {category: $state.params.category});
+    if (!this.$state.params.detail) {
+      tihs.$state.go('^', {category: $state.params.category});
     }
 
     var currentItem = {};
-    itemsService.getItems($state.params.category).some(function(item) {
+    this.items = itemsService.getItems($state.params.category);
+    this.items.some(function(item) {
       if (item.url == $state.params.detail) {
         return (currentItem = item);
       }
     })
     this.selectedItem = currentItem;
   }
+
+  showDetail(item) {
+    var stateOptions = {
+      category: item.category,
+      detail: item.url
+    }
+    this.$state.transitionTo('root.category.detail', stateOptions, {reload: true});
+  }
 }
+
+
 
 DetailController.$inject = [ '$log', '$state', '$location', 'ItemsService' ];
 export default DetailController;
