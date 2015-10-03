@@ -15,6 +15,7 @@ import CatalogController from 'store/CatalogController'
 import DetailController from 'store/DetailController'
 import ItemsService from 'store/ItemsService'
 import SharingService from 'store/SharingService'
+import ItemCardDirective from 'store/itemcard/ItemCard'
 
 import { ExternalLogger } from 'utils/LogDecorator';
 
@@ -27,6 +28,7 @@ let moduleName = angular
       .controller('FrameController' , FrameController )
       .controller('CatalogController' , CatalogController )
       .controller('DetailController' , DetailController )
+      .directive('itemCard' , () => new ItemCardDirective )
       .service('ItemsService' , ItemsService )
       .service('SharingService' , SharingService )
       .config( ($mdIconProvider) => {

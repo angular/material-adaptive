@@ -10,7 +10,7 @@ class DetailController {
     this.$state = $state;
     
     if (!this.$state.params.detail) {
-      tihs.$state.go('^', {category: $state.params.category});
+      this.$state.go('^', {category: $state.params.category});
     }
 
     var currentItem = {};

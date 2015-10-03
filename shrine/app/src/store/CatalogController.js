@@ -29,14 +29,6 @@ class CatalogController {
       this.items = angular.copy(originalItems);
     }
   }
-
-  showDetail(item) {
-    var stateOptions = {
-      category: item.category,
-      detail: item.url
-    }
-    this.$state.transitionTo('root.category.detail', stateOptions, {reload: true});
-  }
 }
 
 CatalogController.$inject = ['$scope', '$log', '$state', '$location', 'ItemsService' ];

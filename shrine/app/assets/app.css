@@ -44,3 +44,18 @@ md-icon.checked {
 .detail img {
   max-width: 100%;
 }
+
+
+/**
+ * Item Card
+ */
+.item-card {
+  overflow: hidden;
+  position: relative;
+  background: white;
+}
+.item-card md-icon {
+  position: absolute;
+  right: 2.5%;
+  bottom: 2.5%;
+}
