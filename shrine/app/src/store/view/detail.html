@@ -13,28 +13,28 @@
       <md-grid-tile ng-repeat="item in detail.items" 
                     md-colspan="'1'"
                     md-rowspan="'1'">
-        <img class="tile" 
-             ng-src="{{item.img}}"
-             ng-click="detail.showDetail(item)">
+        <item-card item="item"></item-card>
       </md-grid-tile>
     </md-grid-list>
   </md-content>
   <div class="detail"
        flex
        layout-margin
-       layout-padding
        layout="row"
        layout-sm="column">
-    <div flex=50>
+    <md-content layout-padding
+                flex="50">
       <img ng-src="{{detail.selectedItem.img}}">
-    </div>
-    <div>
+    </md-content>
+    <md-content layout-padding
+                layout="column"
+                layout-align="space-around center">
       <div class="md-display-1">
         {{detail.selectedItem.name | uppercase}}
       </div>
       <div>
         {{detail.selectedItem.description}}
       </div>
-    </div>
+    </md-content>
   </div>
 </div>
