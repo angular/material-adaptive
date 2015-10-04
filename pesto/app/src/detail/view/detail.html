@@ -1,5 +1,6 @@
 <div class="pesto-page pesto-recipe-page">
   <div class="pesto-recipe-background-image"
+       ng-animate-ref="{{'recipe' + detail.recipeId}}"
        ng-style="{'background-image': 'url(' + detail.recipe.imageUrl + ')'}">
   </div>
 
@@ -11,6 +12,7 @@
     </div>
     
     <div class="pesto-recipe-content">
+      <!-- <span class="anchortest" ng-animate-ref="test1">Hello</span> -->
       <div class="pesto-recipe-table">
       
         <div class="pesto-recipe-row">

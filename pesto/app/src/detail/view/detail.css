@@ -7,6 +7,16 @@
   background-size: cover;
 }
 
+/**
+ * Transition for the animating image from the home page. After the home page
+ * image div zooms out, this makes it move to the position above the recipe
+ * description. We only do this for small displays, because for large displays
+ * the image takes up the entire window and the transition is jerky.
+ */
+.pesto-small-screen .pesto-recipe-background-image.ng-anchor-in {
+  transition:0.1s linear all;
+}
+
 .pesto-small-screen .pesto-recipe-background-image {
   bottom: 60%;
 }
