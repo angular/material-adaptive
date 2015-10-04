@@ -1,5 +1,5 @@
 class Step {
-  construtor(params) {
+  constructor(params) {
     if (!params) params = {};
     this.duration = params['duration'] || 0;
     this.unit = params['unit'] || '';

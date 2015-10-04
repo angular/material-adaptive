@@ -1,5 +1,6 @@
 class Ingredient {
-  construtor(params) {
+  constructor(params) {
+    console.log('Ingredient: ' + JSON.stringify(params));
     if (!params) params = {};
     this.amount = params['amount'] || 0;
     this.unit = params['unit'] || '';

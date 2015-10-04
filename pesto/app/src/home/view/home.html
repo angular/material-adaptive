@@ -35,8 +35,8 @@
   </span>
 </div>
 
-<img ng-hide="home.isSearchVisible && home.isScreenSmall()"
-    class="pesto-sticky-logo" src="assets/pesto-banner-top.png" />
+<img class="pesto-sticky-logo" ng-class="{'search-visible': home.isSearchVisible}"
+     src="assets/pesto-banner-top.png" />
 
 <div class="pesto-home-scrollable">
   <div class="pesto-home-banner top">
