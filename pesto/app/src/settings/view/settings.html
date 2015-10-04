@@ -9,17 +9,22 @@
     </md-button>
   </div>
   
-  <div class="pesto-settings-content" ng-class="{small: settings.isScreenSmall()}">
+  <div class="pesto-settings-content">
     <div class="pesto-settings-section-title">
       Account
     </div>
     <div class="pesto-settings-account-name">
-      Zack Gibson
+      {{settings.preferences.userName}}
     </div>
     <md-list>
       <!--
-        If the checkbox and switch are in the same md-list-item, selecting one triggers
-        the other and the ngModel value flips twice, resulting in no change.
+        This won't work correctly without duplicate md-list-item components for
+        small and large widths. If you try to use ng-show to selectively show
+        either the checkbox or switch, selecting one triggers the other and the
+        ngModel value flips twice, resulting in no change. If you use ng-if,
+        then clicking in the body of the list item won't toggle the control.
+        (Because it doesn't work when the target control is removed from the
+        DOM and recreated?)
       -->
       <md-list-item hide-sm ng-class="{'selected': settings.preferences.publicProfile}">
         <p>Public profile</p>
