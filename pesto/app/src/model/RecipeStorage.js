@@ -119,6 +119,10 @@ class RecipeStorage {
     return this.q_.when(recipes);
   }
 
+  getRecipe(id) {
+    return this.q_.when(STORE[id]);
+  }
+
   searchRecipes(search) {
     const searchLower = search.toLowerCase();
     let recipes = [];

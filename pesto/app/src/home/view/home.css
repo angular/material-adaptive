@@ -1,6 +1,7 @@
 .pesto-home-page {
   display: flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
 }
 
 /* Enter/exit animations don't quite work.
@@ -19,6 +20,7 @@
 
 .pesto-home-header {
   flex-shrink: 0;
+  -webkit-flex-shrink: 0;
   overflow-x: hidden;
 }
 
@@ -76,6 +78,7 @@ img.pesto-sticky-logo {
 
 .pesto-home-scrollable {
   flex-grow: 1;
+  -webkit-flex-grow: 1;
   overflow: auto;
 }
 
@@ -90,7 +93,7 @@ img.pesto-sticky-logo {
   width: 90%;
 }
 
-.pesto-home-grid.small {
+.pesto-small-screen .pesto-home-grid {
   max-width: 350px;
 }
 

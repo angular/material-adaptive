@@ -4,6 +4,11 @@
       <md-icon md-svg-icon="assets/pesto-arrow-back.svg"></md-icon>
     </md-button>
   </div>
+  <!--
+    Apparently md-list-items aren't supposed to be interactive:
+    https://github.com/angular/material/issues/904 . But this is works well, and it doesn't
+    seem reasonable to try to manually replicate the md-list layout.
+  -->
   <md-list>
     <md-list-item>Home</md-list-item>
     <md-list-item>Favorite</md-list-item>
@@ -46,6 +51,7 @@
   <div class="pesto-home-grid-container">
     <div class="pesto-home-grid" ng-class="{small: home.isScreenSmall()}">
       <!-- How to make height scale to content size? "fit" doesn't work. -->
+      <!-- On Firefox, the images aren't scaled so the background shows through. -->
       <md-grid-list md-cols="2" md-cols-sm="1" md-row-height="250px" md-gutter="8px">
         <md-grid-tile ng-repeat="recipe in home.recipes" ng-click="home.gotoRecipe(recipe)">
           <div>

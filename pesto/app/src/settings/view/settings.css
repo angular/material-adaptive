@@ -63,7 +63,7 @@
   color: rgb(25, 166, 139);
 }
 
-.pesto-settings-content.small {
+.pesto-small-screen .pesto-settings-content {
   margin-top: 10px;
   width: 100%;
   max-width: inherit;

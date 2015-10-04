@@ -4,6 +4,7 @@
 
 import 'angular-material/angular-material.css!'
 import 'assets/app.css!'
+import 'detail/view/detail.css!'
 import 'home/view/home.css!'
 import 'settings/view/settings.css!'
 
@@ -18,7 +19,9 @@ import 'angular-route'
 
 import main from 'app/main'
 
+import MainController from 'app/MainController';
 import HomeController from 'home/HomeController';
+import RecipeDetailController from 'detail/RecipeDetailController';
 import SettingsController from 'settings/SettingsController';
 
 // Load loggers for injection and pre-angular debugging
@@ -57,11 +60,18 @@ angular
         controller: 'SettingsController',
         controllerAs: 'settings',
       })
+      .when('/recipe/:id', {
+        templateUrl: '/src/detail/view/detail.html',
+        controller: 'RecipeDetailController',
+        controllerAs: 'detail',
+      })
       .otherwise({redirectTo: '/home'});
     }]);
     
-    app.controller('HomeController', HomeController)
+    app.controller('MainController', MainController)
+        .controller('HomeController', HomeController)
         .controller('SettingsController', SettingsController)
+        .controller('RecipeDetailController', RecipeDetailController);
 
     angular.bootstrap( body, [ app.name ], { strictDi: false })
 
