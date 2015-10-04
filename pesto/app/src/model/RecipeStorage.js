@@ -13,12 +13,12 @@ STORE[1] = Recipe.fromJson({
   imageUrl: 'https://www.gstatic.com/xads/snippets/animals/cats/square/10.jpg',
   description: 'This beautiful sprouts recipe...',
   ingredients: [
-    {amount: '2', unit: 'lbs', description: 'Sprouts'},
-    {amount: '3', unit: 'lbs', description: 'Bacon'},
+    {amount: '2 lbs', unit: 'lbs', description: 'Sprouts'},
+    {amount: '3 lbs', unit: 'lbs', description: 'Bacon'},
   ],
   steps: [
     {description: 'Put in oven'},
-    {duration: 45, unit: 'minutes', description: 'Cook'}
+    {duration: 45, unit: 'min', description: 'Cook'}
   ],
 });
 
@@ -30,11 +30,11 @@ STORE[2] = Recipe.fromJson({
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
-    {amount: '1', unit: 'lbs', description: 'Flour'},
+    {amount: '1 lbs', unit: 'lbs', description: 'Flour'},
   ],
   steps: [
-    {duration: 3, unit: 'minutes', description: 'Stir'},
-    {duration: 45, unit: 'minutes', description: 'Cook'}
+    {duration: 3, unit: 'min', description: 'Stir'},
+    {duration: 45, unit: 'min', description: 'Cook'}
   ],
 });
 
@@ -46,11 +46,11 @@ STORE[3] = Recipe.fromJson({
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
-    {amount: '1', unit: 'lbs', description: 'Flour'},
+    {amount: '1 lb', unit: 'lbs', description: 'Flour'},
   ],
   steps: [
-    {duration: 3, unit: 'minutes', description: 'Stir'},
-    {duration: 45, unit: 'minutes', description: 'Cook'}
+    {duration: 3, unit: 'min', description: 'Stir'},
+    {duration: 45, unit: 'min', description: 'Cook'}
   ],
 });
 
@@ -62,11 +62,11 @@ STORE[4] = Recipe.fromJson({
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
-    {amount: '1', unit: 'lbs', description: 'Flour'},
+    {amount: '1 lb', unit: 'lbs', description: 'Flour'},
   ],
   steps: [
-    {duration: 3, unit: 'minutes', description: 'Stir'},
-    {duration: 45, unit: 'minutes', description: 'Cook'}
+    {duration: 3, unit: 'min', description: 'Stir'},
+    {duration: 45, unit: 'min', description: 'Cook'}
   ],
 });
 
@@ -78,11 +78,11 @@ STORE[5] = Recipe.fromJson({
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
-    {amount: '1', unit: 'lbs', description: 'Flour'},
+    {amount: '1 lb', unit: 'lbs', description: 'Flour'},
   ],
   steps: [
-    {duration: 3, unit: 'minutes', description: 'Stir'},
-    {duration: 45, unit: 'minutes', description: 'Cook'}
+    {duration: 3, unit: 'min', description: 'Stir'},
+    {duration: 45, unit: 'min', description: 'Cook'}
   ],
 });
 
@@ -94,11 +94,11 @@ STORE[6] = Recipe.fromJson({
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
-    {amount: '1', unit: 'lbs', description: 'Flour'},
+    {amount: '1 lb', unit: 'lbs', description: 'Flour'},
   ],
   steps: [
-    {duration: 3, unit: 'minutes', description: 'Stir'},
-    {duration: 45, unit: 'minutes', description: 'Cook'}
+    {duration: 3, unit: 'min', description: 'Stir'},
+    {duration: 45, unit: 'min', description: 'Cook'}
   ],
 });
 

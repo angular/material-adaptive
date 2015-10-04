@@ -25,6 +25,7 @@ class Recipe {
     return new Recipe({
       id: json.id,
       name: json.name,
+      description: json.description,
       author: json.author,
       imageUrl: json.imageUrl,
       ingredients,

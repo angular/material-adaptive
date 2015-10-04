@@ -45,6 +45,10 @@ class RecipeDetailController {
   isEditing() {
     return this.editMode === EditMode.EDIT_EXISTING || this.editMode === EditMode.EDIT_NEW;
   }
+
+  goBack() {
+    this.location_.path('/home');
+  }
 }
 
 RecipeDetailController.$inject = ['$scope', '$location', '$routeParams', '$mdMedia', 'RecipeStorage'];

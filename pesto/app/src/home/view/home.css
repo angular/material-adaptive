@@ -63,6 +63,14 @@ img.pesto-sticky-logo {
   height: 0;
 }
 
+/**
+ * When the search bar is visible, hide the floating logo on small screens
+ * so it doesn't draw over the search.
+ */
+.pesto-small-screen img.pesto-sticky-logo.search-visible {
+  display: none;
+}
+
 .pesto-home-banner {
   background: rgb(0, 170, 141);
 }
