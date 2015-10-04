@@ -1,34 +1,32 @@
 /**
- * Main App Controller for the Angular Material Publish Demo App
+ * Articles list controller
  * @constructor
  */
-function ArticlesController( articlesService, $log ) {
+function ArticlesController($scope, application, articlesService, $log) {
+  $scope.application = application;
+  application.reset();
 
-  $log = $log.getInstance( "SessionController" );
-  $log.debug( "instanceOf() ");
-
-  this.menuItems = ['Art', 'Film', 'Photography', 'Design', 'Top Ten',
-      'A Day in the Life', 'Projects', 'Studio Visits', 'Misc', 'Contact'];
+  application.content = 'src/articles/view/articles.html';
+  application.hasListView = true;
+  application.hasComments = false;
 
   var self = this;
 
-  self.articles     = [ ];
+  self.articles = [ ];
 
   // Load all registered articles
-
   articlesService
-        .loadAll()
-        .then( function( articles ) {
-          self.articles    = [].concat(articles);
-        });
+      .loadAll()
+      .then( function( articles ) {
+        self.articles    = [].concat(articles);
+      });
 
   // *********************************
   // Internal methods
   // *********************************
 }
 
-export default [
-    'articlesService', '$log',
-    ArticlesController
-  ];
+export default ['$scope', 'application', 'articlesService', '$log',
+  ArticlesController
+];
 
