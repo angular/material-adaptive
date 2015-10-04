@@ -16,14 +16,15 @@ class RecipeDetailController {
 
     this.editMode = EditMode.READ;
     this.recipe = null;
+    this.recipeId = $routeParams['id'];
 
     // Fetch existing recipe or create a new one.
-    if ('new' === $routeParams['id']) {
+    if ('new' === this.recipeId) {
       this.recipe = new Recipe();
       this.editMode = EditMode.EDIT_NEW;
     }
     else {
-      const id = parseInt($routeParams['id'], 10);
+      const id = parseInt(this.recipeId, 10);
       if (id) {
         RecipeStorage.getRecipe(id).then((recipe) => {
           if (recipe) {

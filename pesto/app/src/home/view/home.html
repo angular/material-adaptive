@@ -49,13 +49,21 @@
   <md-divider></md-divider>
   
   <div class="pesto-home-grid-container">
+  
     <div class="pesto-home-grid" ng-class="{small: home.isScreenSmall()}">
+      <!-- <span class="anchortest" ng-animate-ref="test1">Hello</span> -->
       <!-- How to make height scale to content size? "fit" doesn't work. -->
       <!-- On Firefox, the images aren't scaled so the background shows through. -->
       <md-grid-list md-cols="2" md-cols-sm="1" md-row-height="250px" md-gutter="8px">
         <md-grid-tile ng-repeat="recipe in home.recipes" ng-click="home.gotoRecipe(recipe)">
-          <div>
-            <img class="recipe-image" ng-src="{{recipe.imageUrl}}" />
+          <div class="pesto-recipe-grid-image"
+               ng-animate-ref="{{'recipe' + recipe.id}}"
+               ng-style="{'background-image': 'url(' + recipe.imageUrl + ')'}">
+            <!--
+            <img class="pesto-recipe-grid-image"
+                 ng-src="{{recipe.imageUrl}}"
+                 ng-animate-ref="{{'recipe' + recipe.id}}" />
+              -->
           </div>
           <md-grid-tile-footer class="recipe-info">
             <div class="pesto-recipe-title">{{recipe.name}}</div>
