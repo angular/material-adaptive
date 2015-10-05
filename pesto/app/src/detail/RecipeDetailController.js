@@ -43,6 +43,34 @@ class RecipeDetailController {
     }
   }
 
+  editRecipe() {
+    this.originalRecipe = this.recipe;
+    this.recipe = this.recipe.copy();
+    this.editMode = EditMode.EDIT_EXISTING;
+  }
+
+  cancelChanges() {
+    if (this.editMode === EditMode.EDIT_NEW) {
+      this.goBack();
+    } else {
+      this.recipe = this.originalRecipe;
+      this.editMode = EditMode.READ;
+    }
+  }
+
+  saveChanges() {
+    const doneEditing = () => {
+      this.editMode = EditMode.READ;
+    };
+    switch (this.editMode) {
+      case EditMode.EDIT_EXISTING:
+        this.recipeStorage_.updateRecipe(this.recipe).then(doneEditing);
+        break;
+      case EditMode.EDIT_NEW:
+        this.recipeStorage_.saveNewRecipe(this.recipe).then(doneEditing);
+    }
+  }
+
   isEditing() {
     return this.editMode === EditMode.EDIT_EXISTING || this.editMode === EditMode.EDIT_NEW;
   }

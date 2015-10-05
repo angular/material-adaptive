@@ -13,6 +13,18 @@ class Recipe {
     this.steps = angular.copy(params.steps || []);
   }
 
+  copy() {
+    return new Recipe({
+      id: this.id,
+      name: this.name,
+      author: this.author,
+      imageUrl: this.imageUrl,
+      description: this.description,
+      ingredients: this.ingredients,
+      steps: this.steps,
+    });
+  }
+
   static fromJson(json) {
     const ingredients = [];
     for (let i of json.ingredients) {

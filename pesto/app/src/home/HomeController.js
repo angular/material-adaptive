@@ -89,6 +89,10 @@ class HomeController {
   gotoRecipe(recipe) {
     this.location_.path('/recipe/' + recipe.id);
   }
+
+  gotoNewRecipe() {
+    this.location_.path('/recipe/new');
+  }
 }
 
 HomeController.$inject = [

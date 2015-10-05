@@ -6,8 +6,31 @@
 
   <div class="pesto-recipe-layout">
     <div class="pesto-recipe-header">
-      <md-button class="pesto-menu md-icon-button" aria-label="Close" ng-click="detail.goBack()">
+      <md-button ng-if="!detail.isEditing()" class="pesto-recipe-back md-icon-button" aria-label="Close"
+                 ng-click="detail.goBack()">
         <md-icon md-svg-icon="assets/pesto-arrow-back.svg"></md-icon>
+      </md-button>
+      <md-menu ng-if="!detail.isEditing()" class="pesto-recipe-more" aria-label="More menu">
+        <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+          <md-icon md-svg-icon="assets/pesto-more-vert.svg"></md-icon>
+        </md-button>
+        <md-menu-content>
+          <md-menu-item>
+            <md-button ng=click="">Item 1</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng=click="">Item 2</md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+
+      <md-button ng-if="detail.isEditing()" class="pesto-recipe-cancel md-icon-button" aria-label="Cancel"
+                 ng-click="detail.cancelChanges()">
+        <md-icon md-svg-icon="assets/pesto-cancel.svg"></md-icon>
+      </md-button>
+      <md-button ng-if="detail.isEditing()" class="pesto-recipe-save md-icon-button" aria-label="More"
+                 ng-click="detail.saveChanges()">
+        <md-icon md-svg-icon="assets/pesto-check.svg"></md-icon>
       </md-button>
     </div>
     
@@ -25,17 +48,46 @@
           <div class="pesto-recipe-col pesto-recipe-description">{{detail.recipe.description}}</div>
         </div>
 
-        <div class="pesto-recipe-row" ng-repeat="ingredient in detail.recipe.ingredients">
+        <div class="pesto-recipe-row">
+          <div class="pesto-recipe-col"></div>
+          <div class="pesto-recipe-col pesto-section-description">Ingredients</div>
+        </div>
+        <div class="pesto-recipe-row" ng-if="!detail.isEditing()" ng-repeat="ingredient in detail.recipe.ingredients">
           <div class="pesto-recipe-col pesto-ingredient-amount">{{ingredient.amount}}</div>
           <div class="pesto-recipe-col pesto-ingredient-description">{{ingredient.description}}</div>
         </div>
+        <div class="pesto-recipe-row" ng-if="detail.isEditing()" ng-repeat="ingredient in detail.recipe.ingredients">
+          <div class="pesto-recipe-col pesto-ingredient-amount">
+            <md-input-container>
+              <input type="text" size="6" ng-model="ingredient.amount">
+            </md-input-container>
+          </div>
+          <div class="pesto-recipe-col pesto-ingredient-description">
+            <md-input-container>
+              <input type="text" ng-model="ingredient.description">
+            </md-input-container>
+          </div>
+        </div>
 
-        <div class="pesto-recipe-row" ng-repeat="step in detail.recipe.steps">
-          <div class="pesto-recipe-col pesto-step-duration">{{step.duration}} {{step.unit}}</div>
+        <div class="pesto-recipe-row">
+          <div class="pesto-recipe-col"></div>
+          <div class="pesto-recipe-col pesto-section-description">Steps</div>
+        </div>
+        <div class="pesto-recipe-row" ng-if="!detail.isEditing()" ng-repeat="step in detail.recipe.steps">
+          <div class="pesto-recipe-col pesto-step-duration">{{step.duration}}</div>
           <div class="pesto-recipe-col pesto-step-description">{{step.description}}</div>
         </div>
 
       </div>
     </div>
   </div>
+
+  <!-- Floating action button, should this change position for desktop/mobile? -->
+  <md-button ng-if="!detail.isEditing()"
+             class="md-fab pesto-edit-button"
+             aria-label="New Recipe"
+             ng-click="detail.editRecipe()">
+    <md-icon md-svg-src="assets/pesto-edit.svg"></md-icon>
+  </md-button>
+
 </div>
