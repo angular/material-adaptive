@@ -3,7 +3,7 @@
  */
 class FrameController {
 
-  constructor($scope, $mdSidenav, $mdMedia, $mdBottomSheet, $log, $state, SharingService, ItemsService) {
+  constructor($scope, $mdSidenav, $mdMedia, $mdBottomSheet, $mdToast, $log, $state, SharingService, ItemsService) {
     this.$log = $log.getInstance("FrameController");
     this.$log.debug("instanceOf()");
 
@@ -12,6 +12,7 @@ class FrameController {
     this.hasBack = $state.current.data.hasBack || this.isSearch;
     
     this.$state = $state;
+    this.$mdToast = $mdToast;
     this.$mdSidenav = $mdSidenav;
     this.$mdMedia = $mdMedia;
     this.$mdBottomSheet = $mdBottomSheet;    
@@ -91,7 +92,33 @@ class FrameController {
     return this.categories[this.$state.params.category];
   }
 
+  /**
+   * Shows a toast message to recognized the click, acknowleding an action would have taken place.
+   */
+  acknowledgeAction(option) {
+    switch (option) {
+      case 'shopping_cart':
+        var message = 'You clicked the shopping cart.  We could show a shopping cart modal if we have one.';
+        break;
+      case 'twitter':
+        var message = 'You clicked the Twitter action.  We could launch into twitter sharing.';
+        break;
+      case 'email':
+        var message = 'You clicked the email action.  We could launch into an email widget.';
+        break;
+      case 'message':
+        var message = 'You clicked message action.  We could launch a messaging widget';
+        break;
+      case 'facebook':
+        var message = 'You clicked Facebook action.  We could launch a Facebook widget';
+        break;
+      default:
+        var message = 'You clicked on an item.  We could take an action now.';
+    }
+    this.$mdToast.show(this.$mdToast.simple().content(message));
+  }
+
 }
 
-FrameController.$inject = ['$scope', '$mdSidenav', '$mdMedia', '$mdBottomSheet', '$log', '$state', 'SharingService', 'ItemsService'];
+FrameController.$inject = ['$scope', '$mdSidenav', '$mdMedia', '$mdBottomSheet', '$mdToast', '$log', '$state', 'SharingService', 'ItemsService'];
 export default FrameController;

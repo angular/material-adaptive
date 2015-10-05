@@ -29,7 +29,7 @@
         </md-button>
 
         <md-button class="md-icon-button" 
-                   ng-click="ctrl.openCart($event)" 
+                   ng-click="ctrl.acknowledgeAction('shopping_cart')" 
                    aria-label="Show Shopping Cart">
           <md-icon md-svg-icon="shopping_cart"></md-icon>
         </md-button>
@@ -41,7 +41,7 @@
           </md-button>
           <md-menu-content width="4">
             <md-menu-item ng-repeat="option in ctrl.sharingOptions">
-              <md-button>
+              <md-button ng-click="ctrl.acknowledgeAction(option.icon)">
                   <div layout="row">
                     <p flex>{{option.label}}</p>
                     <md-icon md-menu-align-target

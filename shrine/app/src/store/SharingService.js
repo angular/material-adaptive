@@ -2,17 +2,20 @@
 class SharingService {
   constructor() {
     this.sharingOptions = [
-      
-      { label: "Tweet Recipe",
+      { 
+        label: "Tweet Recipe",
         icon: "twitter",
       },
-      { label: "Email Recipe",
+      { 
+        label: "Email Recipe",
         icon: "email",
       },
-      { label: "Message Recipe",
+      { 
+        label: "Message Recipe",
         icon: "message",
       },
-      { label: "Share on Facebook",
+      { 
+        label: "Share on Facebook",
         icon: "facebook",
       },
     ]
