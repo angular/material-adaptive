@@ -18,7 +18,7 @@ STORE[1] = Recipe.fromJson({
   ],
   steps: [
     {description: 'Put in oven'},
-    {duration: 45, unit: 'min', description: 'Cook'}
+    {duration: '45 min', description: 'Cook'}
   ],
 });
 
@@ -33,8 +33,8 @@ STORE[2] = Recipe.fromJson({
     {amount: '1 lbs', unit: 'lbs', description: 'Flour'},
   ],
   steps: [
-    {duration: 3, unit: 'min', description: 'Stir'},
-    {duration: 45, unit: 'min', description: 'Cook'}
+    {duration: '3 min', description: 'Stir'},
+    {duration: '45 min', description: 'Cook'}
   ],
 });
 
@@ -49,8 +49,8 @@ STORE[3] = Recipe.fromJson({
     {amount: '1 lb', unit: 'lbs', description: 'Flour'},
   ],
   steps: [
-    {duration: 3, unit: 'min', description: 'Stir'},
-    {duration: 45, unit: 'min', description: 'Cook'}
+    {duration: '3 min', description: 'Stir'},
+    {duration: '45 min', description: 'Cook'}
   ],
 });
 
@@ -65,8 +65,8 @@ STORE[4] = Recipe.fromJson({
     {amount: '1 lb', unit: 'lbs', description: 'Flour'},
   ],
   steps: [
-    {duration: 3, unit: 'min', description: 'Stir'},
-    {duration: 45, unit: 'min', description: 'Cook'}
+    {duration: '3 min', description: 'Stir'},
+    {duration: '45 min', description: 'Cook'}
   ],
 });
 
@@ -81,8 +81,8 @@ STORE[5] = Recipe.fromJson({
     {amount: '1 lb', unit: 'lbs', description: 'Flour'},
   ],
   steps: [
-    {duration: 3, unit: 'min', description: 'Stir'},
-    {duration: 45, unit: 'min', description: 'Cook'}
+    {duration: '3 min', description: 'Stir'},
+    {duration: '45 min', description: 'Cook'}
   ],
 });
 
@@ -97,8 +97,8 @@ STORE[6] = Recipe.fromJson({
     {amount: '1 lb', unit: 'lbs', description: 'Flour'},
   ],
   steps: [
-    {duration: 3, unit: 'min', description: 'Stir'},
-    {duration: 45, unit: 'min', description: 'Cook'}
+    {duration: '3 min', description: 'Stir'},
+    {duration: '45 min', description: 'Cook'}
   ],
 });
 

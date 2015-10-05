@@ -40,8 +40,12 @@
   -webkit-flex-grow: 0;
 }
 
-.pesto-recipe-header .pesto-menu {
+.pesto-recipe-back, .pesto-recipe-cancel {
   float: left;
+}
+
+.pesto-recipe-more, .pesto-recipe-save {
+  float: right;
 }
 
 .pesto-recipe-content {
@@ -94,13 +98,26 @@
   font-size: 14px;
 }
 
+.pesto-section-description {
+  color: #666;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
 .pesto-ingredient-amount, .pesto-step-duration {
   color: rgb(25, 166, 139);
   font-size: 16px;
+  text-align: right;
   white-space: nowrap;
 }
 
 .pesto-ingredient-description, .pesto-step-description {
   color: #333;
   font-size: 16px;
+}
+
+button.pesto-edit-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
 }
