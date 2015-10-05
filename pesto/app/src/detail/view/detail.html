@@ -40,12 +40,22 @@
       
         <div class="pesto-recipe-row">
           <div class="pesto-recipe-col"></div>
-          <div class="pesto-recipe-col pesto-recipe-name">{{detail.recipe.name}}</div>
+          <div class="pesto-recipe-col pesto-recipe-name">
+            <span ng-if="!detail.isEditing()">{{detail.recipe.name}}</span>
+            <md-input-container ng-if="detail.isEditing()">
+              <input type="text" ng-model="detail.recipe.name">
+            </md-input-container>
+          </div>
         </div>
 
         <div class="pesto-recipe-row">
           <div class="pesto-recipe-col"></div>
-          <div class="pesto-recipe-col pesto-recipe-description">{{detail.recipe.description}}</div>
+          <div class="pesto-recipe-col pesto-recipe-description">
+            <span ng-if="!detail.isEditing()">{{detail.recipe.description}}</span>
+            <md-input-container ng-if="detail.isEditing()">
+              <textarea type="text" ng-model="detail.recipe.description"></textarea>
+            </md-input-container>            
+          </div>
         </div>
 
         <div class="pesto-recipe-row">
@@ -76,6 +86,18 @@
         <div class="pesto-recipe-row" ng-if="!detail.isEditing()" ng-repeat="step in detail.recipe.steps">
           <div class="pesto-recipe-col pesto-step-duration">{{step.duration}}</div>
           <div class="pesto-recipe-col pesto-step-description">{{step.description}}</div>
+        </div>
+        <div class="pesto-recipe-row" ng-if="detail.isEditing()" ng-repeat="step in detail.recipe.steps">
+          <div class="pesto-recipe-col pesto-step-duration">
+            <md-input-container>
+              <input type="text" size="6" ng-model="step.duration">
+            </md-input-container>
+          </div>
+          <div class="pesto-recipe-col pesto-step-description">
+            <md-input-container>
+              <input type="text" ng-model="step.description">
+            </md-input-container>
+          </div>
         </div>
 
       </div>
