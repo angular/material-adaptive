@@ -83,6 +83,7 @@
 
 .pesto-recipe-col {
   display: table-cell;
+  vertical-align: top;
 }
 
 .pesto-recipe-name {
@@ -120,4 +121,8 @@ button.pesto-edit-button {
   position: fixed;
   right: 24px;
   bottom: 24px;
+}
+
+.pesto-recipe-table md-input-container {
+  padding-bottom: 0;
 }

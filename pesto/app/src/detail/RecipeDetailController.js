@@ -21,6 +21,8 @@ class RecipeDetailController {
     // Fetch existing recipe or create a new one.
     if ('new' === this.recipeId) {
       this.recipe = new Recipe();
+      // Get this from a settings service?
+      this.recipe.author = 'Zack Gibson';
       this.editMode = EditMode.EDIT_NEW;
     }
     else {
