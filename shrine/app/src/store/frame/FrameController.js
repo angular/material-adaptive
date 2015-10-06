@@ -10,6 +10,7 @@ class FrameController {
     this.searchTerm = $state.params.searchTerm;
     this.isSearch = $state.current.data.isSearch;
     this.hasBack = $state.current.data.hasBack || this.isSearch;
+    this.isDetailView = ($state.current.name == 'root.category.detail');
     
     this.$state = $state;
     this.$mdToast = $mdToast;
@@ -94,6 +95,7 @@ class FrameController {
 
   /**
    * Shows a toast message to recognized the click, acknowleding an action would have taken place.
+   * @param option The option to acknowledge the action of.
    */
   acknowledgeAction(option) {
     switch (option) {
