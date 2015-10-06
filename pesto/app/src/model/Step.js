@@ -4,6 +4,10 @@ class Step {
     this.duration = params['duration'] || '';
     this.description = params['description'] || '';
   }
+
+  isEmpty() {
+    return !(this.duration || this.description);
+  }
 }
 
 export default Step;

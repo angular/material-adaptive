@@ -13,8 +13,8 @@ STORE[1] = Recipe.fromJson({
   imageUrl: 'https://www.gstatic.com/xads/snippets/animals/cats/square/10.jpg',
   description: 'This beautiful sprouts recipe...',
   ingredients: [
-    {amount: '2 lbs', unit: 'lbs', description: 'Sprouts'},
-    {amount: '3 lbs', unit: 'lbs', description: 'Bacon'},
+    {amount: '2 lbs', description: 'Sprouts'},
+    {amount: '3 lbs', description: 'Bacon'},
   ],
   steps: [
     {description: 'Put in oven'},
@@ -30,7 +30,7 @@ STORE[2] = Recipe.fromJson({
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
-    {amount: '1 lbs', unit: 'lbs', description: 'Flour'},
+    {amount: '1 lbs', description: 'Flour'},
   ],
   steps: [
     {duration: '3 min', description: 'Stir'},
@@ -46,7 +46,7 @@ STORE[3] = Recipe.fromJson({
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
-    {amount: '1 lb', unit: 'lbs', description: 'Flour'},
+    {amount: '1 lb', description: 'Flour'},
   ],
   steps: [
     {duration: '3 min', description: 'Stir'},
@@ -62,7 +62,7 @@ STORE[4] = Recipe.fromJson({
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
-    {amount: '1 lb', unit: 'lbs', description: 'Flour'},
+    {amount: '1 lb', description: 'Flour'},
   ],
   steps: [
     {duration: '3 min', description: 'Stir'},
@@ -78,7 +78,7 @@ STORE[5] = Recipe.fromJson({
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
-    {amount: '1 lb', unit: 'lbs', description: 'Flour'},
+    {amount: '1 lb', description: 'Flour'},
   ],
   steps: [
     {duration: '3 min', description: 'Stir'},
