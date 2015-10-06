@@ -1,4 +1,6 @@
 import Recipe from 'model/Recipe';
+import Ingredient from 'model/Ingredient';
+import Step from 'model/Step';
 
 const EditMode = {
   READ: 1,
@@ -23,6 +25,7 @@ class RecipeDetailController {
       this.recipe = new Recipe();
       // Get this from a settings service?
       this.recipe.author = 'Zack Gibson';
+      this.newImageUrl = '';
       this.editMode = EditMode.EDIT_NEW;
     }
     else {
@@ -48,6 +51,7 @@ class RecipeDetailController {
   editRecipe() {
     this.originalRecipe = this.recipe;
     this.recipe = this.recipe.copy();
+    this.newImageUrl = this.recipe.imageUrl;
     this.editMode = EditMode.EDIT_EXISTING;
   }
 
@@ -60,10 +64,25 @@ class RecipeDetailController {
     }
   }
 
+  updateImageUrl() {
+    this.recipe.imageUrl = this.newImageUrl;
+  }
+
+  addIngredient() {
+    this.recipe.ingredients.push(new Ingredient());
+  }
+
+  addStep() {
+    this.recipe.steps.push(new Step());
+  }
+
   saveChanges() {
     const doneEditing = () => {
       this.editMode = EditMode.READ;
     };
+    this.updateImageUrl();
+    this.recipe.ingredients = this.recipe.ingredients.filter((i) => !i.isEmpty());
+    this.recipe.steps = this.recipe.steps.filter((s) => !s.isEmpty());
     switch (this.editMode) {
       case EditMode.EDIT_EXISTING:
         this.recipeStorage_.updateRecipe(this.recipe).then(doneEditing);

@@ -10,8 +10,8 @@
                  ng-click="detail.goBack()">
         <md-icon md-svg-icon="assets/pesto-arrow-back.svg"></md-icon>
       </md-button>
-      <md-menu ng-if="!detail.isEditing()" class="pesto-recipe-more" aria-label="More menu">
-        <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+      <md-menu ng-if="!detail.isEditing()" class="pesto-recipe-more">
+        <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)" aria-label="More menu">
           <md-icon md-svg-icon="assets/pesto-more-vert.svg"></md-icon>
         </md-button>
         <md-menu-content>
@@ -43,6 +43,7 @@
           <div class="pesto-recipe-col pesto-recipe-name">
             <span ng-if="!detail.isEditing()">{{detail.recipe.name}}</span>
             <md-input-container ng-if="detail.isEditing()">
+              <label>Recipe name</label>
               <input type="text" ng-model="detail.recipe.name">
             </md-input-container>
           </div>
@@ -53,8 +54,19 @@
           <div class="pesto-recipe-col pesto-recipe-description">
             <span ng-if="!detail.isEditing()">{{detail.recipe.description}}</span>
             <md-input-container ng-if="detail.isEditing()">
-              <textarea type="text" ng-model="detail.recipe.description"></textarea>
+              <label>Recipe description</label>
+              <textarea type="text" ng-model="detail.recipe.description" placeholder=""></textarea>
             </md-input-container>            
+          </div>
+        </div>
+
+        <div class="pesto-recipe-row" ng-if="detail.isEditing()">
+          <div class="pesto-recipe-col"></div>
+          <div class="pesto-recipe-col">
+            <md-input-container ng-if="detail.isEditing()">
+              <label>Image URL</label>
+              <input type="text" ng-model="detail.newImageUrl" ng-blur="detail.updateImageUrl()">
+            </md-input-container>
           </div>
         </div>
 
@@ -69,13 +81,21 @@
         <div class="pesto-recipe-row" ng-if="detail.isEditing()" ng-repeat="ingredient in detail.recipe.ingredients">
           <div class="pesto-recipe-col pesto-ingredient-amount">
             <md-input-container>
+              <label>Amount</label>
               <input type="text" size="6" ng-model="ingredient.amount">
             </md-input-container>
           </div>
           <div class="pesto-recipe-col pesto-ingredient-description">
             <md-input-container>
+              <label>Description</label>
               <input type="text" ng-model="ingredient.description">
             </md-input-container>
+          </div>
+        </div>
+        <div class="pesto-recipe-row" ng-if="detail.isEditing()">
+          <div class="pesto-recipe-col"></div>
+          <div class="pesto-recipe-col">
+            <md-button ng-click="detail.addIngredient()">+Ingredient</md-button>
           </div>
         </div>
 
@@ -90,13 +110,21 @@
         <div class="pesto-recipe-row" ng-if="detail.isEditing()" ng-repeat="step in detail.recipe.steps">
           <div class="pesto-recipe-col pesto-step-duration">
             <md-input-container>
+              <label>Time</label>
               <input type="text" size="6" ng-model="step.duration">
             </md-input-container>
           </div>
           <div class="pesto-recipe-col pesto-step-description">
             <md-input-container>
+              <label>Description</label>
               <input type="text" ng-model="step.description">
             </md-input-container>
+          </div>
+        </div>
+        <div class="pesto-recipe-row" ng-if="detail.isEditing()">
+          <div class="pesto-recipe-col"></div>
+          <div class="pesto-recipe-col">
+            <md-button ng-click="detail.addStep()">+Step</md-button>
           </div>
         </div>
 
