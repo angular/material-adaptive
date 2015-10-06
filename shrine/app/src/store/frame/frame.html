@@ -34,10 +34,11 @@
           <md-icon md-svg-icon="shopping_cart"></md-icon>
         </md-button>
 
-        <md-menu md-position-mode="target-right target" >
+        <md-menu md-position-mode="target-right target"
+                 ng-if="ctrl.isDetailView" >
           <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="ctrl.openShareMenu() || $mdOpenMenu($event)">
             <md-icon md-menu-origin
-                     md-svg-icon="more_vert"></md-icon>
+                     md-svg-icon="share"></md-icon>
           </md-button>
           <md-menu-content width="4">
             <md-menu-item ng-repeat="option in ctrl.sharingOptions">
