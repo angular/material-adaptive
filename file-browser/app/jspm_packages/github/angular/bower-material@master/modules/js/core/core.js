@@ -4,7 +4,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v0.11.1-master-3c876c1
+ * v0.11.2-master-bb8fd26
  */
 (function( window, angular, undefined ){
 "use strict";
@@ -2725,7 +2725,7 @@ function InterimElementProvider() {
 (function () {
   'use strict';
 
-  var $$mdLayout, $parse, $interpolate;
+  var $mdUtil, $$mdLayout, $parse, $interpolate;
 
     /**
      *
@@ -2774,37 +2774,28 @@ function InterimElementProvider() {
        */
       .factory("$$mdLayout", function() {
         return {
-          /**
-           * Should we remove the original layout Attribute selectors
-           * after translation injection
-           */
-          removeAttributes : true,
+          removeAttributes : true
 
-          /**
-           * Special internal flag used to optimize
-           * noop(s) for the directive postLinks below
-           */
-          disablePostLinks : undefined
         };
       })
 
       // Attribute directives with optional value(s)
 
-      .directive('layout'              , attributeWithObserve('layout' , true)       )
-      .directive('layoutSm'            , attributeWithObserve('layout-sm'   , true)  )
-      .directive('layoutGtSm'          , attributeWithObserve('layout-gt-sm', true)  )
-      .directive('layoutMd'            , attributeWithObserve('layout-md'   , true)  )
-      .directive('layoutGtMd'          , attributeWithObserve('layout-gt-md', true)  )
-      .directive('layoutLg'            , attributeWithObserve('layout-lg'   , true)  )
-      .directive('layoutGtLg'          , attributeWithObserve('layout-gt-lg', true)  )
+      .directive('layout'              , attributeWithObserve('layout'      )  )
+      .directive('layoutSm'            , attributeWithObserve('layout-sm'   )  )
+      .directive('layoutGtSm'          , attributeWithObserve('layout-gt-sm')  )
+      .directive('layoutMd'            , attributeWithObserve('layout-md'   )  )
+      .directive('layoutGtMd'          , attributeWithObserve('layout-gt-md')  )
+      .directive('layoutLg'            , attributeWithObserve('layout-lg'   )  )
+      .directive('layoutGtLg'          , attributeWithObserve('layout-gt-lg')  )
 
-      .directive('flex'                , attributeWithObserve('flex'        , true)  )
-      .directive('flexSm'              , attributeWithObserve('flex-sm'     , true)  )
-      .directive('flexGtSm'            , attributeWithObserve('flex-gt-sm'  , true)  )
-      .directive('flexMd'              , attributeWithObserve('flex-md'     , true)  )
-      .directive('flexGtMd'            , attributeWithObserve('flex-gt-md'  , true)  )
-      .directive('flexLg'              , attributeWithObserve('flex-lg'     , true)  )
-      .directive('flexGtLg'            , attributeWithObserve('flex-gt-lg'  , true)  )
+      .directive('flex'                , attributeWithObserve('flex'        )  )
+      .directive('flexSm'              , attributeWithObserve('flex-sm'     )  )
+      .directive('flexGtSm'            , attributeWithObserve('flex-gt-sm'  )  )
+      .directive('flexMd'              , attributeWithObserve('flex-md'     )  )
+      .directive('flexGtMd'            , attributeWithObserve('flex-gt-md'  )  )
+      .directive('flexLg'              , attributeWithObserve('flex-lg'     )  )
+      .directive('flexGtLg'            , attributeWithObserve('flex-gt-lg'  )  )
 
       // Attribute directives with optional value(s) but directiveName is NOT added as a class
 
@@ -2884,11 +2875,11 @@ function InterimElementProvider() {
      * Creates a directive registration function where a possbile dynamic attribute value will
      * be observed/watched.
      * @param {string} className attribute name; eg `md-layout-gt-md` with value ="row"
-     * @param {boolean=} addDirectiveAsClass
      */
-    function attributeWithObserve(className, addDirectiveAsClass) {
+    function attributeWithObserve(className) {
 
-      return ['$$mdLayout', '$document', '$parse', '$interpolate', function(_$$mdLayout_, $document, _$parse_, _$interpolate_) {
+      return ['$mdUtil', '$$mdLayout', '$document', '$parse', '$interpolate', function(_$mdUtil_, _$$mdLayout_, $document, _$parse_, _$interpolate_) {
+        $mdUtil = _$mdUtil_;
         $$mdLayout = _$$mdLayout_;
         $parse = _$parse_;
         $interpolate = _$interpolate_;
@@ -2896,16 +2887,50 @@ function InterimElementProvider() {
         return {
             restrict : 'A',
             compile: function(element, attr) {
-              if ( postLinkIsDisabled($document[0]) ) return angular.noop;
-
-              attributeValueToClass(null, element, attr);
-
               // Use for postLink to account for transforms after ng-transclude.
-              return attributeValueToClass;
+
+              if ( !injectLayoutSpecifier(element, attr) ) {
+                attributeValueToClass(null, element, attr);
+                return attributeValueToClass;
+              }
+
+              return angular.noop;
             }
         };
       }];
 
+      /**
+       * To avoid large sets of CSS rules
+       * for layout-gt-md-row, layout-sm-column, etc...
+       *
+       * Instead create either a md-layout-row or md-layout-column
+       * class that acts as a generic specifier.
+       *
+       */
+      function injectLayoutSpecifier(element, attrs) {
+        var injected = false;
+        var breakpoints = ['','-sm','-gt-sm','-md','-gt-md','-lg','-gt-lg'];
+        angular.forEach(breakpoints, function(it){
+          if ( className === "layout"+it ) {
+
+            var updateClassFn = updateClassWithValue(element,"md-layout"+it, attrs);
+            var normalizedAttr = attrs.$normalize(className);
+            var attrValue = attrs[normalizedAttr] ? attrs[normalizedAttr].replace(/\s+/g, "-") : "row";
+            var addImmediate = attrValue ? !needsInterpolation(attrValue) : false;
+            var watchValue   = needsInterpolation(attrValue);
+
+
+            // Add special layout class: either '.md-layout-row' or '.md-layout-column'
+            if ( addImmediate ) element.addClass( $mdUtil.supplant('md-layout{0}-{1}',[it,attrValue]) );
+            if ( watchValue ) attrs.$observe( normalizedAttr, updateClassFn );
+            if ( $$mdLayout.removeAttributes ) element.removeAttr(className);
+
+            injected = true;
+          }
+        });
+
+        return injected;
+      }
 
       /**
        * Add as transformed class selector(s), then
@@ -2919,10 +2944,11 @@ function InterimElementProvider() {
         var watchValue   = needsInterpolation(attrValue);
 
         // Add transformed class selector(s)
-        if (addDirectiveAsClass) element.addClass(className);
 
         if ( addImmediate ) element.addClass(className + "-" + attrValue);
         if ( watchValue ) attrs.$observe( normalizedAttr, updateClassFn );
+        if ( !addImmediate && !watchValue )  element.addClass(className);
+
         if ( $$mdLayout.removeAttributes ) element.removeAttr(className);
       }
 
@@ -2977,7 +3003,6 @@ function InterimElementProvider() {
         return {
           restrict : 'A',
           compile: function(element, attrs) {
-            if ( postLinkIsDisabled($document[0]) ) return angular.noop;
 
             attributeToClass(null, element);
 
@@ -3003,6 +3028,7 @@ function InterimElementProvider() {
 
     /**
      * Provide console warning that this layout attribute has been deprecated
+     *
      */
     function warnAttrNotSupported(className) {
       var parts = className.split("-");
@@ -3012,35 +3038,6 @@ function InterimElementProvider() {
         return angular.noop;
       }];
 
-    }
-
-    /**
-     * Scan the body element. If it has a class 'md-css-only', then do NOT
-     * postLink process the directives for Attribute selectors.
-     * (recall that postlink injects Class selectors based on attribute selector settings)
-     *
-     * Instead the Layout CSS for Attributes is used:
-     * e.g
-     *       .md-css-only [layout=row] {
-     *          flex-direction: row;
-     *          -webkit-flex-direction: row;
-     *       }
-     *
-     * Note: this means that 'md-css-only' will not work for IE (due to performance issues)
-     * In these cases, the Layout translators (directives) should be enabled and the
-     * `angular-material.[min.]js` must be loaded.
-     */
-    function postLinkIsDisabled(document) {
-      var disablePostLinks = $$mdLayout.disablePostLinks;
-
-      // Perform a read-once (1x) check for the `md-css-only` class on the BODY
-
-      if ( angular.isUndefined(disablePostLinks) ) {
-        var body = document && document.body;
-        if (body) disablePostLinks = body.classList.contains('md-css-only');
-      }
-
-      return $$mdLayout.disablePostLinks = disablePostLinks;
     }
 
 })();

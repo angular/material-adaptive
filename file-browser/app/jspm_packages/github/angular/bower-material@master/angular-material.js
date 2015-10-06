@@ -5,7 +5,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v0.11.1-master-3c876c1
+ * v0.11.2-master-bb8fd26
  */
 (function( window, angular, undefined ){
 "use strict";
@@ -2770,7 +2770,7 @@ function InterimElementProvider() {
 (function () {
   'use strict';
 
-  var $$mdLayout, $parse, $interpolate;
+  var $mdUtil, $$mdLayout, $parse, $interpolate;
 
     /**
      *
@@ -2819,37 +2819,28 @@ function InterimElementProvider() {
        */
       .factory("$$mdLayout", function() {
         return {
-          /**
-           * Should we remove the original layout Attribute selectors
-           * after translation injection
-           */
-          removeAttributes : true,
+          removeAttributes : true
 
-          /**
-           * Special internal flag used to optimize
-           * noop(s) for the directive postLinks below
-           */
-          disablePostLinks : undefined
         };
       })
 
       // Attribute directives with optional value(s)
 
-      .directive('layout'              , attributeWithObserve('layout' , true)       )
-      .directive('layoutSm'            , attributeWithObserve('layout-sm'   , true)  )
-      .directive('layoutGtSm'          , attributeWithObserve('layout-gt-sm', true)  )
-      .directive('layoutMd'            , attributeWithObserve('layout-md'   , true)  )
-      .directive('layoutGtMd'          , attributeWithObserve('layout-gt-md', true)  )
-      .directive('layoutLg'            , attributeWithObserve('layout-lg'   , true)  )
-      .directive('layoutGtLg'          , attributeWithObserve('layout-gt-lg', true)  )
+      .directive('layout'              , attributeWithObserve('layout'      )  )
+      .directive('layoutSm'            , attributeWithObserve('layout-sm'   )  )
+      .directive('layoutGtSm'          , attributeWithObserve('layout-gt-sm')  )
+      .directive('layoutMd'            , attributeWithObserve('layout-md'   )  )
+      .directive('layoutGtMd'          , attributeWithObserve('layout-gt-md')  )
+      .directive('layoutLg'            , attributeWithObserve('layout-lg'   )  )
+      .directive('layoutGtLg'          , attributeWithObserve('layout-gt-lg')  )
 
-      .directive('flex'                , attributeWithObserve('flex'        , true)  )
-      .directive('flexSm'              , attributeWithObserve('flex-sm'     , true)  )
-      .directive('flexGtSm'            , attributeWithObserve('flex-gt-sm'  , true)  )
-      .directive('flexMd'              , attributeWithObserve('flex-md'     , true)  )
-      .directive('flexGtMd'            , attributeWithObserve('flex-gt-md'  , true)  )
-      .directive('flexLg'              , attributeWithObserve('flex-lg'     , true)  )
-      .directive('flexGtLg'            , attributeWithObserve('flex-gt-lg'  , true)  )
+      .directive('flex'                , attributeWithObserve('flex'        )  )
+      .directive('flexSm'              , attributeWithObserve('flex-sm'     )  )
+      .directive('flexGtSm'            , attributeWithObserve('flex-gt-sm'  )  )
+      .directive('flexMd'              , attributeWithObserve('flex-md'     )  )
+      .directive('flexGtMd'            , attributeWithObserve('flex-gt-md'  )  )
+      .directive('flexLg'              , attributeWithObserve('flex-lg'     )  )
+      .directive('flexGtLg'            , attributeWithObserve('flex-gt-lg'  )  )
 
       // Attribute directives with optional value(s) but directiveName is NOT added as a class
 
@@ -2929,11 +2920,11 @@ function InterimElementProvider() {
      * Creates a directive registration function where a possbile dynamic attribute value will
      * be observed/watched.
      * @param {string} className attribute name; eg `md-layout-gt-md` with value ="row"
-     * @param {boolean=} addDirectiveAsClass
      */
-    function attributeWithObserve(className, addDirectiveAsClass) {
+    function attributeWithObserve(className) {
 
-      return ['$$mdLayout', '$document', '$parse', '$interpolate', function(_$$mdLayout_, $document, _$parse_, _$interpolate_) {
+      return ['$mdUtil', '$$mdLayout', '$document', '$parse', '$interpolate', function(_$mdUtil_, _$$mdLayout_, $document, _$parse_, _$interpolate_) {
+        $mdUtil = _$mdUtil_;
         $$mdLayout = _$$mdLayout_;
         $parse = _$parse_;
         $interpolate = _$interpolate_;
@@ -2941,16 +2932,50 @@ function InterimElementProvider() {
         return {
             restrict : 'A',
             compile: function(element, attr) {
-              if ( postLinkIsDisabled($document[0]) ) return angular.noop;
-
-              attributeValueToClass(null, element, attr);
-
               // Use for postLink to account for transforms after ng-transclude.
-              return attributeValueToClass;
+
+              if ( !injectLayoutSpecifier(element, attr) ) {
+                attributeValueToClass(null, element, attr);
+                return attributeValueToClass;
+              }
+
+              return angular.noop;
             }
         };
       }];
 
+      /**
+       * To avoid large sets of CSS rules
+       * for layout-gt-md-row, layout-sm-column, etc...
+       *
+       * Instead create either a md-layout-row or md-layout-column
+       * class that acts as a generic specifier.
+       *
+       */
+      function injectLayoutSpecifier(element, attrs) {
+        var injected = false;
+        var breakpoints = ['','-sm','-gt-sm','-md','-gt-md','-lg','-gt-lg'];
+        angular.forEach(breakpoints, function(it){
+          if ( className === "layout"+it ) {
+
+            var updateClassFn = updateClassWithValue(element,"md-layout"+it, attrs);
+            var normalizedAttr = attrs.$normalize(className);
+            var attrValue = attrs[normalizedAttr] ? attrs[normalizedAttr].replace(/\s+/g, "-") : "row";
+            var addImmediate = attrValue ? !needsInterpolation(attrValue) : false;
+            var watchValue   = needsInterpolation(attrValue);
+
+
+            // Add special layout class: either '.md-layout-row' or '.md-layout-column'
+            if ( addImmediate ) element.addClass( $mdUtil.supplant('md-layout{0}-{1}',[it,attrValue]) );
+            if ( watchValue ) attrs.$observe( normalizedAttr, updateClassFn );
+            if ( $$mdLayout.removeAttributes ) element.removeAttr(className);
+
+            injected = true;
+          }
+        });
+
+        return injected;
+      }
 
       /**
        * Add as transformed class selector(s), then
@@ -2964,10 +2989,11 @@ function InterimElementProvider() {
         var watchValue   = needsInterpolation(attrValue);
 
         // Add transformed class selector(s)
-        if (addDirectiveAsClass) element.addClass(className);
 
         if ( addImmediate ) element.addClass(className + "-" + attrValue);
         if ( watchValue ) attrs.$observe( normalizedAttr, updateClassFn );
+        if ( !addImmediate && !watchValue )  element.addClass(className);
+
         if ( $$mdLayout.removeAttributes ) element.removeAttr(className);
       }
 
@@ -3022,7 +3048,6 @@ function InterimElementProvider() {
         return {
           restrict : 'A',
           compile: function(element, attrs) {
-            if ( postLinkIsDisabled($document[0]) ) return angular.noop;
 
             attributeToClass(null, element);
 
@@ -3048,6 +3073,7 @@ function InterimElementProvider() {
 
     /**
      * Provide console warning that this layout attribute has been deprecated
+     *
      */
     function warnAttrNotSupported(className) {
       var parts = className.split("-");
@@ -3057,35 +3083,6 @@ function InterimElementProvider() {
         return angular.noop;
       }];
 
-    }
-
-    /**
-     * Scan the body element. If it has a class 'md-css-only', then do NOT
-     * postLink process the directives for Attribute selectors.
-     * (recall that postlink injects Class selectors based on attribute selector settings)
-     *
-     * Instead the Layout CSS for Attributes is used:
-     * e.g
-     *       .md-css-only [layout=row] {
-     *          flex-direction: row;
-     *          -webkit-flex-direction: row;
-     *       }
-     *
-     * Note: this means that 'md-css-only' will not work for IE (due to performance issues)
-     * In these cases, the Layout translators (directives) should be enabled and the
-     * `angular-material.[min.]js` must be loaded.
-     */
-    function postLinkIsDisabled(document) {
-      var disablePostLinks = $$mdLayout.disablePostLinks;
-
-      // Perform a read-once (1x) check for the `md-css-only` class on the BODY
-
-      if ( angular.isUndefined(disablePostLinks) ) {
-        var body = document && document.body;
-        if (body) disablePostLinks = body.classList.contains('md-css-only');
-      }
-
-      return $$mdLayout.disablePostLinks = disablePostLinks;
     }
 
 })();
@@ -5970,7 +5967,7 @@ function MdCheckboxDirective(inputDirective, $mdAria, $mdConstant, $mdTheming, $
     restrict: 'E',
     transclude: true,
     require: '?ngModel',
-    priority:210, // Run before ngAria
+    priority: 210, // Run before ngAria
     template: 
       '<div class="md-container" md-ink-ripple md-ink-ripple-checkbox>' +
         '<div class="md-icon"></div>' +
@@ -5989,6 +5986,14 @@ function MdCheckboxDirective(inputDirective, $mdAria, $mdConstant, $mdTheming, $
     tAttrs.tabindex = tAttrs.tabindex || '0';
     tElement.attr('role', tAttrs.type);
 
+    // Attach a click handler in compile in order to immediately stop propagation
+    // (especially for ng-click) when the checkbox is disabled.
+    tElement.on('click', function(event) {
+      if (this.hasAttribute('disabled')) {
+        event.stopImmediatePropagation();
+      }
+    });
+
     return function postLink(scope, element, attr, ngModelCtrl) {
       ngModelCtrl = ngModelCtrl || $mdUtil.fakeNgModel();
       $mdTheming(element);
@@ -5999,10 +6004,12 @@ function MdCheckboxDirective(inputDirective, $mdAria, $mdConstant, $mdTheming, $
             ngModelCtrl.$setViewValue.bind(ngModelCtrl)
         );
       }
+
       $$watchExpr('ngDisabled', 'tabindex', {
         true: '-1',
         false: attr.tabindex
       });
+
       $mdAria.expectWithText(element, 'aria-label');
 
       // Reuse the original input[type=checkbox] directive from Angular core.
@@ -6018,14 +6025,18 @@ function MdCheckboxDirective(inputDirective, $mdAria, $mdConstant, $mdTheming, $
         .on('keypress', keypressHandler)
         .on('mousedown', function() {
           scope.mouseActive = true;
-          $timeout(function(){
+          $timeout(function() {
             scope.mouseActive = false;
           }, 100);
         })
         .on('focus', function() {
-          if(scope.mouseActive === false) { element.addClass('md-focused'); }
+          if (scope.mouseActive === false) {
+            element.addClass('md-focused');
+          }
         })
-        .on('blur', function() { element.removeClass('md-focused'); });
+        .on('blur', function() {
+          element.removeClass('md-focused');
+        });
 
       ngModelCtrl.$render = render;
 
@@ -6043,12 +6054,18 @@ function MdCheckboxDirective(inputDirective, $mdAria, $mdConstant, $mdTheming, $
         var keyCode = ev.which || ev.keyCode;
         if (keyCode === $mdConstant.KEY_CODE.SPACE || keyCode === $mdConstant.KEY_CODE.ENTER) {
           ev.preventDefault();
-          if (!element.hasClass('md-focused')) { element.addClass('md-focused'); }
+
+          if (!element.hasClass('md-focused')) {
+            element.addClass('md-focused');
+          }
+
           listener(ev);
         }
       }
       function listener(ev) {
-        if (element[0].hasAttribute('disabled')) return;
+        if (element[0].hasAttribute('disabled')) {
+          return;
+        }
 
         scope.$apply(function() {
           // Toggle the checkbox value...
@@ -11001,7 +11018,9 @@ function mdMaxlengthDirective($animate) {
     };
 
     function renderCharCount(value) {
-      charCountEl.text(( element.val() || value || '' ).length + '/' + maxlength);
+      // Force the value into a string since it may be a number,
+      // which does not have a length property.
+      charCountEl.text(String(element.val() || value || '').length + '/' + maxlength);
       return value;
     }
   }
@@ -13780,7 +13799,10 @@ function SidenavDirective($mdMedia, $mdUtil, $mdConstant, $mdTheming, $animate, 
       sidenavCtrl.destroy();
     });
 
-    scope.$on('$destroy', angular.bind(backdrop, backdrop.remove));
+    scope.$on('$destroy', function(){
+      backdrop.remove()
+    });
+
     scope.$watch(isLocked, updateIsLocked);
     scope.$watch('isOpen', updateIsOpen);
 
@@ -17254,7 +17276,7 @@ function MdAutocompleteCtrl ($scope, $element, $mdUtil, $mdConstant, $mdTheming,
   }
 
   function notFoundVisible () {
-    return !ctrl.matches.length && !ctrl.loading && ctrl.scope.searchText && hasFocus && !ctrl.scope.selectedItem;
+    return !ctrl.matches.length && !ctrl.loading && ctrl.scope.searchText >= getMinLength() && hasFocus && !ctrl.scope.selectedItem;
   }
 
   /**
@@ -18996,25 +19018,12 @@ function mdIconDirective($mdIcon, $mdTheming, $mdAria ) {
       return false;
     }
 
-    function prepareForFontIcon () {
+    function prepareForFontIcon() {
       if (!scope.svgIcon && !scope.svgSrc) {
-
         if (scope.fontIcon) {
           element.addClass('md-font ' + scope.fontIcon);
         }
-
-        if (scope.fontSet) {
-          element.addClass($mdIcon.fontSet(scope.fontSet));
-        }
-
-        if (shouldUseDefaultFontSet()) {
-          element.addClass($mdIcon.fontSet());
-        }
-
-      }
-
-      function shouldUseDefaultFontSet() {
-        return !scope.fontIcon && !scope.fontSet;
+        element.addClass($mdIcon.fontSet(scope.fontSet));
       }
     }
   }
@@ -19524,7 +19533,7 @@ function mdIconDirective($mdIcon, $mdTheming, $mdAria ) {
     *  Define the Icon class
     */
    function Icon(el, config) {
-     if (el.tagName != 'svg') {
+     if (el && el.tagName != 'svg') {
        el = angular.element('<svg xmlns="http://www.w3.org/2000/svg">').append(el)[0];
      }
 
@@ -21873,17 +21882,28 @@ function MdTabsController ($scope, $element, $window, $mdConstant, $mdTabInkRipp
   function updateHeightFromContent () {
     if (!ctrl.dynamicHeight) return $element.css('height', '');
     if (!ctrl.tabs.length) return queue.push(updateHeightFromContent);
+
     var tabContent    = elements.contents[ ctrl.selectedIndex ],
         contentHeight = tabContent ? tabContent.offsetHeight : 0,
         tabsHeight    = elements.wrapper.offsetHeight,
         newHeight     = contentHeight + tabsHeight,
-        currentHeight = $element.prop('clientHeight');
+        currentHeight = $element.prop('offsetHeight');
+
+    // Adjusts calculations for when the buttons are bottom-aligned since this relies on absolute
+    // positioning.  This should probably be cleaned up if a cleaner solution is possible.
+    if ($element.attr('md-align-tabs') === 'bottom') {
+      currentHeight -= tabsHeight;
+      newHeight -= tabsHeight;
+      // Need to include bottom border in these calculations
+      if ($element.attr('md-border-bottom') !== undefined) ++currentHeight;
+    }
+
     if (currentHeight === newHeight) return;
 
     // Lock during animation so the user can't change tabs
     locked = true;
 
-    var fromHeight = { height: currentHeight + 'px'},
+    var fromHeight = { height: currentHeight + 'px' },
         toHeight = { height: newHeight + 'px' };
 
     // Set the height to the current, specific pixel height to fix a bug on iOS where the height

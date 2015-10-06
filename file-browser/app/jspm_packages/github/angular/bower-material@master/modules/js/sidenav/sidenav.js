@@ -4,7 +4,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v0.11.1-master-3c876c1
+ * v0.11.2-master-bb8fd26
  */
 (function( window, angular, undefined ){
 "use strict";
@@ -261,7 +261,10 @@ function SidenavDirective($mdMedia, $mdUtil, $mdConstant, $mdTheming, $animate, 
       sidenavCtrl.destroy();
     });
 
-    scope.$on('$destroy', angular.bind(backdrop, backdrop.remove));
+    scope.$on('$destroy', function(){
+      backdrop.remove()
+    });
+
     scope.$watch(isLocked, updateIsLocked);
     scope.$watch('isOpen', updateIsOpen);
 
