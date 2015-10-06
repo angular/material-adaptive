@@ -51,17 +51,17 @@ angular
     
     app.config(['$routeProvider', ($routeProvider) => {
       $routeProvider.when('/home', {
-        templateUrl: '/src/home/view/home.html',
+        templateUrl: 'src/home/view/home.html',
         controller: 'HomeController',
         controllerAs: 'home',
       })
       .when('/settings', {
-        templateUrl: '/src/settings/view/settings.html',
+        templateUrl: 'src/settings/view/settings.html',
         controller: 'SettingsController',
         controllerAs: 'settings',
       })
       .when('/recipe/:id', {
-        templateUrl: '/src/detail/view/detail.html',
+        templateUrl: 'src/detail/view/detail.html',
         controller: 'RecipeDetailController',
         controllerAs: 'detail',
       })
