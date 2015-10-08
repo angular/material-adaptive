@@ -21,3 +21,19 @@
 
 ![shrine_r4_c1](https://cloud.githubusercontent.com/assets/210413/9978373/d7aaf2aa-5eef-11e5-8e37-4f53e16631d8.jpg)
 
+# Getting started
+
+Clone the repo and run the following commands:
+
+```
+npm install jspm -g
+npm install
+jspm install
+```
+
+Start the dev server like so.
+
+```
+npm install http-server
+http-server app/
+```
