@@ -1,24 +1,20 @@
 /**
- * Main App Controller for the Angular Material Starter App
- * @param $mdSidenav
- * @param $mdLog
- * @constructor
+ * Controller for the home page.
  */
 class HomeController {
 
-  constructor($scope, $window, $location, $mdSidenav, $mdMedia, $log, RecipeStorage) {
+  constructor($scope, $window, $location, $timeout, $mdSidenav, RecipeStorage) {
     $scope.pageClass = 'pesto-home-page';
 
     this.location_ = $location;
     this.mdSidenav_ = $mdSidenav;
-    this.mdMedia_ = $mdMedia;
     this.recipeStorage_ = RecipeStorage;
     
     this.isSearchVisible = false;
     this.searchString = '';
     this.fetchRecipes();
 
-    this.setupLogoUpdate($window, $scope);
+    this.setupLogoUpdate($window, $scope, $timeout);
   }
 
   /**
@@ -29,7 +25,7 @@ class HomeController {
    * header. The effect is that when the logo scrolls up, the image gets
    * pinned at the top.
    */
-  setupLogoUpdate($window, $scope) {
+  setupLogoUpdate($window, $scope, $timeout) {
     const scrollDiv = $window.document.querySelector('.pesto-home-scrollable');
     const logoImage = scrollDiv.querySelector('img.pesto-banner-top');
     const stickyLogo = $window.document.querySelector('img.pesto-sticky-logo');
@@ -45,6 +41,7 @@ class HomeController {
     };
 
     updateLogo();
+    $timeout(updateLogo, 20);
 
     scrollDiv.addEventListener('scroll', updateLogo);
     $window.addEventListener('resize', updateLogo);
@@ -77,10 +74,6 @@ class HomeController {
     this.location_.path('/settings');
   }
 
-  isScreenSmall() {
-    return this.mdMedia_('sm');
-  }
-  
   toggleSearchVisible() {
     this.isSearchVisible = !this.isSearchVisible;
     if (!this.isSearchVisible) {
@@ -96,10 +89,14 @@ class HomeController {
   gotoRecipe(recipe) {
     this.location_.path('/recipe/' + recipe.id);
   }
+
+  gotoNewRecipe() {
+    this.location_.path('/recipe/new');
+  }
 }
 
 HomeController.$inject = [
-    '$scope', '$window', '$location', '$mdSidenav', '$mdMedia', '$log', 'RecipeStorage'
+    '$scope', '$window', '$location', '$timeout', '$mdSidenav', 'RecipeStorage'
 ];
 
 export default HomeController;

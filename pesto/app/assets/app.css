@@ -7,21 +7,34 @@ html.pesto, body.pesto {
   padding: 0px;
 }
 
-div[ng-view] {
+.pesto-page {
+  height: 100%;
   text-align: center;
 }
 
-.pesto-page {
-  height: 100%;
+/*
+.pesto-page.ng-enter, .pesto-page.ng-leave {
+  transition:0.5s linear all;
 }
 
-.pesto-page.ng-leave {
-  z-index:9999;
-}
 .pesto-page.ng-enter {
-  z-index:8888;
+  transform:translateX(100%);
 }
+.pesto-page.ng-enter.ng-enter-active, .pesto-page.ng-leave {
+  transform:translateX(0%);
+}
+.pesto-page.ng-leave.ng-leave-active {
+  transform:translateX(-100%);
+}
+*/
 
+.anchortest.ng-anchor {
+  /* this animation will last for 1 second since there are
+         two phases to the animation (an `in` and an `out` phase) */
+  transition:0.5s linear all;
+}
+  
+}
 /* slide in from the right */
 @keyframes slideInRight {
 	from 	{ transform:translateX(100%); }

@@ -1,0 +1,7 @@
+<md-content class="item-card" layout-fill ng-click="itemcard.openDetail()">
+  <md-icon ng-if="itemcard.isSelected()"
+           md-svg-icon="checked"
+           aria-label="Currently Selected"></md-icon>
+  <img class="tile"
+       ng-src="{{itemcard.item.img}}">
+</md-content>
