@@ -36,7 +36,9 @@
 
         <md-menu md-position-mode="target-right target"
                  ng-if="ctrl.isDetailView" >
-          <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="ctrl.openShareMenu() || $mdOpenMenu($event)">
+          <md-button aria-label="Open demo menu" 
+                     class="md-icon-button" 
+                     ng-click="ctrl.openShareMenu() || $mdOpenMenu($event)">
             <md-icon md-menu-origin
                      md-svg-icon="share"></md-icon>
           </md-button>
@@ -44,7 +46,7 @@
             <md-menu-item ng-repeat="option in ctrl.sharingOptions">
               <md-button ng-click="ctrl.acknowledgeAction(option.icon)">
                   <div layout="row">
-                    <p flex>{{option.label}}</p>
+                    <p flex>{{option.label()}}</p>
                     <md-icon md-menu-align-target
                              md-svg-icon="{{option.icon}}"></md-icon>
                   </div>
@@ -54,7 +56,8 @@
         </md-menu>
       </span>
     </div>
-    <!-- Selected Section -->
+
+    <!-- Current Category -->
     <div hide-gt-sm
          layout="row"
          flex
@@ -66,9 +69,9 @@
     </div>
   </md-toolbar >
 
+  <!-- Search Box -->
   <md-toolbar ng-if="ctrl.isSearch"
               class="md-menu-toolbar">
-    <!-- Search Box -->
     <div layout="row" flex>
       <md-input-container flex offset="10">
         <label>SEARCH</label>
@@ -78,8 +81,10 @@
       <span flex='5'></span>
     </div>
   </md-toolbar>  
+
   <!-- Selection Tabs -->
-  <md-tabs hide show-gt-sm 
+  <md-tabs hide 
+           show-gt-sm 
            md-selected="ctrl.selectedIdx"
            ng-hide="ctrl.isSearch">
     <md-tab ng-repeat="category in ctrl.categories"
@@ -88,14 +93,16 @@
             <md-tab-body></md-tab-body>
     </md-tab>
   </md-tabs>
+
+  <!-- SideNav -->
   <md-sidenav layout="column"
               md-component-id="left" 
               class="md-sidenav-left">
     <md-toolbar class="md-tall md-menu-toolbar" flex></md-toolbar>
     <md-content flex>
       <md-list>
-        <md-list-item ng-repeat="category in ctrl.categories"
-                      ng-click="ctrl.selectCategory(category)">
+        <md-list-item ng-repeat="(idx, category) in ctrl.categories"
+                      ng-click="ctrl.setTabIndex(idx)">
           <md-title>{{category.name}}</md-title>
         </md-list-item>
       </md-list>

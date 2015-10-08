@@ -1,9 +1,14 @@
+// Controller for the item card used in item lists.
 class ItemCardController {
 
   constructor($state, $location) {
     this.$state = $state;
   }
 
+  /**
+   * Returns the currently selected state of the item.
+   * @return {boolean} The currently selected state of the item.
+   */
   isSelected() {
     return (
       this.$state.params.category == this.item.category &&
@@ -11,6 +16,9 @@ class ItemCardController {
       )
   }
 
+  /**
+   * Opens the detail view for the item.
+   */
   openDetail() {
     var stateOptions = {
       category: this.item.category,
@@ -20,6 +28,7 @@ class ItemCardController {
   }
 }
 
+// Directive definition of the the ItemCard.
 class ItemCardDirective {
     constructor() {
         this.bindToController = true;
