@@ -4,6 +4,7 @@ System.config({
   paths: {
     "utils/*": "src/utils/*.js",
     "app/*": "src/*.js",
+    "detail/*": "src/detail/*.js",
     "home/*": "src/home/*.js",
     "model/*": "src/model/*.js",
     "settings/*": "src/settings/*.js",

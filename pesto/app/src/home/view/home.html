@@ -4,6 +4,11 @@
       <md-icon md-svg-icon="assets/pesto-arrow-back.svg"></md-icon>
     </md-button>
   </div>
+  <!--
+    Apparently md-list-items aren't supposed to be interactive:
+    https://github.com/angular/material/issues/904 . But this is works well, and it doesn't
+    seem reasonable to try to manually replicate the md-list layout.
+  -->
   <md-list>
     <md-list-item>Home</md-list-item>
     <md-list-item>Favorite</md-list-item>
@@ -30,8 +35,8 @@
   </span>
 </div>
 
-<img ng-hide="home.isSearchVisible && home.isScreenSmall()"
-    class="pesto-sticky-logo" src="assets/pesto-banner-top.png" />
+<img class="pesto-sticky-logo" ng-class="{'search-visible': home.isSearchVisible}"
+     src="assets/pesto-banner-top.png" />
 
 <div class="pesto-home-scrollable">
   <div class="pesto-home-banner top">
@@ -44,12 +49,21 @@
   <md-divider></md-divider>
   
   <div class="pesto-home-grid-container">
+  
     <div class="pesto-home-grid" ng-class="{small: home.isScreenSmall()}">
+      <!-- <span class="anchortest" ng-animate-ref="test1">Hello</span> -->
       <!-- How to make height scale to content size? "fit" doesn't work. -->
+      <!-- On Firefox, the images aren't scaled so the background shows through. -->
       <md-grid-list md-cols="2" md-cols-sm="1" md-row-height="250px" md-gutter="8px">
         <md-grid-tile ng-repeat="recipe in home.recipes" ng-click="home.gotoRecipe(recipe)">
-          <div>
-            <img class="recipe-image" ng-src="{{recipe.imageUrl}}" />
+          <div class="pesto-recipe-grid-image"
+               ng-animate-ref="{{'recipe' + recipe.id}}"
+               ng-style="{'background-image': 'url(' + recipe.imageUrl + ')'}">
+            <!--
+            <img class="pesto-recipe-grid-image"
+                 ng-src="{{recipe.imageUrl}}"
+                 ng-animate-ref="{{'recipe' + recipe.id}}" />
+              -->
           </div>
           <md-grid-tile-footer class="recipe-info">
             <div class="pesto-recipe-title">{{recipe.name}}</div>
@@ -62,7 +76,7 @@
 </div>
 
 <!-- Floating action button, should this change position for desktop/mobile? -->
-<md-button class="md-fab pesto-new-button" aria-label="New Recipe">
+<md-button class="md-fab pesto-new-button" aria-label="New Recipe" ng-click="home.gotoNewRecipe()">
   <md-icon md-svg-src="assets/pesto-add.svg"></md-icon>
 </md-button>
 

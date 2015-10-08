@@ -1,0 +1,19 @@
+<md-content layout-margin 
+            layout-fill 
+            layout-padding
+            flex
+            ng-controller="CatalogController as catalog">
+  <md-grid-list class="grid" 
+                md-cols-sm="2"
+                md-cols-gt-sm="4"
+                md-cols-gt-md="6"
+                md-cols="4"
+                md-gutter="0.5em"
+                md-row-height="4:3">
+    <md-grid-tile ng-repeat="item in catalog.items" 
+                  md-colspan="{{$first ? 2 : 1}}"
+                  md-rowspan="{{$first ? 2 : 1}}">
+      <item-card item="item"></item-card>
+    </md-grid-tile>
+  </md-grid-list>
+</md-content>

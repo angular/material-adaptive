@@ -1,0 +1,40 @@
+<div flex layout="row" 
+     ng-controller="DetailController as detail">
+  <md-content layout-margin 
+              layout-fill 
+              layout-padding
+              hide
+              show-lg
+              flex="30">
+    <md-grid-list class="grid" 
+                  md-cols="2"
+                  md-gutter="0.5em"
+                  md-row-height="4:3">
+      <md-grid-tile ng-repeat="item in detail.items" 
+                    md-colspan="'1'"
+                    md-rowspan="'1'">
+        <item-card item="item"></item-card>
+      </md-grid-tile>
+    </md-grid-list>
+  </md-content>
+  <div class="detail"
+       flex
+       layout-margin
+       layout="row"
+       layout-sm="column">
+    <md-content layout-padding
+                flex="50">
+      <img ng-src="{{detail.selectedItem.img}}">
+    </md-content>
+    <md-content layout-padding
+                layout="column"
+                layout-align="space-around center">
+      <div class="md-display-1">
+        {{detail.selectedItem.name | uppercase}}
+      </div>
+      <div>
+        {{detail.selectedItem.description}}
+      </div>
+    </md-content>
+  </div>
+</div>

@@ -1,24 +1,20 @@
 .pesto-home-page {
   display: flex;
+  display: -webkit-flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
 }
 
-/* Enter/exit animations don't quite work.
+/**
+ * Needed so that the ng-anchor-out animation (see below) has time to run.
+ */
 .pesto-home-page.ng-leave {
-  -webkit-animation:slideOutLeft 0.5s both ease-in;
-  -moz-animation:slideOutLeft 0.5s both ease-in;
-  animation:slideOutLeft 0.5s both ease-in;   
+  transition:0.1s linear all;
 }
-
-.pesto-home-page.ng-enter {
-  -webkit-animation:slideInRight 0.5s both ease-in;
-  -moz-animation:slideInRight 0.5s both ease-in;
-  animation:slideInRight 0.5s both ease-in;    
-}
-*/
 
 .pesto-home-header {
   flex-shrink: 0;
+  -webkit-flex-shrink: 0;
   overflow-x: hidden;
 }
 
@@ -61,6 +57,14 @@ img.pesto-sticky-logo {
   height: 0;
 }
 
+/**
+ * When the search bar is visible, hide the floating logo on small screens
+ * so it doesn't draw over the search.
+ */
+.pesto-small-screen img.pesto-sticky-logo.search-visible {
+  display: none;
+}
+
 .pesto-home-banner {
   background: rgb(0, 170, 141);
 }
@@ -76,6 +80,7 @@ img.pesto-sticky-logo {
 
 .pesto-home-scrollable {
   flex-grow: 1;
+  -webkit-flex-grow: 1;
   overflow: auto;
 }
 
@@ -90,7 +95,7 @@ img.pesto-sticky-logo {
   width: 90%;
 }
 
-.pesto-home-grid.small {
+.pesto-small-screen .pesto-home-grid {
   max-width: 350px;
 }
 
@@ -105,15 +110,30 @@ img.pesto-banner-bottom {
 }
 
 .pesto-home-grid md-grid-tile {
-  background: purple;
   cursor: pointer;
   max-width: 350px;
   padding: 5px;
 }
 
-.pesto-home-grid md-grid-tile img.recipe-image {
+.pesto-home-grid md-grid-tile img.pesto-recipe-grid-image {
   height: 250px;
   width: 100%;
+}
+
+div.pesto-recipe-grid-image {
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/**
+ * Triggers when switching to the recipe detail view.
+ */
+div.pesto-recipe-grid-image.ng-anchor-out {
+  transition:0.1s linear all;
+  
+  transform: scale(3.0);
+  opacity: 0.5;
 }
 
 .pesto-home-grid md-grid-tile md-grid-tile-footer {

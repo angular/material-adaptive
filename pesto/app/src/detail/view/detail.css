@@ -1,0 +1,128 @@
+.pesto-recipe-background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+}
+
+/**
+ * Transition for the animating image from the home page. After the home page
+ * image div zooms out, this makes it move to the position above the recipe
+ * description. We only do this for small displays, because for large displays
+ * the image takes up the entire window and the transition is jerky.
+ */
+.pesto-small-screen .pesto-recipe-background-image.ng-anchor-in {
+  transition:0.1s linear all;
+}
+
+.pesto-small-screen .pesto-recipe-background-image {
+  bottom: 60%;
+}
+
+.pesto-recipe-layout {
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+.pesto-recipe-header {
+  height: 40%;
+  width: 100%;
+  flex-shrink: 0;
+  -webkit-flex-shrink: 0;
+  flex-grow: 0;
+  -webkit-flex-grow: 0;
+}
+
+.pesto-recipe-back, .pesto-recipe-cancel {
+  float: left;
+}
+
+.pesto-recipe-more, .pesto-recipe-save {
+  float: right;
+}
+
+.pesto-recipe-content {
+  background: white;
+  height: 60%;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 3px;
+  overflow: auto;
+  flex-grow: 3;
+  -webkit-flex-grow: 3;
+  z-index: 1;
+  text-align: left;
+  color: #333;
+}
+
+.pesto-small-screen .pesto-recipe-content {
+  border-radius: 0;
+  width: 100%;
+}
+
+.pesto-recipe-table {
+  display: table;
+  padding: 8px;
+  border-spacing: 20px;
+}
+
+.pesto-small-screen .pesto-recipe-table {
+  padding: 4px;
+}
+
+.pesto-recipe-row {
+  display: table-row;
+}
+
+.pesto-recipe-col {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.pesto-recipe-name {
+  font-size: 30px;
+}
+
+.pesto-small-screen .pesto-recipe-name {
+  font-size: 24px;
+}
+
+.pesto-recipe-description {
+  color: #666;
+  font-size: 14px;
+}
+
+.pesto-section-description {
+  color: #666;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.pesto-ingredient-amount, .pesto-step-duration {
+  color: rgb(25, 166, 139);
+  font-size: 16px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.pesto-ingredient-description, .pesto-step-description {
+  color: #333;
+  font-size: 16px;
+}
+
+button.pesto-edit-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+}
+
+.pesto-recipe-table md-input-container {
+  padding-bottom: 0;
+}
