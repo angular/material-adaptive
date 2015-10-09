@@ -17,6 +17,7 @@ import DetailController from 'store/DetailController'
 import ItemsService from 'store/ItemsService'
 import SharingService from 'store/SharingService'
 import ItemCardDirective from 'store/itemcard/ItemCard'
+import SharingMenuController from 'store/sharingmenu/SharingMenu'
 
 import { ExternalLogger } from 'utils/LogDecorator';
 
@@ -29,6 +30,7 @@ let moduleName = angular
       .controller('FrameController' , FrameController )
       .controller('CatalogController' , CatalogController )
       .controller('DetailController' , DetailController )
+      .controller('SharingMenuController', SharingMenuController )
       .directive('itemCard' , () => new ItemCardDirective )
       .service('ItemsService' , ItemsService )
       .service('SharingService' , SharingService )
@@ -78,6 +80,9 @@ let moduleName = angular
           })
           .state('root.category', {
             url: '/:category', 
+            data: {
+              hasBack: false
+            },
             views: {
               'main@': { 
                 templateUrl: 'src/store/view/catalog.html',
@@ -110,7 +115,3 @@ let moduleName = angular
       .name;
 
 export default moduleName;
-
-
-
-
