@@ -113,7 +113,7 @@ class FrameController {
    * Returns the currently selected category.
    */
   currentCategory() {
-    this.$log.debug( "currentCategory() ");
+//    this.$log.debug( "currentCategory() ");
     return this.categories[this.selectedIdx];
   }
 
