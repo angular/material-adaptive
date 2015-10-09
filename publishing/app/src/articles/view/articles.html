@@ -2,16 +2,16 @@
     flex-gt-md="60" offset-gt-md="20"
     offset="0" flex="100">
   <md-grid-list
-         md-cols="2"
-         md-row-height="5:3"
+         md-cols="8"
+         md-row-height="1:1"
          md-gutter="1.5em"
          md-cols-sm="1"
-         md-row-height-sm="3:2"
+         md-row-height-sm="4:3"
          md-gutter-sm="1em">
     <md-grid-tile ng-repeat="it in actrl.articles"
                    class="summary md-whiteframe-z2"
-                   md-rowspan="{{it.rowspan || 1}}"
-                   md-colspan="{{it.colspan || 1}}"
+                   md-rowspan="{{it.rowspan || 3}}"
+                   md-colspan="{{it.colspan || 4}}"
                    md-rowspan-sm="1"
                    md-colspan-sm="1"
                    ng-style="{'background-color': it.color}">

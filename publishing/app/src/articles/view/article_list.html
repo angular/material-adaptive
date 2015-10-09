@@ -1,0 +1,13 @@
+<md-content layout="column" layout-fill flex layout-align="start start">
+  <md-list layout-fill>
+    <div class="article-detail" ng-repeat="article in actrl.articles">
+      <md-list-item>
+        <img ng-src="assets/avatars/{{article.author}}.jpg" class="md-avatar" alt="{{article.name}}" />
+        <div class="md-list-item-text" layout="column">
+          <a ng-href="#/{{article.id}}"><h4>{{ article.title }}</h4></a>
+          <p>{{ article.summary }}</p>
+        </div>
+      </md-list-item>
+    </div>
+  </md-list>
+<md-content>
