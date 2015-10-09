@@ -26,15 +26,38 @@
                 flex="40">
       <img ng-src="{{detail.selectedItem.img}}">
     </md-content>
-    <md-content layout-padding
+    <md-content layout-fill
+                layout-padding
                 layout="column"
-                layout-align="space-around center">
-      <div class="md-display-1">
+                layout-align="space-around left">
+      <div flex class="md-display-1">
         {{detail.selectedItem.name | uppercase}}
       </div>
-      <div>
+      <div flex>
         {{detail.selectedItem.description}}
       </div>
+      <div flex
+           hide
+           show-gt-sm
+           layout-align="start center"
+           layout="row" layout-padding>
+          <md-select flex="45" layout-margin ng-model="doesntMatter" placeholder="Select a state">
+            <md-option ng-repeat="quantity in [1, 2, 3, 4, 5]">
+              Quantity {{quantity}}
+            </md-option>
+          </md-select>
+        <span flex="5"></span>
+        <md-button class="md-fab"
+                   aria-label="Add to cart">
+          <md-icon md-svg-icon="add_shopping_cart"></md-icon>
+        </md-button>
+      </div>
+      <md-button hide 
+                 show-sm
+                 class="md-fab fixed-position-fab-button"
+                 aria-label="Add to cart">
+        <md-icon md-svg-icon="add_shopping_cart"></md-icon>
+      </md-button>
     </md-content>
   </div>
 </div>
