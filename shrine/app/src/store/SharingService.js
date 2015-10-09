@@ -1,27 +1,27 @@
 // Simple service holding static item data.
 class SharingService {
-  constructor($state) {
+  constructor() {
     this.sharingOptions = [
       { 
-        label: () => `Share via Twitter`,
+        label: 'Share on Twitter',
         icon: 'twitter',
       },
       { 
-        label: () => `Email ${$state.params.detail}`,
+        label: 'Share via Email',
         icon: 'email',
       },
       { 
-        label: () => `Share via Message`,
+        label: 'Share via Message',
         icon: 'message',
       },
       { 
-        label: () => `Share on Facebook`,
+        label: 'Share on Facebook',
         icon: 'facebook',
       },
     ]
   }
 }
 
-SharingService.$inject = ['$state'];
+SharingService.$inject = [];
 export default SharingService;
 
