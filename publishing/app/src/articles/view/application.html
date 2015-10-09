@@ -50,9 +50,8 @@
             ng-click="application.rightOpen = false" class="md-icon-button">
           <md-icon md-svg-icon="right"></md-icon>
         </md-button>
-      <md-content class="md-hue-1" layout="column" layout-fill flex layout-align="start start" 
-          ng-include="application.rightSideNav">
-      </md-content>
+      <div layout-fill flex layout="column" ng-include="application.rightSideNav">
+      </div>
     </md-sidenav>
   </section>
 

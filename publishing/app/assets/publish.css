@@ -1,5 +1,5 @@
 html, body {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-size: 11px;
   letter-spacing: 0.03em;
   word-spacing: 0.05em;
@@ -58,9 +58,13 @@ md-toolbar h1 {
   font-size: 200%;
 }
 
+.summary md-grid-tile-footer {
+  height: 56px;
+}
+
 .summary-image {
-  height: calc(100% - 48px);
-  margin-bottom: 48px;
+  height: calc(100% - 56px);
+  margin-bottom: 56px;
 }
 
 .summary-image > img {
@@ -83,14 +87,23 @@ md-toolbar h1 {
 }
 
 /* Hacks for sidenav */
-md-sidenav.md-locked-open.left-sidenav,
-md-sidenav.md-locked-open.right-sidenav {
+md-sidenav.md-locked-open.left-sidenav {
   max-width: 200px;
   width: 200px;
   min-width: 200px;
 }
 
-md-sidenav.md-closed.md-locked-open-add-active.left-sidenav,
+md-sidenav.md-locked-open.right-sidenav {
+  max-width: 280px;
+  width: 280px;
+  min-width: 280px;
+}
+
+md-sidenav.md-closed.md-locked-open-add-active.left-sidenav {
+  width: 200px;
+  min-width: 200px;
+}
+
 md-sidenav.md-closed.md-locked-open-add-active.right-sidenav {
   width: 200px;
   min-width: 200px;
@@ -182,9 +195,10 @@ md-bottom-sheet.md-list md-list-item {
 
 .comment {
   background-color: white;
-  margin: 0 1em;
+  margin: 0;
   padding: 0.9em !important;
   word-spacing: 0.02em;
+  width: calc(100% - 20px);
 }
 
 .comment:not(:last-child) {
@@ -239,3 +253,19 @@ md-bottom-sheet.md-list md-list-item {
   min-height: 2em;
   color: rgba(0,0,0,0.50);
 }
+
+.article-detail p {
+  font-size:80%;
+  margin:0;
+}
+
+.article-detail h4 {
+  margin:0;
+  text-decora
+}
+
+.article-detail a {
+  text-decoration: none;
+  color: initial;
+}
+

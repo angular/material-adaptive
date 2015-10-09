@@ -7,6 +7,7 @@ function ArticlesController($scope, application, articlesService, $log) {
   application.reset();
 
   application.content = 'src/articles/view/articles.html';
+  application.rightSideNav = 'src/articles/view/article_list.html';
   application.hasListView = true;
   application.hasComments = false;
 
