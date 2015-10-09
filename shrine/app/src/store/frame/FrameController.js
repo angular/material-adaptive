@@ -1,60 +1,68 @@
 /**
- * Main App Controller for the Angular Material Starter App
+ * Controller for Navigation Frame.
  */
 class FrameController {
 
   constructor($scope, $mdSidenav, $mdMedia, $mdBottomSheet, $mdToast, $log, $state, SharingService, ItemsService) {
-    this.$log = $log.getInstance("FrameController");
-    this.$log.debug("instanceOf()");
+    var that = this;
+    that.$log = $log.getInstance("FrameController");
+    that.$log.debug("instanceOf()");
 
-    this.searchTerm = $state.params.searchTerm;
-    this.isSearch = $state.current.data.isSearch;
-    this.hasBack = $state.current.data.hasBack || this.isSearch;
-    this.isDetailView = ($state.current.name == 'root.category.detail');
-    
-    this.$state = $state;
-    this.$mdToast = $mdToast;
-    this.$mdSidenav = $mdSidenav;
-    this.$mdMedia = $mdMedia;
-    this.$mdBottomSheet = $mdBottomSheet;    
-    this.initialLoadComplete = false;
+    that.searchTerm = $state.params.searchTerm;
+    that.isSearch = $state.current.data.isSearch;
+    that.hasBack = $state.current.data.hasBack || that.isSearch;
+    that.isDetailView = ($state.current.name == 'root.category.detail');
+    that.categories = ItemsService.categories;
+    that.sharingOptions = SharingService.sharingOptions;
+       
+    that.$state = $state;
+    that.$mdToast = $mdToast;
+    that.$mdSidenav = $mdSidenav;
+    that.$mdMedia = $mdMedia;
+    that.$mdBottomSheet = $mdBottomSheet;
 
-    this.categories = ItemsService.categories;
-    this.sharingOptions = SharingService.sharingOptions;
-    
-    if (this.isSearch) {
+    if (that.isSearch) {
       $scope.$watch(
         function() {
           return $state.params.searchTerm
         },
-        angular.bind(this, function(searchTerm) {
-          this.$state.go('root.search', {'searchTerm': searchTerm}, {reload: false});
-        }));
+        function(searchTerm) {
+          that.$state.go('root.search', {'searchTerm': searchTerm}, {reload: false});
+        });
     }
+
+    angular.forEach(that.categories, function(category, idx) {
+      if (category.url == $state.params.category) {
+        that.setTabIndex(idx);
+      }
+    });
   }
 
   /**
    * Navigates to the search page.
    */
   openSearch() {
-    this.$state.go('root.search', {}, {reload: true});
+    this.$log.debug( "openSearch() ");
+    this.$state.go('root.search', undefined, {reload: true});
   }
 
   /**
-   * Opens the share menu.
+   * Opens the sharing menu, either using a bottom sheet or popup menu as appropriate.
    */
   openShareMenu() {
-    if (this.$mdMedia('sm')) {
-      this.$mdBottomSheet.show({
-        templateUrl: 'src/store/frame/share-bottom-sheet.html',
+    this.$log.debug( "openShareMenu() ");
+    var that = this;
+    if (that.$mdMedia('sm')) {
+      return that.$mdBottomSheet.show({
+        templateUrl: 'src/store/sharingmenu/sharingmenu.html',
+        controller: 'SharingMenuController',
+        controllerAs: 'ctrl',
         locals: {
-          sharingOptions: this.sharingOptions
-        },
-        controller: function($scope, sharingOptions) {
-          $scope.sharingOptions = sharingOptions;
+          'acknowledgeAction': that.acknowledgeAction
         }
-      });
-      return true;
+      }).then(function(option) {
+        that.acknowledgeAction(option);
+      });      
     }
   }
 
@@ -70,7 +78,12 @@ class FrameController {
    * Returns back to the category view.
    */
   goBack() {
-    this.$state.go('root.category', {}, {reload: true});
+    this.$log.debug( "goBack() ");
+    if (this.isSearch) {
+      this.$state.go('root.category', {'category': 'featured'}, {reload: true});
+    } else {
+      this.$state.go('^', {}, {reload: true});
+    }
   }
 
   /**
@@ -78,19 +91,30 @@ class FrameController {
    * @param index Index of the selected category.
    */
   selectCategory(category) {
+    this.$log.debug( "selectCategory() ");
     if (!this.initialLoadComplete) {
       this.initialLoadComplete = true;
       return;
     }
     this.$mdSidenav('left').close()
-    this.$state.go('root.category', {category: category.url});
+    this.$state.go('root.category', {category: category.url}, {reload: true});
+  }
+
+  /**
+   * Sets tab index, if no index is provided set index to 0.
+   * @param {integer} idx The new tab index.
+   */
+  setTabIndex(idx) {
+    this.$log.debug( "setTabIndex() ");
+    this.selectedIdx = idx || 0;
   }
 
   /**
    * Returns the currently selected category.
    */
   currentCategory() {
-    return this.categories[this.$state.params.category];
+    this.$log.debug( "currentCategory() ");
+    return this.categories[this.selectedIdx];
   }
 
   /**
@@ -98,6 +122,7 @@ class FrameController {
    * @param option The option to acknowledge the action of.
    */
   acknowledgeAction(option) {
+    this.$log.debug( "acknowledgeAction() ");
     switch (option) {
       case 'shopping_cart':
         var message = 'You clicked the shopping cart.  We could show a shopping cart modal if we have one.';
