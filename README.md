@@ -1,2 +1,1 @@
-![adpative templates4](https://cloud.githubusercontent.com/assets/210413/10412518/e691e666-6f4d-11e5-9e4d-51fa1f4a6012.jpg)
-
+![adpative templates5](https://cloud.githubusercontent.com/assets/210413/10412526/26d7819a-6f4e-11e5-87cb-716a7b43b9c0.jpg)
