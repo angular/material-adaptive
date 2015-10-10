@@ -1,4 +1,2 @@
 
-### Adaptive Templates with Angular Material
-
-![adaptive_templates](https://cloud.githubusercontent.com/assets/210413/10411364/08ec8458-6f28-11e5-95b3-716504da60e6.jpg)
+![adpative_templates](https://cloud.githubusercontent.com/assets/210413/10412466/7079959c-6f4c-11e5-87a5-d6cba9337a52.jpg)
