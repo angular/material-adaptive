@@ -62,47 +62,47 @@ let moduleName = angular
             },
             abstract: true,
             views: {
-              'frame': { 
+              'frame': {
                 templateUrl: 'src/store/frame/frame.html',
                 controller: 'FrameController as ctrl',
               },
             }
           })
           .state('root.search', {
-            url: '/search/:searchTerm?', 
+            url: '/search/:searchTerm?',
             data: {
                isSearch: true,
                hasBack: true
             },
             views: {
-              'main@': { 
+              'main@': {
                 templateUrl: 'src/store/view/catalog.html',
               },
             }
           })
           .state('root.category', {
-            url: '/:category', 
+            url: '/:category',
             data: {
               hasBack: false
             },
             views: {
-              'main@': { 
+              'main@': {
                 templateUrl: 'src/store/view/catalog.html',
               }
             }
           })
           .state('root.category.detail', {
-            url: '/:detail', 
+            url: '/:detail',
             data: {
               hasBack: true
             },
             views: {
-              'main@': { 
+              'main@': {
                 templateUrl: 'src/store/view/detail.html',
               }
             }
           })
-        
+
         $urlRouterProvider.otherwise('/featured');
       })
       .config( ($mdThemingProvider) => {
