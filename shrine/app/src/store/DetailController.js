@@ -1,6 +1,3 @@
-/**
- * Main App Controller for the Angular Material Starter App
- */
 class DetailController {
   constructor($log,  $state, $location, itemsService) {
     this.$log = $log.getInstance("DetailController");

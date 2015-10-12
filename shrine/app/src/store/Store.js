@@ -62,7 +62,7 @@ let moduleName = angular
             },
             abstract: true,
             views: {
-              'frame': {
+              'frame@': {
                 templateUrl: 'src/store/frame/frame.html',
                 controller: 'FrameController as ctrl',
               },

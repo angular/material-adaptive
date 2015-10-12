@@ -97,7 +97,7 @@ class FrameController {
       return;
     }
     this.$mdSidenav('left').close()
-    this.$state.go('root.category', {category: category.url}, {reload: true});
+    this.$state.go('root.category', {category: category.url});
   }
 
   /**

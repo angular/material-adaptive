@@ -24,7 +24,7 @@ class ItemCardController {
       category: this.item.category,
       detail: this.item.url
     }
-    this.$state.transitionTo('root.category.detail', stateOptions, {reload: true});
+    this.$state.transitionTo('root.category.detail', stateOptions);
   }
 }
 
