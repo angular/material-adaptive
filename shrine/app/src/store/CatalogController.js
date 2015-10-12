@@ -1,6 +1,3 @@
-/**
- * Controller for the Catalog view.
- */
 class CatalogController {
   constructor($scope, $log, $state, $location, itemsService) {
     this.$log = $log.getInstance("CatalogController");
