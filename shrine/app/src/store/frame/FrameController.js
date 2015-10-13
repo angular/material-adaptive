@@ -4,46 +4,25 @@
 class FrameController {
 
   constructor($scope, $mdSidenav, $mdMedia, $mdBottomSheet, $mdToast, $log, $state, SharingService, ItemsService) {
-    var that = this;
-    that.$log = $log.getInstance("FrameController");
-    that.$log.debug("instanceOf()");
+    this.$log = $log.getInstance("FrameController");
+    this.$log.debug("instanceOf()");
 
-    that.searchTerm = $state.params.searchTerm;
-    that.isSearch = $state.current.data.isSearch;
-    that.hasBack = $state.current.data.hasBack || that.isSearch;
-    that.isDetailView = ($state.current.name == 'root.category.detail');
-    that.categories = ItemsService.categories;
-    that.sharingOptions = SharingService.sharingOptions;
+    this.hasBack = $state.current.data.hasBack;
+    this.isDetailView = ($state.current.name == 'root.category.detail');
+    this.categories = ItemsService.categories;
+    this.sharingOptions = SharingService.sharingOptions;
        
-    that.$state = $state;
-    that.$mdToast = $mdToast;
-    that.$mdSidenav = $mdSidenav;
-    that.$mdMedia = $mdMedia;
-    that.$mdBottomSheet = $mdBottomSheet;
+    this.$state = $state;
+    this.$mdToast = $mdToast;
+    this.$mdSidenav = $mdSidenav;
+    this.$mdMedia = $mdMedia;
+    this.$mdBottomSheet = $mdBottomSheet;
 
-    if (that.isSearch) {
-      $scope.$watch(
-        function() {
-          return $state.params.searchTerm
-        },
-        function(searchTerm) {
-          that.$state.go('root.search', {'searchTerm': searchTerm}, {reload: false});
-        });
-    }
-
-    angular.forEach(that.categories, function(category, idx) {
+    angular.forEach(this.categories, (category, idx) => {
       if (category.url == $state.params.category) {
-        that.setTabIndex(idx);
+        this.setTabIndex(idx);
       }
     });
-  }
-
-  /**
-   * Navigates to the search page.
-   */
-  openSearch() {
-    this.$log.debug( "openSearch() ");
-    this.$state.go('root.search', undefined, {reload: true});
   }
 
   /**
@@ -72,18 +51,6 @@ class FrameController {
   toggleMenu($event) {
     this.$log.debug( "toggleMenu() ");
     this.$mdSidenav('left').toggle();
-  }
-
-  /**
-   * Returns back to the category view.
-   */
-  goBack() {
-    this.$log.debug( "goBack() ");
-    if (this.isSearch) {
-      this.$state.go('root.category', {'category': 'featured'}, {reload: true});
-    } else {
-      this.$state.go('^', {}, {reload: true});
-    }
   }
 
   /**
@@ -144,7 +111,6 @@ class FrameController {
     }
     this.$mdToast.show(this.$mdToast.simple().content(message));
   }
-
 }
 
 FrameController.$inject = ['$scope', '$mdSidenav', '$mdMedia', '$mdBottomSheet', '$mdToast', '$log', '$state', 'SharingService', 'ItemsService'];

@@ -14,6 +14,7 @@ const URL_ICON_ADD_SHOPPING  = 'assets/svg/add_shopping_cart.svg';
 
 import FrameController from 'store/frame/FrameController'
 import CatalogController from 'store/CatalogController'
+import SearchController from 'store/search/SearchController'
 import DetailController from 'store/DetailController'
 import ItemsService from 'store/ItemsService'
 import SharingService from 'store/SharingService'
@@ -31,6 +32,7 @@ let moduleName = angular
       .controller('FrameController' , FrameController )
       .controller('CatalogController' , CatalogController )
       .controller('DetailController' , DetailController )
+      .controller('SearchController' , SearchController )
       .controller('SharingMenuController', SharingMenuController )
       .directive('itemCard' , () => new ItemCardDirective )
       .service('ItemsService' , ItemsService )
@@ -57,7 +59,6 @@ let moduleName = angular
         $stateProvider
           .state('root', {
             data: {
-               isSearch: false,
                hasBack: false
             },
             abstract: true,
@@ -71,13 +72,16 @@ let moduleName = angular
           .state('root.search', {
             url: '/search/:searchTerm?',
             data: {
-               isSearch: true,
                hasBack: true
             },
             views: {
-              'main@': {
-                templateUrl: 'src/store/view/catalog.html',
+              'frame@': {
+                templateUrl: 'src/store/search/search.html',
+                controller: 'SearchController as search',
               },
+              'main@root.search': {
+                templateUrl: 'src/store/view/catalog.html',
+              }
             }
           })
           .state('root.category', {
@@ -86,7 +90,7 @@ let moduleName = angular
               hasBack: false
             },
             views: {
-              'main@': {
+              'main@root': {
                 templateUrl: 'src/store/view/catalog.html',
               }
             }
@@ -97,7 +101,7 @@ let moduleName = angular
               hasBack: true
             },
             views: {
-              'main@': {
+              'main@root': {
                 templateUrl: 'src/store/view/detail.html',
               }
             }
