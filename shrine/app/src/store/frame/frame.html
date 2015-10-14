@@ -5,14 +5,15 @@
     <!-- Top Toolbar -->
     <div flex layout="row">
       <md-button hide-gt-sm
-                 ng-if="!ctrl.hasBack"
+                 ng-if="!ctrl.isDetailView"
                  class="md-icon-button"
                  ng-click="ctrl.toggleMenu()"
                  aria-label="Show Category List">
         <md-icon md-svg-icon="menu"></md-icon>
       </md-button>
 
-      <md-button ng-if="ctrl.hasBack"
+      <md-button hide-lg
+                 ng-if="ctrl.isDetailView"
                  class="md-icon-button"
                  ng-click="ctrl.goBack()"
                  aria-label="Go Back">

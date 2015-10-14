@@ -3,11 +3,10 @@
  */
 class FrameController {
 
-  constructor($rootScope, $mdSidenav, $mdMedia, $mdBottomSheet, $mdToast, $log, $state, SharingService, ItemsService) {
+  constructor($rootScope, $window, $mdSidenav, $mdMedia, $mdBottomSheet, $mdToast, $log, $state, SharingService, ItemsService) {
     this.$log = $log.getInstance("FrameController");
     this.$log.debug("instanceOf()");
 
-    this.hasBack = $state.current.data.hasBack;
     this.isDetailView = ($state.current.name == 'root.category.detail');
     this.categories = ItemsService.categories;
     this.sharingOptions = SharingService.sharingOptions;
@@ -17,6 +16,7 @@ class FrameController {
     this.$mdSidenav = $mdSidenav;
     this.$mdMedia = $mdMedia;
     this.$mdBottomSheet = $mdBottomSheet;
+    this.$window = $window;
 
     this.updateSelectedTab()
 
@@ -64,6 +64,13 @@ class FrameController {
    */
   openSearch() {
     this.$state.go('^.search');
+  }
+
+  /**
+   * Navigate to the previous URL in history.
+   */
+  goBack() {
+    this.$window.history.back();
   }
 
   /**
@@ -130,5 +137,5 @@ class FrameController {
   }
 }
 
-FrameController.$inject = ['$rootScope', '$mdSidenav', '$mdMedia', '$mdBottomSheet', '$mdToast', '$log', '$state', 'SharingService', 'ItemsService'];
+FrameController.$inject = ['$rootScope', '$window', '$mdSidenav', '$mdMedia', '$mdBottomSheet', '$mdToast', '$log', '$state', 'SharingService', 'ItemsService'];
 export default FrameController;
