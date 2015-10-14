@@ -58,9 +58,6 @@ let moduleName = angular
       .config( ($stateProvider, $urlRouterProvider, $locationProvider) => {
         $stateProvider
           .state('root', {
-            data: {
-               hasBack: false
-            },
             abstract: true,
             views: {
               'frame@': {
@@ -71,9 +68,6 @@ let moduleName = angular
           })
           .state('root.search', {
             url: '/search/:searchTerm?',
-            data: {
-               hasBack: true
-            },
             views: {
               'frame@': {
                 templateUrl: 'src/store/search/search.html',
@@ -86,9 +80,6 @@ let moduleName = angular
           })
           .state('root.category', {
             url: '/:category',
-            data: {
-              hasBack: false
-            },
             views: {
               'main@root': {
                 templateUrl: 'src/store/view/catalog.html',
@@ -97,9 +88,6 @@ let moduleName = angular
           })
           .state('root.category.detail', {
             url: '/:detail',
-            data: {
-              hasBack: true
-            },
             views: {
               'main@root': {
                 templateUrl: 'src/store/view/detail.html',
