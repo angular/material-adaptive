@@ -3,7 +3,7 @@
  */
 class FrameController {
 
-  constructor($scope, $mdSidenav, $mdMedia, $mdBottomSheet, $mdToast, $log, $state, SharingService, ItemsService) {
+  constructor($rootScope, $mdSidenav, $mdMedia, $mdBottomSheet, $mdToast, $log, $state, SharingService, ItemsService) {
     this.$log = $log.getInstance("FrameController");
     this.$log.debug("instanceOf()");
 
@@ -11,15 +11,29 @@ class FrameController {
     this.isDetailView = ($state.current.name == 'root.category.detail');
     this.categories = ItemsService.categories;
     this.sharingOptions = SharingService.sharingOptions;
-       
+
     this.$state = $state;
     this.$mdToast = $mdToast;
     this.$mdSidenav = $mdSidenav;
     this.$mdMedia = $mdMedia;
     this.$mdBottomSheet = $mdBottomSheet;
 
-    angular.forEach(this.categories, (category, idx) => {
-      if (category.url == $state.params.category) {
+    this.updateSelectedTab()
+
+    $rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, FromParams) => {
+      this.$log.debug("Got state change");
+      this.$log.debug(toState);
+      this.isDetailView = toState.name == 'root.category.detail';
+      this.updateSelectedTab();
+    });
+  }
+
+  /**
+   * Update the selected tab to match the category in the URL.
+   */
+  updateSelectedTab() {
+    this.categories.forEach( (category, idx) => {
+      if (category.url == this.$state.params.category) {
         this.setTabIndex(idx);
       }
     });
@@ -41,8 +55,15 @@ class FrameController {
         }
       }).then(function(option) {
         that.acknowledgeAction(option);
-      });      
+      });
     }
+  }
+
+  /**
+   * Show the search view.
+   */
+  openSearch() {
+    this.$state.go('^.search');
   }
 
   /**
@@ -59,10 +80,6 @@ class FrameController {
    */
   selectCategory(category) {
     this.$log.debug( "selectCategory() ");
-    if (!this.initialLoadComplete) {
-      this.initialLoadComplete = true;
-      return;
-    }
     this.$mdSidenav('left').close()
     this.$state.go('root.category', {category: category.url});
   }
@@ -113,5 +130,5 @@ class FrameController {
   }
 }
 
-FrameController.$inject = ['$scope', '$mdSidenav', '$mdMedia', '$mdBottomSheet', '$mdToast', '$log', '$state', 'SharingService', 'ItemsService'];
+FrameController.$inject = ['$rootScope', '$mdSidenav', '$mdMedia', '$mdBottomSheet', '$mdToast', '$log', '$state', 'SharingService', 'ItemsService'];
 export default FrameController;
