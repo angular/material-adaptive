@@ -1,0 +1,10 @@
+<md-bottom-sheet>
+  <md-list>
+    <md-list-item ng-repeat="option in ctrl.sharingOptions">
+      <md-button ng-click="ctrl.acknowledgeAction(option.icon)">
+        <md-icon md-svg-src="{{option.icon}}"></md-icon>
+        <span class="sharing-menu-label">{{option.label}}</span>
+      </md-button>
+    </md-list-item>
+  </md-list>
+</md-bottom-sheet>

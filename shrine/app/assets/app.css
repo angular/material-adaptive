@@ -1,0 +1,91 @@
+html, body {
+  font-family: 'Roboto', sans-serif;
+  font-size:14px;
+  height:100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+md-tabs md-ink-bar {
+  background: black
+}
+
+.md-button.fixed-position-fab-button {
+  bottom: 10px;
+  position: fixed;
+  right: 10px;
+}
+
+.grey-background {
+  background-color: #F3F3F3;
+}
+
+.grid md-grid-tile {
+  background-color: white;
+  overflow: hidden;
+}
+
+.detail img {
+  display: block;
+  margin: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.detail {
+  background: white;
+}
+
+/**
+ * Item Card
+ */
+.item-card {
+  background: white;
+  overflow: hidden;
+  position: relative;
+}
+
+.item-card md-icon {
+  bottom: 7.5%;
+  position: absolute;
+  right: 7.5%;
+  z-index: 11;
+}
+
+.item-card-img {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.item-card-img img {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+/**
+ * Sharing Menu
+ */
+md-bottom-sheet .sharing-menu-label {
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: -10px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+md-bottom-sheet md-list-item {
+  min-height: 48px; 
+}
