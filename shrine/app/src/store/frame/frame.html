@@ -1,0 +1,102 @@
+<div>
+  <md-toolbar layout="column"
+              class="md-medium md-menu-toolbar"
+              id="maintoolbar">
+    <!-- Top Toolbar -->
+    <div flex layout="row">
+      <md-button hide-gt-sm
+                 ng-if="!ctrl.isDetailView"
+                 class="md-icon-button"
+                 ng-click="ctrl.toggleMenu()"
+                 aria-label="Show Category List">
+        <md-icon md-svg-icon="menu"></md-icon>
+      </md-button>
+
+      <md-button hide-lg
+                 ng-if="ctrl.isDetailView"
+                 class="md-icon-button"
+                 ng-click="ctrl.goBack()"
+                 aria-label="Go Back">
+        <md-icon md-svg-icon="back"></md-icon>
+      </md-button>
+
+      <span flex></span>
+
+      <span>
+        <md-button class="md-icon-button"
+                   ng-click="ctrl.openSearch()"
+                   aria-label="Show Search Dialog">
+          <md-icon md-svg-icon="search"></md-icon>
+        </md-button>
+
+        <md-button class="md-icon-button"
+                   ng-click="ctrl.acknowledgeAction('shopping_cart')"
+                   aria-label="Show Shopping Cart">
+          <md-icon md-svg-icon="shopping_cart"></md-icon>
+        </md-button>
+
+        <md-menu md-position-mode="target-right target"
+                 ng-if="ctrl.isDetailView" >
+          <md-button aria-label="Open demo menu"
+                     class="md-icon-button"
+                     ng-click="ctrl.openShareMenu() || $mdOpenMenu($event)">
+            <md-icon md-menu-origin
+                     md-svg-icon="share"></md-icon>
+          </md-button>
+          <md-menu-content width="4">
+            <md-menu-item ng-repeat="option in ctrl.sharingOptions">
+              <md-button ng-click="ctrl.acknowledgeAction(option.icon)">
+                  <div layout="row">
+                    <p flex>{{option.label}}</p>
+                    <md-icon md-menu-align-target
+                             md-svg-icon="{{option.icon}}"></md-icon>
+                  </div>
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+      <span>
+    </div>
+
+    <!-- Current Category -->
+    <div hide-gt-sm
+         layout="row"
+         flex>
+      <h1 class="md-display-2"
+          flex offset="10">
+        {{ctrl.currentCategory().name | uppercase}}
+      </h1>
+    </div>
+  </md-toolbar >
+
+  <!-- Selection Tabs -->
+  <md-tabs hide 
+           show-gt-sm 
+               md-selected="ctrl.selectedIdx">
+    <md-tab ng-repeat="category in ctrl.categories"
+            ng-click="ctrl.selectCategory(category)"
+            label="{{category.name}}">
+            <md-tab-body></md-tab-body>
+    </md-tab>
+  </md-tabs>
+
+  <!-- SideNav -->
+  <md-sidenav layout="column"
+              md-component-id="left"
+              class="md-sidenav-left">
+    <md-toolbar class="md-tall md-menu-toolbar" flex></md-toolbar>
+    <md-content flex>
+      <md-list>
+        <md-list-item ng-repeat="(idx, category) in ctrl.categories"
+                      ng-click="ctrl.selectCategory(category)">
+          <md-title>{{category.name}}</md-title>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </md-sidenav>
+
+<md-content flex
+            class="grey-background"
+            ui-view="main"></md-content>
+
+</div>

@@ -3,6 +3,7 @@
       class="md-primary md-hue-3">
     <div flex-order="1">
       <md-button class="md-icon-button" aria-label="Settings"
+          ng-if="(!application.leftOpen && !application.rightOpen) || !application.sm()"
           ng-click="application.leftOpen = !application.leftOpen">
         <md-icon ng-if="!application.leftOpen" md-svg-icon="menu" ></md-icon>
         <md-icon ng-if="application.leftOpen" md-svg-icon="back" ></md-icon>
@@ -13,6 +14,8 @@
     </h1>
     <div flex-order-gt-sm="3" flex-order="2">
       <md-button class="md-icon-button" aria-label="Details"
+          ng-if="!application.rightOpen || !application.sm()"
+          ng-disabled="application.leftOpen && application.sm()"
           ng-click="application.rightOpen = !application.rightOpen">
         <md-icon ng-if="application.hasListView && !application.rightOpen" md-svg-icon="list"></md-icon>
         <md-icon ng-if="application.hasComments && !application.rightOpen" md-svg-icon="message"></md-icon>
@@ -47,9 +50,8 @@
             ng-click="application.rightOpen = false" class="md-icon-button">
           <md-icon md-svg-icon="right"></md-icon>
         </md-button>
-      <md-content class="md-hue-1" layout="column" layout-fill flex layout-align="start start" 
-          ng-include="application.rightSideNav">
-      </md-content>
+      <div layout-fill flex layout="column" ng-include="application.rightSideNav">
+      </div>
     </md-sidenav>
   </section>
 
