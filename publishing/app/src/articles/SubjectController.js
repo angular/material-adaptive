@@ -11,8 +11,9 @@ function SubjectController($scope, application, articlesService,
   application.rightSideNav = 'src/articles/view/comments.html';
   application.hasListView = false;
   application.hasComments = true;
-
   var self = this;
+
+  application.goBack = "#/";
 
   articlesService.get($routeParams.subject).then(article => self.article = article);
 

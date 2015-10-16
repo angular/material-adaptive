@@ -1,5 +1,6 @@
 <div class="articles"
-    flex-gt-md="60" offset-gt-md="20"
+    flex-lg="80" offset-lg="10"
+    flex-gt-lg="60" offset-gt-lg="20"
     offset="0" flex="100">
   <md-grid-list
          md-cols="8"
@@ -9,16 +10,17 @@
          md-row-height-sm="4:3"
          md-gutter-sm="1em">
     <md-grid-tile ng-repeat="it in actrl.articles"
-                   class="summary md-whiteframe-z2"
-                   md-rowspan="{{it.rowspan || 3}}"
-                   md-colspan="{{it.colspan || 4}}"
-                   md-rowspan-sm="1"
-                   md-colspan-sm="1"
-                   ng-style="{'background-color': it.color}">
+                  class="summary md-whiteframe-z2"
+                  md-rowspan="{{it.rowspan || 3}}"
+                  md-colspan="{{it.colspan || 4}}"
+                  md-rowspan-sm="1"
+                  md-colspan-sm="1">
       <a class="summary-image" flex ng-href="#/{{it.id}}">
         <img src="assets/png/{{it.id}}.png"></img>
       </a>
-      <md-grid-tile-footer layout="row" layout-align="center center">
+      <md-grid-tile-footer layout="row"
+          ng-style="{'background-color': it.color}"
+          layout-align="center center">
         <h1>{{it.title}}</h1>
       </md-grid-tile-footer>
     </md-grid-tile>
