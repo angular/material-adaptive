@@ -10,9 +10,11 @@ const URL_ICON_FACEBOOK  = 'assets/svg/facebook.svg';
 const URL_ICON_CHECKED  = 'assets/svg/check_circle.svg';
 const URL_ICON_BACK  = 'assets/svg/arrow_back.svg';
 const URL_ICON_SHARE  = 'assets/svg/share.svg';
+const URL_ICON_ADD_SHOPPING  = 'assets/svg/add_shopping_cart.svg';
 
 import FrameController from 'store/frame/FrameController'
 import CatalogController from 'store/CatalogController'
+import SearchController from 'store/search/SearchController'
 import DetailController from 'store/DetailController'
 import ItemsService from 'store/ItemsService'
 import SharingService from 'store/SharingService'
@@ -30,6 +32,7 @@ let moduleName = angular
       .controller('FrameController' , FrameController )
       .controller('CatalogController' , CatalogController )
       .controller('DetailController' , DetailController )
+      .controller('SearchController' , SearchController )
       .controller('SharingMenuController', SharingMenuController )
       .directive('itemCard' , () => new ItemCardDirective )
       .service('ItemsService' , ItemsService )
@@ -49,58 +52,49 @@ let moduleName = angular
           .icon('search', URL_ICON_SEARCH, 24)
           .icon('back', URL_ICON_BACK, 24)
           .icon('checked', URL_ICON_CHECKED, 24)
+          .icon('add_shopping_cart', URL_ICON_ADD_SHOPPING, 24)
           .icon('share', URL_ICON_SHARE, 24);
       })
       .config( ($stateProvider, $urlRouterProvider, $locationProvider) => {
         $stateProvider
           .state('root', {
-            data: {
-               isSearch: false,
-               hasBack: false
-            },
             abstract: true,
             views: {
-              'frame': { 
+              'frame@': {
                 templateUrl: 'src/store/frame/frame.html',
                 controller: 'FrameController as ctrl',
               },
             }
           })
           .state('root.search', {
-            url: '/search/:searchTerm?', 
-            data: {
-               isSearch: true,
-               hasBack: true
-            },
+            url: '/search/:searchTerm?',
             views: {
-              'main@': { 
-                templateUrl: 'src/store/view/catalog.html',
+              'frame@': {
+                templateUrl: 'src/store/search/search.html',
+                controller: 'SearchController as search',
               },
+              'main@root.search': {
+                templateUrl: 'src/store/view/catalog.html',
+              }
             }
           })
           .state('root.category', {
-            url: '/:category', 
-            data: {
-              hasBack: false
-            },
+            url: '/:category',
             views: {
-              'main@': { 
+              'main@root': {
                 templateUrl: 'src/store/view/catalog.html',
               }
             }
           })
           .state('root.category.detail', {
-            url: '/:detail', 
-            data: {
-              hasBack: true
-            },
+            url: '/:detail',
             views: {
-              'main@': { 
+              'main@root': {
                 templateUrl: 'src/store/view/detail.html',
               }
             }
           })
-        
+
         $urlRouterProvider.otherwise('/featured');
       })
       .config( ($mdThemingProvider) => {

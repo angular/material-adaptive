@@ -14,6 +14,12 @@ md-tabs md-ink-bar {
   background: black
 }
 
+.md-button.fixed-position-fab-button {
+  bottom: 10px;
+  position: fixed;
+  right: 10px;
+}
+
 .grey-background {
   background-color: #F3F3F3;
 }
