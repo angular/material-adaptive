@@ -10,11 +10,13 @@ function Application($mdMedia, $mdBottomSheet, $location) {
   this.leftOpen = false;
   this.rightOpen = false;
   this.hasListView = true;
+  this.goBack = null;
 
   this.reset = function() {
     this.leftOpen = false;
     this.rightOpen = false;
     this.rightSideNav = undefined;
+    this.goBack = null;
   }
 
   this.fabPosition = function() {

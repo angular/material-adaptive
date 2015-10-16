@@ -68,7 +68,6 @@ md-toolbar h1 {
 }
 
 .summary-image > img {
-  height: 100%;
   width: 100%;
 }
 
@@ -267,5 +266,10 @@ md-bottom-sheet.md-list md-list-item {
 .article-detail a {
   text-decoration: none;
   color: initial;
+}
+
+
+md-backdrop.md-opaque {
+  background-color: inherit;
 }
 

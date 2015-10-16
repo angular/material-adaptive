@@ -2,11 +2,16 @@
   <md-toolbar layout="row" layout-wrap layout-align="space-between start"
       class="md-primary md-hue-3">
     <div flex-order="1">
-      <md-button class="md-icon-button" aria-label="Settings"
-          ng-if="(!application.leftOpen && !application.rightOpen) || !application.sm()"
+      <md-button class="md-icon-button" aria-label="Menu"
+          ng-if="!application.goBack && ((!application.leftOpen && !application.rightOpen) || !application.sm())"
           ng-click="application.leftOpen = !application.leftOpen">
         <md-icon ng-if="!application.leftOpen" md-svg-icon="menu" ></md-icon>
         <md-icon ng-if="application.leftOpen" md-svg-icon="back" ></md-icon>
+      </md-button>
+      <md-button class="md-icon-button" aria-label="Back"
+          ng-if="application.goBack"
+          ng-href="{{application.goBack}}">
+        <md-icon md-svg-icon="back" ></md-icon>
       </md-button>
     </div>
     <h1 flex-order-gt-sm="2" flex-sm="100" flex-order="3">
