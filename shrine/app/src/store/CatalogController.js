@@ -1,8 +1,5 @@
-/**
- * Controller for the Catalog view.
- */
 class CatalogController {
-  constructor($scope, $log, $state, $location, itemsService) {
+  constructor($scope, $log, $state, itemsService) {
     this.$log = $log.getInstance("CatalogController");
     this.$log.debug("instanceOf()");
     this.$log.debug(itemsService);
@@ -11,7 +8,7 @@ class CatalogController {
 
     var originalItems = itemsService.getItems($state.params.category);
     
-    if (this.$state.current.data.isSearch) {
+    if (this.$state.is('root.search')) {
       $scope.$watch(
         function() {
           return $state.params.searchTerm
@@ -24,6 +21,8 @@ class CatalogController {
             itemName.includes(searchTerm) && items.push(item);
           })
           this.items = items;
+          // TODO: Debounce this?
+          $state.go('root.search', {'searchTerm': searchTerm});
         }));
     } else {
       this.items = angular.copy(originalItems);
@@ -31,5 +30,5 @@ class CatalogController {
   }
 }
 
-CatalogController.$inject = ['$scope', '$log', '$state', '$location', 'ItemsService' ];
+CatalogController.$inject = ['$scope', '$log', '$state', 'ItemsService' ];
 export default CatalogController;

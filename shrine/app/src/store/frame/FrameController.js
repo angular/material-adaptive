@@ -3,47 +3,40 @@
  */
 class FrameController {
 
-  constructor($scope, $mdSidenav, $mdMedia, $mdBottomSheet, $mdToast, $log, $state, SharingService, ItemsService) {
-    var that = this;
-    that.$log = $log.getInstance("FrameController");
-    that.$log.debug("instanceOf()");
+  constructor($rootScope, $window, $mdSidenav, $mdMedia, $mdBottomSheet, $mdToast, $log, $state, SharingService, ItemsService) {
+    this.$log = $log.getInstance("FrameController");
+    this.$log.debug("instanceOf()");
 
-    that.searchTerm = $state.params.searchTerm;
-    that.isSearch = $state.current.data.isSearch;
-    that.hasBack = $state.current.data.hasBack || that.isSearch;
-    that.isDetailView = ($state.current.name == 'root.category.detail');
-    that.categories = ItemsService.categories;
-    that.sharingOptions = SharingService.sharingOptions;
-       
-    that.$state = $state;
-    that.$mdToast = $mdToast;
-    that.$mdSidenav = $mdSidenav;
-    that.$mdMedia = $mdMedia;
-    that.$mdBottomSheet = $mdBottomSheet;
+    this.isDetailView = ($state.current.name == 'root.category.detail');
+    this.categories = ItemsService.categories;
+    this.sharingOptions = SharingService.sharingOptions;
 
-    if (that.isSearch) {
-      $scope.$watch(
-        function() {
-          return $state.params.searchTerm
-        },
-        function(searchTerm) {
-          that.$state.go('root.search', {'searchTerm': searchTerm}, {reload: false});
-        });
-    }
+    this.$state = $state;
+    this.$mdToast = $mdToast;
+    this.$mdSidenav = $mdSidenav;
+    this.$mdMedia = $mdMedia;
+    this.$mdBottomSheet = $mdBottomSheet;
+    this.$window = $window;
 
-    angular.forEach(that.categories, function(category, idx) {
-      if (category.url == $state.params.category) {
-        that.setTabIndex(idx);
-      }
+    this.updateSelectedTab()
+
+    $rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, FromParams) => {
+      this.$log.debug("Got state change");
+      this.$log.debug(toState);
+      this.isDetailView = toState.name == 'root.category.detail';
+      this.updateSelectedTab();
     });
   }
 
   /**
-   * Navigates to the search page.
+   * Update the selected tab to match the category in the URL.
    */
-  openSearch() {
-    this.$log.debug( "openSearch() ");
-    this.$state.go('root.search', undefined, {reload: true});
+  updateSelectedTab() {
+    this.categories.forEach( (category, idx) => {
+      if (category.url == this.$state.params.category) {
+        this.setTabIndex(idx);
+      }
+    });
   }
 
   /**
@@ -62,8 +55,22 @@ class FrameController {
         }
       }).then(function(option) {
         that.acknowledgeAction(option);
-      });      
+      });
     }
+  }
+
+  /**
+   * Show the search view.
+   */
+  openSearch() {
+    this.$state.go('^.search');
+  }
+
+  /**
+   * Navigate to the previous URL in history.
+   */
+  goBack() {
+    this.$window.history.back();
   }
 
   /**
@@ -75,29 +82,13 @@ class FrameController {
   }
 
   /**
-   * Returns back to the category view.
-   */
-  goBack() {
-    this.$log.debug( "goBack() ");
-    if (this.isSearch) {
-      this.$state.go('root.category', {'category': 'featured'}, {reload: true});
-    } else {
-      this.$state.go('^', {}, {reload: true});
-    }
-  }
-
-  /**
    * Select a category.
    * @param index Index of the selected category.
    */
   selectCategory(category) {
     this.$log.debug( "selectCategory() ");
-    if (!this.initialLoadComplete) {
-      this.initialLoadComplete = true;
-      return;
-    }
     this.$mdSidenav('left').close()
-    this.$state.go('root.category', {category: category.url}, {reload: true});
+    this.$state.go('root.category', {category: category.url});
   }
 
   /**
@@ -113,7 +104,7 @@ class FrameController {
    * Returns the currently selected category.
    */
   currentCategory() {
-    this.$log.debug( "currentCategory() ");
+//    this.$log.debug( "currentCategory() ");
     return this.categories[this.selectedIdx];
   }
 
@@ -144,8 +135,7 @@ class FrameController {
     }
     this.$mdToast.show(this.$mdToast.simple().content(message));
   }
-
 }
 
-FrameController.$inject = ['$scope', '$mdSidenav', '$mdMedia', '$mdBottomSheet', '$mdToast', '$log', '$state', 'SharingService', 'ItemsService'];
+FrameController.$inject = ['$rootScope', '$window', '$mdSidenav', '$mdMedia', '$mdBottomSheet', '$mdToast', '$log', '$state', 'SharingService', 'ItemsService'];
 export default FrameController;
