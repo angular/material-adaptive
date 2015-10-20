@@ -43,13 +43,18 @@
            show-gt-sm
            layout-align="start center"
            layout="row" layout-padding>
-          <md-select flex="45" layout-margin ng-model="doesntMatter" placeholder="Select a quantity">
-            <md-option ng-repeat="quantity in [1, 2, 3, 4, 5]">
+          <md-select flex="45" 
+                     layout-margin
+                     ng-model="quantitySelected"
+                     placeholder="Select a quantity">
+            <md-option ng-value="quantity"
+                       ng-repeat="quantity in [1, 2, 3, 4, 5]">
               Quantity {{quantity}}
             </md-option>
           </md-select>
         <span flex="5"></span>
         <md-button class="md-fab"
+                   ng-disabled="!quantitySelected"
                    aria-label="Add to cart">
           <md-icon md-svg-icon="add_shopping_cart"></md-icon>
         </md-button>
