@@ -1,4 +1,6 @@
-<div>
+<div class="white-background"
+     md-swipe-right="ctrl.handleSwap('open')"
+     md-swipe-left="ctrl.handleSwap('close')">
   <md-toolbar layout="column"
               class="md-medium md-menu-toolbar"
               id="maintoolbar">
@@ -95,8 +97,7 @@
     </md-content>
   </md-sidenav>
 
-<md-content flex
-            class="grey-background"
-            ui-view="main"></md-content>
-
+  <md-content flex
+              class="grey-background"
+              ui-view="main"></md-content>
 </div>
