@@ -66,14 +66,6 @@ class ItemsService {
         featured: false
       },
       {
-        category: 'fashion',
-        url: 'blue_heels',
-        img: 'assets/images/blue_heels.jpg',
-        name: 'Blue Heels',
-        description: 'These are blue shoes',
-        featured: true
-      },
-      {
         category: 'furniture',
         url: 'green_chair',
         img: 'assets/images/green_chair.jpg',
