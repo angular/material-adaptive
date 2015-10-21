@@ -30,7 +30,7 @@ function Application($mdMedia, $mdBottomSheet, $location) {
   }
 
   this.openMenu = function(menuItem) {
-    $location.url('/');
+    $location.url('/category/' + menuItem.replace(/ /g, '_'));
     this.leftOpen = false;
   };
 

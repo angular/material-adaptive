@@ -31,7 +31,17 @@ let moduleName = angular
             controller: ArticlesController,
             controllerAs: 'actrl',
           })
-          .when('/:subject', {
+          .when('/author/:author', {
+            template: applicationTemplate,
+            controller: ArticlesController,
+            controllerAs: 'actrl',
+          })
+          .when('/category/:category', {
+            template: applicationTemplate,
+            controller: ArticlesController,
+            controllerAs: 'actrl',
+          })
+          .when('/article/:subject', {
             template: applicationTemplate,
             controller: SubjectController,
             controllerAs: 'sctrl',
