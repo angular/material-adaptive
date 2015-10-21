@@ -228,20 +228,42 @@ class ItemsService {
     ];
   };
   
+  /**
+   * Retrieves items from the item list based on the category name.
+   * Currently returns all items from item list with the items matching
+   * the category appearing first in the returned item array.
+   * 
+   * @param categoryName The name of the category searched for.
+   */
   getItems(categoryName) {
+    function shuffle(array) {
+        var counter = array.length, temp, index;
+        for (var i = array.length - 1; i > 0; i--) {
+            index = Math.floor(Math.random() * counter);
+            counter--;
+            temp = array[counter];
+            array[counter] = array[index];
+            array[index] = temp;
+        }
+        return array;
+    }
     if (!categoryName) return this.items;
     categoryName = categoryName.toLowerCase();
     var fromCache = this.cacheItems[categoryName];
     if (fromCache) {
       return fromCache;
     }
-    var items = [];
+    var matchedItems = [];
+    var unmatchedItems = [];
     this.items.forEach(function(item) {
       if ((item.featured == true && categoryName == 'featured') ||
           item.category == categoryName) {
-        items.push(item);
+        matchedItems.push(item);
+      } else {
+        unmatchedItems.push(item);
       }
     });
+    var items = matchedItems.concat(shuffle(unmatchedItems));
     this.cacheItems[categoryName] = items;
     return items;
   }
