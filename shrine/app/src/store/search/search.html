@@ -10,13 +10,13 @@
                  aria-label="Go Back">
         <md-icon md-svg-icon="back"></md-icon>
       </md-button>
-      &nbsp; <!-- Needed so the row still takes up space when the button is hidden. -->
+      <!-- Needed so the row still takes up space when the button is hidden. -->
   </div>
 
     <!-- Search Box -->
     <md-toolbar class="md-menu-toolbar">
       <div layout="row" flex>
-        <md-input-container flex offset="10">
+        <md-input-container flex flex-offset="10">
           <label>SEARCH</label>
           <input type="text" ng-model='search.$state.params.searchTerm'
                              ng-model-options="{ debounce: 200 }">

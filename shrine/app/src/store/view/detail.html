@@ -1,10 +1,11 @@
-<div flex layout="row" 
+<div flex layout="row"
+     class="grey-background"
      ng-controller="DetailController as detail">
   <div layout-fill 
-              layout-padding
-              hide
-              show-gt-md
-              flex="30">
+       layout-padding
+       hide
+       show-gt-md
+       flex="30">
     <md-grid-list class="grid grey-background" 
                   md-cols="2"
                   md-gutter="0.5em"
@@ -19,7 +20,7 @@
   <div class="detail"
        flex
        layout-align="space-around center"
-       layout-margin
+       layout-padding
        layout="row"
        layout-sm="column">
     <md-content layout-padding
@@ -38,16 +39,22 @@
       </div>
       <div flex
            hide
+           layout-fill
            show-gt-sm
            layout-align="start center"
            layout="row" layout-padding>
-          <md-select flex="45" layout-margin ng-model="doesntMatter" placeholder="Select a state">
-            <md-option ng-repeat="quantity in [1, 2, 3, 4, 5]">
+          <md-select flex="45" 
+                     layout-margin
+                     ng-model="quantitySelected"
+                     placeholder="Select a quantity">
+            <md-option ng-value="quantity"
+                       ng-repeat="quantity in [1, 2, 3, 4, 5]">
               Quantity {{quantity}}
             </md-option>
           </md-select>
         <span flex="5"></span>
         <md-button class="md-fab"
+                   ng-disabled="!quantitySelected"
                    aria-label="Add to cart">
           <md-icon md-svg-icon="add_shopping_cart"></md-icon>
         </md-button>

@@ -63,7 +63,26 @@ class FrameController {
    * Show the search view.
    */
   openSearch() {
-    this.$state.go('^.search');
+    this.$state.go('root.search');
+  }
+
+  /**
+   * Handles a swipe event.
+   *
+   * @param intention The intended action of the swipe event. 
+   */
+  handleSwipe(intention) {
+    this.$log.debug( "handleSwipe() ");
+    if (this.$mdMedia('sm')) {
+      switch (intention) {
+        case 'open':
+          this.$mdSidenav('left').open();
+          break;
+        case 'close': 
+          this.$mdSidenav('left').close();
+          break;
+      } 
+    }
   }
 
   /**
@@ -76,7 +95,7 @@ class FrameController {
   /**
    * Hide or Show the category menu.
    */
-  toggleMenu($event) {
+  toggleMenu() {
     this.$log.debug( "toggleMenu() ");
     this.$mdSidenav('left').toggle();
   }
