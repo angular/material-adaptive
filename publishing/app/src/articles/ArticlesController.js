@@ -2,7 +2,7 @@
  * Articles list controller
  * @constructor
  */
-function ArticlesController($scope, application, articlesService, $log) {
+function ArticlesController($scope, application, articlesService, $routeParams, $log) {
   $scope.application = application;
   application.reset();
 
@@ -16,9 +16,16 @@ function ArticlesController($scope, application, articlesService, $log) {
   self.articles = [ ];
 
   // Load all registered articles
-  articlesService
-      .loadAll()
-      .then( function( articles ) {
+  var articlesPromise;
+  if ($routeParams.author) {
+    articlesPromise = articlesService.loadByAuthor($routeParams.author);
+  } else if ($routeParams.category) {
+    var category = $routeParams.category.replace(/_/g, ' ');;
+    articlesPromise = articlesService.loadByCategory(category);
+  } else {
+    articlesPromise = articlesService.loadAll();
+  }
+  articlesPromise.then( function( articles ) {
         self.articles    = [].concat(articles);
       });
 
@@ -27,7 +34,7 @@ function ArticlesController($scope, application, articlesService, $log) {
   // *********************************
 }
 
-export default ['$scope', 'application', 'articlesService', '$log',
+export default ['$scope', 'application', 'articlesService', '$routeParams', '$log',
   ArticlesController
 ];
 
