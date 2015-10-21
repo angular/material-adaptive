@@ -136,11 +136,35 @@ div.pesto-recipe-grid-image.ng-anchor-out {
   opacity: 0.5;
 }
 
-.pesto-home-grid md-grid-tile md-grid-tile-footer {
+.pesto-home-grid md-grid-tile-footer {
   background: white;
   color: #333;
   padding-left: 10px;
   text-align: left;
+}
+
+div.recipe-tile-footer {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+/* Apparently this is hard-coded to 48px. */
+.pesto-home-grid md-grid-tile-footer {
+  height: 72px;
+}
+
+.pesto-home-grid md-grid-tile-footer .pesto-recipe-icon {
+  display: inline-block;
+  padding-right: 20px;
+  vertical-align: top;
+}
+
+.pesto-home-grid md-grid-tile-footer .pesto-recipe-icon img {
+  width: 26px;
+}
+
+.pesto-home-grid md-grid-tile-footer .pesto-recipe-info {
+  display: inline-block;
 }
 
 .pesto-recipe-title {
