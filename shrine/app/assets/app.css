@@ -10,6 +10,14 @@ html {
   overflow-y: scroll;
 }
 
+* {
+  outline: none;
+}
+
+[ui-view="main"] {
+  padding: 10px 10px 0 10px;
+}
+
 md-tabs md-ink-bar {
   background: black
 }
@@ -21,8 +29,12 @@ md-tabs md-ink-bar {
 }
 
 .grey-background {
-  background-color: #F3F3F3;
+  background: #F3F3F3;
 }
+
+.white-background { 
+  background: #FFF;
+};
 
 .grid md-grid-tile {
   background-color: white;
