@@ -4,11 +4,6 @@
       <md-icon md-svg-icon="assets/pesto-arrow-back.svg"></md-icon>
     </md-button>
   </div>
-  <!--
-    Apparently md-list-items aren't supposed to be interactive:
-    https://github.com/angular/material/issues/904 . But this is works well, and it doesn't
-    seem reasonable to try to manually replicate the md-list layout.
-  -->
   <md-list>
     <md-list-item>Home</md-list-item>
     <md-list-item>Favorite</md-list-item>
@@ -54,20 +49,33 @@
       <!-- <span class="anchortest" ng-animate-ref="test1">Hello</span> -->
       <!-- How to make height scale to content size? "fit" doesn't work. -->
       <!-- On Firefox, the images aren't scaled so the background shows through. -->
-      <md-grid-list md-cols="2" md-cols-sm="1" md-row-height="250px" md-gutter="8px">
+      <md-grid-list md-cols="2" md-cols-sm="1" md-row-height="275px" md-gutter="8px">
         <md-grid-tile ng-repeat="recipe in home.recipes" ng-click="home.gotoRecipe(recipe)">
+          <!-- It would be nice to use an md-card for the tile content, but it doesn't stay
+               within the tile height. -->
+          <!--
+          <md-card>
+            <img ng-src="{{recipe.imageUrl}}" class="md-card-image" alt="image caption">
+            <md-card-footer>
+              <div class="pesto-recipe-title">{{recipe.name}}</div>
+              <div class="pesto-recipe-author">by {{recipe.author}}</div>
+            </md-card-footer>
+          </md-card>
+            -->
           <div class="pesto-recipe-grid-image"
                ng-animate-ref="{{'recipe' + recipe.id}}"
                ng-style="{'background-image': 'url(' + recipe.imageUrl + ')'}">
-            <!--
-            <img class="pesto-recipe-grid-image"
-                 ng-src="{{recipe.imageUrl}}"
-                 ng-animate-ref="{{'recipe' + recipe.id}}" />
-              -->
           </div>
-          <md-grid-tile-footer class="recipe-info">
-            <div class="pesto-recipe-title">{{recipe.name}}</div>
-            <div class="pesto-recipe-author">by {{recipe.author}}</div>
+          <md-grid-tile-footer class="recipe-tile-footer">
+            <div class="recipe-tile-footer">
+              <div class="pesto-recipe-icon">
+                <img src="assets/pesto-recipe-icon.png">
+              </div>
+              <div class="pesto-recipe-info">
+                <div class="pesto-recipe-title">{{recipe.name}}</div>
+                <div class="pesto-recipe-author">by {{recipe.author}}</div>
+              </div>
+            </div>
           </md-grid-tile-footer>
         </md-grid-tile>
       </md-grid-list>
