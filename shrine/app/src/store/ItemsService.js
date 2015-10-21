@@ -263,7 +263,9 @@ class ItemsService {
         unmatchedItems.push(item);
       }
     });
-    var items = matchedItems.concat(shuffle(unmatchedItems));
+    //var items = matchedItems.concat(shuffle(unmatchedItems));
+    var items = matchedItems;
+
     this.cacheItems[categoryName] = items;
     return items;
   }
