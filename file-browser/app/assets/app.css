@@ -2,8 +2,8 @@ html, body {
   font-family: 'Roboto', sans-serif;
   font-size:14px;
   height:100%;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 /* Toolbar area */
@@ -111,7 +111,7 @@ md-toolbar h1 {
   border-radius: 50%;
   display: inline-block;
   overflow: hidden;
-  margin: 0px;
+  margin: 0;
   vertical-align: middle;
 }
 
@@ -144,7 +144,7 @@ md-list md-list-item button.md-button:not(.selected):not([disabled]) {
   width: 260px;
   height: auto;
   display: block;
-  margin: 0px;
+  margin: 0;
 }
 
 
@@ -162,7 +162,7 @@ md-list md-list-item button.md-button:not(.selected):not([disabled]) {
   border-radius: 50%;
   display: inline-block;
   overflow: hidden;
-  margin: 0px;
+  margin: 0;
   vertical-align: middle;
   margin-right: 32px;
 }
