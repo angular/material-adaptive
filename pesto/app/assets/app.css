@@ -33,8 +33,7 @@ html.pesto, body.pesto {
          two phases to the animation (an `in` and an `out` phase) */
   transition:0.5s linear all;
 }
-  
-}
+
 /* slide in from the right */
 @keyframes slideInRight {
 	from 	{ transform:translateX(100%); }
