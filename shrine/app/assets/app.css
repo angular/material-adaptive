@@ -2,8 +2,8 @@ html, body {
   font-family: 'Roboto', sans-serif;
   font-size:14px;
   height:100%;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -34,7 +34,7 @@ md-tabs md-ink-bar {
 
 .white-background { 
   background: #FFF;
-};
+}
 
 .grid md-grid-tile {
   background-color: white;

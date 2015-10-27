@@ -255,12 +255,12 @@ md-bottom-sheet.md-list md-list-item {
 
 .article-detail p {
   font-size:80%;
-  margin:0;
+  margin: 0;
 }
 
 .article-detail h4 {
-  margin:0;
-  text-decora
+  margin: 0;
+  /* text-decora */
 }
 
 .article-detail a {
