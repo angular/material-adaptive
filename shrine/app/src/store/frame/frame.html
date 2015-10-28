@@ -57,15 +57,16 @@
             </md-menu-item>
           </md-menu-content>
         </md-menu>
-      <span>
+      </span>
     </div>
 
     <!-- Current Category -->
     <div hide-gt-sm
+         class="header-bottom-border"
          layout="row"
          flex>
       <h1 class="md-display-2"
-          flex offset="10">
+          flex flex-offset="10">
         {{ctrl.currentCategory().name | uppercase}}
       </h1>
     </div>

@@ -19,7 +19,7 @@ html {
 }
 
 md-tabs md-ink-bar {
-  background: black
+  background: #18FFFF
 }
 
 .md-button.fixed-position-fab-button {
@@ -39,6 +39,10 @@ md-tabs md-ink-bar {
 .grid md-grid-tile {
   background-color: white;
   overflow: hidden;
+}
+
+.header-bottom-border {
+  border-bottom: solid #18FFFF 3px;
 }
 
 .detail img {
