@@ -53,7 +53,7 @@ Recent Layout changes in **[v1.0.0-rc2](https://github.com/angular/material/comm
 
 For example, here is the latest view from Shrine:
 
-![screen shot 2015-10-30 at 6 48 45 am](https://cloud.githubusercontent.com/assets/210413/10845011/5b71d7b4-7ed2-11e5-8df7-240cc3017a1d.png)
+![shrine_blank](https://cloud.githubusercontent.com/assets/210413/10845088/09704c10-7ed3-11e5-9cea-1a94b1ca365d.png)
 
 Other generalized recommendations:
 
