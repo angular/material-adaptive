@@ -7,7 +7,7 @@ In general, follow the **[AngularJS Style Guide](https://github.com/johnpapa/ang
 
 ### Coding Guidelines
 
-* Package by features (@see Folders-by-Feature and LIFT style )
+* Package by features (@see [Folders-by-Feature](https://github.com/johnpapa/angular-styleguide#application-structure) and [LIFT](https://github.com/johnpapa/angular-styleguide#application-structure-lift-principle) style )
   * Use `feature` module for easy understanding and grouping
 * Create an App Module
   * https://github.com/johnpapa/angular-styleguide#style-y163
