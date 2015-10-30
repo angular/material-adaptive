@@ -2,7 +2,7 @@
 
 As we prepare to release these applications for public consumption [and use by the Angular Material community], we will periodically review their functionality, implementation, and architectures. 
 
-This document contains recommended changes [in order to achieve the goals listed above].
+This document contains recommended changes [in order to achieve the goals listed in the README].
 
 ## Architecture and Coding
 
