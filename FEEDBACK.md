@@ -49,7 +49,9 @@ In general, follow the **[AngularJS Style Guide](https://github.com/johnpapa/ang
   
 ### UX
 
-Recent Layout changes in **[v1.0.0-rc2](https://github.com/angular/material/commits/v1.0.0-rc2)** may break gridList cards. Here is the latest view from Shrine:
+Recent Layout changes in **[v1.0.0-rc2](https://github.com/angular/material/commits/v1.0.0-rc2)** may break gridList cards. 
+
+For example, here is the latest view from Shrine:
 
 ![screen shot 2015-10-30 at 6 48 45 am](https://cloud.githubusercontent.com/assets/210413/10845011/5b71d7b4-7ed2-11e5-8df7-240cc3017a1d.png)
 
