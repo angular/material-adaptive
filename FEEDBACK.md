@@ -49,9 +49,13 @@ In general, follow the **[AngularJS Style Guide](https://github.com/johnpapa/ang
   
 ### UX
 
-Recent Layout changes in v1.0.0-rc2 may break gridList cards... please check and update.
+Recent Layout changes in v1.0.0-rc2 may break gridList cards. Here is the latest view from Shrine:
 
+![screen shot 2015-10-30 at 6 48 45 am](https://cloud.githubusercontent.com/assets/210413/10845011/5b71d7b4-7ed2-11e5-8df7-240cc3017a1d.png)
+
+Other generalized recommendations:
+
+* Start using **ngAnimate** with its new features to transition from grid to card details view
 * If a card item is clickable, then ripple or show border at mousedown or hover.
-* start using ngAnimate with its new features to transition from grid to card details view
-* listen for Escape and Arrow keys to return from cardDetails to gridView
+* Listen for Escape key [and Arrow keys] for some navigations. e.g. to return from cardDetails to gridView
 
