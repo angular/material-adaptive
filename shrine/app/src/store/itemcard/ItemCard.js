@@ -20,26 +20,25 @@ class ItemCardController {
    * Opens the detail view for the item.
    */
   openDetail() {
-    var stateOptions = {
-      category: this.item.category,
-      detail: this.item.url
-    }
-    this.$state.transitionTo('root.category.detail', stateOptions);
+    this.$state.transitionTo('root.category.detail', {
+      detail  : this.item.url,
+      category: this.item.category
+    });
   }
 }
 
 // Directive definition of the the ItemCard.
 class ItemCardDirective {
     constructor() {
-        this.bindToController = true;
-        this.controller = ItemCardController;
-        this.controllerAs = 'itemcard'
-        this.replace = true;
-        this.restrict = 'E'; 
-        this.scope = {
-          item: '='
-        }
-        this.templateUrl = 'src/store/itemcard/itemcard.html'; 
+        angular.extend(this, {
+          restrict         : 'E',
+          replace          : false,
+          scope            : {  item: '=' },
+          bindToController : true,
+          controllerAs     : 'itemcard',
+          controller       : ItemCardController,
+          templateUrl      : 'src/store/itemcard/itemcard.html'
+        });
     }  
 }
 
