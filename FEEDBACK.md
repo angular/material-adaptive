@@ -1,3 +1,14 @@
+## Overview
+
+As we prepare to release these applications for public consumption within the Angular Material community, our goal is
+
+* validate ease-of-use to create applications with Angular Material
+* validate implementations of adaptive layouts with Angular Material
+* provide both applications and code as sample for developer starter project
+* demonstrate code styles and best practices
+
+To that effect, this document contains some feedback regarding recommended changes to conform to the above criteria.
+
 ## Architecture and Coding
 
 In general, follow the **[AngularJS Style Guide](https://github.com/johnpapa/angular-styleguide)**
