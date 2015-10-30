@@ -10,16 +10,12 @@ In general, follow the **[AngularJS Style Guide](https://github.com/johnpapa/ang
 * Package by features
   * Use `feature` module for easy understanding and grouping
   * see style guide for [Folders-by-Feature](https://github.com/johnpapa/angular-styleguide#application-structure) and [LIFT](https://github.com/johnpapa/angular-styleguide#application-structure-lift-principle)
-  
 * Create an App Module
   * https://github.com/johnpapa/angular-styleguide#style-y163
-  
 * Refactor routing to feature `<feature_name>/Routes.js` and `app/Routes.js`
   * Use [RouterHelper](https://github.com/johnpapa/angular-styleguide#routing)
-  
 * Refactor theming to `app/Themes.js` 
   * Build a ThemeHelper similar to **RouterHelper**
-  
 * Modules
   * each feature should have its own Angular module (registrations and configs)
   * each ng module exports its name
