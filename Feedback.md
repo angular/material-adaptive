@@ -2,8 +2,8 @@
 
 In general, follow the **[AngularJS Style Guide](https://github.com/johnpapa/angular-styleguide)**
 
-Comment your class and critical functions
-Make sure your application works as expected with AngularJS 1.4.7
+*  Comment your class and critical functions
+*  Make sure your application works as expected with AngularJS 1.4.7
 
 ### Coding Guidelines
 
