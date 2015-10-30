@@ -1,13 +1,13 @@
 ## Overview
 
-As we prepare to release these applications for public consumption [and use by the Angular Material community], our goals are:
+Our originating goals for these Material Adaptive applications were:
 
 * validate ease-of-use to create applications with Angular Material
-* validate implementations of adaptive layouts with Angular Material
+* tests implementations of adaptive layouts with Angular Material
 * provide both applications and code as sample for developer starter project
 * demonstrate code styles and best practices
 
-To that effect, this document contains some feedback regarding recommended changes to conform to the above criteria.
+As we prepare to release these applications for public consumption [and use by the Angular Material community], we will periodically review the functionality, implementation, and architectures. This document contains some feedback regarding recommended changes [in order to achieve the goals listed above].
 
 ## Architecture and Coding
 
