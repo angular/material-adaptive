@@ -1,6 +1,6 @@
 ## Overview
 
-As we prepare to release these applications for public consumption within the Angular Material community, our goal is
+As we prepare to release these applications for public consumption [and use by the Angular Material community], our goals are:
 
 * validate ease-of-use to create applications with Angular Material
 * validate implementations of adaptive layouts with Angular Material
