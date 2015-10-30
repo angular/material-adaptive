@@ -9,7 +9,7 @@ Our originating goals for these Material Adaptive applications were:
 
 As we prepare to release these applications for public consumption [and use by the Angular Material community], we will periodically review their functionality, implementation, and architectures. 
 
-This document contains some feedback regarding recommended changes [in order to achieve the goals listed above].
+This document contains recommended changes [in order to achieve the goals listed above].
 
 ## Architecture and Coding
 
