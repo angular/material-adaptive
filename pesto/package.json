@@ -1,9 +1,9 @@
 {
-  "name": "material-start",
+  "name": "material-adaptive-pesto",
+  "description": "An Angular Material Adaptive Layout project",
+  "repository": "https://github.com/angular/material-adaptive",
   "private": true,
   "version": "0.0.0",
-  "description": "A starter project for AngularJS Material",
-  "repository": "https://github.com/angular/material-start",
   "license": "MIT",
   "jspm": {
     "directories": {
@@ -11,9 +11,9 @@
       "lib": "app/src"
     },
     "dependencies": {
-      "angular": "github:angular/bower-angular@^1.4.1",
-      "angular-animate": "github:angular/bower-angular-animate@^1.4.1",
-      "angular-aria": "github:angular/bower-angular-aria@^1.4.1",
+      "angular": "github:angular/bower-angular@^1.4.7",
+      "angular-animate": "github:angular/bower-angular-animate@^1.4.7",
+      "angular-aria": "github:angular/bower-angular-aria@^1.4.7",
       "angular-material": "github:angular/bower-material@master",
       "angular-route": "github:angular/bower-angular-route@^1.4.6",
       "css": "github:systemjs/plugin-css@^0.1.6",
