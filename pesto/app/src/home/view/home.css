@@ -139,23 +139,29 @@ div.pesto-recipe-grid-image.ng-anchor-out {
 .pesto-home-grid md-grid-tile-footer {
   background: white;
   color: #333;
-  padding-left: 10px;
+  padding-left: 16px;
   text-align: left;
 }
 
+/**
+ * Material spec wants 16px of space at top, which is about what we get
+ * by default here.
+ */
 div.recipe-tile-footer {
-  margin-top: 10px;
-  margin-bottom: 15px;
+  margin-top: 0;
 }
 
-/* Apparently this is hard-coded to 48px. */
+/**
+ * Apparently this is hard-coded to 48px, material spec for grid footer is 68px.
+ * https://spec.googleplex.com/quantum/components/grid-lists.html#grid-lists-specs
+ */
 .pesto-home-grid md-grid-tile-footer {
-  height: 72px;
+  height: 68px;
 }
 
 .pesto-home-grid md-grid-tile-footer .pesto-recipe-icon {
   display: inline-block;
-  padding-right: 20px;
+  padding-right: 16px;
   vertical-align: top;
 }
 
@@ -169,12 +175,12 @@ div.recipe-tile-footer {
 
 .pesto-recipe-title {
   color: #333;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .pesto-recipe-author {
   color: #888;
-  font-size: 14px;
+  font-size: 12px;
   padding-top: 5px;
 }
 
