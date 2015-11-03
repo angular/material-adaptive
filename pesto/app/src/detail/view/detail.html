@@ -61,7 +61,7 @@
             <span ng-if="!detail.isEditing()">{{detail.recipe.description}}</span>
             <md-input-container ng-if="detail.isEditing()">
               <label>Recipe description</label>
-              <textarea type="text" ng-model="detail.recipe.description" placeholder=""></textarea>
+              <textarea ng-model="detail.recipe.description"></textarea>
             </md-input-container>            
           </div>
         </div>

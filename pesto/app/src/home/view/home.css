@@ -1,8 +1,32 @@
-.pesto-home-page {
+/**
+ * For the page content, use a horizontal flexbox with the sidebar on the left
+ * and the main content on the right. This allows the sidebar to switch to
+ * persistent mode on large displays and fit into the layout correctly.
+ */
+.pesto-home-container {
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+}
+
+.pesto-home-container md-sidenav {
+  flex-grow: 0;
+  -webkit-flex-grow: 0;
+}
+
+/**
+ * The actual content takes up the remaining horizontal space (all of it if the
+ * persistent sidebar isn't shown), and sets up a vertical flexbox for its children.
+ */
+.pesto-home-content {
   display: flex;
   display: -webkit-flex;
   flex-direction: column;
   -webkit-flex-direction: column;
+  flex-grow: 1;
+  -webkit-flex-grow: 1;
 }
 
 /**
