@@ -3,14 +3,16 @@
  */
 class HomeController {
 
-  constructor($scope, $window, $location, $timeout, $mdSidenav, RecipeStorage) {
-    $scope.pageClass = 'pesto-home-page';
+  constructor($scope, $window, $location, $timeout, $mdSidenav, $mdMedia, RecipeStorage) {
+    $scope.pageClass = 'pesto-home-pageq';
 
     this.location_ = $location;
     this.mdSidenav_ = $mdSidenav;
+    this.mdMedia_ = $mdMedia;
     this.recipeStorage_ = RecipeStorage;
     
     this.isSearchVisible = false;
+    this.isPersistentSidebarVisible = false;
     this.searchString = '';
     this.fetchRecipes();
 
@@ -67,7 +69,16 @@ class HomeController {
   }
   
   toggleSideNav() {
-    this.mdSidenav_('left').toggle();
+    if (this.isWindowLarge()) {
+      if (this.mdSidenav_('left').isLockedOpen()) {
+        this.isPersistentSidebarVisible = !this.isPersistentSidebarVisible;
+        //this.mdSidenav_('left').toggle();
+      } else {
+        this.isPersistentSidebarVisible = true;
+      }
+    } else {
+      this.mdSidenav_('left').toggle();
+    }
   }
   
   gotoSettings() {
@@ -93,10 +104,14 @@ class HomeController {
   gotoNewRecipe() {
     this.location_.path('/recipe/new');
   }
+
+  isWindowLarge() {
+    return this.mdMedia_('(min-width: 1200px)');
+  }
 }
 
 HomeController.$inject = [
-    '$scope', '$window', '$location', '$timeout', '$mdSidenav', 'RecipeStorage'
+    '$scope', '$window', '$location', '$timeout', '$mdSidenav', '$mdMedia', 'RecipeStorage'
 ];
 
 export default HomeController;
