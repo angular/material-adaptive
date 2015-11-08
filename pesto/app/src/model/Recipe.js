@@ -5,6 +5,7 @@ class Recipe {
   constructor(params) {
     if (!params) params = {};
     this.id = params.id || 0;
+    this.dateCreated = params.dateCreated || new Date();
     this.name = params.name || '';
     this.author = params.author || '';
     this.imageUrl = params.imageUrl || '';
@@ -16,6 +17,7 @@ class Recipe {
   copy() {
     return new Recipe({
       id: this.id,
+      dateCreated: this.dateCreated,
       name: this.name,
       author: this.author,
       imageUrl: this.imageUrl,
@@ -36,6 +38,7 @@ class Recipe {
     }
     return new Recipe({
       id: json.id,
+      dateCreated: json.dateCreated,
       name: json.name,
       description: json.description,
       author: json.author,

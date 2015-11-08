@@ -6,10 +6,11 @@ import Recipe from 'model/Recipe';
 
 let STORE = {};
 
-// The default sort order is descending by ID, so these are listed in the order
-// that they appear on the home page.
-STORE[6] = Recipe.fromJson({
-  id: 6,
+// The default sort order is descending by dateCreated, so these are listed in
+// the order that they appear on the home page.
+STORE[1] = Recipe.fromJson({
+  id: 1,
+  dateCreated: new Date(2015, 0, 30),
   name: 'Pesto Bruchetta',
   author: 'Alice Jones',
   imageUrl: '/pesto/app/assets/recipe_images/recipe1.jpg',
@@ -24,8 +25,9 @@ STORE[6] = Recipe.fromJson({
   ],
 });
 
-STORE[5] = Recipe.fromJson({
-  id: 5,
+STORE[2] = Recipe.fromJson({
+  id: 2,
+  dateCreated: new Date(2015, 0, 29),
   name: 'Chocolate chip cookies',
   author: 'Bob Smith',
   imageUrl: '/pesto/app/assets/recipe_images/cat_cookies.jpg',
@@ -40,8 +42,9 @@ STORE[5] = Recipe.fromJson({
   ],
 });
 
-STORE[4] = Recipe.fromJson({
-  id: 4,
+STORE[3] = Recipe.fromJson({
+  id: 3,
+  dateCreated: new Date(2015, 0, 28),
   name: 'Apple pie',
   author: 'Carol Clark',
   imageUrl: '/pesto/app/assets/recipe_images/recipe2.jpg',
@@ -56,8 +59,9 @@ STORE[4] = Recipe.fromJson({
   ],
 });
 
-STORE[3] = Recipe.fromJson({
-  id: 3,
+STORE[4] = Recipe.fromJson({
+  id: 4,
+  dateCreated: new Date(2015, 0, 27),
   name: 'Belgian waffles',
   author: 'Dave Johnson',
   imageUrl: '/pesto/app/assets/recipe_images/recipe3.jpg',
@@ -72,8 +76,9 @@ STORE[3] = Recipe.fromJson({
   ],
 });
 
-STORE[2] = Recipe.fromJson({
-  id: 2,
+STORE[5] = Recipe.fromJson({
+  id: 5,
+  dateCreated: new Date(2015, 0, 26),
   name: 'Carrot cake',
   author: 'Eve Ellison',
   imageUrl: '/pesto/app/assets/recipe_images/recipe4.jpg',
@@ -88,8 +93,9 @@ STORE[2] = Recipe.fromJson({
   ],
 });
 
-STORE[1] = Recipe.fromJson({
-  id: 1,
+STORE[6] = Recipe.fromJson({
+  id: 6,
+  dateCreated: new Date(2015, 0, 25),
   name: 'Chicken Kiev',
   author: 'Mallory Masters',
   imageUrl: '/pesto/app/assets/recipe_images/recipe5.jpg',
@@ -118,8 +124,8 @@ class RecipeStorage {
     Object.keys(STORE).forEach((id) => {
       recipes.push(new Recipe(STORE[id]));
     });
-    // Return by descending ID, so added recipes show up first.
-    recipes.sort((r1, r2) => r2.id - r1.id);
+    // Return by descending date, so newer recipes show up first.
+    recipes.sort((r1, r2) => r2.dateCreated - r1.dateCreated);
     return this.q_.when(recipes);
   }
 
@@ -149,6 +155,8 @@ class RecipeStorage {
   saveNewRecipe(r) {
     let newRecipe = new Recipe(r);
     newRecipe.id = nextId;
+    // Would be better if there were an injectable service to get current date.
+    newRecipe.dateCreated = new Date();
     STORE[nextId] = newRecipe;
     nextId += 1;
     return this.q_.when();
