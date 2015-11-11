@@ -36,7 +36,7 @@ class ItemsService {
       {
         category: 'furniture',
         url: 'green_chair',
-        img: 'assets/images/green_chair.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/green_chair.jpg',
         name: 'Green Chair',
         description: 'This is a green chair',
         featured: false
@@ -44,7 +44,7 @@ class ItemsService {
       {
         category: 'kids',
         url: 'fish_bowl',
-        img: 'assets/images/fish_bowl.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/fish_bowl.jpg',
         name: 'Fish Bowl',
         description: 'This is a fish bowl.',
         featured: true
@@ -52,7 +52,7 @@ class ItemsService {
       {
         category: 'fashion',
         url: 'lipstick',
-        img: 'assets/images/lipstick.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/lipstick.jpg',
         name: 'Lipstick',
         description: 'These are tubes of lipstick.',
         featured: false
@@ -60,7 +60,7 @@ class ItemsService {
       {
         category: 'food',
         url: 'popsicle',
-        img: 'assets/images/popsicle.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/popsicle.jpg',
         name: 'Popsicle',
         description: 'This is a red popsicle',
         featured: true
@@ -68,7 +68,7 @@ class ItemsService {
       {
         category: 'kids',
         url: 'backpack',
-        img: 'assets/images/backpack.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/backpack.jpg',
         name: 'Backpack',
         description: 'This is a backpack',
         featured: true
@@ -76,7 +76,7 @@ class ItemsService {
       {
         category: 'kids',
         url: 'beach_ball',
-        img: 'assets/images/beach_ball.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/beach_ball.jpg',
         name: 'Beach Ball',
         description: 'This is a beach ball',
         featured: false
@@ -84,7 +84,7 @@ class ItemsService {
       {
         category: 'outdoors',
         url: 'binoculars',
-        img: 'assets/images/binoculars.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/binoculars.jpg',
         name: 'Binoculars',
         description: 'This is a pair of binoculars',
         featured: false
@@ -92,7 +92,7 @@ class ItemsService {
       {
         category: 'furniture',
         url: 'clock',
-        img: 'assets/images/clock.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/clock.jpg',
         name: 'Clock',
         description: 'This is a clock',
         featured: false
@@ -100,7 +100,7 @@ class ItemsService {
       {
         category: 'outdoors',
         url: 'flippers',
-        img: 'assets/images/flippers.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/flippers.jpg',
         name: 'Flippers',
         description: 'This is a pair of flippers',
         featured: false
@@ -108,7 +108,7 @@ class ItemsService {
       {
         category: 'fashion',
         url: 'green_shoes',
-        img: 'assets/images/green_shoes.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/green_shoes.jpg',
         name: 'Green Shoes',
         description: 'This is a pair of green shoes',
         featured: false
@@ -116,7 +116,7 @@ class ItemsService {
       {
         category: 'outdoors',
         url: 'helmet',
-        img: 'assets/images/helmet.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/helmet.jpg',
         name: 'Helmet',
         description: 'This is a helmet.',
         featured: true
@@ -124,7 +124,7 @@ class ItemsService {
       {
         category: 'furniture',
         url: 'lamp',
-        img: 'assets/images/lamp.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/lamp.jpg',
         name: 'Lamp',
         description: 'This is a lamp',
         featured: false
@@ -132,7 +132,7 @@ class ItemsService {
       {
         category: 'furniture',
         url: 'lawn_chair',
-        img: 'assets/images/lawn_chair.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/lawn_chair.jpg',
         name: 'Lawn Chair',
         description: 'This is a lawn chair',
         featured: false
@@ -140,7 +140,7 @@ class ItemsService {
       {
         category: 'tools',
         url: 'paintbrush',
-        img: 'assets/images/paintbrush.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/paintbrush.jpg',
         name: 'Paintbrush',
         description: 'This is a paintbrush',
         featured: false
@@ -148,7 +148,7 @@ class ItemsService {
       {
         category: 'tools',
         url: 'pen',
-        img: 'assets/images/pen.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/pen.jpg',
         name: 'Pen',
         description: 'This is a pen',
         featured: false
@@ -156,7 +156,7 @@ class ItemsService {
       {
         category: 'furniture',
         url: 'radio',
-        img: 'assets/images/radio.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/radio.jpg',
         name: 'Radio',
         description: 'This is a radio',
         featured: false
@@ -164,7 +164,7 @@ class ItemsService {
       {
         category: 'furniture',
         url: 'red_typewriter',
-        img: 'assets/images/red_typewriter.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/red_typewriter.jpg',
         name: 'Red Typewriter',
         description: 'This is a red typewriter',
         featured: false
@@ -172,7 +172,7 @@ class ItemsService {
       {
         category: 'fashion',
         url: 'shoes',
-        img: 'assets/images/shoes.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/shoes.jpg',
         name: 'Shoes',
         description: 'This is a pair of shoes',
         featured: false
@@ -180,7 +180,7 @@ class ItemsService {
       {
         category: 'fashion',
         url: 'sunglasses',
-        img: 'assets/images/sunglasses.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/sunglasses.jpg',
         name: 'sunglasses',
         description: 'This is a pair of sunglasses',
         featured: false
@@ -188,7 +188,7 @@ class ItemsService {
       {
         category: 'outdoors',
         url: 'surfboard',
-        img: 'assets/images/surfboard.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/surfboard.jpg',
         name: 'Surfboard',
         description: 'This is a surfboard',
         featured: false
@@ -196,7 +196,7 @@ class ItemsService {
       {
         category: 'food',
         url: 'teapot',
-        img: 'assets/images/teapot.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/teapot.jpg',
         name: 'Teapot',
         description: 'This is a teapot',
         featured: false
@@ -204,7 +204,7 @@ class ItemsService {
       {
         category: 'outdoors',
         url: 'tent',
-        img: 'assets/images/tent.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/tent.jpg',
         name: 'Tent',
         description: 'This is a tent',
         featured: false
@@ -212,7 +212,7 @@ class ItemsService {
       {
         category: 'tools',
         url: 'tools',
-        img: 'assets/images/tools.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/tools.jpg',
         name: 'Tools',
         description: 'This is a set of tools',
         featured: false
@@ -220,7 +220,7 @@ class ItemsService {
       {
         category: 'fashion',
         url: 'umbrella',
-        img: 'assets/images/umbrella.jpg',
+        img: '//www.gstatic.com/angular/material-adaptive/shrine/umbrella.jpg',
         name: 'Umbrella',
         description: 'This is an umbrella',
         featured: false
