@@ -32,7 +32,6 @@ class ItemCardDirective {
     constructor() {
         angular.extend(this, {
           restrict         : 'E',
-          replace          : false,
           scope            : {  item: '=' },
           bindToController : true,
           controllerAs     : 'itemcard',
