@@ -59,6 +59,15 @@ md-autocomplete.city-search {
   font-weight: bold;
 }
 
+md-autocomplete.city-search:first-of-type {
+  margin-top: 20px;
+}
+
+md-autocomplete.city-search md-input-container .md-input {
+  line-height: inherit;
+  height: auto;
+}
+
 md-autocomplete.city-search md-input-container label {
   transform: translate3d(0, 45px, 0) scale(1);
 }
@@ -118,4 +127,12 @@ div.price-badge div.city {
 
 md-tabs {
   border-radius: 0;
+}
+
+md-dialog {
+  max-width: 512px;
+}
+
+md-dialog .md-button.selected md-icon {
+  border: solid #888 1px;
 }

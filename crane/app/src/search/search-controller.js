@@ -22,9 +22,14 @@ export default class SearchCtrl {
   }
 
   pickSeat() {
+    var searchCtrl = this;
     this.$mdDialog.show({
+      controller:
+          class {constructor() { this.$mdDialog = searchCtrl.$mdDialog; }},
+      controllerAs: 'dialogCtrl',
       template: seatPicker,
       clickOutsideToClose: true,
+      bindings: {$mdDialog: this.$mdDialog},
     });
   }
 }
