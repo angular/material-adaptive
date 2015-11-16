@@ -81,14 +81,18 @@
     </form>
   </md-card-content>
 </md-card>
-<md-content flex
-            class="destination"
-            style="background-image: url(images/miami.jpg)">
-  <div class="price-badge" layout="row" layout-align="end center">
-    $299
-    <div class="more">
-      <div class="city">Miami</div>
-      Flight and hotel
+
+<md-content flex layout="column" layout-md="row" layout-fill>
+  <div class="destination" layout-fill
+       ng-repeat="city in homeCtrl.cities"
+       style="background-image: url(images/{{city.image}})">
+    <div class="price-badge" layout="row" layout-align="end center"
+         ng-click="homeCtrl.toCity = city.display">
+      ${{$index * 50 + 299}}
+      <div class="more">
+        <div class="city">{{city.display}}</div>
+        Flight and hotel
+      </div>
     </div>
   </div>
 </md-content>

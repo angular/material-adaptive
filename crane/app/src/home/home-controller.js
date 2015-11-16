@@ -3,11 +3,18 @@ export default class HomeCtrl {
     this.$location = $location;
     this.roundTrip = 'true';
     this.cities = [
-      {display: 'Miami'},
-      {display: 'Chicago'},
-      {display: 'New York'},
-      {display: 'Mexico City'},
-      {display: 'San Francisco'},
+      {display: 'Miami',
+       image: 'miami.jpg'},
+      {display: 'Tokyo',
+       image: 'tokyo.jpg'},
+      {display: 'New York',
+       image: 'new-york-night.jpg'},
+      {display: 'Perth',
+       image: 'perth.jpg'},
+      {display: 'San Francisco',
+       image: 'san-francisco.jpg'},
+      {display: 'Seattle',
+       image: 'seattle.jpg'},
     ];
   }
 

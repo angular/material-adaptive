@@ -90,6 +90,11 @@ div.price-badge {
   font-weight: bold;
   font-size: 45px;
   padding: 50px;
+  outline: none;
+  cursor: pointer;
+}
+div.price-badge:focus {
+  color: rgba(255, 255, 255, .8);
 }
 
 div.price-badge > div.more {
@@ -109,6 +114,7 @@ div.price-badge div.city {
 .destination {
   background-size: cover;
   background-position: center;
+  min-width: 100%;
 }
 
 .seat-picker {
@@ -135,4 +141,16 @@ md-dialog {
 
 md-dialog .md-button.selected md-icon {
   border: solid #888 1px;
+}
+
+ng-view, md-content.layout-fill {
+  min-height: calc(100% - 128px);
+  height: calc(100% - 128px);
+}
+
+@media (max-width: 960px) {
+  ng-view {
+    min-height: calc(100% - 64px);
+    height: calc(100% - 64px);
+  }
 }
