@@ -4,7 +4,7 @@
             class="md-sidenav-left">
   <div class="pesto-sidebar-header">
     <md-button class="pesto-menu md-icon-button" aria-label="Close" ng-click="home.toggleSideNav()">
-      <md-icon md-svg-icon="assets/pesto-arrow-back.svg"></md-icon>
+      <md-icon md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-arrow-back.svg"></md-icon>
     </md-button>
   </div>
   <md-list>
@@ -21,30 +21,30 @@
   <md-button ng-hide="home.isWindowLarge() && home.isPersistentSidebarVisible"
              class="pesto-menu md-icon-button" 
              ng-click="home.toggleSideNav()">
-    <md-icon md-svg-icon="assets/pesto-menu.svg" aria-label="Menu"></md-icon>
+    <md-icon md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-menu.svg" aria-label="Menu"></md-icon>
   </md-button>
   <span class="pesto-search">
     <span class="pesto-search-controls" ng-if="home.isSearchVisible">
       <md-input-container md-no-float>
         <input type="text" ng-change="home.fetchRecipes()" ng-model="home.searchString" placeholder="Search" />
       </md-input-container>
-      <md-icon ng-click="home.clearSearch()" md-svg-icon="assets/pesto-cancel.svg" aria-label="Clear"></md-icon>
+      <md-icon ng-click="home.clearSearch()" md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-cancel.svg" aria-label="Clear"></md-icon>
     </span>
     <md-button class="md-icon-button" ng-click="home.toggleSearchVisible()">
-      <md-icon md-svg-icon="assets/pesto-search.svg" aria-label="Search"></md-icon>
+      <md-icon md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-search.svg" aria-label="Search"></md-icon>
     </md-button>
   </span>
 </div>
 
 <img class="pesto-sticky-logo" ng-class="{'search-visible': home.isSearchVisible}"
-     src="assets/pesto-banner-top.png" />
+     src="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-banner-top.png" />
 
 <div class="pesto-home-scrollable">
   <div class="pesto-home-banner top">
-    <img class="pesto-banner-top" src="assets/pesto-banner-top.png">
+    <img class="pesto-banner-top" src="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-banner-top.png">
   </div>
   <div class="pesto-home-banner bottom">
-    <img class="pesto-banner-bottom" src="assets/pesto-banner-bottom.png">
+    <img class="pesto-banner-bottom" src="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-banner-bottom.png">
   </div>
 
   <md-divider></md-divider>
@@ -75,7 +75,7 @@
           <md-grid-tile-footer class="recipe-tile-footer">
             <div class="recipe-tile-footer">
               <div class="pesto-recipe-icon">
-                <img src="assets/pesto-recipe-icon.png">
+                <img src="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-recipe-icon.png">
               </div>
               <div class="pesto-recipe-info">
                 <div class="pesto-recipe-title">{{recipe.name}}</div>
@@ -91,7 +91,7 @@
 
 <!-- Floating action button, should this change position for desktop/mobile? -->
 <md-button class="md-fab pesto-new-button" aria-label="New Recipe" ng-click="home.gotoNewRecipe()">
-  <md-icon md-svg-src="assets/pesto-add.svg"></md-icon>
+  <md-icon md-svg-src="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-add.svg"></md-icon>
 </md-button>
 </div> <!-- .pesto-home-content -->
 </div> <!-- .pesto-home-container -->

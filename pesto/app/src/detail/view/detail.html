@@ -6,13 +6,15 @@
 
   <div class="pesto-recipe-layout">
     <div class="pesto-recipe-header">
-      <md-button ng-if="!detail.isEditing()" class="pesto-recipe-back md-icon-button" aria-label="Close"
+      <md-button ng-if="!detail.isEditing()"
+                 class="pesto-recipe-back md-icon-button"
+                 aria-label="Close"
                  ng-click="detail.goBack()">
-        <md-icon md-svg-icon="assets/pesto-arrow-back.svg"></md-icon>
+        <md-icon md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-arrow-back.svg"></md-icon>
       </md-button>
       <md-menu ng-if="!detail.isEditing()" class="pesto-recipe-more">
         <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)" aria-label="More menu">
-          <md-icon md-svg-icon="assets/pesto-more-vert.svg"></md-icon>
+          <md-icon md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-more-vert.svg"></md-icon>
         </md-button>
         <md-menu-content>
           <md-menu-item>
@@ -32,11 +34,11 @@
 
       <md-button ng-if="detail.isEditing()" class="pesto-recipe-cancel md-icon-button" aria-label="Cancel"
                  ng-click="detail.cancelChanges()">
-        <md-icon md-svg-icon="assets/pesto-cancel.svg"></md-icon>
+        <md-icon md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-cancel.svg"></md-icon>
       </md-button>
       <md-button ng-if="detail.isEditing()" class="pesto-recipe-save md-icon-button" aria-label="More"
                  ng-click="detail.saveChanges()">
-        <md-icon md-svg-icon="assets/pesto-check.svg"></md-icon>
+        <md-icon md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-check.svg"></md-icon>
       </md-button>
     </div>
     
@@ -143,7 +145,7 @@
              class="md-fab pesto-edit-button"
              aria-label="New Recipe"
              ng-click="detail.editRecipe()">
-    <md-icon md-svg-src="assets/pesto-edit.svg"></md-icon>
+    <md-icon md-svg-src="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-edit.svg"></md-icon>
   </md-button>
 
 </div>
