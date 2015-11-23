@@ -59,6 +59,15 @@ md-autocomplete.city-search {
   font-weight: bold;
 }
 
+md-autocomplete.city-search:first-of-type {
+  margin-top: 20px;
+}
+
+md-autocomplete.city-search md-input-container .md-input {
+  line-height: inherit;
+  height: auto;
+}
+
 md-autocomplete.city-search md-input-container label {
   transform: translate3d(0, 45px, 0) scale(1);
 }
@@ -81,6 +90,11 @@ div.price-badge {
   font-weight: bold;
   font-size: 45px;
   padding: 50px;
+  outline: none;
+  cursor: pointer;
+}
+div.price-badge:focus {
+  color: rgba(255, 255, 255, .8);
 }
 
 div.price-badge > div.more {
@@ -100,6 +114,7 @@ div.price-badge div.city {
 .destination {
   background-size: cover;
   background-position: center;
+  min-width: 100%;
 }
 
 .seat-picker {
@@ -118,4 +133,24 @@ div.price-badge div.city {
 
 md-tabs {
   border-radius: 0;
+}
+
+md-dialog {
+  max-width: 512px;
+}
+
+md-dialog .md-button.selected md-icon {
+  border: solid #888 1px;
+}
+
+ng-view, md-content.layout-fill {
+  min-height: calc(100% - 128px);
+  height: calc(100% - 128px);
+}
+
+@media (max-width: 960px) {
+  ng-view {
+    min-height: calc(100% - 64px);
+    height: calc(100% - 64px);
+  }
 }

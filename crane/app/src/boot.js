@@ -12,6 +12,6 @@ import main from 'app/main';
  */
 angular.element(document).ready(function() {
   let body = document.body;
-  let app = angular.module('crane', ['ngRoute', material, main,])
-  angular.bootstrap(body, [app.name], {strictDi: false})
+  let app = angular.module('crane', ['ngRoute', material, main,]);
+  angular.bootstrap(body, [app.name], {strictDi: false});
 });
