@@ -2,7 +2,7 @@
   <md-list layout-fill>
     <div class="article-detail" ng-repeat="article in actrl.articles">
       <md-list-item>
-        <img ng-src="assets/avatars/{{article.author}}.jpg" class="md-avatar" alt="{{article.name}}" />
+        <img ng-src="//www.gstatic.com/angular/material-adaptive/publishing/{{article.author}}.jpg" class="md-avatar" alt="{{article.name}}" />
         <div class="md-list-item-text" layout="column">
           <a ng-href="#/article/{{article.id}}"><h4>{{ article.title }}</h4></a>
           <a ng-href="#/author/{{article.author}}">{{ article.name }}</a>

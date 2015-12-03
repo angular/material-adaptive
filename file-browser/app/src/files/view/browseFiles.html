@@ -96,7 +96,7 @@
         <md-list ng-if="ul.layout != 'grid'">
           <md-subheader>File</md-subheader>
           <md-list-item ng-repeat="it in ul.files" ng-click="ul.selectFile(it)" ng-class="{'selected' : it === ul.selected }">
-            <img src="assets/photo/{{it.name}}" class="file-avatar"></img>
+            <img src="//www.gstatic.com/angular/material-adaptive/file-browser/{{it.name}}" class="file-avatar"></img>
             {{it.name}}
           </md-list-item>
         </md-list>
@@ -105,7 +105,7 @@
               md-cols="4" md-row-height="1:1"
               md-gutter="8px">
           <md-grid-tile ng-repeat="it in ul.files">
-            <img src="assets/photo/{{it.name}}" style="height: auto; width: 100%;"></img>
+            <img src="//www.gstatic.com/angular/material-adaptive/file-browser/{{it.name}}" style="height: auto; width: 100%;"></img>
           </md-grid-tile>
         </md-grid-list>
       </md-content>
@@ -150,7 +150,7 @@
 
       <!-- File detail content -->
       <div>
-        <img src="assets/photo/{{ul.selected.name}}" class="preview"></img>
+        <img src="//www.gstatic.com/angular/material-adaptive/file-browser/{{ul.selected.name}}" class="preview"></img>
         <div layout="row">
           <p layout="column" flex>Available offline</p>
           <div layout="column">

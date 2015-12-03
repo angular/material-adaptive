@@ -2,7 +2,7 @@
   <md-list ng-controller="CommentsController as cctrl" layout-fill>
     <div class="addComment comment">
       <md-list-item>
-        <img ng-src="assets/avatars/current_user.jpg" class="md-avatar" alt="Current user" />
+        <img ng-src="//www.gstatic.com/angular/material-adaptive/publishing/current_user.jpg" class="md-avatar" alt="Current user" />
         <div class="md-list-item-text" layout="column">
           <h2>Add comment</h3>
           <textarea ng-model="cctrl.newComment"> </textarea>
@@ -15,7 +15,7 @@
     </div>
     <div class="comment" ng-repeat="comment in cctrl.comments">
       <md-list-item class="md-2-line">
-        <img ng-src="assets/avatars/{{comment.author}}.jpg" class="md-avatar" alt="{{comment.name}}" />
+        <img ng-src="//www.gstatic.com/angular/material-adaptive/publishing/{{comment.author}}.jpg" class="md-avatar" alt="{{comment.name}}" />
         <div class="md-list-item-text" layout="column">
           <h3>{{ comment.name }}</h3>
           <h4>{{ cctrl.formatDate(comment.date) }}</h4>

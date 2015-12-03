@@ -85,7 +85,7 @@
 <md-content flex layout="column" layout-md="row" layout-fill>
   <div class="destination" layout-fill
        ng-repeat="city in homeCtrl.cities"
-       style="background-image: url(images/{{city.image}})">
+       style="background-image: url(//www.gstatic.com/angular/material-adaptive/crane/{{city.image}})">
     <div class="price-badge" layout="row" layout-align="end center"
          ng-click="homeCtrl.toCity = city.display">
       ${{$index * 50 + 299}}
