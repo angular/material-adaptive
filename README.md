@@ -8,4 +8,10 @@ Our goals for creating these Material Adaptive applications are:
 * Demonstrate code styles and best practices
 
 
-![adaptive_templates](https://cloud.githubusercontent.com/assets/210413/10851274/4041b114-7ef8-11e5-9d3f-d9886e04e316.jpg)
+![shrinecollage](https://cloud.githubusercontent.com/assets/210413/11588318/1d37e11c-9a45-11e5-913d-971b093983d6.jpg)
+
+
+## Live Demos
+
+Click [Firebase Demos](https://material-adaptive.firebaseapp.com/) to links to the individual, live Adaptive demos.
+
