@@ -3,10 +3,11 @@
 // then load the main.css to provide overrides, etc.
 
 import 'angular-material/angular-material.css!'
+import 'assets/reset.css!'
 import 'assets/style.css!'
-import 'detail/view/detail.css!'
+//import 'detail/view/detail.css!'
 //import 'home/view/home.css!'
-import 'settings/view/settings.css!'
+//import 'settings/view/settings.css!'
 
 // Load Angular libraries
 

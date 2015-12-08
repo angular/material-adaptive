@@ -1,74 +1,42 @@
-<div class="pesto-page pesto-settings-page">
-  <div class="pesto-settings-header">
-    <md-button class="pesto-settings-cancel md-icon-button" ng-click="settings.goBack()">
-      <md-icon md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-cancel.svg"
-               aria-label="Cancel"></md-icon>
+<settings-view>
+  <div class="header">
+    <md-button class="md-icon-button icon-right" aria-label="Back" ng-click="settings.close($event)">
+      <md-icon class="material-icons">close</md-icon>
     </md-button>
-    <span class="pesto-settings-title">Settings</span>
-    <md-button class="pesto-settings-save md-icon-button" ng-click="settings.goBack()">
-      <md-icon md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-settings-save.svg"
-               aria-label="Save"></md-icon>
-    </md-button>
+    <div class="title">
+      Settings
+    </div>
   </div>
-  
-  <div class="pesto-settings-content">
-    <div class="pesto-settings-section-title">
-      Account
+  <section class="card-info">
+    <ul>
+      <li class="option-item" ng-repeat="setting_opt in settings.settings_data">
+        <div class="option-header" ng-click="settings.toggleContent($event, setting_opt)">
+          <p ng-class="{ 'active': setting_opt.show_content_default || !settings.isSmallDeviceScreen()}">{{setting_opt.name}}</p>
+          <span class="flex"></span>
+          <md-button class="md-icon-button icon-right" aria-label="Hide content" ng-if="settings.isSmallDeviceScreen()">
+            <md-icon class="material-icons" ng-if="setting_opt.show_content_default">keyboard_arrow_up</md-icon>
+            <md-icon class="material-icons" ng-if="!setting_opt.show_content_default">keyboard_arrow_down</md-icon>
+          </md-button>
+        </div>
+        <div class="option-content" ng-if="setting_opt.show_content_default || !settings.isSmallDeviceScreen()">
+          <div class="user-info" ng-if="setting_opt.extra_info">
+            <span class="avatar"></span>
+            <span>{{setting_opt.extra_info.user_name}}</span>
+          </div>
+          <md-list>
+            <md-list-item ng-repeat="opt in setting_opt.options">
+              <p ng-class="{ 'active': opt.value == true }">{{opt.name}}</p>
+              <md-checkbox class="md-secondary" ng-model="opt.value" ng-if="!settings.isSmallDeviceScreen()"></md-checkbox>
+              <md-switch class="md-secondary" ng-model="opt.value" ng-if="settings.isSmallDeviceScreen()"></md-switch>
+            </md-list-item>
+          </md-list>
+        </div>
+      </li>
+    </ul>
+    <div class="action-buttons">
+      <span flex></span>
+      <md-button ng-click="settings.close($event)">Cancel</md-button>
+      <md-button class="md-raised md-primary" ng-click="settings.close($event)">Save</md-button>
     </div>
-    <div class="pesto-settings-account-name">
-      {{settings.preferences.userName}}
-    </div>
-    <md-list>
-      <!--
-        This won't work correctly without duplicate md-list-item components for
-        small and large widths. If you try to use ng-show to selectively show
-        either the checkbox or switch, selecting one triggers the other and the
-        ngModel value flips twice, resulting in no change. If you use ng-if,
-        then clicking in the body of the list item won't toggle the control.
-        (Because it doesn't work when the target control is removed from the
-        DOM and recreated?)
-      -->
-      <md-list-item hide-sm ng-class="{'selected': settings.preferences.publicProfile}">
-        <p>Public profile</p>
-        <md-checkbox ng-model="settings.preferences.publicProfile"></md-checkbox>
-      </md-list-item>
-      <md-list-item hide-gt-sm ng-class="{'selected': settings.preferences.publicProfile}">
-        <p>Public profile</p>
-        <md-switch ng-model="settings.preferences.publicProfile"></md-switch>
-      </md-list-item>
-
-      <md-list-item hide-sm ng-class="{'selected': settings.preferences.dailyDigest}">
-        <p>Subscribe to daily digest</p>
-        <md-checkbox ng-model="settings.preferences.dailyDigest"></md-checkbox>
-      </md-list-item>
-      <md-list-item hide-gt-sm ng-class="{'selected': settings.preferences.dailyDigest}">
-        <p>Subscribe to daily digest</p>
-        <md-switch ng-model="settings.preferences.dailyDigest"></md-switch>
-      </md-list-item>
-    </md-list>
-
-    <div class="pesto-settings-section-title">
-      Notifications
-    </div>
-    <md-list>
-      <md-list-item hide-sm ng-class="{'selected': settings.preferences.emailNotifications}">
-        <p>Get email notifications</p>
-        <md-checkbox ng-model="settings.preferences.emailNotifications"></md-checkbox>
-      </md-list-item>
-      <md-list-item hide-gt-sm ng-class="{'selected': settings.preferences.emailNotifications}">
-        <p>Get email notifications</p>
-        <md-switch ng-model="settings.preferences.emailNotifications"></md-switch>
-      </md-list-item>
-
-      <md-list-item hide-sm ng-class="{'selected': settings.preferences.textNotifications}">
-        <p>Get text notifications</p>
-        <md-checkbox ng-model="settings.preferences.textNotifications"></md-checkbox>
-      </md-list-item>
-      <md-list-item hide-gt-sm ng-class="{'selected': settings.preferences.textNotifications}">
-        <p>Get text notifications</p>
-        <md-switch ng-model="settings.preferences.textNotifications"></md-switch>
-      </md-list-item>
-    </md-list>
-
-  </div>
-</div>
+  </section>
+</settings-view>
