@@ -14,6 +14,7 @@ STORE[1] = Recipe.fromJson({
   name: 'Pesto Bruchetta',
   author: 'Alice Jones',
   mainImageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/recipe1.jpg',
+  ingredientsImageUrl: '/assets/bread-icon.svg',
   description: 'This beautiful sprouts recipe...',
   ingredients: [
     {amount: '2 lbs', description: 'Sprouts'},
@@ -31,6 +32,7 @@ STORE[2] = Recipe.fromJson({
   name: 'Chocolate chip cookies',
   author: 'Bob Smith',
   mainImageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/cat_cookies.jpg',
+  ingredientsImageUrl: '/assets/bread-icon.svg',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
@@ -48,6 +50,7 @@ STORE[3] = Recipe.fromJson({
   name: 'Apple pie',
   author: 'Carol Clark',
   mainImageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/recipe2.jpg',
+  ingredientsImageUrl: '/assets/bread-icon.svg',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
@@ -65,6 +68,7 @@ STORE[4] = Recipe.fromJson({
   name: 'Belgian waffles',
   author: 'Dave Johnson',
   mainImageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/recipe3.jpg',
+  ingredientsImageUrl: '/assets/bread-icon.svg',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
@@ -82,6 +86,7 @@ STORE[5] = Recipe.fromJson({
   name: 'Carrot cake',
   author: 'Eve Ellison',
   mainImageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/recipe4.jpg',
+  ingredientsImageUrl: '/assets/bread-icon.svg',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
@@ -99,6 +104,7 @@ STORE[6] = Recipe.fromJson({
   name: 'Chicken Kiev',
   author: 'Mallory Masters',
   mainImageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/recipe5.jpg',
+  ingredientsImageUrl: '/assets/bread-icon.svg',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
