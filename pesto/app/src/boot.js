@@ -19,7 +19,6 @@ import 'angular-route'
 
 //import main from 'app/main'
 
-import MainController from 'app/MainController';
 import HomeController from 'home/HomeController';
 import RecipeDetailController from 'detail/RecipeDetailController';
 import SettingsController from 'settings/SettingsController';
@@ -74,8 +73,7 @@ angular
       .otherwise({redirectTo: '/home'});
     }]);
     
-    app.controller('MainController', MainController)
-        .controller('HomeController', HomeController)
+    app.controller('HomeController', HomeController)
         .controller('SettingsController', SettingsController)
         .controller('RecipeDetailController', RecipeDetailController);
 
