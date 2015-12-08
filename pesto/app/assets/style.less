@@ -54,7 +54,14 @@
 /************
  * body 
  ************/
-body {
+
+/**
+ * bnenning: We have to apply a more specific selector here (.pesto is on the
+ * top-level HTML element) in order to override the ng-material styles. There's
+ * apparently no way to force this CSS to come after the ng-material CSS, see
+ * http://stackoverflow.com/questions/32258456/importing-css-and-controlling-order-in-head-using-jspm-and-system-js
+ */
+.pesto body {
   background-color: @secondary_color_600;
   font-family: 'Raleway';
 

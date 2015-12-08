@@ -1,13 +1,10 @@
+/**
+ * We want our styles to load after the ngMaterial CSS, but there's
+ * inexplicably no way to enforce that with jspm.
+ * http://stackoverflow.com/questions/32258456/importing-css-and-controlling-order-in-head-using-jspm-and-system-js
+ */
 
-// Load the Angular Material CSS associated with ngMaterial
-// then load the main.css to provide overrides, etc.
-
-import 'angular-material/angular-material.css!'
-import 'assets/reset.css!'
 import 'assets/style.css!'
-//import 'detail/view/detail.css!'
-//import 'home/view/home.css!'
-//import 'settings/view/settings.css!'
 
 // Load Angular libraries
 
