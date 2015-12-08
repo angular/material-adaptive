@@ -303,7 +303,11 @@ sidenav-backdrop {
   }
 }
 
-md-sidenav, md-sidenav.md-locked-open {
+/**
+ * As with the body selector above, we need the .pesto selector to override
+ * the default ng-material styles.
+ */
+.pesto md-sidenav, .pesto md-sidenav.md-locked-open {
   height: 100%;  
   left: 0;
   position: fixed;
