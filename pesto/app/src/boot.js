@@ -17,16 +17,16 @@ import 'angular-route'
 
 // Load custom application modules
 
-//import main from 'app/main'
-
+// TODO: submodules for all of these.
 import HomeController from 'home/HomeController';
-import RecipeDetailController from 'detail/RecipeDetailController';
+//import RecipeDetailController from 'detail/RecipeDetailController';
 import SettingsController from 'settings/SettingsController';
 
 // Make this a module.
 import RecipeStorage from 'model/RecipeStorage';
 
-import pestoUtilsModule from 'utils/PestoUtils'
+import detailModule from 'detail/RecipeDetailModule';
+import pestoUtilsModule from 'utils/PestoUtils';
 
 
 // Load loggers for injection and pre-angular debugging
@@ -51,7 +51,7 @@ angular
     const body = document.getElementsByTagName("body")[0];
 
     const app = angular
-          .module( appName, [ material, 'ngRoute', 'ngAnimate', pestoUtilsModule ] )
+          .module( appName, [ material, 'ngRoute', 'ngAnimate', detailModule, pestoUtilsModule ] )
           .config( ['$provide', LogDecorator] );
     
     app.config(['$routeProvider', ($routeProvider) => {
@@ -74,8 +74,8 @@ angular
     }]);
     
     app.controller('HomeController', HomeController)
-        .controller('SettingsController', SettingsController)
-        .controller('RecipeDetailController', RecipeDetailController);
+        .controller('SettingsController', SettingsController);
+        //.controller('RecipeDetailController', RecipeDetailController);
 
     app.service("RecipeStorage", RecipeStorage);
 

@@ -12,8 +12,8 @@ class HomeController {
     this.body_ = $window.document.body;
     this.recipes = [];
     
-    $window.addEventListener('resize', PestoDomUtils.updateViewportDOM);
     // Window onscroll event. Updates the state on the body.
+    // TODO: remove this listener when route changes.
     $window.addEventListener('scroll', (e) => {
       if (this.body_.scrollTop > 0) {
         this.body_.classList.add('scroll');

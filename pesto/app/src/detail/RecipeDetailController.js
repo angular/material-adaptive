@@ -1,106 +1,72 @@
-import Recipe from 'model/Recipe';
-import Ingredient from 'model/Ingredient';
-import Step from 'model/Step';
-
-const EditMode = {
-  READ: 1,
-  EDIT_EXISTING: 2,
-  EDIT_NEW: 3,
-};
-
 class RecipeDetailController {
-  constructor($scope, $location, $routeParams, $mdMedia, RecipeStorage) {
-    $scope.pageClass = 'pesto-detail-page';
-
+  constructor($scope, $location, $routeParams, $timeout, $mdBottomSheet, PestoDomUtils, RecipeStorage) {
     this.location_ = $location;
-    this.mdMedia_ = $mdMedia;
     this.recipeStorage_ = RecipeStorage;
+    this.PestoDomUtils = PestoDomUtils;
 
-    this.editMode = EditMode.READ;
+    this.menuItems = [
+      { name: 'Tweet recipe', icon: 'extension' },
+      { name: 'Email recipe', icon: 'mail' },
+      { name: 'Message recipe', icon: 'message' },
+      { name: 'Share on Facebook', icon: 'extension' },
+    ];
     this.recipe = null;
     this.recipeId = $routeParams['id'];
 
-    // Fetch existing recipe or create a new one.
-    if ('new' === this.recipeId) {
-      this.recipe = new Recipe();
-      // Get this from a settings service?
-      this.recipe.author = 'Zack Gibson';
-      this.newImageUrl = '';
-      this.editMode = EditMode.EDIT_NEW;
+    const id = parseInt(this.recipeId, 10);
+    if (id) {
+      RecipeStorage.getRecipe(id).then((recipe) => {
+        if (recipe) {
+          this.recipe = recipe;
+        }
+        else {
+          console.log('Bad recipe id: ' + id);
+          $location.path('/');
+        }
+      });
     }
     else {
-      const id = parseInt(this.recipeId, 10);
-      if (id) {
-        RecipeStorage.getRecipe(id).then((recipe) => {
-          if (recipe) {
-            this.recipe = recipe;
-          }
-          else {
-            console.log('Bad recipe id: ' + id);
-            $location.path('/home');
-          }
-        });
-      }
-      else {
-        console.log('Bad recipe id: ' + id);
-        $location.path('/home');
-      }
+      console.log('Bad recipe id: ' + id);
+      $location.path('/');
     }
+
+    PestoDomUtils.updateViewportDOM();
   }
 
-  editRecipe() {
-    this.originalRecipe = this.recipe;
-    this.recipe = this.recipe.copy();
-    this.newImageUrl = this.recipe.imageUrl;
-    this.editMode = EditMode.EDIT_EXISTING;
+  goBack(ev) {
+    ev.stopPropagation();
+    this.location_.path('/');
   }
 
-  cancelChanges() {
-    if (this.editMode === EditMode.EDIT_NEW) {
-      this.goBack();
+  openMenu($mdOpenMenu, ev) {
+    ev.stopPropagation();
+
+    if (this.PestoDomUtils.getViewportResolution().size <= 480) {
+      $mdBottomSheet.show({
+        templateUrl: 'views/bottom-sheet-share.html',
+        controller: 'BottomSheetShareCtrl',
+        locals: {
+          items: $scope.items
+        },
+        targetEvent: ev
+      }).then((clickedItem) => {
+        this.alert = clickedItem['name'] + ' clicked!';
+      });
     } else {
-      this.recipe = this.originalRecipe;
-      this.editMode = EditMode.READ;
-    }
+      $mdOpenMenu(ev);
+    }      
   }
 
-  updateImageUrl() {
-    this.recipe.imageUrl = this.newImageUrl;
-  }
-
-  addIngredient() {
-    this.recipe.ingredients.push(new Ingredient());
-  }
-
-  addStep() {
-    this.recipe.steps.push(new Step());
-  }
-
-  saveChanges() {
-    const doneEditing = () => {
-      this.editMode = EditMode.READ;
-    };
-    this.updateImageUrl();
-    this.recipe.ingredients = this.recipe.ingredients.filter((i) => !i.isEmpty());
-    this.recipe.steps = this.recipe.steps.filter((s) => !s.isEmpty());
-    switch (this.editMode) {
-      case EditMode.EDIT_EXISTING:
-        this.recipeStorage_.updateRecipe(this.recipe).then(doneEditing);
-        break;
-      case EditMode.EDIT_NEW:
-        this.recipeStorage_.saveNewRecipe(this.recipe).then(doneEditing);
-    }
-  }
-
-  isEditing() {
-    return this.editMode === EditMode.EDIT_EXISTING || this.editMode === EditMode.EDIT_NEW;
-  }
-
-  goBack() {
-    this.location_.path('/home');
+  toggleFavorite(ev) {
+    ev.stopPropagation();
+    // TODO: add favorited to RecipeStorage and Recipe model.
+    this.recipe.favorited = !this.recipe.favorited;
   }
 }
 
-RecipeDetailController.$inject = ['$scope', '$location', '$routeParams', '$mdMedia', 'RecipeStorage'];
+RecipeDetailController.$inject = [
+  '$scope', '$location', '$routeParams', '$timeout', '$mdBottomSheet',
+  'PestoDomUtils', 'RecipeStorage'
+];
 
 export default RecipeDetailController;

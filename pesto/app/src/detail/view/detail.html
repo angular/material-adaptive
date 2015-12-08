@@ -1,151 +1,54 @@
-<div class="pesto-page pesto-recipe-page">
-  <div class="pesto-recipe-background-image"
-       ng-animate-ref="{{'recipe' + detail.recipeId}}"
-       ng-style="{'background-image': 'url(' + detail.recipe.imageUrl + ')'}">
-  </div>
-
-  <div class="pesto-recipe-layout">
-    <div class="pesto-recipe-header">
-      <md-button ng-if="!detail.isEditing()"
-                 class="pesto-recipe-back md-icon-button"
-                 aria-label="Close"
-                 ng-click="detail.goBack()">
-        <md-icon md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-arrow-back.svg"></md-icon>
+<details-view>
+  <div class="header">
+    <div class="actions-left">
+    	<md-button class="md-icon-button icon-right" aria-label="Back" ng-click="detail.goBack($event)">
+      	<md-icon class="material-icons">arrow_back</md-icon>
+    	</md-button>
+    </div>
+    <span class="flex"></span>
+    <div class="actions-right">
+      <md-button class="md-icon-button icon-right" aria-label="Timer">
+      	<md-icon class="material-icons">timer</md-icon>
+    	</md-button>
+      <md-button class="md-icon-button icon-right" aria-label="Share">
+        <md-icon class="material-icons">share</md-icon>
       </md-button>
-      <md-menu ng-if="!detail.isEditing()" class="pesto-recipe-more">
-        <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)" aria-label="More menu">
-          <md-icon md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-more-vert.svg"></md-icon>
+      <md-menu md-position-mode="target-right target">
+        <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="detail.openMenu($mdOpenMenu, $event)">
+          <md-icon class="material-icons">more_vert</md-icon>
         </md-button>
-        <md-menu-content>
-          <md-menu-item>
-            <md-button ng=click="">Tweet recipe</md-button>
-          </md-menu-item>
-          <md-menu-item>
-            <md-button ng=click="">Email recipe</md-button>
-          </md-menu-item>
-          <md-menu-item>
-            <md-button ng=click="">Message recipe</md-button>
-          </md-menu-item>
-          <md-menu-item>
-            <md-button ng=click="">Share on Facebook</md-button>
+        <md-menu-content width="4">
+          <md-menu-item ng-repeat="item in detail.menuItems">
+            <md-button ng-click="detail.redial($event)">
+              <md-icon class="material-icons">{{ item.icon }}</md-icon>
+              {{ item.name }}
+            </md-button>
           </md-menu-item>
         </md-menu-content>
       </md-menu>
-
-      <md-button ng-if="detail.isEditing()" class="pesto-recipe-cancel md-icon-button" aria-label="Cancel"
-                 ng-click="detail.cancelChanges()">
-        <md-icon md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-cancel.svg"></md-icon>
-      </md-button>
-      <md-button ng-if="detail.isEditing()" class="pesto-recipe-save md-icon-button" aria-label="More"
-                 ng-click="detail.saveChanges()">
-        <md-icon md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-check.svg"></md-icon>
-      </md-button>
-    </div>
-    
-    <div class="pesto-recipe-content">
-      <!-- <span class="anchortest" ng-animate-ref="test1">Hello</span> -->
-      <div class="pesto-recipe-table">
-      
-        <div class="pesto-recipe-row">
-          <div class="pesto-recipe-col"></div>
-          <div class="pesto-recipe-col pesto-recipe-name">
-            <span ng-if="!detail.isEditing()">{{detail.recipe.name}}</span>
-            <md-input-container ng-if="detail.isEditing()">
-              <label>Recipe name</label>
-              <input type="text" ng-model="detail.recipe.name">
-            </md-input-container>
-          </div>
-        </div>
-
-        <div class="pesto-recipe-row">
-          <div class="pesto-recipe-col"></div>
-          <div class="pesto-recipe-col pesto-recipe-description">
-            <span ng-if="!detail.isEditing()">{{detail.recipe.description}}</span>
-            <md-input-container ng-if="detail.isEditing()">
-              <label>Recipe description</label>
-              <textarea ng-model="detail.recipe.description"></textarea>
-            </md-input-container>            
-          </div>
-        </div>
-
-        <div class="pesto-recipe-row" ng-if="detail.isEditing()">
-          <div class="pesto-recipe-col"></div>
-          <div class="pesto-recipe-col">
-            <md-input-container ng-if="detail.isEditing()">
-              <label>Image URL</label>
-              <input type="text" ng-model="detail.newImageUrl" ng-blur="detail.updateImageUrl()">
-            </md-input-container>
-          </div>
-        </div>
-
-        <div class="pesto-recipe-row">
-          <div class="pesto-recipe-col"></div>
-          <div class="pesto-recipe-col pesto-section-description">Ingredients</div>
-        </div>
-        <div class="pesto-recipe-row" ng-if="!detail.isEditing()" ng-repeat="ingredient in detail.recipe.ingredients">
-          <div class="pesto-recipe-col pesto-ingredient-amount">{{ingredient.amount}}</div>
-          <div class="pesto-recipe-col pesto-ingredient-description">{{ingredient.description}}</div>
-        </div>
-        <div class="pesto-recipe-row" ng-if="detail.isEditing()" ng-repeat="ingredient in detail.recipe.ingredients">
-          <div class="pesto-recipe-col pesto-ingredient-amount">
-            <md-input-container>
-              <label>Amount</label>
-              <input type="text" size="6" ng-model="ingredient.amount">
-            </md-input-container>
-          </div>
-          <div class="pesto-recipe-col pesto-ingredient-description">
-            <md-input-container>
-              <label>Description</label>
-              <input type="text" ng-model="ingredient.description">
-            </md-input-container>
-          </div>
-        </div>
-        <div class="pesto-recipe-row" ng-if="detail.isEditing()">
-          <div class="pesto-recipe-col"></div>
-          <div class="pesto-recipe-col">
-            <md-button ng-click="detail.addIngredient()">+Ingredient</md-button>
-          </div>
-        </div>
-
-        <div class="pesto-recipe-row">
-          <div class="pesto-recipe-col"></div>
-          <div class="pesto-recipe-col pesto-section-description">Steps</div>
-        </div>
-        <div class="pesto-recipe-row" ng-if="!detail.isEditing()" ng-repeat="step in detail.recipe.steps">
-          <div class="pesto-recipe-col pesto-step-duration">{{step.duration}}</div>
-          <div class="pesto-recipe-col pesto-step-description">{{step.description}}</div>
-        </div>
-        <div class="pesto-recipe-row" ng-if="detail.isEditing()" ng-repeat="step in detail.recipe.steps">
-          <div class="pesto-recipe-col pesto-step-duration">
-            <md-input-container>
-              <label>Time</label>
-              <input type="text" size="6" ng-model="step.duration">
-            </md-input-container>
-          </div>
-          <div class="pesto-recipe-col pesto-step-description">
-            <md-input-container>
-              <label>Description</label>
-              <input type="text" ng-model="step.description">
-            </md-input-container>
-          </div>
-        </div>
-        <div class="pesto-recipe-row" ng-if="detail.isEditing()">
-          <div class="pesto-recipe-col"></div>
-          <div class="pesto-recipe-col">
-            <md-button ng-click="detail.addStep()">+Step</md-button>
-          </div>
-        </div>
-
-      </div>
     </div>
   </div>
-
-  <!-- Floating action button, should this change position for desktop/mobile? -->
-  <md-button ng-if="!detail.isEditing()"
-             class="md-fab pesto-edit-button"
-             aria-label="New Recipe"
-             ng-click="detail.editRecipe()">
-    <md-icon md-svg-src="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-edit.svg"></md-icon>
-  </md-button>
-
-</div>
+  <div id="animate-card" class="card-info">
+    <div class="main-info">
+      <span><img class="info-ingredients" src="{{detail.recipe.ingredientsImageUrl}}"/></span>
+      <div class="title">{{ detail.recipe.name }}</div>
+      <div class="descr editable">{{ detail.recipe.description }}</div>
+    </div>
+    <div class="ingredients">
+      <ul>
+      	<li ng-repeat="ingr in detail.recipe.ingredients">
+      		<span class="lbs editable">{{ingr.amount}}</span>
+      		<span class="name editable">{{ingr.description}}</span>
+      	</li>
+      </ul>
+    </div>
+    <adaptive-controls>
+    	<md-button class="md-fab details-fab" aria-label="Favorite" ng-click="detail.toggleFavorite($event)">
+		    <md-icon class="material-icons" ng-show="!detail.recipe.favorited">favorite_border</md-icon>
+        <md-icon class="material-icons" ng-show="detail.recipe.favorited">favorite</md-icon>
+		  </md-button>
+    </adaptive-controls>
+  </div>
+  <div class="bg" back-img="{{detail.recipe.mainImageUrl}}"></div>
+  <img imageonload ng-src="{{detail.recipe.mainImageUrl}}" style="display: none;">
+</details-view>

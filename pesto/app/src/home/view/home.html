@@ -14,7 +14,7 @@
 
   <section id="main-section">
     <layout-cards>
-        <card-element style="background-image: url('{{ card.mainImageUrl }}')" ng-repeat="card in home.recipes">
+        <card-element ng-repeat="card in home.recipes" style="background-image: url('{{card.mainImageUrl}}')">
           <md-button class="card-button" ng-click="home.goToCard($event, card.id)" aria-label="{{card.name}}"></md-button>
           <div class="card-info">
             <span>
