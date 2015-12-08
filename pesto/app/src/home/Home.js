@@ -1,3 +1,4 @@
+/*
 import HomeController from 'home/HomeController';
 import RecipeStorage from 'model/RecipeStorage';
 
@@ -13,7 +14,8 @@ let moduleName = angular
       .service("RecipeStorage", RecipeStorage)
       .name;
 
-export default moduleName;
+*/
+export default {};
 
 
 

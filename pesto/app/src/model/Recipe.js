@@ -8,7 +8,8 @@ class Recipe {
     this.dateCreated = params.dateCreated || new Date();
     this.name = params.name || '';
     this.author = params.author || '';
-    this.imageUrl = params.imageUrl || '';
+    this.mainImageUrl = params.mainImageUrl || '';
+    this.ingredientsImageUrl = params.ingredientsImageUrl || '';
     this.description = params.description || '';
     this.ingredients = angular.copy(params.ingredients || []);
     this.steps = angular.copy(params.steps || []);
@@ -20,7 +21,8 @@ class Recipe {
       dateCreated: this.dateCreated,
       name: this.name,
       author: this.author,
-      imageUrl: this.imageUrl,
+      mainImageUrl: this.mainImageUrl,
+      ingredientsImageUrl: this.ingredientsImageUrl,
       description: this.description,
       ingredients: this.ingredients,
       steps: this.steps,
@@ -42,7 +44,8 @@ class Recipe {
       name: json.name,
       description: json.description,
       author: json.author,
-      imageUrl: json.imageUrl,
+      mainImageUrl: json.mainImageUrl,
+      ingredientsImageUrl: json.ingredientsImageUrl,
       ingredients,
       steps,
     })

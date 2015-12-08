@@ -3,9 +3,9 @@
 // then load the main.css to provide overrides, etc.
 
 import 'angular-material/angular-material.css!'
-import 'assets/app.css!'
+import 'assets/style.css!'
 import 'detail/view/detail.css!'
-import 'home/view/home.css!'
+//import 'home/view/home.css!'
 import 'settings/view/settings.css!'
 
 // Load Angular libraries
@@ -17,12 +17,18 @@ import 'angular-route'
 
 // Load custom application modules
 
-import main from 'app/main'
+//import main from 'app/main'
 
 import MainController from 'app/MainController';
 import HomeController from 'home/HomeController';
 import RecipeDetailController from 'detail/RecipeDetailController';
 import SettingsController from 'settings/SettingsController';
+
+// Make this a module.
+import RecipeStorage from 'model/RecipeStorage';
+
+import pestoUtilsModule from 'utils/PestoUtils'
+
 
 // Load loggers for injection and pre-angular debugging
 
@@ -46,7 +52,7 @@ angular
     const body = document.getElementsByTagName("body")[0];
 
     const app = angular
-          .module( appName, [ material, 'ngRoute', 'ngAnimate', main ] )
+          .module( appName, [ material, 'ngRoute', 'ngAnimate', pestoUtilsModule ] )
           .config( ['$provide', LogDecorator] );
     
     app.config(['$routeProvider', ($routeProvider) => {
@@ -72,6 +78,8 @@ angular
         .controller('HomeController', HomeController)
         .controller('SettingsController', SettingsController)
         .controller('RecipeDetailController', RecipeDetailController);
+
+    app.service("RecipeStorage", RecipeStorage);
 
     angular.bootstrap( body, [ app.name ], { strictDi: false })
 

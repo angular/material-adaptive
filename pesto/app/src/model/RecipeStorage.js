@@ -13,7 +13,7 @@ STORE[1] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 30),
   name: 'Pesto Bruchetta',
   author: 'Alice Jones',
-  imageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/recipe1.jpg',
+  mainImageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/recipe1.jpg',
   description: 'This beautiful sprouts recipe...',
   ingredients: [
     {amount: '2 lbs', description: 'Sprouts'},
@@ -30,7 +30,7 @@ STORE[2] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 29),
   name: 'Chocolate chip cookies',
   author: 'Bob Smith',
-  imageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/cat_cookies.jpg',
+  mainImageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/cat_cookies.jpg',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
@@ -47,7 +47,7 @@ STORE[3] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 28),
   name: 'Apple pie',
   author: 'Carol Clark',
-  imageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/recipe2.jpg',
+  mainImageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/recipe2.jpg',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
@@ -64,7 +64,7 @@ STORE[4] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 27),
   name: 'Belgian waffles',
   author: 'Dave Johnson',
-  imageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/recipe3.jpg',
+  mainImageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/recipe3.jpg',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
@@ -81,7 +81,7 @@ STORE[5] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 26),
   name: 'Carrot cake',
   author: 'Eve Ellison',
-  imageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/recipe4.jpg',
+  mainImageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/recipe4.jpg',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
@@ -98,7 +98,7 @@ STORE[6] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 25),
   name: 'Chicken Kiev',
   author: 'Mallory Masters',
-  imageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/recipe5.jpg',
+  mainImageUrl: 'https://www.gstatic.com/angular/material-adaptive/pesto/recipe5.jpg',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},

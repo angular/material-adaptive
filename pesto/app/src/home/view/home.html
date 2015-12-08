@@ -1,97 +1,61 @@
-<div class="pesto-home-container">
-<md-sidenav md-is-locked-open="home.isWindowLarge() && home.isPersistentSidebarVisible"
-            md-component-id="left"
-            class="md-sidenav-left">
-  <div class="pesto-sidebar-header">
-    <md-button class="pesto-menu md-icon-button" aria-label="Close" ng-click="home.toggleSideNav()">
-      <md-icon md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-arrow-back.svg"></md-icon>
-    </md-button>
-  </div>
-  <md-list>
-    <md-list-item>Home</md-list-item>
-    <md-list-item>Favorite</md-list-item>
-    <md-list-item>Saved</md-list-item>
-    <md-list-item>Trending</md-list-item>
-    <md-list-item ng-click="home.gotoSettings()">Settings</md-list-item>
-  </md-list>
-</md-sidenav>
-
-<div class="pesto-home-content">
-<div class="pesto-home-header">
-  <md-button ng-hide="home.isWindowLarge() && home.isPersistentSidebarVisible"
-             class="pesto-menu md-icon-button" 
-             ng-click="home.toggleSideNav()">
-    <md-icon md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-menu.svg" aria-label="Menu"></md-icon>
-  </md-button>
-  <span class="pesto-search">
-    <span class="pesto-search-controls" ng-if="home.isSearchVisible">
-      <md-input-container md-no-float>
-        <input type="text" ng-change="home.fetchRecipes()" ng-model="home.searchString" placeholder="Search" />
-      </md-input-container>
-      <md-icon ng-click="home.clearSearch()" md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-cancel.svg" aria-label="Clear"></md-icon>
-    </span>
-    <md-button class="md-icon-button" ng-click="home.toggleSearchVisible()">
-      <md-icon md-svg-icon="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-search.svg" aria-label="Search"></md-icon>
-    </md-button>
-  </span>
-</div>
-
-<img class="pesto-sticky-logo" ng-class="{'search-visible': home.isSearchVisible}"
-     src="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-banner-top.png" />
-
-<div class="pesto-home-scrollable">
-  <div class="pesto-home-banner top">
-    <img class="pesto-banner-top" src="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-banner-top.png">
-  </div>
-  <div class="pesto-home-banner bottom">
-    <img class="pesto-banner-bottom" src="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-banner-bottom.png">
-  </div>
-
-  <md-divider></md-divider>
-  
-  <div class="pesto-home-grid-container">
-  
-    <div class="pesto-home-grid" ng-class="{small: home.isScreenSmall()}">
-      <!-- <span class="anchortest" ng-animate-ref="test1">Hello</span> -->
-      <!-- How to make height scale to content size? "fit" doesn't work. -->
-      <!-- On Firefox, the images aren't scaled so the background shows through. -->
-      <md-grid-list md-cols="2" md-cols-sm="1" md-row-height="275px" md-gutter="8px">
-        <md-grid-tile ng-repeat="recipe in home.recipes" ng-click="home.gotoRecipe(recipe)">
-          <!-- It would be nice to use an md-card for the tile content, but it doesn't stay
-               within the tile height. -->
-          <!--
-          <md-card>
-            <img ng-src="{{recipe.imageUrl}}" class="md-card-image" alt="image caption">
-            <md-card-footer>
-              <div class="pesto-recipe-title">{{recipe.name}}</div>
-              <div class="pesto-recipe-author">by {{recipe.author}}</div>
-            </md-card-footer>
-          </md-card>
-            -->
-          <div class="pesto-recipe-grid-image"
-               ng-animate-ref="{{'recipe' + recipe.id}}"
-               ng-style="{'background-image': 'url(' + recipe.imageUrl + ')'}">
-          </div>
-          <md-grid-tile-footer class="recipe-tile-footer">
-            <div class="recipe-tile-footer">
-              <div class="pesto-recipe-icon">
-                <img src="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-recipe-icon.png">
-              </div>
-              <div class="pesto-recipe-info">
-                <div class="pesto-recipe-title">{{recipe.name}}</div>
-                <div class="pesto-recipe-author">by {{recipe.author}}</div>
-              </div>
-            </div>
-          </md-grid-tile-footer>
-        </md-grid-tile>
-      </md-grid-list>
+<main-view>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button icon-right" aria-label="Menu" ng-click="home.openSidenav($event)">
+        <md-icon class="material-icons">menu</md-icon>
+      </md-button>
+      <logo-container></logo-container>
+      <span flex></span>
+      <md-button class="md-icon-button icon-right" aria-label="Search">
+        <md-icon class="material-icons">search</md-icon>
+      </md-button>
     </div>
-  </div>
-</div>
+  </md-toolbar>
 
-<!-- Floating action button, should this change position for desktop/mobile? -->
-<md-button class="md-fab pesto-new-button" aria-label="New Recipe" ng-click="home.gotoNewRecipe()">
-  <md-icon md-svg-src="https://www.gstatic.com/angular/material-adaptive/pesto/pesto-add.svg"></md-icon>
-</md-button>
-</div> <!-- .pesto-home-content -->
-</div> <!-- .pesto-home-container -->
+  <section id="main-section">
+    <layout-cards>
+        <card-element style="background-image: url('{{ card.mainImageUrl }}')" ng-repeat="card in home.recipes">
+          <md-button class="card-button" ng-click="home.goToCard($event, card.id)" aria-label="{{card.name}}"></md-button>
+          <div class="card-info">
+            <span>
+              <img ng-src="{{card.ingredientsImageUrl}}">
+            </span>
+            <p ng-click="home.goToCard($event, card.id)" class="title">{{card.name}}</p>
+            <div class="author">{{card.author}}</div>
+          </div>
+        </card-element>
+    </layout-cards>
+  </section>
+
+  <adaptive-controls>
+    <md-button class="md-fab main-fab" aria-label="Edit">
+      <md-icon class="material-icons">edit</md-icon>
+    </md-button>
+  </adaptive-controls>
+
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="primary" md-is-locked-open="home.mdMedia('gt-md')">
+    <!-- <md-toolbar class="md-theme-indigo header">
+      <div class="image"></div>
+    </md-toolbar> -->
+    <div class="header">
+      <div class="avatar-container">
+        <div class="image"></div>
+      </div>
+      <div class="contact-info">
+        <p class="name">Zach</p>
+        <p class="email">professorgibson@gmail.com</p>
+      </div>
+    </div>
+    <md-content layout-padding>
+      <ul class="options">
+        <li class="selected">Home</li>
+        <li disabled>Favorite</li>
+        <li disabled>Saved</li>
+        <li disabled>Trending</li>
+        <li ng-click="home.goTo($event, '/settings')">Settings</li>
+      </ul>
+    </md-content>
+  </md-sidenav>
+
+  <sidenav-backdrop ng-click="home.hideSidenav($event)"></sidenav-backdrop>
+</main-view>

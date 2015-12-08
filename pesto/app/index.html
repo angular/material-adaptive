@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html lang="en" class="pesto">
+<!doctype html>
+<html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Angular - Adaptive UI</title>
     <meta name="description" content="">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" type="image/ico" href="/assets/pesto.ico"/>
 
-    <title>Pesto</title>
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 
     <style type="text/css">
         /**
@@ -19,10 +21,14 @@
     </style>
   </head>
 
-  <body ng-cloak layout="column" class="pesto" ng-controller="MainController as mainCtrl"
-      ng-class="{'pesto-small-screen': mainCtrl.isScreenSmall()}">
-
-    <div ng-view class="pesto-page {{pageClass}}"></div>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+   <base-view>
+      <ng-view></ng-view>
+      <base-backdrop></base-backdrop>
+    </base-view>
 
     <script src="./jspm_packages/system.js" type="text/javascript"></script>
     <script src="./config.js" type="text/javascript"></script>

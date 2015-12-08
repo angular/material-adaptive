@@ -1,0 +1,1212 @@
+@import 'reset.css';
+
+@primary_color_600: rgba(245, 245, 245, 1);
+@primary_color_600_fade: rgba(25, 136, 111, 0.5);
+@primary_color_400: #00AA8D;
+@primary_color_200: #B4E5DD;
+
+@secondary_color_600: rgba(25, 136, 111, 1);
+@secondary_color_600_fade: rgba(25, 136, 111, 0.5);
+
+
+
+/************
+ * Animation - Keyframes
+ ************/
+@-webkit-keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInUp {
+  -webkit-animation-name: slideInUp;
+  animation-name: slideInUp;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+/************
+ * body 
+ ************/
+body {
+  background-color: @secondary_color_600;
+  font-family: 'Raleway';
+
+  &.transition-to-details, &.sidenav-open, &.openDetailsView {
+    overflow: hidden;
+  }
+}
+
+/************
+ * common-component-edits
+ ************/
+md-bottom-sheet {
+  padding-left: 0;
+  padding-right: 0;
+
+  md-list {
+    padding: 10px 0;
+  }
+}
+
+md-toolbar:not(.md-menu-toolbar) {
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12), 0px 1px 3px 0px rgba(0, 0, 0, 0.2); 
+  background-color: @primary_color_400;
+  height: 280px;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  transition-timing: cubic-bezier(0.4, 0.0, 1, 1); 
+  width: 100%;
+  z-index: 5;
+
+
+  .scroll & {
+    height: 58px;
+    transition: height .3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    width: 100%;
+  }
+}
+
+
+/************
+ * base-view
+ ************/
+base-view {
+  display: block;
+
+  base-backdrop {
+    background-color: rgba(0,0,0,.5);
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    transition: opacity, z-index, .3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    visibility: hidden;
+    width: 100%;
+    z-index: -1;
+
+    .transition-to-details & {
+      opacity: 1;
+      visibility: visible;
+      z-index: 500;
+    }
+  }
+
+  .openDetailsView & {
+    display: none;
+  }
+}
+
+/************
+ * main-view
+ ************/
+main-view {
+  background-color: @primary_color_600;
+  display: block;
+
+  card-element {
+    .transition-to-details &.card-selected {
+      transform: scale(1.1);
+      transition: transform .3s cubic-bezier(0.4, 0.0, 0.2, 1);
+      z-index: 550;
+
+      .card-info {
+        transition: opacity .3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        opacity: 0;
+      }
+    }
+  }
+
+  drawer-button {
+    color: @primary_color_200;
+    display: inline-block;
+    padding: 17px;
+  }
+
+  search-button {
+    color: @primary_color_200;
+    display: inline-block;
+    padding: 17px;
+    right: 0;
+    position: absolute;
+  }
+
+  #main-section {
+    background-color: @primary_color_600;
+    position: relative;
+    top: 280px;
+    transition: top .3s cubic-bezier(0.4, 0.0, 0.2, 1);
+
+    .scroll & {
+      top: 95px;
+    }
+  }
+
+  logo-container {
+    background-image: url('/assets/pesto-logo-full.svg');
+    background-repeat: no-repeat;
+    background-position:0;
+    background-size: 100%;
+    display: inline-block;
+    height: 200px;
+    left: 50%;
+    margin-left: -125px;
+    margin-top: -85px;
+    position: absolute;
+    top: 50%;
+    width: 250px;
+
+
+    & > img {
+      width: 100%;
+    }
+
+    .scroll & {
+      background-position: -70px -8px;
+      background-size: 280%;
+      margin-left: -40px;
+      margin-top: -20px;
+      height: 40px;
+      width: 80px;
+    }
+  }
+
+
+  layout-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 15px auto 0 auto;
+    width: 680px;
+
+    card-element {
+      &:nth-child(2n + 1) {
+        margin-right: 1%;
+      }
+    }
+  }
+
+  card-element {
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 2px;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12), 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    height: 270px;
+    margin-bottom: 1%;
+    overflow: hidden;
+    position: relative;
+    width: 49.5%;
+
+    .card-button.md-button {
+      height: 100%;
+      line-height: inherit;
+      margin: 0;
+      padding: 0;
+      text-align: start;
+      width: 100%;
+    }
+
+    .card-info {
+      background-color: #fff;
+      bottom: 0;
+      height: 87px;
+      padding: 21px 0 0 60px;
+      position: absolute;
+      width: 100%;
+
+      span {
+        height: 32px;
+        display: inline-block;
+        left: 16px;
+        position: absolute;
+        width: 32px;
+      }
+
+      p.title {
+        color: rgba(0,0,0,.87);
+        cursor: pointer;
+        font-size: 24px;
+        font-weight: 700;
+        outline: none;
+        text-decoration: none;
+        text-transform: none;
+      }
+
+      .author {
+        color: rgba(0,0,0,.54);
+        font-size: 13px;
+        font-weight: 400;
+        padding-top: 4px;
+        text-transform: none;
+      }
+    }
+  }
+}
+
+/************
+ * sidenav
+ ************/
+md-backdrop.md-sidenav-backdrop {
+  display: none;
+  z-index: -1;
+}
+
+sidenav-backdrop {
+  background-color: rgba(0, 0, 0, .5);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: -1;
+
+  .sidenav-open & {
+    visibility: visible;
+    z-index: 10;
+  }
+}
+
+md-sidenav, md-sidenav.md-locked-open {
+  height: 100%;  
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  md-toolbar:not(.md-menu-toolbar) {
+    background-color: white;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    box-shadow: none;
+  }
+
+  .header {
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+    padding: 20px;
+
+    .avatar-container {
+      border: 2px solid @primary_color_400;
+      border-radius: 50%;
+      height: 90px;
+      padding: 2px;
+      position: relative;
+      width: 90px;
+
+      .image {
+        background-image: url('/assets/avatar.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .contact-info {
+      font-size: 14px;
+      margin-top: 20px;
+      text-align: center;
+
+      .name {
+        font-weight: 600;
+      }
+
+      .email {
+        color: rgba(0,0,0,.5);
+        padding-top: 5px;
+      }
+    }
+
+    // .scroll & {
+    //   align-items: center;
+    //   width: 100%;
+
+    //   .image {
+    //     height: 34px;
+    //     width: 34px;
+    //   }
+    // }
+  }
+
+  .options {
+    text-align: center;
+
+    li {
+      color: rgba(63, 63, 63, 1);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      outline: none;
+      padding: 20px;
+
+      &.selected {
+        color: @primary_color_400;
+      }
+
+      &[disabled] {
+        cursor: not-allowed;
+        opacity: .5;
+      }
+    }
+  }
+
+  md-content {
+    position: relative;
+
+    // .scroll & {
+    //   top: 64px;
+    // }
+  }
+}
+
+md-sidenav.md-locked-open, md-sidenav.md-locked-open.md-closed, md-sidenav.md-locked-open.md-closed.md-sidenav-left, md-sidenav.md-locked-open.md-closed {
+  display: none;
+
+  .sidenav-open & {
+    display: block;
+  }
+}
+
+md-sidenav.md-locked-open {
+  z-index: -1;
+  visibility: hidden;
+
+  md-toolbar:not(.md-menu-toolbar) {
+    background-color: white;
+  }
+
+  .sidenav-open & {
+    visibility: visible;
+    z-index: 50;
+  }
+}
+
+adaptive-controls {
+  bottom: auto;    
+  margin: 10px auto 0;
+  height: 60px;
+  top: 236px;
+  width: 100%;
+  position: fixed;
+  transition: top,bottom, .3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  z-index: 6;
+
+  & > * {
+    position: absolute;
+    right: 20px;
+  }
+
+  .scroll & {
+    bottom: 20px;
+    top: auto;
+  }
+}
+
+.main-fab.md-button.md-fab, .main-fab.md-button.md-fab:hover, .main-fab.md-button.md-fab.md-focused {
+  background-color: #EF5458;
+  color: #fff;
+  position: absolute;
+}
+
+
+/************
+ * details-view
+ ************/
+details-view {
+  md-icon {
+    color: #fff;
+  }
+
+  .header {
+    align-items: center;
+    color: white;
+    display: flex;
+    padding: 5px 5px 0 5px;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+
+    .actions-right {
+      & > * {
+        margin: 0;
+      }
+    }
+
+    .flex {
+      flex: 1;
+    }
+  }
+
+  #animate-card {
+    visibility: hidden;
+
+    &.animated {
+      visibility: visible;
+    }
+  }
+
+  .card-info {
+    -webkit-animation-duration: .75s;
+    animation-duration: .75s;
+    background-color: #fff;
+    border-radius: 2px 2px 0 0;
+    bottom: 0;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12), 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    height: 50%;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 680px;
+    min-height: 350px;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    width: 80%;
+    z-index: 2;
+
+    .main-info {
+      padding: 25px 25px 0 55px;
+
+      & > span {
+        height: 30px;
+        display: inline-block;
+        left: 20px;
+        position: absolute;
+        width: 35px;
+      }
+
+      .title {
+        font-size: 34px;
+        text-transform: none;
+      }
+
+      .descr {
+        color: rgba(0,0,0,.5);
+        font-size: 13px;
+        line-height: 18px;
+        margin: 15px 0;
+        position: relative;
+        text-align: left;
+        text-transform: none;
+        top: 10px;
+      }
+    }
+
+    .ingredients {
+      margin-top: 30px;
+
+      ul li {
+        margin: 20px 0;
+
+        .lbs {
+          color: @primary_color_400;
+          font-size: 12px;
+          height: 10px;
+          margin-right: 8px;
+          width: 40px;
+        }
+
+        .name {
+          font-size: 14px;
+          height: 10px;
+          left: 15px;
+          line-height: 25px;
+          position: relative;
+        }
+      }
+    }
+
+    .editable { 
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .editing {
+      border: 1px solid rgba(0,0,0,.3);
+      padding-left: 10px;
+      padding-right: 60px;
+    }
+
+    adaptive-controls {
+      position: absolute;
+      right: 25px;
+      top: -40px;
+      width: 50px;
+    }
+    
+  }
+
+  .bg {
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+
+  .openDetailsView & {
+    display: block;
+  }
+}
+
+
+/************
+ * settings-view
+ ************/
+settings-view {
+  .header {
+    align-items: center;
+    color: white;
+    display: flex;
+    padding: 15px 5px 0 5px;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+
+    .title {
+      font-size: 27px;
+      left: 0;
+      position: absolute;
+      text-align: center;
+      top: 20px;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .flex {
+      flex: 1;
+    }
+
+    .md-button {
+      height: 40px;
+      line-height: 40px;
+      width: 45px;
+      z-index: 5;
+
+      md-icon {
+        color: #fff;
+        height: 32px;
+        font-size: 32px;
+        width: 32px;
+      }
+    }
+  }
+
+  .card-info {
+    background-color: #fff;
+    border-radius: 2px 2px 0 0;
+    bottom: 0;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12), 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    height: 87%;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 680px;
+    min-height: 350px;
+    padding: 20px 36px;
+    position: absolute;
+    right: 0;
+    width: 80%;
+    z-index: 2;
+
+    p {
+      color: #878787;
+      font-size: 16px;
+
+      &.active {
+        color: @secondary_color_600;
+        font-weight: 500;
+      }
+    }
+
+    md-list-item .md-no-style {
+      padding: 0;
+    }
+
+    .option-header {
+      align-items: center;
+      border-bottom: 1px solid rgba(0,0,0,.1);
+      display: flex;
+      height: 50px;
+      margin-bottom: 20px;
+      outline: none;
+
+      p {
+        color: rgba(0, 0, 0, .65);
+        font-size: 16px;
+        font-weight: 500;
+
+        &.active {
+          color: @secondary_color_600;
+        }
+      }
+
+      md-icon {
+        font-size: 32px;
+        height: 32px;
+        width: 32px;
+      }
+    }
+
+    .option-item {
+      margin-bottom: 25px;
+
+      .user-info {
+        align-items: center;
+        display: flex;
+
+        .avatar {
+          background-color: @secondary_color_600;
+          border-radius: 100%;
+          height: 40px;
+          margin-right: 25px;
+          width: 40px;
+        }
+
+        span {
+          color: @secondary_color_600;
+          font-size: 20px;
+          font-weight: 500;
+        }
+      }
+
+      md-list {
+        margin-top: 15px;
+      }
+    }
+
+    .action-buttons {
+      margin-top: 35px;
+      display: flex;
+    }
+  }
+}
+
+md-switch.md-checked .md-bar, md-switch.md-checked.md-focused .md-thumb:before, md-checkbox.md-checked.md-focused .md-container:before {
+  background-color: @secondary_color_600_fade;
+}
+
+md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
+  background-color: @secondary_color_600;
+}
+
+
+/************
+ * media-queries
+ ************/
+@media screen and (min-width: 1280px) {
+  main-view {
+    layout-cards {
+      margin-top: 35px;
+      width: 1170px;
+
+      card-element {
+        height: 300px;
+        width: 32.5%;
+
+        .card-info {
+          height: 80px;
+        }
+
+        &:nth-child(2n + 1) {
+          margin-right: 0;
+        }
+
+        &:nth-child(3n + 1), &:nth-child(3n + 2) {
+          margin-right: 1%;
+        }
+      }
+    }
+
+    md-sidenav, md-sidenav.md-locked-open {
+      min-width: 240px;
+      width: 240px;
+    }
+  }
+
+  settings-view {
+    .header {
+      .md-button {
+        display: none;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 960px) and (max-width: 1279px) {
+  main-view {
+    layout-cards {
+      margin-top: 32px;
+      width: 800px;
+
+      card-element {
+        height: 351px;
+        width: 49.5%;
+
+        &:nth-child(2n + 2) {
+          margin-right: 0;
+        }
+      }
+    }
+
+    md-sidenav, md-sidenav.md-locked-open {
+      min-width: 300px;
+      width: 300px;
+    }
+  }
+
+  settings-view {
+    .header {
+      .md-button {
+        display: none;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 840px) and (max-width: 959px) {
+  main-view {
+    layout-cards {
+      margin-top: 35px;
+      width: 680px;
+
+      card-element {
+        height: 311px;
+        width: 49.5%;
+
+        &:nth-child(2n + 2) {
+          margin-right: 0;
+        }
+      }
+    }
+
+    md-sidenav, md-sidenav.md-locked-open {
+      min-width: 300px;
+      width: 300px;
+    }
+  }
+
+  settings-view {
+    .header {
+      .md-button {
+        display: none;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 720px) and (max-width: 839px) {
+  main-view {
+    layout-cards {
+      margin-top: 15px;
+      width: 690px;
+
+      card-element {
+        height: 347px;
+        width: 49.5%;
+
+        &:nth-child(2n + 2) {
+          margin-right: 0;
+        }
+      }
+    }
+
+    md-sidenav, md-sidenav.md-locked-open {
+      min-width: 300px;
+      width: 300px;
+    }
+  }
+
+  settings-view {
+    .header {
+      .md-button {
+        display: none;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 600px) and (max-width: 719px) {
+
+  md-toolbar:not(.md-menu-toolbar) {
+    height: 58px;
+    transition: height .3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    width: 100%;
+  }
+
+  adaptive-controls {
+    bottom: 20px;
+    top: auto;
+  }
+
+  main-view {
+    logo-container {
+      background-position: -70px -8px;
+      background-size: 280%;
+      margin-left: -40px;
+      margin-top: -20px;
+      height: 40px;
+      width: 80px;
+    }
+
+    #main-section {
+      top: 95px;
+    }
+
+    layout-cards {
+      margin-top: 16px;
+      width: 568px;
+
+      card-element {
+        height: 465px;
+        margin-bottom: 1.5%;
+        margin-right: 0;
+        width: 100%;
+
+        &:nth-child(2n+1) {
+          margin-right: 0;
+        }
+      }
+    }
+
+    md-sidenav, md-sidenav.md-locked-open {
+      min-width: 300px;
+      width: 300px;
+    }
+
+  }
+
+   
+  details-view {
+    .bg {
+      background-attachment: inherit;
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      height: 360px;
+    }    
+
+    .card-info {
+      border-radius: initial;
+      height: ~'calc(100% - 360px)';
+      width: 100%;
+
+      &.animated {
+        -webkit-animation-duration: 0s;
+        animation-duration: 0s;
+      }
+    }
+  }
+
+  settings-view {
+    .header {
+      padding: 13px 5px 14px 5px;
+
+      .md-button {
+        height: 36px;
+        line-height: 36px;
+        width: 46px;
+
+        md-icon {
+          height: 24px;
+          font-size: 24px;
+          width: 24px;
+        }
+      }
+    }
+
+    .card-info {
+      border-radius: initial;
+      height: ~'calc(100% - 63px)';
+      padding: 0;
+      width: 100%;
+
+      .option-header {
+        height: 60px;
+      }
+
+      .option-header, .option-content {
+        padding: 0 20px;
+      }
+
+      .action-buttons {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 599px) {
+  adaptive-controls {
+    bottom: 20px;
+    top: auto;
+  }
+
+  main-view {
+    layout-cards {
+      margin-top: 16px;
+      width: 448px;
+
+      card-element {
+        height: 385px;
+        margin-bottom: 1.5%;
+        margin-right: 0;
+        width: 100%;
+
+        &:nth-child(2n+1) {
+          margin-right: 0;
+        }
+      }
+    }
+
+    md-sidenav, md-sidenav.md-locked-open {
+      min-width: 300px;
+      width: 300px;
+    }
+  }
+
+  details-view {
+    .bg {
+      background-attachment: inherit;
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      height: 360px;
+    }    
+
+    .card-info {
+      border-radius: initial;
+      height: ~'calc(100% - 360px)';
+      width: 100%;
+
+      &.animated {
+        -webkit-animation-duration: 0s;
+        animation-duration: 0s;
+      }
+    }
+  }
+
+  settings-view {
+    .header {
+      padding: 13px 5px 14px 5px;
+
+      .md-button {
+        height: 36px;
+        line-height: 36px;
+        width: 46px;
+
+        md-icon {
+          height: 24px;
+          font-size: 24px;
+          width: 24px;
+        }
+      }
+    }
+
+    .card-info {
+      border-radius: initial;
+      height: ~'calc(100% - 63px)';
+      padding: 0;
+      width: 100%;
+
+      .option-header {
+        height: 60px;
+      }
+
+      .option-header, .option-content {
+        padding: 0 20px;
+      }
+
+      .action-buttons {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 479px) {
+  adaptive-controls {
+    bottom: 20px;
+    top: auto;
+  }
+
+  main-view layout-cards {
+    margin-top: 16px;
+    width: 328px;
+
+    card-element {
+      height: 305px;
+      margin-bottom: 16px;
+      margin-right: 0;
+      width: 100%;
+
+      &:nth-child(2n+1) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  details-view {
+    .bg {
+      background-attachment: inherit;
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      height: 360px;
+    }    
+
+    .card-info {
+      border-radius: initial;
+      height: ~'calc(100% - 360px)';
+      width: 100%;
+
+      &.animated {
+        -webkit-animation-duration: 0s;
+        animation-duration: 0s;
+      }
+    }
+  }
+
+  settings-view {
+    .header {
+      padding: 13px 5px 14px 5px;
+
+      .md-button {
+        height: 36px;
+        line-height: 36px;
+        width: 46px;
+
+        md-icon {
+          height: 24px;
+          font-size: 24px;
+          width: 24px;
+        }
+      }
+    }
+
+    .card-info {
+      border-radius: initial;
+      height: ~'calc(100% - 63px)';
+      padding: 0;
+      width: 100%;
+
+      .option-header {
+        height: 60px;
+      }
+
+      .option-header, .option-content {
+        padding: 0 20px;
+      }
+
+      .action-buttons {
+        display: none;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 320px) {
+  main-view {
+    md-sidenav, md-sidenav.md-locked-open {
+      min-width: 330px;
+      width: 330px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) and (min-width: 0) and (orientation: landscape) {
+  md-toolbar:not(.md-menu-toolbar) {
+    height: 58px;
+    transition: height .3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    width: 100%;
+  }
+
+  main-view {
+    logo-container {
+      background-position: -70px -8px;
+      background-size: 280%;
+      margin-left: -40px;
+      margin-top: -20px;
+      height: 40px;
+      width: 80px;
+    }
+
+    #main-section {
+      top: 95px;
+    }
+
+    layout-cards {
+      margin-top: 16px;
+      width: 568px;
+
+      card-element {
+        height: 465px;
+        margin-bottom: 1.5%;
+        margin-right: 0;
+        width: 100%;
+
+        &:nth-child(2n+1) {
+          margin-right: 0;
+        }
+      }
+    }
+
+  }
+}
+
+
+// @media screen and (max-width: 450px) {
+//   layout-cards {
+//     card-element {
+//       height: 270px;
+//       min-height: 270px;
+//     }
+//   }
+
+//   adaptive-controls {
+//     bottom: 20px;
+//     top: auto;
+//   }
+// }
