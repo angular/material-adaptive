@@ -1,6 +1,7 @@
 class RecipeDetailController {
-  constructor($scope, $location, $routeParams, $timeout, $mdBottomSheet, PestoDomUtils, RecipeStorage) {
+  constructor($location, $routeParams, $mdBottomSheet, PestoDomUtils, RecipeStorage) {
     this.location_ = $location;
+    this.mdBottomSheet_ = $mdBottomSheet;
     this.recipeStorage_ = RecipeStorage;
     this.PestoDomUtils = PestoDomUtils;
 
@@ -42,11 +43,12 @@ class RecipeDetailController {
     ev.stopPropagation();
 
     if (this.PestoDomUtils.getViewportResolution().size <= 480) {
-      $mdBottomSheet.show({
-        templateUrl: 'views/bottom-sheet-share.html',
-        controller: 'BottomSheetShareCtrl',
+      this.mdBottomSheet_.show({
+        templateUrl: 'src/detail/view/bottom-sheet-share.html',
+        controller: 'BottomSheetShareController',
+        controllerAs: 'sheetCtrl',
         locals: {
-          items: $scope.items
+          items: this.menuItems
         },
         targetEvent: ev
       }).then((clickedItem) => {
@@ -65,8 +67,7 @@ class RecipeDetailController {
 }
 
 RecipeDetailController.$inject = [
-  '$scope', '$location', '$routeParams', '$timeout', '$mdBottomSheet',
-  'PestoDomUtils', 'RecipeStorage'
+  '$location', '$routeParams', '$mdBottomSheet', 'PestoDomUtils', 'RecipeStorage'
 ];
 
 export default RecipeDetailController;
