@@ -54,31 +54,54 @@
 /************
  * body 
  ************/
-
-/**
- * bnenning: We have to apply a more specific selector here (.pesto is on the
- * top-level HTML element) in order to override the ng-material styles. There's
- * apparently no way to force this CSS to come after the ng-material CSS, see
- * http://stackoverflow.com/questions/32258456/importing-css-and-controlling-order-in-head-using-jspm-and-system-js
- */
-.pesto body {
-  background-color: @secondary_color_600;
+body {
+  background-color: @primary_color_600;
   font-family: 'Raleway';
 
   &.transition-to-details, &.sidenav-open, &.openDetailsView {
     overflow: hidden;
   }
+
+  base-view, ng-view {
+    display: block;
+    height: inherit;
+  }
 }
+
 
 /************
  * common-component-edits
  ************/
+.md-button.md-icon-button {
+  margin: 0;
+}
+
+md-menu-content {
+  .md-button {
+    img {
+      height: auto;
+      margin: auto 16px auto 0;
+      width: 24px;
+      vertical-align: middle;
+    }
+  }
+}
+
 md-bottom-sheet {
   padding-left: 0;
   padding-right: 0;
 
   md-list {
     padding: 10px 0;
+
+    .md-button {
+      img {
+        height: auto;
+        margin: auto 32px auto 0;
+        width: 24px;
+        vertical-align: middle;
+      }
+    }
   }
 }
 
@@ -178,7 +201,7 @@ main-view {
   }
 
   logo-container {
-    background-image: url('https://www.gstatic.com/angular/material-adaptive/pesto/pesto-logo-full.svg');
+    background-image: url('/assets/logos/logo_l.png');
     background-repeat: no-repeat;
     background-position:0;
     background-size: 100%;
@@ -197,12 +220,11 @@ main-view {
     }
 
     .scroll & {
-      background-position: -70px -8px;
-      background-size: 280%;
-      margin-left: -40px;
-      margin-top: -20px;
-      height: 40px;
-      width: 80px;
+      background-image: url('/assets/logos/logo_xs.png');
+      margin-left: -28px;
+      margin-top: -28px;
+      height: 56px;
+      width: 56px;
     }
   }
 
@@ -246,23 +268,29 @@ main-view {
       background-color: #fff;
       bottom: 0;
       height: 87px;
-      padding: 21px 0 0 60px;
+      padding: 21px 0 0 76px;
       position: absolute;
       width: 100%;
 
       span {
-        height: 32px;
+        height: 36px;
         display: inline-block;
         left: 16px;
         position: absolute;
-        width: 32px;
+        width: 36px;
+
+        img {
+          height: 100%;
+          opacity: 0.87;
+          width: auto;
+        }
       }
 
       p.title {
         color: rgba(0,0,0,.87);
         cursor: pointer;
         font-size: 24px;
-        font-weight: 700;
+        font-weight: 500;
         outline: none;
         text-decoration: none;
         text-transform: none;
@@ -303,11 +331,7 @@ sidenav-backdrop {
   }
 }
 
-/**
- * As with the body selector above, we need the .pesto selector to override
- * the default ng-material styles.
- */
-.pesto md-sidenav, .pesto md-sidenav.md-locked-open {
+main-view md-sidenav, main-view md-sidenav.md-locked-open {
   height: 100%;  
   left: 0;
   position: fixed;
@@ -337,9 +361,10 @@ sidenav-backdrop {
       width: 90px;
 
       .image {
-        background-image: url('https://www.gstatic.com/angular/material-adaptive/pesto/avatar.png');
+        background-image: url('/assets/images/avatar.jpg');
         background-repeat: no-repeat;
         background-size: contain;
+        border-radius: 50%;
         height: 100%;
         width: 100%;
       }
@@ -428,7 +453,7 @@ adaptive-controls {
   bottom: auto;    
   margin: 10px auto 0;
   height: 60px;
-  top: 236px;
+  top: 195px;
   width: 100%;
   position: fixed;
   transition: top,bottom, .3s cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -436,7 +461,7 @@ adaptive-controls {
 
   & > * {
     position: absolute;
-    right: 20px;
+    right: 6px;
   }
 
   .scroll & {
@@ -445,7 +470,7 @@ adaptive-controls {
   }
 }
 
-.main-fab.md-button.md-fab, .main-fab.md-button.md-fab:hover, .main-fab.md-button.md-fab.md-focused {
+.md-button.md-fab, .md-button.md-fab:hover, .md-button.md-fab.md-focused, .md-button.md-fab:not([disabled]):hover {
   background-color: #EF5458;
   color: #fff;
   position: absolute;
@@ -470,6 +495,7 @@ details-view {
     z-index: 2;
 
     .actions-right {
+
       & > * {
         margin: 0;
       }
@@ -517,6 +543,12 @@ details-view {
         left: 20px;
         position: absolute;
         width: 35px;
+
+        img {
+          height: 100%;
+          opacity: 0.87;
+          width: auto;
+        }
       }
 
       .title {
@@ -604,6 +636,10 @@ details-view {
  * settings-view
  ************/
 settings-view {
+  background-color: @secondary_color_600;
+  display: block;
+  height: inherit;
+
   .header {
     align-items: center;
     color: white;
@@ -614,11 +650,11 @@ settings-view {
     z-index: 2;
 
     .title {
-      font-size: 27px;
+      font-size: 20px;
       left: 0;
       position: absolute;
       text-align: center;
-      top: 20px;
+      top: 24px;
       width: 100%;
       z-index: 1;
     }
@@ -662,7 +698,7 @@ settings-view {
 
     p {
       color: #878787;
-      font-size: 16px;
+      font-size: 14px;
 
       &.active {
         color: @secondary_color_600;
@@ -706,12 +742,21 @@ settings-view {
         align-items: center;
         display: flex;
 
-        .avatar {
-          background-color: @secondary_color_600;
-          border-radius: 100%;
+        .avatar-container {
+          border-radius: 50%;
           height: 40px;
-          margin-right: 25px;
+          margin-right: 15px;
+          position: relative;
           width: 40px;
+
+          .image {
+            background-image: url('/assets/images/avatar.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            border-radius: 50%;
+            height: 100%;
+            width: 100%;
+          }
         }
 
         span {
@@ -737,7 +782,7 @@ md-switch.md-checked .md-bar, md-switch.md-checked.md-focused .md-thumb:before, 
   background-color: @secondary_color_600_fade;
 }
 
-md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
+md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon, .md-button.md-raised:not([disabled]), .md-button.md-primary.md-raised:not([disabled]):hover {
   background-color: @secondary_color_600;
 }
 
@@ -745,10 +790,35 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
 /************
  * media-queries
  ************/
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1279px) {
   main-view {
+    md-toolbar:not(.md-menu-toolbar) {
+      height: 240px;
+
+      .scroll & {
+        height: 120px;
+      }
+    }
+
+    logo-container {
+      background-image: url('/assets/logos/logo_l.png');
+      margin-left: -130px;
+      margin-top: -100px;
+      width: 260px;
+
+      .scroll & {
+        background-image: url('/assets/logos/logo_s.png');
+        background-position: 0;
+        background-size: contain;
+        height: 85px;
+        margin-left: -42.5px;
+        margin-top: -42.5px;
+        width: 85px;
+      }
+    }
+
     layout-cards {
-      margin-top: 35px;
+      margin-top: 0;
       width: 1170px;
 
       card-element {
@@ -785,18 +855,132 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
 }
 
 
-@media screen and (min-width: 960px) and (max-width: 1279px) {
+@media screen and (min-width: 1022px) and (max-width: 1278px) {
   main-view {
+    md-toolbar:not(.md-menu-toolbar) {
+      height: 240px;
+
+      .scroll & {
+        height: 120px;
+      }
+    }
+
+    logo-container {
+      background-image: url('/assets/logos/logo_l.png');
+      margin-left: -130px;
+      margin-top: -100px;
+      width: 260px;
+
+      .scroll & {
+        background-image: url('/assets/logos/logo_s.png');
+        background-position: 0;
+        background-size: contain;
+        height: 85px;
+        margin-left: -42.5px;
+        margin-top: -42.5px;
+        width: 85px;
+      }
+    }
+
+    #main-section {
+      top: 221px;
+    }
+
+    adaptive-controls {
+      top: 196px;
+    }
+
     layout-cards {
-      margin-top: 32px;
-      width: 800px;
+      margin-top: 35px;
+      width: 994px;
 
       card-element {
-        height: 351px;
-        width: 49.5%;
+        height: 295px;
+        width: 32.5%;
 
-        &:nth-child(2n + 2) {
+        .card-info {
+          height: 80px;
+        }
+
+        &:nth-child(2n + 1) {
           margin-right: 0;
+        }
+
+        &:nth-child(3n + 1), &:nth-child(3n + 2) {
+          margin-right: 1%;
+        }
+      }
+    }
+
+    md-sidenav, md-sidenav.md-locked-open {
+      min-width: 300px;
+      width: 300px;
+    }
+  }
+
+  settings-view {
+    .header {
+      .md-button {
+        display: none;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 960px) and (max-width: 1021px) {
+  main-view {
+    md-toolbar:not(.md-menu-toolbar) {
+      height: 240px;
+
+      .scroll & {
+        height: 120px;
+      }
+    }
+
+    logo-container {
+      background-image: url('/assets/logos/logo_l.png');
+      margin-left: -130px;
+      margin-top: -100px;
+      width: 260px;
+
+      .scroll & {
+        background-image: url('/assets/logos/logo_s.png');
+        background-position: 0;
+        background-size: contain;
+        height: 85px;
+        margin-left: -42.5px;
+        margin-top: -42.5px;
+        width: 85px;
+      }
+    }
+
+    #main-section {
+      top: 240px;
+    }
+
+    adaptive-controls {
+      top: 196px;
+    }
+
+    layout-cards {
+      margin-top: 35px;
+      width: 1170px;
+
+      card-element {
+        height: 338px;
+        width: 32.5%;
+
+        .card-info {
+          height: 80px;
+        }
+
+        &:nth-child(2n + 1) {
+          margin-right: 0;
+        }
+
+        &:nth-child(3n + 1), &:nth-child(3n + 2) {
+          margin-right: 1%;
         }
       }
     }
@@ -819,12 +1003,41 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
 
 @media screen and (min-width: 840px) and (max-width: 959px) {
   main-view {
+    md-toolbar:not(.md-menu-toolbar) {
+      height: 240px;
+
+      .scroll & {
+        height: 120px;
+      }
+    }
+
+    #main-section {
+      top: 220px;
+    }
+
+    logo-container {
+      background-image: url('/assets/logos/logo_l.png');
+      margin-left: -130px;
+      margin-top: -100px;
+      width: 260px;
+
+      .scroll & {
+        background-image: url('/assets/logos/logo_s.png');
+        background-position: 0;
+        background-size: contain;
+        height: 85px;
+        margin-left: -42.5px;
+        margin-top: -42.5px;
+        width: 85px;
+      }
+    }
+
     layout-cards {
       margin-top: 35px;
-      width: 680px;
+      width: 930px;
 
       card-element {
-        height: 311px;
+        height: 393px;
         width: 49.5%;
 
         &:nth-child(2n + 2) {
@@ -851,12 +1064,41 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
 
 @media screen and (min-width: 720px) and (max-width: 839px) {
   main-view {
+    md-toolbar:not(.md-menu-toolbar) {
+      height: 240px;
+
+      .scroll & {
+        height: 120px;
+      }
+    }
+
+    #main-section {
+      top: 240px;
+    }
+
+    logo-container {
+      background-image: url('/assets/logos/logo_l.png');
+      margin-left: -130px;
+      margin-top: -100px;
+      width: 260px;
+
+      .scroll & {
+        background-image: url('/assets/logos/logo_s.png');
+        background-position: 0;
+        background-size: contain;
+        height: 85px;
+        margin-left: -42.5px;
+        margin-top: -42.5px;
+        width: 85px;
+      }
+    }
+
     layout-cards {
       margin-top: 15px;
-      width: 690px;
+      width: 810px;
 
       card-element {
-        height: 347px;
+        height: 354px;
         width: 49.5%;
 
         &:nth-child(2n + 2) {
@@ -884,41 +1126,48 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
 @media screen and (min-width: 600px) and (max-width: 719px) {
 
   md-toolbar:not(.md-menu-toolbar) {
-    height: 58px;
-    transition: height .3s cubic-bezier(0.4, 0.0, 0.2, 1);
-    width: 100%;
+    height: 240px;
+
+    .scroll & {
+      height: 120px;
+    }
   }
 
   adaptive-controls {
-    bottom: 20px;
-    top: auto;
+    top: 196px;
   }
 
   main-view {
     logo-container {
-      background-position: -70px -8px;
-      background-size: 280%;
-      margin-left: -40px;
-      margin-top: -20px;
-      height: 40px;
-      width: 80px;
+      background-image: url('/assets/logos/logo_l.png');
+      margin-left: -130px;
+      margin-top: -100px;
+      width: 260px;
+
+      .scroll & {
+        background-image: url('/assets/logos/logo_s.png');
+        background-position: 0;
+        background-size: contain;
+        height: 85px;
+        margin-left: -42.5px;
+        margin-top: -42.5px;
+        width: 85px;
+      }
     }
 
     #main-section {
-      top: 95px;
+      top: 240px;
     }
 
     layout-cards {
-      margin-top: 16px;
-      width: 568px;
+      margin-top: 15px;
+      width: 690px;
 
       card-element {
-        height: 465px;
-        margin-bottom: 1.5%;
-        margin-right: 0;
-        width: 100%;
+        height: 313px;
+        width: 49.5%;
 
-        &:nth-child(2n+1) {
+        &:nth-child(2n + 2) {
           margin-right: 0;
         }
       }
@@ -943,6 +1192,7 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
     .card-info {
       border-radius: initial;
       height: ~'calc(100% - 360px)';
+      max-width: 100%;
       width: 100%;
 
       &.animated {
@@ -958,7 +1208,7 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
 
       .md-button {
         height: 36px;
-        line-height: 36px;
+        line-height: 20px;
         width: 46px;
 
         md-icon {
@@ -973,6 +1223,7 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
       border-radius: initial;
       height: ~'calc(100% - 63px)';
       padding: 0;
+      max-width: 100%;
       width: 100%;
 
       .option-header {
@@ -996,13 +1247,31 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
     top: auto;
   }
 
+  md-toolbar:not(.md-menu-toolbar) {
+    height: 120px;
+  }
+
   main-view {
+    logo-container {
+      background-image: url('/assets/logos/logo_s.png');
+      background-position: 0;
+      background-size: contain;
+      height: 85px;
+      margin-left: -42.5px;
+      margin-top: -42.5px;
+      width: 85px;
+    }
+
+    #main-section {
+      top: 120px;
+    }
+
     layout-cards {
       margin-top: 16px;
-      width: 448px;
+      width: 570px;
 
       card-element {
-        height: 385px;
+        height: 467px;
         margin-bottom: 1.5%;
         margin-right: 0;
         width: 100%;
@@ -1030,6 +1299,7 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
     .card-info {
       border-radius: initial;
       height: ~'calc(100% - 360px)';
+      max-width: 100%;
       width: 100%;
 
       &.animated {
@@ -1045,7 +1315,7 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
 
       .md-button {
         height: 36px;
-        line-height: 36px;
+        line-height: 20px;
         width: 46px;
 
         md-icon {
@@ -1083,19 +1353,44 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
     top: auto;
   }
 
-  main-view layout-cards {
-    margin-top: 16px;
-    width: 328px;
+  md-toolbar:not(.md-menu-toolbar) {
+    height: 120px;
+  }
 
-    card-element {
-      height: 305px;
-      margin-bottom: 16px;
-      margin-right: 0;
-      width: 100%;
+  main-view {
+    logo-container {
+      background-image: url('/assets/logos/logo_s.png');
+      background-position: 0;
+      background-size: contain;
+      height: 85px;
+      margin-left: -42.5px;
+      margin-top: -42.5px;
+      width: 85px;
+    }
 
-      &:nth-child(2n+1) {
+    #main-section {
+      top: 120px;
+    }
+
+    layout-cards {
+      margin-top: 16px;
+      width: 450px;
+
+      card-element {
+        height: 387px;
+        margin-bottom: 16px;
         margin-right: 0;
+        width: 100%;
+
+        &:nth-child(2n+1) {
+          margin-right: 0;
+        }
       }
+    }
+
+    md-sidenav, md-sidenav.md-locked-open {
+      min-width: 310px;
+      width: 310px;
     }
   }
 
@@ -1110,6 +1405,7 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
     .card-info {
       border-radius: initial;
       height: ~'calc(100% - 360px)';
+      max-width: 100%;
       width: 100%;
 
       &.animated {
@@ -1125,8 +1421,9 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
 
       .md-button {
         height: 36px;
-        line-height: 36px;
-        width: 46px;
+        line-height: 20px;
+        margin: 0;
+        width: 36px;
 
         md-icon {
           height: 24px;
@@ -1147,7 +1444,11 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
       }
 
       .option-header, .option-content {
-        padding: 0 20px;
+        padding: 0 16px;
+
+        .md-button.md-icon-button {
+          margin: 0;
+        }
       }
 
       .action-buttons {
@@ -1158,11 +1459,36 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
 }
 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 359px) {
   main-view {
-    md-sidenav, md-sidenav.md-locked-open {
-      min-width: 330px;
+    md-toolbar:not(.md-menu-toolbar) {
+      height: 120px;
+    }
+
+    #main-section {
+      top: 120px;
+    }
+
+    logo-container {
+      background-image: url('/assets/logos/logo_s.png');
+      height: 90px;
+      margin-left: -42.5px;
+      margin-top: -45px;
+      width: 85px;
+    }
+
+    layout-cards {
+      margin-top: 16px;
       width: 330px;
+
+      card-element {
+        height: 305px;
+      }
+    }
+
+    md-sidenav, md-sidenav.md-locked-open {
+      min-width: 302px;
+      width: 302px;
     }
   }
 }
@@ -1176,16 +1502,15 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
 
   main-view {
     logo-container {
-      background-position: -70px -8px;
-      background-size: 280%;
-      margin-left: -40px;
-      margin-top: -20px;
-      height: 40px;
-      width: 80px;
+      background-image: url('/assets/logos/logo_xs.png');
+      margin-left: -28px;
+      margin-top: -28px;
+      height: 56px;
+      width: 56px;
     }
 
     #main-section {
-      top: 95px;
+      top: 60px;
     }
 
     layout-cards {
@@ -1205,6 +1530,20 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
     }
 
   }
+
+
+  details-view .card-info {
+    box-shadow: none;
+    height: 80px;
+    min-height: 170px;
+  }
+
+  settings-view .card-info {
+    box-shadow: none;
+    min-height: 50px;
+    height: ~'calc(100% - 70px)';
+  }
+  
 }
 
 
@@ -1221,3 +1560,4 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon {
 //     top: auto;
 //   }
 // }
+

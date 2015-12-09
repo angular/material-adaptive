@@ -20,7 +20,9 @@
         </div>
         <div class="option-content" ng-if="setting_opt.show_content_default || !settings.isSmallDeviceScreen()">
           <div class="user-info" ng-if="setting_opt.show_user_name">
-            <span class="avatar"></span>
+            <div class="avatar-container">
+              <div class="image"></div>
+            </div>
             <span>{{settings.userSettings.userName}}</span>
           </div>
           <md-list>

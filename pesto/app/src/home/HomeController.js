@@ -56,13 +56,6 @@ class HomeController {
   
   goToCard(ev, idx) {
     ev.stopPropagation();
-    // self.Body.classList.add('transition-to-details');
-    // ev.target.closest('card-element').classList.add('card-selected');
-
-    // $timeout(function() {
-    //   $scope.goTo(ev, '/item_details/' + idx);
-    //   self.Body.classList.remove('transition-to-details');
-    // }, 500);
     this.goTo(ev, '/recipe/' + idx);
   }
 }

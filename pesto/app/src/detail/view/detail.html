@@ -8,8 +8,8 @@
     <span class="flex"></span>
     <div class="actions-right">
       <md-button class="md-icon-button icon-right" aria-label="Timer">
-      	<md-icon class="material-icons">timer</md-icon>
-    	</md-button>
+        <md-icon class="material-icons">timer</md-icon>
+      </md-button>
       <md-button class="md-icon-button icon-right" aria-label="Share">
         <md-icon class="material-icons">share</md-icon>
       </md-button>
@@ -20,7 +20,8 @@
         <md-menu-content width="4">
           <md-menu-item ng-repeat="item in detail.menuItems">
             <md-button ng-click="detail.redial($event)">
-              <md-icon class="material-icons">{{ item.icon }}</md-icon>
+              <md-icon class="material-icons" ng-show="{{ item.materialIcon }}">{{ item.icon }}</md-icon>
+              <img ng-src="{{ item.icon }}" ng-show="{{ !item.materialIcon }}"/>
               {{ item.name }}
             </md-button>
           </md-menu-item>

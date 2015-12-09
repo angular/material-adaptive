@@ -6,10 +6,10 @@ class RecipeDetailController {
     this.PestoDomUtils = PestoDomUtils;
 
     this.menuItems = [
-      { name: 'Tweet recipe', icon: 'extension' },
-      { name: 'Email recipe', icon: 'mail' },
-      { name: 'Message recipe', icon: 'message' },
-      { name: 'Share on Facebook', icon: 'extension' },
+      { name: 'Tweet recipe', icon: '/assets/icons/twitter.png', materialIcon: false },
+      { name: 'Email recipe', icon: 'mail', materialIcon: true },
+      { name: 'Message recipe', icon: 'message', materialIcon: true },
+      { name: 'Share on Facebook', icon: '/assets/icons/facebook.png', materialIcon: false },
     ];
     this.recipe = null;
     this.recipeId = $routeParams['id'];

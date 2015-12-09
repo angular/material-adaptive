@@ -4,6 +4,7 @@
  * http://stackoverflow.com/questions/32258456/importing-css-and-controlling-order-in-head-using-jspm-and-system-js
  */
 
+import 'angular-material/angular-material.css!'
 import 'assets/style.css!'
 
 // Load Angular libraries

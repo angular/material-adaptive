@@ -3,7 +3,7 @@
  */
 
 const DEFAULT_SETTINGS = {
-  userName: 'Zack Gibson',
+  userName: 'Jonathan',
   publicProfile: true,
   dailyDigest: false,
   emailNotifications: false,
