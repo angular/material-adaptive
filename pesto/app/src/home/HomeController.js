@@ -13,13 +13,17 @@ class HomeController {
     this.recipes = [];
     
     // Window onscroll event. Updates the state on the body.
-    // TODO: remove this listener when route changes.
-    $window.addEventListener('scroll', (e) => {
+    const scrollListener = () => {
       if (this.body_.scrollTop > 0) {
         this.body_.classList.add('scroll');
       } else {
         this.body_.classList.remove('scroll');  
       }
+    };
+    $window.addEventListener('scroll', scrollListener);
+    // Remove the listener when route changes.
+    $scope.$on('$locationChangeStart', () => {
+      $window.removeEventListener('scroll', scrollListener);
     });
 
     PestoDomUtils.updateViewportDOM();
