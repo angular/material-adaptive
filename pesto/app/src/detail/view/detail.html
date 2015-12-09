@@ -44,8 +44,8 @@
     </div>
     <adaptive-controls>
     	<md-button class="md-fab details-fab" aria-label="Favorite" ng-click="detail.toggleFavorite($event)">
-		    <md-icon class="material-icons" ng-show="!detail.recipe.favorited">favorite_border</md-icon>
-        <md-icon class="material-icons" ng-show="detail.recipe.favorited">favorite</md-icon>
+		    <md-icon class="material-icons" ng-show="!detail.isFavorite()">favorite_border</md-icon>
+        <md-icon class="material-icons" ng-show="detail.isFavorite()">favorite</md-icon>
 		  </md-button>
     </adaptive-controls>
   </div>

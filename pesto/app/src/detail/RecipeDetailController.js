@@ -1,5 +1,5 @@
 class RecipeDetailController {
-  constructor($location, $routeParams, $mdBottomSheet, PestoDomUtils, RecipeStorage) {
+  constructor($location, $routeParams, $mdBottomSheet, PestoDomUtils, RecipeStorage, SettingsStorage) {
     this.location_ = $location;
     this.mdBottomSheet_ = $mdBottomSheet;
     this.recipeStorage_ = RecipeStorage;
@@ -31,6 +31,13 @@ class RecipeDetailController {
       $location.path('/');
     }
 
+    this.SettingsStorage = SettingsStorage;
+    this.userSettings = {};
+    // TODO: Better async.
+    this.SettingsStorage.readSettings().then((settings) => {
+      this.userSettings = settings;
+    });
+
     PestoDomUtils.updateViewportDOM();
   }
 
@@ -59,15 +66,28 @@ class RecipeDetailController {
     }      
   }
 
+  isFavorite() {
+    const favoriteIds = this.userSettings.favoriteRecipeIds;
+    return !!(favoriteIds && this.recipe && favoriteIds[this.recipe.id]);
+  }
+
   toggleFavorite(ev) {
     ev.stopPropagation();
-    // TODO: add favorited to RecipeStorage and Recipe model.
-    this.recipe.favorited = !this.recipe.favorited;
+    let favoriteIds = this.userSettings.favoriteRecipeIds;
+    // Fortunately, an empty object is true.
+    if (favoriteIds && this.recipe) {
+      if (favoriteIds[this.recipe.id]) {
+        delete favoriteIds[this.recipe.id];
+      } else {
+        favoriteIds[this.recipe.id] = true;
+      }
+      this.SettingsStorage.saveSettings(this.userSettings);
+    }
   }
 }
 
 RecipeDetailController.$inject = [
-  '$location', '$routeParams', '$mdBottomSheet', 'PestoDomUtils', 'RecipeStorage'
+  '$location', '$routeParams', '$mdBottomSheet', 'PestoDomUtils', 'RecipeStorage', 'SettingsStorage'
 ];
 
 export default RecipeDetailController;

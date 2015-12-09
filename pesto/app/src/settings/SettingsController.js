@@ -1,38 +1,43 @@
 class SettingsController {
 
-  constructor($location, $mdMedia, PestoDomUtils) {
+  constructor($location, $mdToast, $mdMedia, PestoDomUtils, SettingsStorage) {
     this.location_ = $location;
+    this.mdToast_ = $mdToast;
     this.mdMedia_ = $mdMedia;
-    // TODO: Move this to a service.
+    // "key" values should match properties in SettingsStorage.
     this.settings_data = [{
       "name": "Account",
       "show_content_default": true,
       "options": [
         {
           "name": "Public profile",
-          "value": true
+          "key": "publicProfile",
         }, {
           "name": "Subscribe to daily digest",
-          "value": false
+          "key": "dailyDigest",
         }
       ],
-      "extra_info": {
-        "user_name": "Zach Gibson"
-      }
+      "show_user_name": true,
     }, {
       "name": "Notification",
       "show_content_default": false,
       "options": [
         {
-          "name": "Get email notification",
-          "value": false
+          "name": "Get email notifications",
+          "key": "emailNotifications",
         }, {
-          "name": "Get text notification",
-          "value": false
+          "name": "Get text notifications",
+          "key": "textNotifications",
         }
       ],
-      "extra_info": false
     }];
+
+    this.SettingsStorage = SettingsStorage;
+    this.userSettings = {};
+    // TODO: Better async.
+    this.SettingsStorage.readSettings().then((settings) => {
+      this.userSettings = settings;
+    });
   }
 
   isSmallDeviceScreen() {
@@ -51,9 +56,15 @@ class SettingsController {
 
   save(ev) {
     ev.stopPropagation();
+    this.SettingsStorage.saveSettings(this.userSettings).then(() => {
+      this.location_.path('/');
+      // Toast positioning seems flaky.
+      this.mdToast_.showSimple('Settings saved');
+    });
   }
 }
 
-SettingsController.$inject = ['$location', '$mdMedia', 'PestoDomUtils'];
+SettingsController.$inject = [
+    '$location', '$mdToast', '$mdMedia', 'PestoDomUtils', 'SettingsStorage'];
 
 export default SettingsController;

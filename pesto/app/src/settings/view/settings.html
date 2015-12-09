@@ -19,15 +19,17 @@
           </md-button>
         </div>
         <div class="option-content" ng-if="setting_opt.show_content_default || !settings.isSmallDeviceScreen()">
-          <div class="user-info" ng-if="setting_opt.extra_info">
+          <div class="user-info" ng-if="setting_opt.show_user_name">
             <span class="avatar"></span>
-            <span>{{setting_opt.extra_info.user_name}}</span>
+            <span>{{settings.userSettings.userName}}</span>
           </div>
           <md-list>
             <md-list-item ng-repeat="opt in setting_opt.options">
               <p ng-class="{ 'active': opt.value == true }">{{opt.name}}</p>
-              <md-checkbox class="md-secondary" ng-model="opt.value" ng-if="!settings.isSmallDeviceScreen()"></md-checkbox>
-              <md-switch class="md-secondary" ng-model="opt.value" ng-if="settings.isSmallDeviceScreen()"></md-switch>
+              <md-checkbox class="md-secondary"
+                           ng-model="settings.userSettings[opt.key]"
+                           ng-if="!settings.isSmallDeviceScreen()"></md-checkbox>
+              <md-switch class="md-secondary" ng-model="settings.userSettings[opt.key]" ng-if="settings.isSmallDeviceScreen()"></md-switch>
             </md-list-item>
           </md-list>
         </div>
@@ -36,7 +38,7 @@
     <div class="action-buttons">
       <span flex></span>
       <md-button ng-click="settings.close($event)">Cancel</md-button>
-      <md-button class="md-raised md-primary" ng-click="settings.close($event)">Save</md-button>
+      <md-button class="md-raised md-primary" ng-click="settings.save($event)">Save</md-button>
     </div>
   </section>
 </settings-view>

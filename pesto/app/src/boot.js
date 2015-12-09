@@ -13,17 +13,14 @@ import material from 'angular-material'
 import animate from 'angular-animate'
 import 'angular-route'
 
-// Load custom application modules
+// Load custom application controllers and modules.
 
-// TODO: submodules for all of these.
 import HomeController from 'home/HomeController';
-//import RecipeDetailController from 'detail/RecipeDetailController';
+import RecipeDetailController from 'detail/RecipeDetailController';
 import SettingsController from 'settings/SettingsController';
 
-// Make this a module.
-import RecipeStorage from 'model/RecipeStorage';
-
-import detailModule from 'detail/RecipeDetailModule';
+import storageModule from 'model/StorageModule';
+import detailPageModule from 'detail/RecipeDetailModule';
 import pestoUtilsModule from 'utils/PestoUtils';
 
 
@@ -48,8 +45,14 @@ angular
 
     const body = document.getElementsByTagName("body")[0];
 
-    const app = angular
-          .module( appName, [ material, 'ngRoute', 'ngAnimate', detailModule, pestoUtilsModule ] )
+    const app = angular.module(appName, [
+            material,
+            'ngRoute',
+            'ngAnimate',
+            storageModule,
+            detailPageModule,
+            pestoUtilsModule,
+          ])
           .config( ['$provide', LogDecorator] );
     
     app.config(['$routeProvider', ($routeProvider) => {
@@ -72,10 +75,8 @@ angular
     }]);
     
     app.controller('HomeController', HomeController)
-        .controller('SettingsController', SettingsController);
-        //.controller('RecipeDetailController', RecipeDetailController);
-
-    app.service("RecipeStorage", RecipeStorage);
+        .controller('SettingsController', SettingsController)
+        .controller('RecipeDetailController', RecipeDetailController);
 
     angular.bootstrap( body, [ app.name ], { strictDi: false })
 
