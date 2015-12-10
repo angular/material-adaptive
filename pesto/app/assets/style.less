@@ -139,10 +139,10 @@ md-toolbar:not(.md-menu-toolbar) {
   overflow: hidden;
   position: fixed;
   top: 0;
-  transition-timing: cubic-bezier(0.4, 0.0, 1, 1); 
+  transform: transale3d(0,0,0);
+  transition-timing: cubic-bezier(0.4, 0.0, 1, 1);
   width: 100%;
   z-index: 5;
-
 
   .scroll & {
     height: 58px;
@@ -190,6 +190,8 @@ main-view {
   display: block;
 
   card-element {
+    transform: transale3d(0,0,0);
+
     .transition-to-details &.card-selected {
       transform: scale(1.1);
       transition: transform .3s cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -220,6 +222,7 @@ main-view {
     background-color: @primary_color_600;
     position: relative;
     top: 280px;
+    transform: transale3d(0,0,0);
     transition: top .3s cubic-bezier(0.4, 0.0, 0.2, 1);
 
     .scroll & {
@@ -485,6 +488,7 @@ adaptive-controls {
   top: 195px;
   width: 100%;
   position: fixed;
+  transform: transale3d(0,0,0);
   transition: top,bottom, .3s cubic-bezier(0.4, 0.0, 0.2, 1);
   z-index: 6;
 
