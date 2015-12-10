@@ -13,8 +13,8 @@ STORE[1] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 30),
   name: 'Pesto Bruchetta',
   author: 'Alice Jones',
-  mainImageUrl: '/assets/images/image2-01.png',
-  ingredientsImageUrl: '/assets/icons/quick.png',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/image2-01.png',
+  ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/quick.png',
   description: 'This beautiful sprouts recipe...',
   ingredients: [
     {amount: '2 lbs', description: 'Sprouts'},
@@ -29,10 +29,10 @@ STORE[1] = Recipe.fromJson({
 STORE[2] = Recipe.fromJson({
   id: 2,
   dateCreated: new Date(2015, 0, 29),
-  name: 'Chocolate chip cookies',
+  name: 'Chocolate cookies',
   author: 'Bob Smith',
-  mainImageUrl: '/assets/images/blue-potato.jpg',
-  ingredientsImageUrl: '/assets/icons/veggie.png',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/blue-potato.jpg',
+  ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/veggie.png',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
@@ -49,8 +49,8 @@ STORE[3] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 28),
   name: 'Apple pie',
   author: 'Carol Clark',
-  mainImageUrl: '/assets/images/image1-01.png',
-  ingredientsImageUrl: '/assets/icons/main.png',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/image1-01.png',
+  ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/main.png',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
@@ -67,8 +67,8 @@ STORE[4] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 27),
   name: 'Belgian waffles',
   author: 'Dave Johnson',
-  mainImageUrl: '/assets/images/sausage.jpg',
-  ingredientsImageUrl: '/assets/icons/meat.png',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/sausage.jpg',
+  ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/meat.png',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
@@ -82,15 +82,15 @@ STORE[4] = Recipe.fromJson({
 
 STORE[5] = Recipe.fromJson({
   id: 5,
-  dateCreated: new Date(2015, 0, 26),
-  name: 'Carrot cake',
-  author: 'Eve Ellison',
-  mainImageUrl: '/assets/images/tacos.png',
-  ingredientsImageUrl: '/assets/icons/spicy.png',
+  dateCreated: new Date(2015, 0, 25),
+  name: 'Chicken Kiev',
+  author: 'Mallory Masters',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/white-rice.jpg',
+  ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/healthy.png',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
-    {amount: '1 lb', description: 'Flour'},
+    {amount: '1 lb', unit: 'lbs', description: 'Flour'},
   ],
   steps: [
     {duration: '3 min', description: 'Stir'},
@@ -103,8 +103,8 @@ STORE[6] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 25),
   name: 'Chicken Kiev',
   author: 'Mallory Masters',
-  mainImageUrl: '/assets/images/white-rice.jpg',
-  ingredientsImageUrl: '/assets/icons/healthy.png',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/IMG_5447.jpg',
+  ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/veggie.png',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
@@ -121,8 +121,8 @@ STORE[7] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 25),
   name: 'Chicken Kiev',
   author: 'Mallory Masters',
-  mainImageUrl: '/assets/images/IMG_5447.jpg',
-  ingredientsImageUrl: '/assets/icons/veggie.png',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/fish-steaks.jpg',
+  ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/fish.png',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
@@ -139,8 +139,8 @@ STORE[8] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 25),
   name: 'Chicken Kiev',
   author: 'Mallory Masters',
-  mainImageUrl: '/assets/images/fish-steaks.jpg',
-  ingredientsImageUrl: '/assets/icons/fish.png',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/IMG_5438.jpg',
+  ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/main.png',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
@@ -157,8 +157,8 @@ STORE[9] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 25),
   name: 'Chicken Kiev',
   author: 'Mallory Masters',
-  mainImageUrl: '/assets/images/IMG_5438.jpg',
-  ingredientsImageUrl: '/assets/icons/main.png',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/IMG_5332.jpg',
+  ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/quick.png',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
@@ -175,8 +175,8 @@ STORE[10] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 25),
   name: 'Chicken Kiev',
   author: 'Mallory Masters',
-  mainImageUrl: '/assets/images/IMG_5332.jpg',
-  ingredientsImageUrl: '/assets/icons/quick.png',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/bok-choy.jpg',
+  ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/spicy.png',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
@@ -191,10 +191,10 @@ STORE[10] = Recipe.fromJson({
 STORE[11] = Recipe.fromJson({
   id: 11,
   dateCreated: new Date(2015, 0, 25),
-  name: 'Chicken Kiev',
+  name: 'Pesto Kiev',
   author: 'Mallory Masters',
-  mainImageUrl: '/assets/images/bok-choy.jpg',
-  ingredientsImageUrl: '/assets/icons/spicy.png',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/pasta.png',
+  ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/main.png',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},
@@ -209,28 +209,10 @@ STORE[11] = Recipe.fromJson({
 STORE[12] = Recipe.fromJson({
   id: 12,
   dateCreated: new Date(2015, 0, 25),
-  name: 'Pesto Kiev',
-  author: 'Mallory Masters',
-  mainImageUrl: '/assets/images/pasta.png',
-  ingredientsImageUrl: '/assets/icons/main.png',
-  description: 'Yummy',
-  ingredients: [
-    {amount: '2', description: 'Eggs'},
-    {amount: '1 lb', unit: 'lbs', description: 'Flour'},
-  ],
-  steps: [
-    {duration: '3 min', description: 'Stir'},
-    {duration: '45 min', description: 'Cook'}
-  ],
-});
-
-STORE[13] = Recipe.fromJson({
-  id: 13,
-  dateCreated: new Date(2015, 0, 25),
   name: 'Pesto Bruchetta',
   author: 'Mallory Masters',
-  mainImageUrl: '/assets/images/IMG_0575.jpg',
-  ingredientsImageUrl: '/assets/icons/fish.png',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/IMG_0575.jpg',
+  ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/fish.png',
   description: 'Yummy',
   ingredients: [
     {amount: '2', description: 'Eggs'},

@@ -9,6 +9,33 @@
 @secondary_color_600_fade: rgba(25, 136, 111, 0.5);
 
 
+.logo_l_mixin {
+  background-position: 0 0;
+  height: 165px;
+  margin-left: -130px;
+  margin-top: -82.5px;
+  width: 260px;
+}
+
+.logo_s_mixin {
+  background-position: -113px -212px;
+  background-size: 374%;
+  height: 85px;
+  margin-left: -42.5px;
+  margin-top: -42.5px;
+  width: 85px;
+}
+
+.logo_xs_mixin {
+  background-position: -98px -245px;
+  background-size: 450%;
+  height: 56px;
+  margin-left: -28px;
+  margin-top: -28px;
+  width: 56px;
+}
+
+
 
 /************
  * Animation - Keyframes
@@ -201,7 +228,7 @@ main-view {
   }
 
   logo-container {
-    background-image: url('/assets/logos/logo_l.png');
+    background-image: url('/assets/logos/logo_all.svg');
     background-repeat: no-repeat;
     background-position:0;
     background-size: 100%;
@@ -219,13 +246,15 @@ main-view {
       width: 100%;
     }
 
-    .scroll & {
-      background-image: url('/assets/logos/logo_xs.png');
-      margin-left: -28px;
-      margin-top: -28px;
-      height: 56px;
-      width: 56px;
-    }
+    // .scroll & {
+    //   background-position: -78px -232px;
+    //   background-size: 374%;
+    //   background-image: url('http://www.gstatic.com/angular/material-adaptive/pesto/logo_xs.png');
+    //   margin-left: -28px;
+    //   margin-top: -28px;
+    //   height: 56px;
+    //   width: 56px;
+    // }
   }
 
 
@@ -361,7 +390,7 @@ main-view md-sidenav, main-view md-sidenav.md-locked-open {
       width: 90px;
 
       .image {
-        background-image: url('/assets/images/avatar.jpg');
+        background-image: url('http://www.gstatic.com/angular/material-adaptive/pesto/avatar.jpg');
         background-repeat: no-repeat;
         background-size: contain;
         border-radius: 50%;
@@ -487,9 +516,10 @@ details-view {
 
   .header {
     align-items: center;
+    background-color: rgba(0,0,0,.3);
     color: white;
     display: flex;
-    padding: 5px 5px 0 5px;
+    padding: 0 5px 0 5px;
     position: absolute;
     width: 100%;
     z-index: 2;
@@ -750,7 +780,7 @@ settings-view {
           width: 40px;
 
           .image {
-            background-image: url('/assets/images/avatar.jpg');
+            background-image: url('http://www.gstatic.com/angular/material-adaptive/pesto/avatar.jpg');
             background-repeat: no-repeat;
             background-size: contain;
             border-radius: 50%;
@@ -801,19 +831,10 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon, .md-button.md-r
     }
 
     logo-container {
-      background-image: url('/assets/logos/logo_l.png');
-      margin-left: -130px;
-      margin-top: -100px;
-      width: 260px;
+      .logo_l_mixin;
 
       .scroll & {
-        background-image: url('/assets/logos/logo_s.png');
-        background-position: 0;
-        background-size: contain;
-        height: 85px;
-        margin-left: -42.5px;
-        margin-top: -42.5px;
-        width: 85px;
+        .logo_s_mixin;
       }
     }
 
@@ -866,19 +887,10 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon, .md-button.md-r
     }
 
     logo-container {
-      background-image: url('/assets/logos/logo_l.png');
-      margin-left: -130px;
-      margin-top: -100px;
-      width: 260px;
+      .logo_l_mixin;
 
       .scroll & {
-        background-image: url('/assets/logos/logo_s.png');
-        background-position: 0;
-        background-size: contain;
-        height: 85px;
-        margin-left: -42.5px;
-        margin-top: -42.5px;
-        width: 85px;
+        .logo_s_mixin;
       }
     }
 
@@ -939,19 +951,10 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon, .md-button.md-r
     }
 
     logo-container {
-      background-image: url('/assets/logos/logo_l.png');
-      margin-left: -130px;
-      margin-top: -100px;
-      width: 260px;
+      .logo_l_mixin;
 
       .scroll & {
-        background-image: url('/assets/logos/logo_s.png');
-        background-position: 0;
-        background-size: contain;
-        height: 85px;
-        margin-left: -42.5px;
-        margin-top: -42.5px;
-        width: 85px;
+        .logo_s_mixin;
       }
     }
 
@@ -1016,19 +1019,10 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon, .md-button.md-r
     }
 
     logo-container {
-      background-image: url('/assets/logos/logo_l.png');
-      margin-left: -130px;
-      margin-top: -100px;
-      width: 260px;
+      .logo_l_mixin;
 
       .scroll & {
-        background-image: url('/assets/logos/logo_s.png');
-        background-position: 0;
-        background-size: contain;
-        height: 85px;
-        margin-left: -42.5px;
-        margin-top: -42.5px;
-        width: 85px;
+        .logo_s_mixin;
       }
     }
 
@@ -1077,19 +1071,10 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon, .md-button.md-r
     }
 
     logo-container {
-      background-image: url('/assets/logos/logo_l.png');
-      margin-left: -130px;
-      margin-top: -100px;
-      width: 260px;
+      .logo_l_mixin;
 
       .scroll & {
-        background-image: url('/assets/logos/logo_s.png');
-        background-position: 0;
-        background-size: contain;
-        height: 85px;
-        margin-left: -42.5px;
-        margin-top: -42.5px;
-        width: 85px;
+        .logo_s_mixin;
       }
     }
 
@@ -1139,19 +1124,10 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon, .md-button.md-r
 
   main-view {
     logo-container {
-      background-image: url('/assets/logos/logo_l.png');
-      margin-left: -130px;
-      margin-top: -100px;
-      width: 260px;
+      .logo_l_mixin;
 
       .scroll & {
-        background-image: url('/assets/logos/logo_s.png');
-        background-position: 0;
-        background-size: contain;
-        height: 85px;
-        margin-left: -42.5px;
-        margin-top: -42.5px;
-        width: 85px;
+        .logo_s_mixin;
       }
     }
 
@@ -1253,13 +1229,11 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon, .md-button.md-r
 
   main-view {
     logo-container {
-      background-image: url('/assets/logos/logo_s.png');
-      background-position: 0;
-      background-size: contain;
-      height: 85px;
-      margin-left: -42.5px;
-      margin-top: -42.5px;
-      width: 85px;
+      .logo_s_mixin;
+
+      .scroll & {
+        .logo_xs_mixin;
+      }
     }
 
     #main-section {
@@ -1359,13 +1333,11 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon, .md-button.md-r
 
   main-view {
     logo-container {
-      background-image: url('/assets/logos/logo_s.png');
-      background-position: 0;
-      background-size: contain;
-      height: 85px;
-      margin-left: -42.5px;
-      margin-top: -42.5px;
-      width: 85px;
+      .logo_s_mixin;
+
+      .scroll & {
+        .logo_xs_mixin;
+      }
     }
 
     #main-section {
@@ -1470,11 +1442,11 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon, .md-button.md-r
     }
 
     logo-container {
-      background-image: url('/assets/logos/logo_s.png');
-      height: 90px;
-      margin-left: -42.5px;
-      margin-top: -45px;
-      width: 85px;
+      .logo_s_mixin;
+
+      .scroll & {
+        .logo_xs_mixin;
+      }
     }
 
     layout-cards {
@@ -1502,11 +1474,7 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon, .md-button.md-r
 
   main-view {
     logo-container {
-      background-image: url('/assets/logos/logo_xs.png');
-      margin-left: -28px;
-      margin-top: -28px;
-      height: 56px;
-      width: 56px;
+      .logo_xs_mixin;
     }
 
     #main-section {
