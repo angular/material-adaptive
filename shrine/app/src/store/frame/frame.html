@@ -6,26 +6,41 @@
               id="maintoolbar">
     <!-- Top Toolbar -->
     <div flex layout="row">
-      <md-button hide-gt-sm
-                 ng-if="!ctrl.isDetailView"
-                 class="md-icon-button"
-                 ng-click="ctrl.toggleMenu()"
-                 aria-label="Show Category List">
-        <md-icon md-svg-icon="menu"></md-icon>
-      </md-button>
+      <span class="left-buttons" flex="35">
+        <md-button hide-gt-xs
+                   ng-if="!ctrl.isDetailView"
+                   class="md-icon-button"
+                   ng-click="ctrl.toggleMenu()"
+                   aria-label="Show Category List">
+          <md-icon md-svg-icon="menu"></md-icon>
+        </md-button>
 
-      <md-button hide-lg
-                 ng-if="ctrl.isDetailView"
-                 class="md-icon-button"
-                 ng-click="ctrl.goBack()"
-                 aria-label="Go Back">
-        <md-icon md-svg-icon="back"></md-icon>
-      </md-button>
+        <md-button hide-lg
+                   ng-if="ctrl.isDetailView"
+                   class="md-icon-button"
+                   ng-click="ctrl.goBack()"
+                   aria-label="Go Back">
+          <md-icon md-svg-icon="back"></md-icon>
+        </md-button>
+      </span>
 
-      <span flex></span>
+      <span flex layout-padding layout-fill>
+        <span class="logo-branding"
+              hide-xs
+              layout="row"
+              layout-align="center center">
+          <md-icon md-svg-icon="logo"
+                   style="height:1.25em; width:1.25em; margin-right:15px;"
+                   aria-label="Logo"></md-icon>
+          <p>SHRINE</p>
+        </span>
+      </span>
 
-      <span>
-        <md-button class="md-icon-button" aria-label="Show Search Dialog">
+      <span class="right-buttons" flex="35" layout="row">
+        <span flex></span>
+        <md-button class="md-icon-button"
+                   aria-label="Show Search Dialog"
+                   ng-click="ctrl.openSearch()">
           <md-icon class="material-icons">search</md-icon>
         </md-button>
 
@@ -51,33 +66,13 @@
             </md-menu-item>
           </md-menu-content>
         </md-menu>
-
-        <!-- <md-menu md-position-mode="target-right target"
-                 ng-if="ctrl.isDetailView" >
-          <md-button aria-label="Open demo menu"
-                     class="md-icon-button"
-                     ng-click="ctrl.openShareMenu() || $mdOpenMenu($event)">
-            <md-icon md-menu-origin
-                     md-svg-icon="share"></md-icon>
-          </md-button>
-          <md-menu-content width="4">
-            <md-menu-item ng-repeat="option in ctrl.sharingOptions">
-              <md-button ng-click="ctrl.acknowledgeAction(option.icon)">
-                  <div layout="row">
-                    <p flex>{{option.label}}</p>
-                    <md-icon md-menu-align-target
-                             md-svg-icon="{{option.icon}}"></md-icon>
-                  </div>
-              </md-button>
-            </md-menu-item>
-          </md-menu-content>
-        </md-menu> -->
       </span>
     </div>
 
     <!-- Current Category -->
-    <div hide-gt-sm
+    <div hide-gt-xs
          class="header-bottom-border"
+         ng-style="sideNavOpen ? {'border-bottom-color': 'transparent'} : ''"
          layout="row"
          flex>
       <h1 class="md-display-2"
@@ -89,8 +84,8 @@
 
   <!-- Selection Tabs -->
   <md-tabs hide 
-           show-gt-sm 
-               md-selected="ctrl.selectedIdx">
+           show-gt-xs
+           md-selected="ctrl.selectedIdx">
     <md-tab ng-repeat="category in ctrl.categories"
             ng-click="ctrl.selectCategory(category)"
             label="{{category.name}}">
@@ -100,9 +95,20 @@
 
   <!-- SideNav -->
   <md-sidenav layout="column"
+              md-is-open="sideNavOpen"
               md-component-id="left"
-              class="md-sidenav-left">
-    <md-toolbar class="md-tall md-menu-toolbar" flex></md-toolbar>
+              class="md-sidenav-left grey-background">
+    <md-toolbar class="sidenav-header md-menu-toolbar"
+                layout="column"
+                layout-padding
+                layout-align="center center">
+      <span class="logo-branding">
+        <md-icon md-svg-icon="logo"
+                 style="height:85px; width:85px;"
+                 aria-label="Logo"></md-icon>
+        <p>SHRINE</p>
+      </span>
+    </md-toolbar>
     <md-content flex>
       <md-list>
         <md-list-item ng-repeat="(idx, category) in ctrl.categories"

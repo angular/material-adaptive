@@ -11,6 +11,7 @@ const URL_ICON_CHECKED  = 'assets/svg/check_circle.svg';
 const URL_ICON_BACK  = 'assets/svg/arrow_back.svg';
 const URL_ICON_SHARE  = 'assets/svg/share.svg';
 const URL_ICON_ADD_SHOPPING  = 'assets/svg/add_shopping_cart.svg';
+const URL_ICON_LOGO  = 'assets/svg/logo.svg';
 
 import BaseController from 'store/BaseController';
 import FrameController from 'store/frame/FrameController'
@@ -54,7 +55,8 @@ let moduleName = angular
           .icon('search', URL_ICON_SEARCH, 24)
           .icon('back', URL_ICON_BACK, 24)
           .icon('checked', URL_ICON_CHECKED, 24)
-          .icon('add_shopping_cart', URL_ICON_ADD_SHOPPING, 24)
+					.icon('add_shopping_cart', URL_ICON_ADD_SHOPPING, 24)
+					.icon('logo', URL_ICON_LOGO, 24)
           .icon('share', URL_ICON_SHARE, 24);
       })
       .config( ($stateProvider, $urlRouterProvider, $locationProvider) => {
