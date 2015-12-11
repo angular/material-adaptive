@@ -3,7 +3,7 @@
  */
 class FrameController {
 
-  constructor($rootScope, $window, $mdSidenav, $mdMedia, $mdBottomSheet, $mdToast, $log, $state, SharingService, ItemsService) {
+  constructor($rootScope, $window, $mdSidenav, $mdMedia, $mdBottomSheet, $mdToast, $log, $state, ShrineDomUtils, SharingService, ItemsService) {
     this.$log = $log.getInstance("FrameController");
     this.$log.debug("instanceOf()");
 
@@ -17,6 +17,7 @@ class FrameController {
     this.$mdMedia = $mdMedia;
     this.$mdBottomSheet = $mdBottomSheet;
     this.$window = $window;
+    this.ShrineDomUtils = ShrineDomUtils;
 
     this.updateSelectedTab()
 
@@ -40,6 +41,7 @@ class FrameController {
   }
 
   /**
+   * Deprecated (cristobalchao@): Haven't been able to make $mdMedia to work with responsive actions.
    * Opens the sharing menu, either using a bottom sheet or popup menu as appropriate.
    */
   openShareMenu() {
@@ -57,6 +59,28 @@ class FrameController {
         that.acknowledgeAction(option);
       });
     }
+  }
+
+  /**
+   * Opens the sharing menu, either using a bottom sheet or popup menu as appropriate.
+   */
+  openMenu($mdOpenMenu, ev) {
+    ev.stopPropagation();
+    this.$log.debug( "openMenu() ");
+    var that = this;
+
+    if (that.ShrineDomUtils.getViewportResolution().size <= 480) {
+      return that.$mdBottomSheet.show({
+        templateUrl: 'src/store/sharingmenu/sharingmenu.html',
+        controller: 'SharingMenuController',
+        controllerAs: 'ctrl',
+        locals: {
+          'acknowledgeAction': that.acknowledgeAction
+        }
+      }).then(function(option) {
+        that.acknowledgeAction(option);
+      });
+    }    
   }
 
   /**
@@ -156,5 +180,5 @@ class FrameController {
   }
 }
 
-FrameController.$inject = ['$rootScope', '$window', '$mdSidenav', '$mdMedia', '$mdBottomSheet', '$mdToast', '$log', '$state', 'SharingService', 'ItemsService'];
+FrameController.$inject = ['$rootScope', '$window', '$mdSidenav', '$mdMedia', '$mdBottomSheet', '$mdToast', '$log', '$state', 'ShrineDomUtils', 'SharingService', 'ItemsService'];
 export default FrameController;

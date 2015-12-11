@@ -3,7 +3,7 @@
 // then load the main.css to provide overrides, etc.
 
 import 'angular-material/angular-material.css!'
-import 'assets/app.css!'
+import 'assets/style.css!'
 
 // Load Angular libraries
 
@@ -14,6 +14,7 @@ import material from 'angular-material'
 // Load custom application modules
 
 import main from 'app/main'
+import shrineUtilsModule from 'utils/ShrineUtils';
 
 // Load loggers for injection and pre-angular debugging
 
@@ -34,7 +35,7 @@ angular
     $log.debug( "Initializing '{0}'", [ appName ] );
     let body = document.getElementsByTagName("body")[0];
     let app  = angular
-          .module( appName, [ 'ui.router', material, main ] )
+          .module( appName, [ 'ui.router', material, main, shrineUtilsModule ] )
           .config( ['$provide', LogDecorator] );
 
     angular.bootstrap( body, [ app.name ], { strictDi: false })

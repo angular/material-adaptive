@@ -1,7 +1,7 @@
-class PestoDomUtils {
-  constructor($window, PESTO_W_SIZES) {
+class ShrineDomUtils {
+  constructor($window, SHRINE_W_SIZES) {
     this.window_ = $window;
-    this.W_SIZES = PESTO_W_SIZES;
+    this.W_SIZES = SHRINE_W_SIZES;
     
     $window.addEventListener('resize', () => this.updateViewportDOM());
   }
@@ -41,6 +41,6 @@ class PestoDomUtils {
   }
 }
 
-PestoDomUtils.$inject = ['$window', 'PESTO_W_SIZES'];
+ShrineDomUtils.$inject = ['$window', 'SHRINE_W_SIZES'];
 
-export default PestoDomUtils;
+export default ShrineDomUtils;

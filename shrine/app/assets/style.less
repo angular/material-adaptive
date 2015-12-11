@@ -1,0 +1,152 @@
+html, body {
+  font-family: 'Roboto', sans-serif;
+  font-size:14px;
+  height:100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+* {
+  outline: none;
+}
+
+
+/**
+ * Common Components
+ */
+.shrine-app {
+  .md-button.md-icon-button {
+    margin: 0;
+  }
+
+  md-menu-content {
+    .md-button {
+      img {
+        height: auto;
+        margin: auto 16px auto 0;
+        width: 24px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  md-bottom-sheet {
+    padding-left: 0;
+    padding-right: 0;
+
+    md-list {
+      padding: 10px 0;
+
+      .md-button {
+        img {
+          height: auto;
+          margin: auto 32px auto 0;
+          width: 24px;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+
+[ui-view="main"] {
+  padding: 10px 10px 0 10px;
+}
+
+md-tabs md-ink-bar {
+  background: #18FFFF
+}
+
+.md-button.fixed-position-fab-button {
+  bottom: 10px;
+  position: fixed;
+  right: 10px;
+}
+
+.grey-background {
+  background: #F3F3F3;
+}
+
+.white-background { 
+  background: #FFF;
+}
+
+.grid md-grid-tile {
+  background-color: white;
+  overflow: hidden;
+}
+
+.header-bottom-border {
+  border-bottom: solid #18FFFF 3px;
+}
+
+.detail img {
+  display: block;
+  margin: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.detail {
+  background: white;
+}
+
+/**
+ * Item Card
+ */
+item-card {
+    height: 100%;
+    width: 100%;
+}
+.item-card {
+  background: white;
+  overflow: hidden;
+  position: relative;
+}
+
+.item-card md-icon {
+  bottom: 7.5%;
+  position: absolute;
+  right: 7.5%;
+  z-index: 11;
+}
+
+.item-card-img {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.item-card-img img {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+/**
+ * Sharing Menu
+ */
+md-bottom-sheet .sharing-menu-label {
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: -10px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+md-bottom-sheet md-list-item {
+  min-height: 48px; 
+}
+
+

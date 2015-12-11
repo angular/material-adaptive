@@ -25,19 +25,34 @@
       <span flex></span>
 
       <span>
-        <md-button class="md-icon-button"
-                   ng-click="ctrl.openSearch()"
-                   aria-label="Show Search Dialog">
-          <md-icon md-svg-icon="search"></md-icon>
+        <md-button class="md-icon-button" aria-label="Show Search Dialog">
+          <md-icon class="material-icons">search</md-icon>
         </md-button>
 
         <md-button class="md-icon-button"
                    ng-click="ctrl.acknowledgeAction('shopping_cart')"
                    aria-label="Show Shopping Cart">
-          <md-icon md-svg-icon="shopping_cart"></md-icon>
+          <md-icon class="material-icons">shopping_cart</md-icon>
         </md-button>
 
-        <md-menu md-position-mode="target-right target"
+        <md-menu md-position-mode="target-right target">
+          <md-button aria-label="Open menu"
+                     class="md-icon-button"
+                     ng-click="ctrl.openMenu($mdOpenMenu, $event) || $mdOpenMenu($event)">
+            <md-icon class="material-icons">more_vert</md-icon>
+          </md-button>
+          <md-menu-content width="4">
+            <md-menu-item ng-repeat="option in ctrl.sharingOptions">
+              <md-button ng-click="ctrl.acknowledgeAction(option.icon)">
+                  <md-icon class="material-icons" ng-show="{{ option.materialIcon }}">{{ option.icon }}</md-icon>
+                  <img ng-src="{{ option.icon }}" ng-show="{{ !option.materialIcon }}"/>
+                  {{ option.label }}
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+
+        <!-- <md-menu md-position-mode="target-right target"
                  ng-if="ctrl.isDetailView" >
           <md-button aria-label="Open demo menu"
                      class="md-icon-button"
@@ -56,7 +71,7 @@
               </md-button>
             </md-menu-item>
           </md-menu-content>
-        </md-menu>
+        </md-menu> -->
       </span>
     </div>
 

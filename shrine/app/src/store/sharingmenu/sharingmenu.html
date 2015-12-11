@@ -1,10 +1,9 @@
-<md-bottom-sheet>
+<md-bottom-sheet class="md-list md-has-header" ng-cloak>
   <md-list>
-    <md-list-item ng-repeat="option in ctrl.sharingOptions">
-      <md-button ng-click="ctrl.acknowledgeAction(option.icon)">
-        <md-icon md-svg-src="{{option.icon}}"></md-icon>
-        <span class="sharing-menu-label">{{option.label}}</span>
-      </md-button>
+    <md-list-item ng-repeat="option in ctrl.sharingOptions" ng-click="ctrl.acknowledgeAction(option.icon)">
+      <md-icon class="material-icons" style="margin-left: 0; margin-top: 9px;" ng-show="{{ option.materialIcon }}">{{ option.icon }}</md-icon>
+      <img ng-src="{{ option.icon }}" ng-show="{{ !option.materialIcon }}"/>
+      <span class="md-inline-list-icon-label">{{ option.label }}</span>
     </md-list-item>
   </md-list>
 </md-bottom-sheet>
