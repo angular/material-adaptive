@@ -18,6 +18,11 @@ html {
 /**
  * Common Components
  */
+
+div[ui-view="frame"] {
+  height: inherit;
+}
+
 .shrine-app {
   .md-button.md-icon-button {
     margin: 0;
@@ -204,13 +209,11 @@ md-toolbar .left-buttons .md-menu{
   }
 
 
+  .detail {
+    height: ~'calc(100% - 70px)';
+  }
+
 }
-
-
-
-
-
-
 
 
 

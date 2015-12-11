@@ -1,6 +1,6 @@
 let moduleName = angular.module('shrine.constants', [])
     .constant('SHRINE_VERSION_API', 'v1')
-    .constant('DEBUG_VIEWPORT_MODE', true)
+    .constant('DEBUG_VIEWPORT_MODE', false)
     .constant('SHRINE_W_SIZES', [{
     		size: 1280,
     		viewport: "vp-desktop-large"
