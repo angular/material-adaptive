@@ -3,15 +3,15 @@
             flex
             ng-controller="CatalogController as catalog">
   <md-grid-list class="grid grey-background" 
-                md-cols-sm="2"
-                md-cols-gt-sm="4"
-                md-cols-gt-md="6"
+                md-cols-xs="2"
+                md-cols-gt-xs="4"
+                md-cols-gt-sm="6"
                 md-cols="2"
                 md-gutter="0.75em"
                 md-row-height="3:4">
     <md-grid-tile ng-repeat="item in catalog.items"
-                  md-colspan-sm="{{$first || ($last && $odd) ? 2 : 1}}"
-                  md-rowspan-sm="{{$first || ($last && $odd) ? 2 : 1}}"
+                  md-colspan-xs="{{$first || ($last && $odd) ? 2 : 1}}"
+                  md-rowspan-xs="{{$first || ($last && $odd) ? 2 : 1}}"
                   md-colspan="{{$first ? 2 : 1}}"
                   md-rowspan="{{$first ? 2 : 1}}">
       <item-card item="item"></item-card>
