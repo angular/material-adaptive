@@ -1,6 +1,7 @@
 class ShrineDomUtils {
   constructor($window, SHRINE_W_SIZES) {
     this.window_ = $window;
+    this.body_ = this.window_.document.body;
     this.W_SIZES = SHRINE_W_SIZES;
     
     $window.addEventListener('resize', () => this.updateViewportDOM());
@@ -25,19 +26,24 @@ class ShrineDomUtils {
     }
   }
 
-  updateViewportDOM() {
-    var vpRes = this.getViewportResolution();
-    var _body = this.window_.document.body;
-    var bodyCArr = _body.className.split(/\s+/);
-
-    bodyCArr.forEach((cl) => {
-      if (cl.indexOf('vp-') === 0) {
-        _body.classList.remove(cl);
+  toggleBodyClassNameWithPrefix(className, prefix) {
+    this.body_.className.split(/\s+/).forEach((cl) => {
+      if (cl.indexOf(prefix) === 0) {
+        this.body_.classList.remove(cl);
       }
     });
 
-    _body.classList.add(vpRes.viewport);
+    this.body_.classList.add(prefix + className);
+  }
+
+  updateViewportDOM() {
+    var vpRes = this.getViewportResolution();
+    this.toggleBodyClassNameWithPrefix(vpRes.viewport, 'vp-');
     return vpRes;
+  }
+
+  updateViewName(viewName) {
+    this.toggleBodyClassNameWithPrefix(viewName, 'shrine-view-');
   }
 }
 

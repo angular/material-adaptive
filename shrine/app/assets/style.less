@@ -150,3 +150,144 @@ md-bottom-sheet md-list-item {
 }
 
 
+
+/**
+ * Sharing Menu
+ */
+.shrine-app .debug-msg-view {
+  background-color: rgba(0,0,0,.4);
+  color: #fff;
+  height: 21px;
+  left: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+
+  &:before {
+    content: "Normal";
+    position: absolute;
+    height: 50px;
+    width: 100%;
+  }
+}
+
+
+/**
+ * Media queries
+ */
+
+
+/*** Desktop queries ***/
+
+/* Window XLG - 1440px */
+@media only screen
+  and (min-width: 1438px) {
+
+  .shrine-app .debug-msg-view:before {
+    content: "Window XLG";
+  }
+}
+
+
+/* Window LG - 1280px  */
+@media only screen
+  and (max-width: 1437px)
+  and (min-width: 1278px) {
+
+  .shrine-app .debug-msg-view:before {
+    content: "Window LG";
+  }
+}
+
+
+/* Window MED - 960px */
+@media only screen
+  and (max-width: 1021px)
+  and (min-width: 958px) {
+
+  .shrine-app .debug-msg-view:before {
+    content: "Window MED";
+  }
+}
+
+
+/* Window SM - 840px */
+@media only screen
+  and (max-width: 957px)
+  and (min-width: 838px) {
+
+  .shrine-app .debug-msg-view:before {
+    content: "Window SM";
+  }
+}
+
+
+/* Window XSM - 600px */
+@media only screen
+  and (max-width: 717px)
+  and (min-width: 598px) {
+
+  .shrine-app .debug-msg-view:before {
+    content: "Window XSM";
+  }
+}
+
+
+/* Window XS - 480px */
+@media only screen
+  and (max-width: 597px)
+  and (min-width: 478px) {
+
+  .shrine-app .debug-msg-view:before {
+    content: "Window XS";
+  }
+}
+
+
+/*** Mobile queries ***/
+
+/* Tablet Landscape - 1024px */
+@media only screen
+  and (max-width: 1277px)
+  and (min-width: 1022px) {
+
+  .shrine-app .debug-msg-view:before {
+    content: "Tablet Landscape";
+  }
+}
+
+
+/* Tablet Portrait - 720px */
+@media only screen
+  and (max-width: 837px)
+  and (min-width: 718px) {
+
+  .shrine-app .debug-msg-view:before {
+    content: "Tablet Portrait";
+  }
+}
+
+
+/* Handset Landscape - 600px */
+@media only screen
+  and (max-width: 600px)
+  and (min-width: 0)
+  and (orientation: landscape) {
+
+  .shrine-app .debug-msg-view:before {
+    content: "Handset Landscape";
+  }
+}
+
+
+/* Handset Portrait - 360px */
+@media only screen 
+  and (max-width: 359px) {
+
+  .shrine-app .debug-msg-view:before {
+    content: "Handset Portrait";
+  }
+}
+

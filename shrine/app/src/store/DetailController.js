@@ -1,5 +1,5 @@
 class DetailController {
-  constructor($log,  $state, $location, itemsService) {
+  constructor($log,  $state, $location, itemsService, ShrineDomUtils) {
     this.$log = $log.getInstance("DetailController");
     this.$log.debug("instanceOf()");
     this.$log.debug(itemsService);
@@ -18,6 +18,8 @@ class DetailController {
       }
     })
     this.selectedItem = currentItem;
+    this.ShrineDomUtils = ShrineDomUtils;
+    this.ShrineDomUtils.updateViewName('detail');
   }
 
   showDetail(item) {
@@ -31,5 +33,5 @@ class DetailController {
 
 
 
-DetailController.$inject = [ '$log', '$state', '$location', 'ItemsService' ];
+DetailController.$inject = [ '$log', '$state', '$location', 'ItemsService', 'ShrineDomUtils' ];
 export default DetailController;
