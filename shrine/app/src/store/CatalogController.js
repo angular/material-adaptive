@@ -1,14 +1,10 @@
 class CatalogController {
-  constructor($scope, $log, $state, itemsService, ShrineDomUtils, DEBUG_MODE) {
+  constructor($scope, $log, $state, itemsService, ShrineDomUtils) {
     this.$log = $log.getInstance("CatalogController");
     this.$log.debug("instanceOf()");
     this.$log.debug(itemsService);
 
     this.$state = $state;
-
-    this.DEBUG_MODE = DEBUG_MODE;
-
-    console.log('DEBUG', this.DEBUG_MODE);
 
     var originalItems = itemsService.getItems($state.params.category);
     
@@ -37,5 +33,5 @@ class CatalogController {
   }
 }
 
-CatalogController.$inject = ['$scope', '$log', '$state', 'ItemsService', 'ShrineDomUtils' , 'DEBUG_MODE'];
+CatalogController.$inject = ['$scope', '$log', '$state', 'ItemsService', 'ShrineDomUtils' ];
 export default CatalogController;

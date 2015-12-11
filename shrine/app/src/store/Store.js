@@ -12,6 +12,7 @@ const URL_ICON_BACK  = 'assets/svg/arrow_back.svg';
 const URL_ICON_SHARE  = 'assets/svg/share.svg';
 const URL_ICON_ADD_SHOPPING  = 'assets/svg/add_shopping_cart.svg';
 
+import BaseController from 'store/BaseController';
 import FrameController from 'store/frame/FrameController'
 import CatalogController from 'store/CatalogController'
 import SearchController from 'store/search/SearchController'
@@ -29,6 +30,7 @@ let $log = new ExternalLogger();
 
 let moduleName = angular
       .module( 'store', [ ] )
+      .controller('BaseController' , BaseController )
       .controller('FrameController' , FrameController )
       .controller('CatalogController' , CatalogController )
       .controller('DetailController' , DetailController )
