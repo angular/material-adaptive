@@ -3,47 +3,62 @@ class ShrineDomUtils {
     this.window_ = $window;
     this.body_ = this.window_.document.body;
     this.W_SIZES = SHRINE_W_SIZES;
-    
-    $window.addEventListener('resize', () => this.updateViewportDOM());
+    this.currentViewport = {};
+    this.loadViewportListeners();
   }
 
-  getViewportResolution() {
-    var w = this.window_.innerWidth;
-    var w_sizes = this.W_SIZES;
-    if (w > w_sizes[0].size) {
-      return w_sizes[0];
-    } else if (w <= w_sizes[w_sizes.length - 1].size) {
-      return w_sizes[w_sizes.length - 1];
-    } else {
-      var f = 0;
-      for (var i = 0; i < w_sizes.length - 1; i++) {
-        if (w > w_sizes[i+1].size && w < w_sizes[i].size) {
-          f = i;
-          break;
-        }
-      }
-      return w_sizes[f];
+  handleMQL(mql, w_size) {
+    if (mql.matches) {
+      // Media query does match
+      this.currentViewport = w_size;
+      this.updateViewportDOM();
+    } else { 
+      // Media query does not match anymore
     }
   }
 
-  toggleBodyClassNameWithPrefix(className, prefix) {
+  loadViewportListeners() {
+    var prefix_media = "only screen";
+    this.W_SIZES.forEach((w_size) => {
+      var str = "";
+
+      if (w_size.minWidth != -1) {
+        str += " and (min-width: " + w_size.minWidth + "px)";
+      }
+
+      if (w_size.maxWidth != -1) {
+        str += " and (max-width: " + w_size.maxWidth + "px)";
+      }
+
+      var strMedia = prefix_media + str;
+      var mql = window.matchMedia(strMedia), handleMQL = (mql) => this.handleMQL(mql, w_size);
+      handleMQL(mql, w_size.viewport);
+      mql.addListener(handleMQL);
+    });      
+  }
+
+  toggleBodyClassNameWithPrefix(className, prefix, addPrefix) {
     this.body_.className.split(/\s+/).forEach((cl) => {
       if (cl.indexOf(prefix) === 0) {
         this.body_.classList.remove(cl);
       }
     });
 
-    this.body_.classList.add(prefix + className);
+    if (!!addPrefix) {
+      className = prefix + className;
+    }
+
+    this.body_.classList.add(className);
   }
 
   updateViewportDOM() {
-    var vpRes = this.getViewportResolution();
-    this.toggleBodyClassNameWithPrefix(vpRes.viewport, 'vp-');
+    var vpRes = this.currentViewport;
+    this.toggleBodyClassNameWithPrefix(vpRes.viewport, 'vp-', false);
     return vpRes;
   }
 
   updateViewName(viewName) {
-    this.toggleBodyClassNameWithPrefix(viewName, 'shrine-view-');
+    this.toggleBodyClassNameWithPrefix(viewName, 'shrine-view-', true);
   }
 }
 

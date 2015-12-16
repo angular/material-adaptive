@@ -1,3 +1,6 @@
+@material_dark: rgba(0, 0, 0, 0.54);
+@material_gray: rgba(0, 0, 0, 0.2);
+
 html, body {
   font-family: 'Roboto', sans-serif;
   font-size:14px;
@@ -6,26 +9,32 @@ html, body {
   padding: 0;
 }
 
-html {
-  overflow-y: scroll;
-}
-
 * {
   outline: none;
 }
-
 
 /**
  * Common Components
  */
 
-div[ui-view="frame"] {
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  height: 50px;
+  background-color: rgba(0,0,0, .3);
+  border: 1px solid #eee;
+  -webkit-border-radius: 6px;
+}
+
+div[ui-view="frame"], md-content[ui-view="main"], .frame-view {
   height: inherit;
 }
 
 .shrine-app {
   .md-button.md-icon-button {
-    margin: 0;
+    margin: 6px;
   }
 
   md-menu-content {
@@ -56,10 +65,35 @@ div[ui-view="frame"] {
       }
     }
   }
+
+  md-select {
+    border: 1px solid @material_gray;
+    height: 35px;
+    margin: 25px 0 20px;
+    padding: 0px 0px 5px 10px;
+    width: 180px;
+
+    .md-select-value {
+      border: none;
+
+      span {
+        color: @material_dark;
+        font-size: 14px;
+      }
+    }
+
+    &:not([disabled]):focus {
+      padding-bottom: 5px;
+
+      .md-select-value {
+        border-bottom: none;
+      }
+    }
+  }
 }
 
 [ui-view="main"] {
-  padding: 10px 10px 0 10px;
+  // padding: 10px 10px 0 10px;
 }
 
 md-tabs md-ink-bar {
@@ -204,18 +238,128 @@ md-toolbar .left-buttons .md-menu{
  * Detail view
  */
 .shrine-view-detail {
+  overflow: hidden;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+
+  md-toolbar.md-menu-toolbar {
+    border-bottom: none;
+  }
+
+  .logo-branding {
+    display: none;
+  }
+
   md-tabs {
     display: none;
   }
 
-
-  .detail {
+  .detail-view {
     height: ~'calc(100% - 70px)';
+    overflow: hidden;
   }
 
+  .main-view {
+    height: inherit;
+
+    &.full-detail {
+      height: ~'calc(100% - 200px)';
+    }
+  }
+
+  .nav-left {
+    direction:rtl;
+    margin: 8px 0;
+    padding: 25px;
+    overflow-y: scroll;
+  }
+
+  .nav-bottom {
+    height: 200px;
+
+    hor-list {
+      display: block;
+      height: inherit;
+      margin: 0 25px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 20px 0;
+      white-space:nowrap;
+
+      hor-tile {
+        display: inline-block;
+        height: 100%;
+        margin: 0 10px;
+        width: 200px;
+      }
+    }
+  }
+
+  .detail {
+    height: 100%;
+    justify-content: flex-start;
+    margin: 8px 4px;
+    overflow: hidden;
+
+    .image-content {
+      align-items: center;
+      display: flex;
+      height: 50%;
+      overflow: hidden;
+      width: 30%;
+          
+    
+
+      .bg-img {
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .info-content {
+      margin: 0 15% 0 0;
+      overflow: hidden;
+      width: 40%;
+
+      .name {
+        font-size: 36px;
+        font-weight: 300;
+        margin-bottom: 10px;
+      }
+
+      .description {
+        color: @material_dark;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 23px;
+      }
+    }
+
+    .select-content {
+      align-items: center;
+
+      .md-fab {
+        background-color: rgba(242, 240, 56, 1);
+        height: 56px;
+        width: 56px;
+
+        &[disabled] {
+          background-color: rgba(0,0,0,0.12);
+          cursor: not-allowed;
+        }
+      }
+    }
+
+  }
+
+  
+
+
+
 }
-
-
 
 
 /**
@@ -224,42 +368,88 @@ md-toolbar .left-buttons .md-menu{
 
 /*** Desktop queries ***/
 
+/* Window XXLG - 1600px */
+@media only screen
+  and (min-width: 1600px) {
+
+  .shrine-app .debug-msg-view:before {
+    content: "Window XXLG";
+  }
+
+  .shrine-view-detail {
+    md-toolbar.md-menu-toolbar {
+      border-bottom: 1px solid @material_gray;
+    }
+
+    .detail .info-content {
+      margin-left: 2%;
+    }
+  }
+}
+
 /* Window XLG - 1440px */
 @media only screen
-  and (min-width: 1438px) {
+  and (max-width: 1599px)
+  and (min-width: 1440px) {
 
   .shrine-app .debug-msg-view:before {
     content: "Window XLG";
+  }
+
+  .shrine-view-detail {
+    md-toolbar.md-menu-toolbar {
+      border-bottom: 1px solid @material_gray;
+    }
+
+    .detail .info-content {
+      margin-left: 2%;
+    }
   }
 }
 
 
 /* Window LG - 1280px  */
 @media only screen
-  and (max-width: 1437px)
-  and (min-width: 1278px) {
+  and (max-width: 1439px)
+  and (min-width: 1280px) {
 
   .shrine-app .debug-msg-view:before {
     content: "Window LG";
+  }
+
+  .shrine-view-detail {
+    md-toolbar.md-menu-toolbar {
+      border-bottom: 1px solid @material_gray;
+    }
+
+    .detail .info-content {
+      margin-left: 2%;
+    }
   }
 }
 
 
 /* Window MED - 960px */
 @media only screen
-  and (max-width: 1021px)
-  and (min-width: 958px) {
+  and (max-width: 1023px)
+  and (min-width: 960px) {
 
   .shrine-app .debug-msg-view:before {
     content: "Window MED";
+  }
+
+  .shrine-view-detail {
+    .detail .info-content {
+      max-width: 350px;
+    }
   }
 }
 
 
 /* Window SM - 840px */
 @media only screen
-  and (max-width: 957px)
-  and (min-width: 838px) {
+  and (max-width: 959px)
+  and (min-width: 840px) {
 
   .shrine-app .debug-msg-view:before {
     content: "Window SM";
@@ -269,8 +459,8 @@ md-toolbar .left-buttons .md-menu{
 
 /* Window XSM - 600px */
 @media only screen
-  and (max-width: 717px)
-  and (min-width: 598px) {
+  and (max-width: 719px)
+  and (min-width: 600px) {
 
   .shrine-app .debug-msg-view:before {
     content: "Window XSM";
@@ -280,8 +470,8 @@ md-toolbar .left-buttons .md-menu{
 
 /* Window XS - 480px */
 @media only screen
-  and (max-width: 597px)
-  and (min-width: 478px) {
+  and (max-width: 599px)
+  and (min-width: 480px) {
 
   .shrine-app .debug-msg-view:before {
     content: "Window XS";
@@ -293,19 +483,25 @@ md-toolbar .left-buttons .md-menu{
 
 /* Tablet Landscape - 1024px */
 @media only screen
-  and (max-width: 1277px)
-  and (min-width: 1022px) {
+  and (max-width: 1279px)
+  and (min-width: 1024px) {
 
   .shrine-app .debug-msg-view:before {
     content: "Tablet Landscape";
+  }
+
+  .shrine-view-detail {
+    .detail .info-content {
+      max-width: 350px;
+    }
   }
 }
 
 
 /* Tablet Portrait - 720px */
 @media only screen
-  and (max-width: 837px)
-  and (min-width: 718px) {
+  and (max-width: 839px)
+  and (min-width: 720px) {
 
   .shrine-app .debug-msg-view:before {
     content: "Tablet Portrait";
@@ -327,7 +523,7 @@ md-toolbar .left-buttons .md-menu{
 
 /* Handset Portrait - 360px */
 @media only screen 
-  and (max-width: 359px) {
+  and (max-width: 360px) {
 
   .shrine-app .debug-msg-view:before {
     content: "Handset Portrait";

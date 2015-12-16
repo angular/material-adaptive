@@ -1,4 +1,4 @@
-<div class="white-background"
+<div class="white-background frame-view"
      md-swipe-right="ctrl.handleSwap('open')"
      md-swipe-left="ctrl.handleSwap('close')">
   <md-toolbar layout="column"
@@ -7,20 +7,18 @@
     <!-- Top Toolbar -->
     <div flex layout="row">
       <span class="left-buttons" flex="35">
-        <md-button hide-gt-xs
-                   ng-if="!ctrl.isDetailView"
+        <md-button ng-if="!ctrl.isDetailView"
                    class="md-icon-button"
                    ng-click="ctrl.toggleMenu()"
                    aria-label="Show Category List">
           <md-icon md-svg-icon="menu"></md-icon>
         </md-button>
 
-        <md-button hide-lg
-                   ng-if="ctrl.isDetailView"
+        <md-button ng-if="ctrl.isDetailView"
                    class="md-icon-button"
                    ng-click="ctrl.goBack()"
                    aria-label="Go Back">
-          <md-icon md-svg-icon="back"></md-icon>
+          <md-icon class="material-icons">arrow_back</md-icon>
         </md-button>
       </span>
 

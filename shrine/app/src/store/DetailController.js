@@ -1,5 +1,5 @@
 class DetailController {
-  constructor($log,  $state, $location, itemsService, ShrineDomUtils) {
+  constructor($scope, $log,  $state, $location, itemsService, ShrineDomUtils) {
     this.$log = $log.getInstance("DetailController");
     this.$log.debug("instanceOf()");
     this.$log.debug(itemsService);
@@ -20,6 +20,14 @@ class DetailController {
     this.selectedItem = currentItem;
     this.ShrineDomUtils = ShrineDomUtils;
     this.ShrineDomUtils.updateViewName('detail');
+    this.currentViewport = this.ShrineDomUtils.currentViewport;
+
+    $scope.$watch(() => { return this.ShrineDomUtils.currentViewport; }, (newValue, oldValue) => {
+      if (newValue !== oldValue) {
+        console.log(newValue);
+        this.currentViewport = newValue;
+      }
+    });
   }
 
   showDetail(item) {
@@ -33,5 +41,5 @@ class DetailController {
 
 
 
-DetailController.$inject = [ '$log', '$state', '$location', 'ItemsService', 'ShrineDomUtils' ];
+DetailController.$inject = [ '$scope', '$log', '$state', '$location', 'ItemsService', 'ShrineDomUtils' ];
 export default DetailController;

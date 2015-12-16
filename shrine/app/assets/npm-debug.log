@@ -1,0 +1,190 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'less-plugin-autoprefix' ]
+2 info using npm@1.2.18
+3 info using node@v0.8.23
+4 verbose read json /usr/local/lib/package.json
+5 verbose read json /usr/local/lib/package.json
+6 verbose cache add [ 'less-plugin-autoprefix', null ]
+7 verbose cache add name=undefined spec="less-plugin-autoprefix" args=["less-plugin-autoprefix",null]
+8 verbose parsed url { pathname: 'less-plugin-autoprefix',
+8 verbose parsed url   path: 'less-plugin-autoprefix',
+8 verbose parsed url   href: 'less-plugin-autoprefix' }
+9 silly lockFile 44506163-less-plugin-autoprefix less-plugin-autoprefix
+10 verbose lock less-plugin-autoprefix /var/root/.npm/44506163-less-plugin-autoprefix.lock
+11 silly lockFile 44506163-less-plugin-autoprefix less-plugin-autoprefix
+12 silly lockFile 44506163-less-plugin-autoprefix less-plugin-autoprefix
+13 verbose addNamed [ 'less-plugin-autoprefix', '' ]
+14 verbose addNamed [ null, '' ]
+15 silly lockFile c9ee7449-less-plugin-autoprefix less-plugin-autoprefix@
+16 verbose lock less-plugin-autoprefix@ /var/root/.npm/c9ee7449-less-plugin-autoprefix.lock
+17 silly addNameRange { name: 'less-plugin-autoprefix', range: '', hasData: false }
+18 verbose url raw less-plugin-autoprefix
+19 verbose url resolving [ 'https://registry.npmjs.org/', './less-plugin-autoprefix' ]
+20 verbose url resolved https://registry.npmjs.org/less-plugin-autoprefix
+21 info trying registry request attempt 1 at 12:32:56
+22 verbose etag "588FLHQYXT4NTZQ7TO3ILPQSO"
+23 http GET https://registry.npmjs.org/less-plugin-autoprefix
+24 http 304 https://registry.npmjs.org/less-plugin-autoprefix
+25 silly registry.get cb [ 304,
+25 silly registry.get   { date: 'Tue, 15 Dec 2015 20:32:58 GMT',
+25 silly registry.get     via: '1.1 varnish',
+25 silly registry.get     'cache-control': 'max-age=300',
+25 silly registry.get     etag: '"588FLHQYXT4NTZQ7TO3ILPQSO"',
+25 silly registry.get     age: '0',
+25 silly registry.get     connection: 'keep-alive',
+25 silly registry.get     'x-served-by': 'cache-ord1722-ORD',
+25 silly registry.get     'x-cache': 'HIT',
+25 silly registry.get     'x-cache-hits': '1',
+25 silly registry.get     'x-timer': 'S1450211578.057630,VS0,VE36',
+25 silly registry.get     vary: 'Accept' } ]
+26 verbose etag less-plugin-autoprefix from cache
+27 silly addNameRange number 2 { name: 'less-plugin-autoprefix', range: '', hasData: true }
+28 silly addNameRange versions [ 'less-plugin-autoprefix',
+28 silly addNameRange   [ '0.0.1',
+28 silly addNameRange     '1.0.0',
+28 silly addNameRange     '1.0.1',
+28 silly addNameRange     '1.1.0',
+28 silly addNameRange     '1.3.0',
+28 silly addNameRange     '1.4.0',
+28 silly addNameRange     '1.4.1',
+28 silly addNameRange     '1.4.2',
+28 silly addNameRange     '1.5.0',
+28 silly addNameRange     '1.5.1' ] ]
+29 verbose addNamed [ 'less-plugin-autoprefix', '1.5.1' ]
+30 verbose addNamed [ '1.5.1', '1.5.1' ]
+31 silly lockFile 26fd6e92-less-plugin-autoprefix-1-5-1 less-plugin-autoprefix@1.5.1
+32 verbose lock less-plugin-autoprefix@1.5.1 /var/root/.npm/26fd6e92-less-plugin-autoprefix-1-5-1.lock
+33 verbose read json /var/root/.npm/less-plugin-autoprefix/1.5.1/package/package.json
+34 silly lockFile 26fd6e92-less-plugin-autoprefix-1-5-1 less-plugin-autoprefix@1.5.1
+35 silly lockFile 26fd6e92-less-plugin-autoprefix-1-5-1 less-plugin-autoprefix@1.5.1
+36 silly lockFile c9ee7449-less-plugin-autoprefix less-plugin-autoprefix@
+37 silly lockFile c9ee7449-less-plugin-autoprefix less-plugin-autoprefix@
+38 silly resolved [ { name: 'less-plugin-autoprefix',
+38 silly resolved     version: '1.5.1',
+38 silly resolved     description: 'autoprefixer plugin for less.js',
+38 silly resolved     homepage: 'http://lesscss.org',
+38 silly resolved     author: { name: 'Luke Page' },
+38 silly resolved     contributors: [ [Object] ],
+38 silly resolved     bugs: { url: 'https://github.com/less/less-plugin-autoprefix/issues' },
+38 silly resolved     repository:
+38 silly resolved      { type: 'git',
+38 silly resolved        url: 'https://github.com/less/less-plugin-autoprefix.git' },
+38 silly resolved     licenses: [ [Object] ],
+38 silly resolved     main: 'lib/index.js',
+38 silly resolved     engines: { node: '>=0.4.2' },
+38 silly resolved     dependencies: { autoprefixer: '^6.0.0', postcss: '^5.0.0' },
+38 silly resolved     devDependencies: {},
+38 silly resolved     keywords: [ 'less plugins', 'autoprefixer', 'less prefixes' ],
+38 silly resolved     readme: '[![NPM version](https://badge.fury.io/js/less-plugin-autoprefix.svg)](http://badge.fury.io/js/less-plugin-autoprefix) [![Dependencies](https://david-dm.org/less/less-plugin-autoprefix.svg)](https://david-dm.org/less/less-plugin-autoprefix) [![devDependency Status](https://david-dm.org/less/less-plugin-autoprefix/dev-status.svg)](https://david-dm.org/less/less-plugin-autoprefix#info=devDependencies) [![optionalDependency Status](https://david-dm.org/less/less-plugin-autoprefix/optional-status.svg)](https://david-dm.org/less/less-plugin-autoprefix#info=optionalDependencies)\n\nless-plugin-autoprefix\n========================\n\nUses autoprefixer to add prefixes to css after conversion from less.\n\n## lessc usage\n\nInstall..\n\n```\nnpm install -g less-plugin-autoprefix\n```\n\nand then on the command line,\n\n```\nlessc file.less --autoprefix="browsers"\n```\n\nThe browsers are a comma seperated list of [browsers as specified with autoprefixer](https://github.com/postcss/autoprefixer#browsers).\n\n## Programmatic usage\n\n```js\nvar LessPluginAutoPrefix = require(\'less-plugin-autoprefix\'),\n    autoprefixPlugin = new LessPluginAutoPrefix({browsers: ["last 2 versions"]});\nless.render(lessString, { plugins: [autoprefixPlugin] })\n  .then(\n```\n\n## Browser usage\n\nBrowser usage is not supported at this time.\n',
+38 silly resolved     readmeFilename: 'README.md',
+38 silly resolved     _id: 'less-plugin-autoprefix@1.5.1',
+38 silly resolved     _from: 'less-plugin-autoprefix@' } ]
+39 info install less-plugin-autoprefix@1.5.1 into /usr/local/lib
+40 info installOne less-plugin-autoprefix@1.5.1
+41 verbose from cache /var/root/.npm/less-plugin-autoprefix/1.5.1/package/package.json
+42 info /usr/local/lib/node_modules/less-plugin-autoprefix unbuild
+43 verbose read json /usr/local/lib/node_modules/less-plugin-autoprefix/package.json
+44 verbose tar unpack /var/root/.npm/less-plugin-autoprefix/1.5.1/package.tgz
+45 silly lockFile 6070fa2f-e-modules-less-plugin-autoprefix /usr/local/lib/node_modules/less-plugin-autoprefix
+46 verbose lock /usr/local/lib/node_modules/less-plugin-autoprefix /var/root/.npm/6070fa2f-e-modules-less-plugin-autoprefix.lock
+47 silly lockFile 124f21bc-gin-autoprefix-1-5-1-package-tgz /var/root/.npm/less-plugin-autoprefix/1.5.1/package.tgz
+48 verbose lock /var/root/.npm/less-plugin-autoprefix/1.5.1/package.tgz /var/root/.npm/124f21bc-gin-autoprefix-1-5-1-package-tgz.lock
+49 silly gunzTarPerm modes [ '755', '644' ]
+50 silly gunzTarPerm extractEntry package.json
+51 silly gunzTarPerm extractEntry .npmignore
+52 silly gunzTarPerm extractEntry README.md
+53 silly gunzTarPerm extractEntry LICENSE
+54 silly gunzTarPerm extractEntry lib/autoprefix-processor.js
+55 silly gunzTarPerm extractEntry lib/index.js
+56 silly gunzTarPerm extractEntry lib/parse-options.js
+57 silly gunzTarPerm extractEntry lib/usage.js
+58 verbose read json /usr/local/lib/node_modules/less-plugin-autoprefix/package.json
+59 silly lockFile 6070fa2f-e-modules-less-plugin-autoprefix /usr/local/lib/node_modules/less-plugin-autoprefix
+60 silly lockFile 6070fa2f-e-modules-less-plugin-autoprefix /usr/local/lib/node_modules/less-plugin-autoprefix
+61 silly lockFile 124f21bc-gin-autoprefix-1-5-1-package-tgz /var/root/.npm/less-plugin-autoprefix/1.5.1/package.tgz
+62 silly lockFile 124f21bc-gin-autoprefix-1-5-1-package-tgz /var/root/.npm/less-plugin-autoprefix/1.5.1/package.tgz
+63 info preinstall less-plugin-autoprefix@1.5.1
+64 verbose from cache /usr/local/lib/node_modules/less-plugin-autoprefix/package.json
+65 verbose readDependencies using package.json deps
+66 verbose from cache /usr/local/lib/node_modules/less-plugin-autoprefix/package.json
+67 verbose readDependencies using package.json deps
+68 verbose cache add [ 'autoprefixer@^6.0.0', null ]
+69 verbose cache add name=undefined spec="autoprefixer@^6.0.0" args=["autoprefixer@^6.0.0",null]
+70 verbose parsed url { pathname: 'autoprefixer@^6.0.0',
+70 verbose parsed url   path: 'autoprefixer@^6.0.0',
+70 verbose parsed url   href: 'autoprefixer@^6.0.0' }
+71 verbose cache add name="autoprefixer" spec="^6.0.0" args=["autoprefixer","^6.0.0"]
+72 verbose parsed url { pathname: '^6.0.0', path: '^6.0.0', href: '^6.0.0' }
+73 verbose addNamed [ 'autoprefixer', '^6.0.0' ]
+74 verbose addNamed [ null, null ]
+75 silly lockFile 275ce812-autoprefixer-6-0-0 autoprefixer@^6.0.0
+76 verbose lock autoprefixer@^6.0.0 /var/root/.npm/275ce812-autoprefixer-6-0-0.lock
+77 verbose cache add [ 'postcss@^5.0.0', null ]
+78 verbose cache add name=undefined spec="postcss@^5.0.0" args=["postcss@^5.0.0",null]
+79 verbose parsed url { pathname: 'postcss@^5.0.0',
+79 verbose parsed url   path: 'postcss@^5.0.0',
+79 verbose parsed url   href: 'postcss@^5.0.0' }
+80 verbose cache add name="postcss" spec="^5.0.0" args=["postcss","^5.0.0"]
+81 verbose parsed url { pathname: '^5.0.0', path: '^5.0.0', href: '^5.0.0' }
+82 verbose addNamed [ 'postcss', '^5.0.0' ]
+83 verbose addNamed [ null, null ]
+84 silly lockFile 44391759-postcss-5-0-0 postcss@^5.0.0
+85 verbose lock postcss@^5.0.0 /var/root/.npm/44391759-postcss-5-0-0.lock
+86 info addNameTag [ 'autoprefixer', '^6.0.0' ]
+87 info addNameTag [ 'postcss', '^5.0.0' ]
+88 verbose url raw autoprefixer
+89 verbose url resolving [ 'https://registry.npmjs.org/', './autoprefixer' ]
+90 verbose url resolved https://registry.npmjs.org/autoprefixer
+91 info trying registry request attempt 1 at 12:32:58
+92 verbose etag "2RUSKKSDFOMEKDPHEEKGGVF1G"
+93 http GET https://registry.npmjs.org/autoprefixer
+94 verbose url raw postcss
+95 verbose url resolving [ 'https://registry.npmjs.org/', './postcss' ]
+96 verbose url resolved https://registry.npmjs.org/postcss
+97 info trying registry request attempt 1 at 12:32:58
+98 verbose etag "3IYOATEMX7QUAQ8EET0HEFGN6"
+99 http GET https://registry.npmjs.org/postcss
+100 http 304 https://registry.npmjs.org/autoprefixer
+101 silly registry.get cb [ 304,
+101 silly registry.get   { date: 'Tue, 15 Dec 2015 20:32:59 GMT',
+101 silly registry.get     via: '1.1 varnish',
+101 silly registry.get     'cache-control': 'max-age=300',
+101 silly registry.get     etag: '"2RUSKKSDFOMEKDPHEEKGGVF1G"',
+101 silly registry.get     age: '89',
+101 silly registry.get     connection: 'keep-alive',
+101 silly registry.get     'x-served-by': 'cache-ord1727-ORD',
+101 silly registry.get     'x-cache': 'HIT',
+101 silly registry.get     'x-cache-hits': '1',
+101 silly registry.get     'x-timer': 'S1450211579.076198,VS0,VE0',
+101 silly registry.get     vary: 'Accept' } ]
+102 verbose etag autoprefixer from cache
+103 silly lockFile 275ce812-autoprefixer-6-0-0 autoprefixer@^6.0.0
+104 silly lockFile 275ce812-autoprefixer-6-0-0 autoprefixer@^6.0.0
+105 verbose about to build /usr/local/lib/node_modules/less-plugin-autoprefix
+106 info /usr/local/lib/node_modules/less-plugin-autoprefix unbuild
+107 verbose from cache /usr/local/lib/node_modules/less-plugin-autoprefix/package.json
+108 info preuninstall less-plugin-autoprefix@1.5.1
+109 info uninstall less-plugin-autoprefix@1.5.1
+110 verbose true,/usr/local/lib/node_modules,/usr/local/lib/node_modules unbuild less-plugin-autoprefix@1.5.1
+111 info postuninstall less-plugin-autoprefix@1.5.1
+112 error Error: No compatible version found: autoprefixer@'^6.0.0'
+112 error Valid install targets:
+112 error ["0.1.20130409","0.2.20130413","0.3.20130423","0.3.20130424","0.3.20130427","0.3.20130502","0.4.20130507","0.4.20130515","0.4.20130521","0.4.20130524","0.4.20130528","0.4.20130530","0.4.20130603","0.5.20130615","0.5.20130616","0.5.20130617","0.5.20130625","0.5.20130626","0.5.20130629","0.6.20130716","0.6.20130721","0.6.20130728","0.6.20130729","0.6.20130730","0.6.20130731","0.7.20130805","0.7.20130806","0.7.20130807","0.7.20130808","0.7.20130810","0.7.20130824","0.8.20130902","0.8.20130903","0.8.20130906","0.8.20130911","0.8.20130919","0.8.20130923","0.8.20131001","0.8.20131006","0.8.20131007","0.8.20131009","0.8.20131015","0.8.20131017","0.8.20131020","0.8.20131029","0.8.20131104","0.8.20131209","0.8.20131213","1.0.20131222","1.0.20140103","1.0.20140109","1.0.20140110","1.0.20140117","1.0.20140130","1.0.20140203","1.0.20140213","1.1.20140218","1.1.20140222","1.1.20140226","1.1.20140302","1.1.20140319","1.1.20140327","1.1.20140403","1.1.20140410","1.1.20140429","1.1.20140430","1.1.20140510","1.1.20140512","1.1.20140521","1.1.20140523","1.1.20140605","1.2.0","1.3.0","1.3.1","2.0.0","2.0.1","2.0.2","2.1.0","2.1.1","2.2.0","3.0.0","3.1.0","4.0.0","5.0.0","5.1.0","5.1.1","5.2.0","6.0.0","6.0.1","6.0.2","6.0.3","6.1.0","6.1.1","6.1.2"]
+112 error     at installTargetsError (/usr/local/lib/node_modules/npm/lib/cache.js:685:10)
+112 error     at /usr/local/lib/node_modules/npm/lib/cache.js:607:10
+112 error     at saved (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/get.js:138:7)
+112 error     at Object.oncomplete (fs.js:297:15)
+113 error If you need help, you may report this log at:
+113 error     <http://github.com/isaacs/npm/issues>
+113 error or email it to:
+113 error     <npm-@googlegroups.com>
+114 error System Darwin 15.0.0
+115 error command "node" "/usr/local/bin/npm" "install" "-g" "less-plugin-autoprefix"
+116 error cwd /Users/cristobalchao/Lab/projects/angular-material-adaptive/material-adaptive/shrine/app/assets
+117 error node -v v0.8.23
+118 error npm -v 1.2.18
+119 verbose exit [ 1, true ]

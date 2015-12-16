@@ -3,10 +3,11 @@
  */
 class FrameController {
 
-  constructor($rootScope, $window, $mdSidenav, $mdMedia, $mdBottomSheet, $mdToast, $log, $state, ShrineDomUtils, SharingService, ItemsService) {
+  constructor($rootScope, $window, $mdSidenav, $mdMedia, $mdBottomSheet, $mdToast, $log, $state, $location, ShrineDomUtils, SharingService, ItemsService) {
     this.$log = $log.getInstance("FrameController");
     this.$log.debug("instanceOf()");
 
+    this.location_ = $location;
     this.isDetailView = ($state.current.name == 'root.category.detail');
     this.categories = ItemsService.categories;
     this.sharingOptions = SharingService.sharingOptions;
@@ -113,7 +114,8 @@ class FrameController {
    * Navigate to the previous URL in history.
    */
   goBack() {
-    this.$window.history.back();
+    // this.$window.history.back();
+    this.location_.path('/');
   }
 
   /**
@@ -180,5 +182,5 @@ class FrameController {
   }
 }
 
-FrameController.$inject = ['$rootScope', '$window', '$mdSidenav', '$mdMedia', '$mdBottomSheet', '$mdToast', '$log', '$state', 'ShrineDomUtils', 'SharingService', 'ItemsService'];
+FrameController.$inject = ['$rootScope', '$window', '$mdSidenav', '$mdMedia', '$mdBottomSheet', '$mdToast', '$log', '$state', '$location', 'ShrineDomUtils', 'SharingService', 'ItemsService'];
 export default FrameController;

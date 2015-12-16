@@ -1,69 +1,76 @@
-<div flex layout="row"
-     class="grey-background"
-     ng-controller="DetailController as detail">
-  <div layout-fill
-       layout-padding
-       hide
-       show-gt-sm
-       flex="30">
-    <md-grid-list class="grid grey-background" 
-                  md-cols="2"
-                  md-gutter="0.5em"
-                  md-row-height="3:4">
-      <md-grid-tile ng-repeat="item in detail.items" 
-                    md-colspan="'1'"
-                    md-rowspan="'1'">
-        <item-card item="item"></item-card>
-      </md-grid-tile>
-    </md-grid-list>
-  </div>
-  <div class="detail"
-       flex
-       layout-align="space-around center"
-       layout-padding
-       layout="row"
-       layout-sm="column">
-    <md-content flex="40">
-      <img ng-src="{{detail.selectedItem.img}}">
-    </md-content>
-    <md-content layout-fill
-                layout-padding
-                layout="column"
-                layout-align="space-around left">
-      <div flex class="md-display-1">
-        {{detail.selectedItem.name | uppercase}}
-      </div>
-      <div flex>
-        {{detail.selectedItem.description}}
-      </div>
-      <div flex
-           hide
-           layout-fill
-           show-gt-sm
-           layout-align="start center"
-           layout="row" layout-padding>
-          <md-select flex="45" 
-                     layout-margin
-                     ng-model="quantitySelected"
+<div ng-controller="DetailController as detail" class="grey-background detail-view">
+  <div flex layout="row" class="main-view" ng-class="{'full-detail': detail.currentViewport.minWidth < 1280}">
+    <div class="nav-left" 
+         layout-fill
+         flex="30" ng-show="detail.currentViewport.minWidth >= 1280">
+      <md-grid-list ng-show="detail.currentViewport.minWidth < 1400" class="grid grey-background" 
+                    md-cols="2"
+                    md-gutter="0.5em"
+                    md-row-height="3:4">
+        <md-grid-tile ng-repeat="item in detail.items" 
+                      md-colspan="'1'"
+                      md-rowspan="'1'">
+          <item-card item="item"></item-card>
+        </md-grid-tile>
+      </md-grid-list>
+
+      <md-grid-list ng-show="detail.currentViewport.minWidth >= 1400" class="grid grey-background" 
+                    md-cols="3"
+                    md-gutter="0.5em"
+                    md-row-height="3:4">
+        <md-grid-tile ng-repeat="item in detail.items" 
+                      md-colspan="'1'"
+                      md-rowspan="'1'">
+          <item-card item="item"></item-card>
+        </md-grid-tile>
+      </md-grid-list>
+    </div>
+    <div class="detail"
+         flex
+         layout-align="space-around center"
+         layout="row"
+         layout-sm="column">
+      <md-content class="image-content">
+        <img ng-src="{{detail.selectedItem.img}}">
+        <!-- <div class="bg-img" style="background-image: url('{{detail.selectedItem.img}}')"></div> -->
+      </md-content>
+      <md-content class="info-content">
+        <div flex class="name md-display-1">
+          {{detail.selectedItem.name | uppercase}}
+        </div>
+        <div flex class="description">
+          {{detail.selectedItem.description}}
+        </div>
+        <div layout="row" class="select-content">
+          <md-select ng-model="quantitySelected"
                      placeholder="Select a quantity">
             <md-option ng-value="quantity"
                        ng-repeat="quantity in [1, 2, 3, 4, 5]">
               Quantity {{quantity}}
             </md-option>
           </md-select>
-        <span flex="5"></span>
-        <md-button class="md-fab"
-                   ng-disabled="!quantitySelected"
+          <span flex></span>
+           <md-button class="md-fab"
+                     ng-disabled="!quantitySelected"
+                     aria-label="Add to cart">
+            <md-icon md-svg-icon="add_shopping_cart"></md-icon>
+          </md-button>
+          <span flex></span>
+        </div>  
+        <!-- <md-button class="md-fab fixed-position-fab-button"
                    aria-label="Add to cart">
           <md-icon md-svg-icon="add_shopping_cart"></md-icon>
-        </md-button>
-      </div>
-      <md-button hide 
-                 show-sm
-                 class="md-fab fixed-position-fab-button"
-                 aria-label="Add to cart">
-        <md-icon md-svg-icon="add_shopping_cart"></md-icon>
-      </md-button>
-    </md-content>
+        </md-button> -->
+      </md-content>
+    </div>
+  </div>
+  <div class="nav-bottom grey-background" 
+       ng-show="detail.currentViewport.minWidth < 1280">
+
+    <hor-list class="grid">
+      <hor-tile ng-repeat="item in detail.items">
+        <item-card item="item"></item-card>
+      </hor-tile>
+    </hor-list>
   </div>
 </div>
