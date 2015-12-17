@@ -408,6 +408,7 @@ md-toolbar .left-buttons .md-menu{
       white-space:nowrap;
 
       hor-tile {
+        .transition(box-shadow .3s cubic-bezier(0.0, 0.0, 0.2, 1));
         display: inline-block;
         height: 175px;
         margin: 0 10px;
@@ -421,6 +422,10 @@ md-toolbar .left-buttons .md-menu{
 
     &.mobile {
       margin: 0;
+
+      hor-list {
+        margin: 0;
+      }
     }
   }
 
