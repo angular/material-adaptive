@@ -6,6 +6,7 @@ class BaseController {
     this.$state = $state;
     this.DEBUG_VIEWPORT_MODE = DEBUG_VIEWPORT_MODE;
   }
+
 }
 
 BaseController.$inject = ['$scope', '$log', '$state', 'DEBUG_VIEWPORT_MODE'];

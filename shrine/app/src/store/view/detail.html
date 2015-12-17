@@ -1,15 +1,15 @@
-<div ng-controller="DetailController as detail" class="grey-background detail-view">
-  <div flex layout="row" class="main-view" ng-class="{'full-detail': detail.currentViewport.minWidth < 1280}">
+<div ng-controller="DetailController as detail" class="grey-background detail-view" ng-class="{ 'mobile' : detail.currentViewport.display === 'mobile' && detail.currentViewport.viewport !== 'vp-mobile-land', 'noscroll' : detail.currentViewport.minWidth >= 1024}">
+  <div flex layout="row" class="main-view" ng-class="{'semi-detail': detail.currentViewport.minWidth < 1024 && detail.currentViewport.viewport !== 'vp-mobile-land', 'full-detail': detail.currentViewport.viewport === 'vp-mobile-land'}">
     <div class="nav-left" 
          layout-fill
-         flex="30" ng-show="detail.currentViewport.minWidth >= 1280">
+         flex="35" ng-show="detail.currentViewport.minWidth >= 1024">
       <md-grid-list ng-show="detail.currentViewport.minWidth < 1400" class="grid grey-background" 
                     md-cols="2"
                     md-gutter="0.5em"
                     md-row-height="3:4">
         <md-grid-tile ng-repeat="item in detail.items" 
                       md-colspan="'1'"
-                      md-rowspan="'1'">
+                      md-rowspan="'1'" ng-class="{ 'mobile' : detail.currentViewport.display === 'mobile'}">
           <item-card item="item"></item-card>
         </md-grid-tile>
       </md-grid-list>
@@ -36,7 +36,7 @@
       </md-content>
       <md-content class="info-content">
         <div flex class="name md-display-1">
-          {{detail.selectedItem.name | uppercase}}
+          {{detail.selectedItem.name}}
         </div>
         <div flex class="description">
           {{detail.selectedItem.description}}
@@ -44,15 +44,13 @@
         <div layout="row" class="select-content">
           <md-select ng-model="quantitySelected"
                      placeholder="Select a quantity">
-            <md-option ng-value="quantity"
-                       ng-repeat="quantity in [1, 2, 3, 4, 5]">
-              Quantity {{quantity}}
-            </md-option>
+              <md-option ng-repeat="(i, quantity) in [1, 2, 3, 4, 5]" ng-value="quantity"
+                   ng-selected="i == 0 ? true:false">Quantity {{quantity}}</md-option>
           </md-select>
           <span flex></span>
            <md-button class="md-fab"
                      ng-disabled="!quantitySelected"
-                     aria-label="Add to cart">
+                     aria-label="Add to cart" ng-class="{ 'mobile' : detail.currentViewport.display === 'mobile' && detail.currentViewport.minWidth <= 600}">
             <md-icon md-svg-icon="add_shopping_cart"></md-icon>
           </md-button>
           <span flex></span>
@@ -65,12 +63,35 @@
     </div>
   </div>
   <div class="nav-bottom grey-background" 
-       ng-show="detail.currentViewport.minWidth < 1280">
+       ng-show="detail.currentViewport.minWidth < 1024" ng-class="{ 'mobile' : detail.currentViewport.display === 'mobile'}">
 
-    <hor-list class="grid">
+    <hor-list class="grid" ng-show="detail.currentViewport.display == 'mobile'">
       <hor-tile ng-repeat="item in detail.items">
         <item-card item="item"></item-card>
       </hor-tile>
     </hor-list>
+
+    <md-grid-list ng-show="detail.currentViewport.display == 'desktop' && detail.currentViewport.minWidth >= 840" class="grid grey-background" 
+                  md-cols="4"
+                  md-gutter="0.5em"
+                  md-row-height="3:4">
+      <md-grid-tile ng-repeat="item in detail.items" 
+                    md-colspan="'1'"
+                    md-rowspan="'1'">
+        <item-card item="item"></item-card>
+      </md-grid-tile>
+    </md-grid-list>
+
+    <md-grid-list ng-show="detail.currentViewport.display == 'desktop' && detail.currentViewport.minWidth < 840" class="grid grey-background" 
+                  md-cols="2"
+                  md-gutter="0.5em"
+                  md-row-height="3:4">
+      <md-grid-tile ng-repeat="item in detail.items" 
+                    md-colspan="'1'"
+                    md-rowspan="'1'">
+        <item-card item="item"></item-card>
+      </md-grid-tile>
+    </md-grid-list>
+
   </div>
 </div>

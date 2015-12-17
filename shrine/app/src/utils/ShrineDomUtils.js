@@ -12,6 +12,7 @@ class ShrineDomUtils {
       // Media query does match
       this.currentViewport = w_size;
       this.updateViewportDOM();
+      console.log('current viewport', this.currentViewport);
     } else { 
       // Media query does not match anymore
     }
@@ -30,9 +31,14 @@ class ShrineDomUtils {
         str += " and (max-width: " + w_size.maxWidth + "px)";
       }
 
+      if (!!w_size.orientation) {
+        str += " and (orientation: " + w_size.orientation + ")";
+      }
+
       var strMedia = prefix_media + str;
       var mql = window.matchMedia(strMedia), handleMQL = (mql) => this.handleMQL(mql, w_size);
       handleMQL(mql, w_size.viewport);
+      console.log(strMedia);
       mql.addListener(handleMQL);
     });      
   }

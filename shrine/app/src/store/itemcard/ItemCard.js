@@ -1,8 +1,16 @@
 // Controller for the item card used in item lists.
 class ItemCardController {
 
-  constructor($state, $location) {
+  constructor($scope, $state, $location, ShrineDomUtils) {
     this.$state = $state;
+    this.ShrineDomUtils = ShrineDomUtils;
+    this.currentViewport = this.ShrineDomUtils.currentViewport;
+
+    $scope.$watch(() => { return this.ShrineDomUtils.currentViewport; }, (newValue, oldValue) => {
+      if (newValue !== oldValue) {
+        this.currentViewport = newValue;
+      }
+    });
   }
 
   /**
@@ -41,5 +49,5 @@ class ItemCardDirective {
     }  
 }
 
-ItemCardDirective.$inject = ['$state', '$location'];
+ItemCardDirective.$inject = ['$scope', '$state', '$location', 'ShrineDomUtils'];
 export default ItemCardDirective;

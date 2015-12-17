@@ -5,7 +5,7 @@
   <md-icon ng-if="itemcard.isSelected()"
            md-svg-icon="checked"
            aria-label="{{itemcard.item.name}} is currently selected"></md-icon>
-  <div class="item-card-img">
+  <div class="item-card-img" ng-class="{ 'mobile' : itemcard.currentViewport.display === 'mobile'}">
     <img class="tile"
          ng-src="{{itemcard.item.img}}">
   </div>

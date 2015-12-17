@@ -1,5 +1,5 @@
 class DetailController {
-  constructor($scope, $log,  $state, $location, itemsService, ShrineDomUtils) {
+  constructor($scope, $window, $log, $state, $location, itemsService, ShrineDomUtils) {
     this.$log = $log.getInstance("DetailController");
     this.$log.debug("instanceOf()");
     this.$log.debug(itemsService);
@@ -24,9 +24,26 @@ class DetailController {
 
     $scope.$watch(() => { return this.ShrineDomUtils.currentViewport; }, (newValue, oldValue) => {
       if (newValue !== oldValue) {
-        console.log(newValue);
         this.currentViewport = newValue;
       }
+    });
+
+    this.detailView_ = document.body.querySelector('.shrine-view-detail .detail-view');
+
+    // Details view onscroll event. Updates the state on the body.
+    const scrollListener = () => {
+      if (this.detailView_.scrollTop > 0) {
+        document.body.classList.add('scroll');
+      } else {
+        document.body.classList.remove('scroll');
+      }
+    };
+
+    this.detailView_.onscroll = scrollListener;
+
+    // Remove the listener when route changes.
+    $scope.$on('$locationChangeStart', () => {
+      document.body.classList.remove('scroll');
     });
   }
 
@@ -41,5 +58,5 @@ class DetailController {
 
 
 
-DetailController.$inject = [ '$scope', '$log', '$state', '$location', 'ItemsService', 'ShrineDomUtils' ];
+DetailController.$inject = [ '$scope', '$window', '$log', '$state', '$location', 'ItemsService', 'ShrineDomUtils' ];
 export default DetailController;
