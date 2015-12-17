@@ -14,8 +14,8 @@
   </head>
 
   <body class="shrine-app grey-background" layout="column" ng-controller="BaseController as base">
-    <div ui-view="frame">Loading...</div>
-    <div class="debug-msg-view" ng-if="base.DEBUG_VIEWPORT_MODE"></div>
+    <div ui-view="frame"></div>
+    <div class="debug-msg-view" ng-show="base.DEBUG_VIEWPORT_MODE" ng-class="{ 'show' : !!base.DEBUG_VIEWPORT_MODE }"></div>
 
     <script src="./jspm_packages/system.js" type="text/javascript"></script>
     <script src="./config.js" type="text/javascript"></script>

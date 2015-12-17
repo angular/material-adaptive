@@ -21,6 +21,17 @@ html, body {
 /**
  * Mixins
  */
+.transition(...) {
+  @process_webkit: ~`(function(e){e=e||"all 0 ease 0";var r=["background-size","border-radius","border-bottom-left-radius","border-bottom-right-radius","border-top-left-radius","border-top-right-radius","box-shadow","column","transform","filter"],t="-webkit-",n=/(?:\d)(?:ms|s)/gi,a=/(?:\s|^)(\.?\d+\.?\d*)(?![^(]*\)|\w|%)/gi;return/^[^, ]*,/.test(e)&&(e=e.replace(/(?:,)(?![^(]*\))/g,"")),r.forEach(function(r){-1!==e.indexOf(r)&&(e=e.replace(new RegExp(r,"g"),function(e){return t+e}))}),n.test(e)||"0"===e||(e=e.replace(a,function(e){return e+=parseFloat(e,10)>10?"ms":"s"})),e})((function(){var e="@{arguments}";return e=e.replace(/^\[|\]$/g,"")})())`;
+  @process_moz: ~`(function(e){e=e||"all 0 ease 0";var r=["background-size","box-shadow","column","transform","filter"],t="-moz-",n=/(?:\d)(?:ms|s)/gi,a=/(?:\s|^)(\.?\d+\.?\d*)(?![^(]*\)|\w|%)/gi;return/^[^, ]*,/.test(e)&&(e=e.replace(/(?:,)(?![^(]*\))/g,"")),r.forEach(function(r){-1!==e.indexOf(r)&&(e=e.replace(new RegExp(r,"g"),function(e){return t+e}))}),n.test(e)||"0"===e||(e=e.replace(a,function(e){return e+=parseFloat(e,10)>10?"ms":"s"})),e})((function(){var e="@{arguments}";return e=e.replace(/^\[|\]$/g,"")})())`;
+  @process_opera: ~`(function(e){e=e||"all 0 ease 0";var r=["transform"],t="-o-",n=/(?:\d)(?:ms|s)/gi,a=/(?:\s|^)(\.?\d+\.?\d*)(?![^(]*\)|\w|%)/gi;return/^[^, ]*,/.test(e)&&(e=e.replace(/(?:,)(?![^(]*\))/g,"")),r.forEach(function(r){-1!==e.indexOf(r)&&(e=e.replace(new RegExp(r,"g"),function(e){return t+e}))}),n.test(e)||"0"===e||(e=e.replace(a,function(e){return e+=parseFloat(e,10)>10?"ms":"s"})),e})((function(){var e="@{arguments}";return e=e.replace(/^\[|\]$/g,"")})())`;
+  @process: ~`(function(e){e=e||"all 0 ease 0";var r=["-webkit-","-moz-","-o-",""],t=["column","transform","filter"],n=/(?:\d)(?:ms|s)/gi,a=/(?:\s|^)(\.?\d+\.?\d*)(?![^(]*\)|\w|%)/gi;/^[^, ]*,/.test(e)&&(e=e.replace(/(?:,)(?![^(]*\))/g,""));var c=e.split(/(?:,)(?![^(]*\))/g);return c.forEach(function(e,n){t.forEach(function(t){-1!==e.indexOf(t)&&(c[n]="",r.forEach(function(a,u){c[n]+=e.trim().replace(new RegExp(t,"g"),function(e){return a+e}),u<r.length-1&&(c[n]+=",")}))})}),e=c.join(","),n.test(e)||"0"===e||(e=e.replace(a,function(e){return e+=parseFloat(e,10)>10?"ms":"s"})),e})((function(){var e="@{arguments}";return e=e.replace(/^\[|\]$/g,"")})())`;
+  -webkit-transition: @process_webkit;
+  -moz-transition: @process_moz;
+  -o-transition: @process_opera;
+  transition: @process;
+}
+
 .shadow-2dp {
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, @keyUmbraOpacity),
               0 2px 2px 0 rgba(0, 0, 0, @keyPenumbraOpacity),
@@ -159,6 +170,7 @@ md-tabs md-ink-bar {
 }
 
 .grid md-grid-tile {
+  .transition(box-shadow .3s cubic-bezier(0.0, 0.0, 0.2, 1));
   background-color: white;
   overflow: hidden;
 
@@ -168,6 +180,10 @@ md-tabs md-ink-bar {
     &:active {
       .shadow-8dp;
     }
+  }
+
+  &:hover {
+    .shadow-4dp;
   }
 }
 
@@ -194,6 +210,10 @@ md-tabs md-ink-bar {
   item-card {
     height: 100%;
     width: 100%;
+
+    &:hover {
+      .shadow-4dp;
+    }
   }
   .item-card {
     background: white;
@@ -219,6 +239,21 @@ md-tabs md-ink-bar {
 
       &:active {
         .shadow-8dp;
+      }
+    }
+
+    .backdrop {
+      background-color: rgba(255,255,255,.75);
+      display: none;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+
+      &.active {
+        display: block;
       }
     }
   }
@@ -281,6 +316,7 @@ md-toolbar .left-buttons .md-menu{
 .shrine-app .debug-msg-view {
   background-color: rgba(0,0,0,.4);
   color: #fff;
+  display: none;
   height: 21px;
   left: 0;
   margin: 0;
@@ -294,6 +330,10 @@ md-toolbar .left-buttons .md-menu{
     position: absolute;
     height: 20px;
     width: 100%;
+  }
+
+  &.show {
+    display: block;
   }
 }
 
@@ -309,7 +349,7 @@ md-toolbar .left-buttons .md-menu{
 
   md-toolbar.md-menu-toolbar {
     border-bottom: none;
-    z-index: 100;
+    z-index: 50;
   }
 
   &.scroll md-toolbar.md-menu-toolbar {
@@ -372,6 +412,10 @@ md-toolbar .left-buttons .md-menu{
         height: 175px;
         margin: 0 10px;
         width: 200px;
+
+        &:hover {
+          .shadow-8dp;
+        }
       }
     }
 

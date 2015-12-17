@@ -2,11 +2,12 @@
             class="item-card"
             layout-fill
             ng-click="itemcard.openDetail()">
-  <md-icon ng-if="itemcard.isSelected()"
+  <!-- <md-icon ng-if="itemcard.isSelected()"
            md-svg-icon="checked"
-           aria-label="{{itemcard.item.name}} is currently selected"></md-icon>
-  <div class="item-card-img" ng-class="{ 'mobile' : itemcard.currentViewport.display === 'mobile'}">
+           aria-label="{{itemcard.item.name}} is currently selected"></md-icon> -->
+  <div class="item-card-img" ng-class="{ 'mobile' : itemcard.currentViewport.display === 'mobile' }">
     <img class="tile"
          ng-src="{{itemcard.item.img}}">
+    <div class="backdrop" ng-class="{'active' : itemcard.isSelected()}"></div>
   </div>
 </md-content>

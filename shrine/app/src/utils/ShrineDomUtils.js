@@ -7,12 +7,15 @@ class ShrineDomUtils {
     this.loadViewportListeners();
   }
 
+  getCurrentViewport() {
+    return this.currentViewport;
+  }
+
   handleMQL(mql, w_size) {
     if (mql.matches) {
       // Media query does match
       this.currentViewport = w_size;
       this.updateViewportDOM();
-      console.log('current viewport', this.currentViewport);
     } else { 
       // Media query does not match anymore
     }
@@ -38,7 +41,6 @@ class ShrineDomUtils {
       var strMedia = prefix_media + str;
       var mql = window.matchMedia(strMedia), handleMQL = (mql) => this.handleMQL(mql, w_size);
       handleMQL(mql, w_size.viewport);
-      console.log(strMedia);
       mql.addListener(handleMQL);
     });      
   }

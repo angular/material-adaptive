@@ -47,17 +47,16 @@ class FrameController {
    */
   openShareMenu() {
     this.$log.debug( "openShareMenu() ");
-    var that = this;
-    if (that.$mdMedia('sm')) {
-      return that.$mdBottomSheet.show({
+    if (this.$mdMedia('sm')) {
+      return this.$mdBottomSheet.show({
         templateUrl: 'src/store/sharingmenu/sharingmenu.html',
         controller: 'SharingMenuController',
         controllerAs: 'ctrl',
         locals: {
-          'acknowledgeAction': that.acknowledgeAction
+          'acknowledgeAction': this.acknowledgeAction
         }
       }).then(function(option) {
-        that.acknowledgeAction(option);
+        this.acknowledgeAction(option);
       });
     }
   }
@@ -68,18 +67,18 @@ class FrameController {
   openMenu($mdOpenMenu, ev) {
     ev.stopPropagation();
     this.$log.debug( "openMenu() ");
-    var that = this;
+    var vw = this.ShrineDomUtils.getCurrentViewport();
 
-    if (that.ShrineDomUtils.getViewportResolution().size <= 480) {
-      return that.$mdBottomSheet.show({
+    if (vw.minWidth <= 480) {
+      return this.$mdBottomSheet.show({
         templateUrl: 'src/store/sharingmenu/sharingmenu.html',
         controller: 'SharingMenuController',
         controllerAs: 'ctrl',
         locals: {
-          'acknowledgeAction': that.acknowledgeAction
+          'acknowledgeAction': this.acknowledgeAction
         }
       }).then(function(option) {
-        that.acknowledgeAction(option);
+        this.acknowledgeAction(option);
       });
     }    
   }
