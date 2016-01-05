@@ -1,5 +1,5 @@
 {
-  "firebase": "material-adaptive",
+  "firebase": "material-adaptive-ui",
   "public": ".",
   "ignore": [
     "firebase.json",
