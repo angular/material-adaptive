@@ -1165,8 +1165,10 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon, .md-button.md-r
       width: 570px;
 
       card-element {
-        height: 275px;
-        width: 49.5%;
+        height: 455px;
+        margin-right: 0;
+        width: 100%;
+
 
         &:nth-child(2n + 2) {
           margin-right: 0;
@@ -1350,6 +1352,122 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon, .md-button.md-r
     }
   }  
 }
+
+@media screen 
+    and (max-width: 479px) 
+    and (min-width: 361px) {
+  main-view {
+    md-toolbar:not(.md-menu-toolbar) {
+      height: 120px;
+    }
+
+    #main-section {
+      top: 120px;
+    }
+
+    logo-container {
+      .logo_s_mixin;
+
+      .scroll & {
+        .logo_xs_mixin;
+      }
+    }
+
+    layout-cards {
+      margin-top: 16px;
+      width: 331px;
+
+      card-element {
+        height: 305px;
+        margin-bottom: 16px;
+        margin-right: 0;
+        width: 100%;
+
+        &:nth-child(2n+1) {
+          margin-right: 0;
+        }
+      }
+    }
+
+    md-sidenav, md-sidenav.md-locked-open {
+      min-width: 302px;
+      width: 302px;
+    }
+  }
+
+  adaptive-controls {
+    bottom: 20px;
+    top: auto;
+  }
+
+  md-toolbar:not(.md-menu-toolbar) {
+    height: 120px;
+  }
+
+  details-view {
+    .bg {
+      background-attachment: inherit;
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      height: 360px;
+    }    
+
+    .card-info {
+      border-radius: initial;
+      height: ~'calc(100% - 360px)';
+      max-width: 100%;
+      width: 100%;
+
+      &.animated {
+        -webkit-animation-duration: 0s;
+        animation-duration: 0s;
+      }
+    }
+  }
+
+  settings-view {
+    .header {
+      padding: 13px 5px 14px 5px;
+
+      .md-button {
+        height: 36px;
+        line-height: 20px;
+        margin: 0;
+        width: 36px;
+
+        md-icon {
+          height: 24px;
+          font-size: 24px;
+          width: 24px;
+        }
+      }
+    }
+
+    .card-info {
+      border-radius: initial;
+      height: ~'calc(100% - 63px)';
+      padding: 0;
+      width: 100%;
+
+      .option-header {
+        height: 60px;
+      }
+
+      .option-header, .option-content {
+        padding: 0 16px;
+
+        .md-button.md-icon-button {
+          margin: 0;
+        }
+      }
+
+      .action-buttons {
+        display: none;
+      }
+    }
+  }
+}
+
 
 
 /*** Mobile queries ***/
@@ -1564,6 +1682,13 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon, .md-button.md-r
 
       card-element {
         height: 305px;
+        margin-bottom: 16px;
+        margin-right: 0;
+        width: 100%;
+
+        &:nth-child(2n+1) {
+          margin-right: 0;
+        }
       }
     }
 
@@ -1580,30 +1705,6 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon, .md-button.md-r
 
   md-toolbar:not(.md-menu-toolbar) {
     height: 120px;
-  }
-
-  main-view {
-
-    layout-cards {
-      margin-top: 16px;
-      width: 450px;
-
-      card-element {
-        height: 387px;
-        margin-bottom: 16px;
-        margin-right: 0;
-        width: 100%;
-
-        &:nth-child(2n+1) {
-          margin-right: 0;
-        }
-      }
-    }
-
-    md-sidenav, md-sidenav.md-locked-open {
-      min-width: 310px;
-      width: 310px;
-    }
   }
 
   details-view {
@@ -1669,19 +1770,4 @@ md-switch.md-checked .md-thumb, md-checkbox.md-checked .md-icon, .md-button.md-r
     }
   }
 }
-
-
-// @media screen and (max-width: 450px) {
-//   layout-cards {
-//     card-element {
-//       height: 270px;
-//       min-height: 270px;
-//     }
-//   }
-
-//   adaptive-controls {
-//     bottom: 20px;
-//     top: auto;
-//   }
-// }
 
