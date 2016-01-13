@@ -19,7 +19,7 @@ import 'angular-route'
 import HomeController from 'home/HomeController';
 import DetailController from 'detail/DetailController';
 
-import gridLayoutDirective from 'gridlayout/gridLayoutDirective';
+import gridLayoutDirective from 'gridlayout/GridLayoutDirective';
 import itemCardDirective from 'itemcard/ItemCardDirective';
 
 

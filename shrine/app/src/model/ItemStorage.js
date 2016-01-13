@@ -11,7 +11,7 @@ let STORE = [
     imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/radio.png',
     price: '$300',
     storeName: 'Looks Old But Not',
-    storeAvatarUrl: '/assets/avatars/zach.jpg',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
     featured: false
   }),
   Item.fromJson({
@@ -20,7 +20,7 @@ let STORE = [
     imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/sunnies.png',
     price: '$70',
     storeName: 'Tints and Shades',
-    storeAvatarUrl: '/assets/avatars/zach.jpg',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
     featured: false
   }),
   Item.fromJson({
@@ -29,7 +29,7 @@ let STORE = [
     imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/clock.png',
     price: '$120',
     storeName: 'Timekeeper Co',
-    storeAvatarUrl: '/assets/avatars/zach.jpg',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
     featured: false
   }),
   Item.fromJson({
@@ -38,7 +38,7 @@ let STORE = [
     imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/popsicle.png',
     price: '$300',
     storeName: 'Popsicle Pride',
-    storeAvatarUrl: '/assets/avatars/zach.jpg',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
     featured: false
   }),
   Item.fromJson({
@@ -47,7 +47,7 @@ let STORE = [
     imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/shoes.png',
     price: '$75',
     storeName: 'Feetsy',
-    storeAvatarUrl: '/assets/avatars/zach.jpg',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
     featured: false
   }),
   Item.fromJson({
@@ -56,7 +56,7 @@ let STORE = [
     imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/teapot.png',
     price: '$210',
     storeName: 'Kitchen Stuff',
-    storeAvatarUrl: '/assets/avatars/zach.jpg',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
     featured: false
   }),
   Item.fromJson({
@@ -65,7 +65,7 @@ let STORE = [
     imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/heels.png',
     price: '$89',
     storeName: 'Footnotes',
-    storeAvatarUrl: '/assets/avatars/zach.jpg',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
     featured: true
   }),
   Item.fromJson({
@@ -74,7 +74,7 @@ let STORE = [
     imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/brush.png',
     price: '$25',
     storeName: 'WeDipIt',
-    storeAvatarUrl: '/assets/avatars/zach.jpg',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
     featured: true
   })];
 
