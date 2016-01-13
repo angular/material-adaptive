@@ -1,21 +1,32 @@
-<!DOCTYPE html>
-<html lang="en" >
+<!doctype html>
+<html class="shrine">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Shrine - Adaptive UI</title>
     <meta name="description" content="">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" type="image/ico" href="http://www.gstatic.com/angular/material-adaptive/shrine/favicon.ico"/>
 
-    <title>Shrine</title>
-    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300'>
-    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto:300,400,700'>
     <link href='https://fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+    <style type="text/css">
+        /**
+         * Hide when Angular is not yet loaded and initialized
+         */
+        [ng-cloak] {
+            display: none;
+        }
+    </style>
   </head>
 
-  <body class="shrine-app grey-background" layout="column" ng-controller="BaseController as base">
-    <div ui-view="frame"></div>
-    <div class="debug-msg-view" ng-show="base.DEBUG_VIEWPORT_MODE" ng-class="{ 'show' : !!base.DEBUG_VIEWPORT_MODE }"></div>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+   <base-view>
+      <ng-view></ng-view>
+    </base-view>
 
     <script src="./jspm_packages/system.js" type="text/javascript"></script>
     <script src="./config.js" type="text/javascript"></script>
@@ -25,14 +36,20 @@
             .catch( console.error.bind(console) ); // make sure any errors print to console
     </script>
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-8594346-22', 'auto');
-      ga('send', 'pageview');
+        ga('create', 'UA-8594346-22', 'auto');
+        ga('send', 'pageview');
 
+    </script>
+    <script>
+      document.write('<script src="http://'
+        + location.host.split(':')[0]
+        + ':35729/livereload.js"></'
+        + 'script>')
     </script>
   </body>
 </html>

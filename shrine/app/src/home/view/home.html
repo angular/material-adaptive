@@ -1,0 +1,53 @@
+<main-view>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" aria-label="Menu">
+        <md-icon class="material-icons">menu</md-icon>
+      </md-button>
+      <div class="logo-container">
+        <img class="logo" src="/assets/shrine_logo_withicon.svg">
+      </div>
+      <span flex></span>
+      <md-button class="md-icon-button" aria-label="Add to cart" ng-click="wau()">
+        <md-icon class="material-icons">shopping_cart</md-icon>
+      </md-button>
+      <md-button class="md-icon-button" aria-label="More options" ng-click="wau()">
+        <md-icon class="material-icons">more_vert</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <md-tabs md-dynamic-height md-border-bottom md-swipe-content="true">
+    <md-tab label="feature">
+      <md-content class="md-padding">
+        <div class="hero-image featured">
+          <div class="image"></div>
+          <div class="info">
+            <h3>Green comfort chair</h3>
+            <div class="description">
+              <div class="description-flex">
+                <span flex></span>
+                <div class="description-content">
+                  <p>Leave the tunnel and the rain is fallin amazing things happen when you wait</p>
+
+                  <div class="store-info">
+                    <div class="avatar">
+                      <img src="/assets/avatars/zach.jpg">
+                    </div>
+                    <p>Trevor's shop</p>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <div class="price-tag">
+            <p>$250</p>
+          </div>
+        </div>
+
+        <grid-layout grid-name="'homeView'" show-details="true"></grid-layout>
+      </md-content>
+    </md-tab>
+  </md-tabs>
+</main-view>

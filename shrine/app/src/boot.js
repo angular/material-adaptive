@@ -1,20 +1,31 @@
-
-// Load the Angular Material CSS associated with ngMaterial
-// then load the main.css to provide overrides, etc.
+/**
+ * We want our styles to load after the ngMaterial CSS, but there's
+ * inexplicably no way to enforce that with jspm.
+ * http://stackoverflow.com/questions/32258456/importing-css-and-controlling-order-in-head-using-jspm-and-system-js
+ */
 
 import 'angular-material/angular-material.css!'
-import 'assets/style.css!'
+import 'assets/css/style.css!'
 
 // Load Angular libraries
 
-
-import uirouter from 'angular-ui-router'
+import angular from 'angular'
 import material from 'angular-material'
+import animate from 'angular-animate'
+import 'angular-route'
 
-// Load custom application modules
+// Load custom application controllers and modules.
 
-import main from 'app/main'
+import HomeController from 'home/HomeController';
+import DetailController from 'detail/DetailController';
+
+import gridLayoutDirective from 'gridlayout/gridLayoutDirective';
+import itemCardDirective from 'itemcard/ItemCardDirective';
+
+
+import storageModule from 'model/StorageModule';
 import shrineUtilsModule from 'utils/ShrineUtils';
+
 
 // Load loggers for injection and pre-angular debugging
 
@@ -29,14 +40,41 @@ angular
   .element( document )
   .ready( function() {
 
-    let appName = 'starter-app';
+    const appName = 'starter-app';
     let $log = new ExternalLogger();
+
     $log = $log.getInstance( "BOOTSTRAP" );
     $log.debug( "Initializing '{0}'", [ appName ] );
-    let body = document.getElementsByTagName("body")[0];
-    let app  = angular
-          .module( appName, [ 'ui.router', material, main, shrineUtilsModule ] )
+
+    const body = document.getElementsByTagName("body")[0];
+
+    const app = angular.module(appName, [
+            material,
+            'ngRoute',
+            'ngAnimate',
+            storageModule,
+            shrineUtilsModule,
+          ])
           .config( ['$provide', LogDecorator] );
+    
+    app.config(['$routeProvider', ($routeProvider) => {
+      $routeProvider.when('/', {
+        templateUrl: 'src/home/view/home.html',
+        controller: 'HomeController',
+        controllerAs: 'home',
+      })
+      .when('/item/:id', {
+        templateUrl: 'src/detail/view/detail.html',
+        controller: 'DetailController',
+        controllerAs: 'detail',
+      })
+      .otherwise({redirectTo: '/'});
+    }]);
+    
+    app.controller('HomeController', HomeController)
+       .controller('DetailController', DetailController)
+       .directive('gridLayout', () => new gridLayoutDirective)
+       .directive('itemCard', () => new itemCardDirective);
 
     angular.bootstrap( body, [ app.name ], { strictDi: false })
 

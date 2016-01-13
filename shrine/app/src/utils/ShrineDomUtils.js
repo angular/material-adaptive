@@ -1,40 +1,56 @@
 class ShrineDomUtils {
-  constructor($window, SHRINE_W_SIZES) {
-    this.window_ = $window;
-    this.body_ = this.window_.document.body;
-    this.W_SIZES = SHRINE_W_SIZES;
-    this.currentViewport = {};
+  constructor($window, SHRINE_ADAPTIVE_DATA) {
+    this._$window = $window;
+    this._$body = this._$window.document.body;
+    this._$viewport = {
+      current: {
+        'updated': () => {}
+      }
+    };
+    this.WinSizes = SHRINE_ADAPTIVE_DATA;
     this.loadViewportListeners();
   }
 
-  getCurrentViewport() {
-    return this.currentViewport;
+  getViewport() {
+    return this._$viewport;
+  }
+
+  setViewport(viewport) {
+    this._$viewport.current = Object.assign(this._$viewport.current, viewport);
+    this._$viewport.current.updated();
   }
 
   handleMQL(mql, w_size) {
-    if (mql.matches) {
-      // Media query does match
-      this.currentViewport = w_size;
+    if (mql.matches) { // Media query does match
+      this.setViewport(w_size);
       this.updateViewportDOM();
-    } else { 
-      // Media query does not match anymore
+    } else { // Media query does not match anymore
     }
   }
 
   loadViewportListeners() {
     var prefix_media = "only screen";
-    this.W_SIZES.forEach((w_size) => {
+    this.WinSizes.forEach((w_size) => {
       var str = "";
 
-      if (w_size.minWidth != -1) {
+      if (w_size.hasOwnProperty('minHeight') && w_size.minHeight != -1) {
+        str += " and (min-height: " + w_size.minHeight + "px)";
+      }
+
+      if (w_size.hasOwnProperty('maxHeight') && w_size.maxHeight != -1) {
+        str += " and (max-height: " + w_size.maxHeight + "px)";
+      }
+
+
+      if (w_size.hasOwnProperty('minWidth') && w_size.minWidth != -1) {
         str += " and (min-width: " + w_size.minWidth + "px)";
       }
 
-      if (w_size.maxWidth != -1) {
+      if (w_size.hasOwnProperty('maxWidth') && w_size.maxWidth != -1) {
         str += " and (max-width: " + w_size.maxWidth + "px)";
       }
 
-      if (!!w_size.orientation) {
+      if (w_size.hasOwnProperty('orientation') && !!w_size.orientation) {
         str += " and (orientation: " + w_size.orientation + ")";
       }
 
@@ -46,9 +62,9 @@ class ShrineDomUtils {
   }
 
   toggleBodyClassNameWithPrefix(className, prefix, addPrefix) {
-    this.body_.className.split(/\s+/).forEach((cl) => {
+    this._$body.className.split(/\s+/).forEach((cl) => {
       if (cl.indexOf(prefix) === 0) {
-        this.body_.classList.remove(cl);
+        this._$body.classList.remove(cl);
       }
     });
 
@@ -56,20 +72,16 @@ class ShrineDomUtils {
       className = prefix + className;
     }
 
-    this.body_.classList.add(className);
+    this._$body.classList.add(className);
   }
 
   updateViewportDOM() {
-    var vpRes = this.currentViewport;
+    var vpRes = this._$viewport.current;
     this.toggleBodyClassNameWithPrefix(vpRes.viewport, 'vp-', false);
     return vpRes;
   }
-
-  updateViewName(viewName) {
-    this.toggleBodyClassNameWithPrefix(viewName, 'shrine-view-', true);
-  }
 }
 
-ShrineDomUtils.$inject = ['$window', 'SHRINE_W_SIZES'];
+ShrineDomUtils.$inject = ['$window', 'SHRINE_ADAPTIVE_DATA'];
 
 export default ShrineDomUtils;

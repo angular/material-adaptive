@@ -1,0 +1,7 @@
+<div class="grid-container" style="width: 100%">
+  <md-grid-list md-row-height="{{ ctrl.getViewportRowHeight() }}" md-gutter="{{ ctrl.getViewportGutter() }}" md-cols="{{ ctrl.getViewportColumns() }}" style="margin: {{ ctrl.getViewportMargin() }}">
+    <md-grid-tile md-rowspan="{{ ctrl.getViewportRowSpan($index) }}" md-colspan="{{ ctrl.getViewportColSpan($index) }}" ng-repeat="item in ctrl.items" ng-class="{ 'featured': item.featured }" ng-click="ctrl.goToDetails($event, $index)">
+      <item-card item="item" show-details="ctrl.showDetails"></item-card>
+    </md-grid-tile>
+  </md-grid-list>
+</div>
