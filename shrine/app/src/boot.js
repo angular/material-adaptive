@@ -56,7 +56,7 @@ angular
             shrineUtilsModule,
           ])
           .config( ['$provide', LogDecorator] );
-    
+
     app.config(['$routeProvider', ($routeProvider) => {
       $routeProvider.when('/', {
         templateUrl: 'src/home/view/home.html',
@@ -70,7 +70,7 @@ angular
       })
       .otherwise({redirectTo: '/'});
     }]);
-    
+
     app.controller('HomeController', HomeController)
        .controller('DetailController', DetailController)
        .directive('gridLayout', () => new gridLayoutDirective)

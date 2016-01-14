@@ -79,11 +79,11 @@ let STORE = [
   })];
 
 class ItemStorage {
-  
+
   constructor($q) {
     this.q_ = $q;
   }
-  
+
   getAllItems() {
     return this.q_.when(STORE);
   }

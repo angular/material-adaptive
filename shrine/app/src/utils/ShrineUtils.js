@@ -8,4 +8,3 @@ let moduleName = angular.module('shrine.utils', [constantsModuleName])
     .name;
 
 export default moduleName;
-    

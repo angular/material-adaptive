@@ -10,7 +10,7 @@ class GridLayoutController {
     }
     this._$itemStorage = ItemStorage;
     this.fetchItems();
-    this.gridInfoView = this.$scope.ctrl.gridName || 
+    this.gridInfoView = this.$scope.ctrl.gridName ||
         Object.keys(this.viewport.current.gridInfo)[0];
   }
 
@@ -39,13 +39,13 @@ class GridLayoutController {
   }
 
   getViewportRowSpan(idx) {
-    var pos = idx % 
+    var pos = idx %
         this.viewport.current.gridInfo[this.gridInfoView].tileInfo.length;
     return this.viewport.current.gridInfo[this.gridInfoView].tileInfo[pos].rowspan;
   }
 
   getViewportColSpan(idx) {
-    var pos = idx % 
+    var pos = idx %
         this.viewport.current.gridInfo[this.gridInfoView].tileInfo.length;
     return this.viewport.current.gridInfo[this.gridInfoView].tileInfo[pos].colspan;
   }
@@ -67,9 +67,9 @@ class GridLayoutDirective {
           controller       : GridLayoutController,
           templateUrl      : 'src/gridlayout/view/gridlayout.html'
         });
-    }  
+    }
 }
 
-GridLayoutDirective.$inject = ['$scope', '$location', 'ShrineDomUtils', 
+GridLayoutDirective.$inject = ['$scope', '$location', 'ShrineDomUtils',
     'ItemStorage'];
 export default GridLayoutDirective;

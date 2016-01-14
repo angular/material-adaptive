@@ -128,12 +128,33 @@
   -ms-animation:     @name @duration @delay @ease;
 }
 
-.transition (@transition) {
-  -webkit-transition: @transition;  
-  -moz-transition:    @transition;
-  -ms-transition:     @transition; 
-  -o-transition:      @transition;  
+.transition ( @property, @duration, @delay: 0, @style: ease-in-out ) {
+  -webkit-transition-property: @property;  
+  -webkit-transition-duration: @duration;
+  -webkit-transition-timing-function: @style;
+  -webkit-transition-delay:   @delay; 
+     
+  -moz-transition-property: @property;  
+  -moz-transition-duration: @duration;
+  -moz-transition-timing-function: @style;
+  -moz-transition-delay:   @delay;
+
+  -ms-transition-property: @property;  
+  -ms-transition-duration: @duration;
+  -ms-transition-timing-function: @style;
+  -ms-transition-delay:   @delay;
+
+  -o-transition-property: @property;  
+  -o-transition-duration: @duration;
+  -o-transition-timing-function: @style;
+  -o-transition-delay:   @delay;
+
+  transition-property: @property;  
+  transition-duration: @duration;
+  transition-timing-function: @style;
+  transition-delay:   @delay;
 }
+
 .transform(@string){
   -webkit-transform: @string;
   -moz-transform:    @string;

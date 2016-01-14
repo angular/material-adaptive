@@ -261,7 +261,7 @@ let moduleName = angular.module('shrine.constants', [])
         }
       }, {
         maxWidth: 719,
-        minWidth: 600, 
+        minWidth: 600,
         minHeight: 361, //Interferes with Mobile landscape (in resizer). Added (+1) as a hack
         viewport: "vp-xsm",
         display: "desktop",

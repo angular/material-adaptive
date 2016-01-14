@@ -38,7 +38,7 @@ md-toolbar:not(.md-menu-toolbar) {
     right: 50%;
   }
 
-  .logo {    
+  .logo {
     height: 60%;
     max-height: 45px;
     width: auto;
@@ -66,14 +66,14 @@ md-toolbar:not(.md-menu-toolbar) {
   margin-top: 2em;
   position: absolute;
   z-index: 2;
-  
+
   .avatar {
     border-radius: 50%;
     height: 40px;
     margin-right: 10px;
     overflow: hidden;
     width: 40px;
-    
+
     img {
       height: 100%;
       width: auto;
@@ -221,7 +221,9 @@ item-card {
     width: 18em;
 
     img {
+      .transition(opacity, .150s, 0, cubic-bezier(0.0, 0.0, 0.2, 1));
       height: auto;
+      opacity: 1;
       width: 85%;
     }
 
@@ -248,6 +250,7 @@ item-card {
   }
 
   .backdrop {
+    .transition(z-index, 150ms, 0, linear);
     height: 100%;
     left: 0;
     position: absolute;
@@ -261,15 +264,13 @@ item-card {
       z-index: 4;
 
       .md-icon-button {
-        .transform(scale(0));
-        .transition(transform .3s .35s ease);
-        
+        .transform(translate3d(0, 8px, 0));
+        .transition(~'transform, opacity', 150ms, 0, cubic-bezier(0.0, 0.0, 0.2, 1));
+        margin: 0;
+        opacity: 0;
+
         md-icon {
           color: rgba(117, 117, 117, 1);
-        }
-
-        &:first-child {
-          .transition(transform .3s .25s ease);
         }
 
         &.added {
@@ -293,12 +294,13 @@ item-card {
       z-index: 2;
 
       h4 {
-        .transform(scale(.5));
-        .transition(transform .5s ease);
-        color: #0A3142;
+        .transition(~'transform, opacity', 150ms, 0, cubic-bezier(0.0, 0.0, 0.2, 1));
+        .transform(translate3d(0, 8px, 0));
+        color: @dark_shrine;
         font-family: 'Abril Fatface', cursive;
         font-size: 3em;
         font-weight: 300;
+        opacity: 0;
       }
     }
 
@@ -330,7 +332,7 @@ grid-layout {
   }
 
   md-grid-list md-grid-tile {
-    .transition(box-shadow .5s ease);
+    .transition(box-shadow, .5s, 0, ease);
     background-color: #fff;
     cursor: pointer;
     outline: none;
@@ -339,19 +341,27 @@ grid-layout {
       .box-shadow(@shadow-4dp);
 
       .product-image img {
+        .transition(opacity, 225ms, 0, cubic-bezier(0.0, 0.0, 0.2, 1));
         opacity: .5;
       }
 
       .container h4 {
-        .transform(scale(1));
+        .transition(~'transform, opacity', 225ms, 0, cubic-bezier(0.0, 0.0, 0.2, 1));
+        .transform(translate3d(0, 0, 0));
+        opacity: 1;
       }
 
       .backdrop {
         z-index: 10;
 
-        .md-icon-button { 
-          .transform(scale(1));
-          margin: 0;
+        .md-icon-button {
+          .transition(~'transform, opacity', 150ms, 60ms, cubic-bezier(0.0, 0.0, 0.2, 1));
+          .transform(translate3d(0, 0, 0));
+          opacity: 1;
+
+          &:first-child {
+            .transition(~'transform, opacity', 150ms, 30ms, cubic-bezier(0.0, 0.0, 0.2, 1));
+          }
         }
       }
     }
@@ -359,7 +369,7 @@ grid-layout {
 }
 
 details-view {
-  
+
   .details-container {
     display: flex;
     flex-direction: column;
@@ -576,7 +586,7 @@ details-view {
         width: 40%;
 
         img {
-          margin-left: 0;  
+          margin-left: 0;
         }
       }
 
@@ -642,7 +652,7 @@ details-view {
         width: 40%;
 
         img {
-          margin-left: 0;  
+          margin-left: 0;
         }
       }
 
@@ -717,7 +727,7 @@ details-view {
         width: 40%;
 
         img {
-          margin-left: 0;  
+          margin-left: 0;
         }
       }
 
@@ -901,7 +911,7 @@ details-view {
   main-view {
     item-card .product-image {
       width: 24em;
-      
+
       img {
         width: 100%;
       }
@@ -1164,7 +1174,7 @@ details-view {
 
   grid-layout {
     height: ~'calc(100% - @hero_height - @header_height - @tabs_height)';
-  
+
     md-grid-list md-grid-tile {
       &:hover {
         box-shadow: none;
@@ -1180,7 +1190,7 @@ details-view {
         .backdrop {
           z-index: -1;
 
-          .md-icon-button { 
+          .md-icon-button {
             .transform(none);
           }
         }
@@ -1265,7 +1275,7 @@ details-view {
 
   grid-layout {
     height: ~'calc(100% - @hero_height - @header_height - @tabs_height)';
-    
+
     md-grid-list md-grid-tile {
       &:hover {
         box-shadow: none;
@@ -1281,7 +1291,7 @@ details-view {
         .backdrop {
           z-index: -1;
 
-          .md-icon-button { 
+          .md-icon-button {
             .transform(none);
           }
         }
@@ -1352,7 +1362,7 @@ details-view {
     height: @header_height;
   }
 
-  .price-tag {  
+  .price-tag {
     .featured & {
       padding: 16px 25px;
     }
@@ -1418,7 +1428,7 @@ details-view {
         .backdrop {
           z-index: -1;
 
-          .md-icon-button { 
+          .md-icon-button {
             .transform(none);
           }
         }
@@ -1481,7 +1491,7 @@ details-view {
 
 
 /* Handset Portrait - 360px */
-@media only screen 
+@media only screen
   and (max-width: 360px) {
 
   @header_height: 56px;
@@ -1569,7 +1579,7 @@ details-view {
         .backdrop {
           z-index: -1;
 
-          .md-icon-button { 
+          .md-icon-button {
             .transform(none);
           }
         }

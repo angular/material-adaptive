@@ -10,7 +10,7 @@ class DetailController {
     this.viewport.current.updated = () => {
       this.$scope.$apply();
     }
-        
+
     ItemStorage.getItem(this.idItem).then((item) => {
       if (!angular.equals(item, this.selectedItem)) {
         this.selectedItem = item;

@@ -10,7 +10,7 @@ class HomeController {
     this.viewport.current.updated = () => {
       this.$scope.$apply();
     }
-  }  
+  }
 }
 
 HomeController.$inject = [

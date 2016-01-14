@@ -58,7 +58,7 @@ class ShrineDomUtils {
       var mql = window.matchMedia(strMedia), handleMQL = (mql) => this.handleMQL(mql, w_size);
       handleMQL(mql, w_size.viewport);
       mql.addListener(handleMQL);
-    });      
+    });
   }
 
   toggleBodyClassNameWithPrefix(className, prefix, addPrefix) {

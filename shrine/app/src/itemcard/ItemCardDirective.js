@@ -35,7 +35,7 @@ class ItemCardDirective {
           controller       : ItemCardController,
           templateUrl      : 'src/itemcard/view/itemcard.html'
         });
-    }  
+    }
 }
 
 ItemCardDirective.$inject = ['$scope', 'ShrineDomUtils', 'ItemStorage'];
