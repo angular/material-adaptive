@@ -44,7 +44,7 @@ let STORE = [
   Item.fromJson({
     title: 'Green Slip-ons',
     description: 'Feetsy has been making extraordinary slip-ons for decades. With each pair of shoes purchased Feetsy donates a pair to those in need. Buy yourself a pair, buy someone else a pair. Very Comfortable.',
-    imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/shoes.png',
+    imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/green-shoes.png',
     price: '$75',
     storeName: 'Feetsy',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
@@ -74,6 +74,78 @@ let STORE = [
     imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/brush.png',
     price: '$25',
     storeName: 'WeDipIt',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
+    featured: true
+  }),
+  Item.fromJson({
+    title: 'Perfect Goldfish Bowl',
+    description: 'The Perfect Bowl Co makes the best bowls for just about anything you can think of. This Perfect Goldfish Bowl holds water and fish perfectly. Looks great in living rooms. Keep out of reach from cats.',
+    imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/fish_bowl.png',
+    price: '$25',
+    storeName: 'Perfect Bowl Co',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
+    featured: false
+  }),
+  Item.fromJson({
+    title: 'Red Lipstick Set',
+    description: 'Trying to find the perfect shade to match your mood? Try no longer. Red Lipstick Set by StickLips has you covered for those nights when you need to get out, or even if you’re just headed to work.',
+    imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/lipstick.png',
+    price: '$25',
+    storeName: 'StikLips',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
+    featured: false
+  }),
+  Item.fromJson({
+    title: 'Backpack',
+    description: 'This backpack by Bags ‘n’ stuff can hold just about anything: a laptop, a pen, a protractor, notebooks, small animals, plugs for your devices, sunglasses, gym clothes, shoes, gloves, two kittens, and even lunch!',
+    imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/backpack.png',
+    price: '$25',
+    storeName: 'Bags ‘n’ Stuff',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
+    featured: false
+  }),
+  Item.fromJson({
+    title: 'Half Shield Helmet',
+    description: 'Half Shield is the right helmet for those warm summer days on the road. Dot approved, these helmets have been rigorously tested. Keep that noggin protected.',
+    imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/helmet.png',
+    price: '$25',
+    storeName: 'Helmet Factory',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
+    featured: false
+  }),
+  Item.fromJson({
+    title: 'Beachball',
+    description: 'Are you at a baseball game and feeling bored? At a pool party and looking for a laugh? Do you need something to take your anger out on? Beachball, by inflatable fun, is the perfect outlet.',
+    imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/beach_ball.png',
+    price: '$25',
+    storeName: 'Inflatable fun',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
+    featured: false
+  }),
+  Item.fromJson({
+    title: 'Old Binoculars',
+    description: 'These Binoculars by See Through are amazing and can make things that are really far away seem like they’re right in front of you. Bring them to the beach. Now you can buy the cheap seats at the big game and feel like you’re right in the action.',
+    imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/binoculars.png',
+    price: '$25',
+    storeName: 'See Through',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
+    featured: false
+  }),
+  Item.fromJson({
+    title: 'Lime Flippers',
+    description: 'Flippers are a nice tool to have when you’re being chased by an oversized sea turtle. Never get caught again with these fast water shoes. You’re like a fish, but more graceful.',
+    imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/flippers.png',
+    price: '$25',
+    storeName: 'Swimfast',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
+    featured: true
+  }),
+  Item.fromJson({
+    title: 'Surfboard',
+    description: 'Who says you can’t walk on water? With Surfboard, by Surfboard Supply, you can fly on water. This beast is fast and handles like a porsche. Hang Ten Bro!',
+    imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/surfboard.png',
+    price: '$25',
+    storeName: 'Surfboard Supply',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
     featured: true
   })];

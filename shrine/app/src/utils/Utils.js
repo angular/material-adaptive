@@ -4,9 +4,20 @@ class Utils {
   }
 
   /**
+   * Shuffles an array of elements
+   * @param {!Array <Object>} o Array of elements.
+   * @return {Array <Object>}
+   */
+  shuffle(o) {
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+  }
+
+  /**
    * Gets a property from each element in an array of objects.
    * @param {!Array <Object>} list List of objects.
-   * @param {!string} prop
+   * @param {Array <Object>}
+   * @return {Object}
    */
   pluck(list, prop) {
     return list.map(value => value[prop]);

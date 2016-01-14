@@ -1,7 +1,7 @@
 // Controller for the grid layout.
 class GridLayoutController {
 
-  constructor($scope, $location, ShrineDomUtils, ItemStorage) {
+  constructor($scope, $location, ShrineDomUtils, ItemStorage, Utils) {
     this.$scope = $scope;
     this.$location = $location;
     this.viewport = ShrineDomUtils.getViewport();
@@ -9,15 +9,33 @@ class GridLayoutController {
       this.$scope.$apply();
     }
     this._$itemStorage = ItemStorage;
+    this.Utils = Utils;
     this.fetchItems();
     this.gridInfoView = this.$scope.ctrl.gridName ||
         Object.keys(this.viewport.current.gridInfo)[0];
+    this.reshuffle = this.$scope.ctrl.reshuffle || false;
+  }
+
+  reshuffleItems(items) {
+    items = this.Utils.shuffle(items);
+
+    items.forEach(function(item, index) {
+      var mod = index % 8;
+      item.featured = (mod === 6 || mod === 7);
+      console.log(item, index, mod, item.featured);
+    }, this);
+
+    return items;
   }
 
   fetchItems() {
     this._$itemStorage.getAllItems().then((items) => {
       if (!angular.equals(items, this.items)) {
-        this.items = items;
+        if (!!this.reshuffle) {
+          this.items = this.reshuffleItems(items);
+        } else {
+          this.items = items;
+        }
       }
     });
   }
@@ -61,7 +79,7 @@ class GridLayoutDirective {
     constructor() {
         angular.extend(this, {
           restrict         : 'E',
-          scope            : { gridName: '=', showDetails: '=' },
+          scope            : { gridName: '=', showDetails: '=', reshuffle: '=' },
           bindToController : true,
           controllerAs     : 'ctrl',
           controller       : GridLayoutController,
@@ -71,5 +89,5 @@ class GridLayoutDirective {
 }
 
 GridLayoutDirective.$inject = ['$scope', '$location', 'ShrineDomUtils',
-    'ItemStorage'];
+    'ItemStorage', 'Utils'];
 export default GridLayoutDirective;
