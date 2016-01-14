@@ -221,7 +221,6 @@ item-card {
     width: 18em;
 
     img {
-      .transition(opacity, .150s, 0, cubic-bezier(0.0, 0.0, 0.2, 1));
       height: auto;
       opacity: 1;
       width: 85%;
@@ -298,7 +297,7 @@ item-card {
         .transform(translate3d(0, 8px, 0));
         color: @dark_shrine;
         font-family: 'Abril Fatface', cursive;
-        font-size: 3em;
+        font-size: 32px;
         font-weight: 300;
         opacity: 0;
       }
@@ -332,16 +331,15 @@ grid-layout {
   }
 
   md-grid-list md-grid-tile {
-    .transition(box-shadow, .5s, 0, ease);
     background-color: #fff;
     cursor: pointer;
     outline: none;
 
     &:hover {
       .box-shadow(@shadow-4dp);
+      .transition(box-shadow, 225ms, 0, cubic-bezier(0.0, 0.0, 0.2, 1));
 
       .product-image img {
-        .transition(opacity, 225ms, 0, cubic-bezier(0.0, 0.0, 0.2, 1));
         opacity: .5;
       }
 
