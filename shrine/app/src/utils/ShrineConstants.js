@@ -43,7 +43,7 @@ let moduleName = angular.module('shrine.constants', [])
             columns: 3,
             aspectRatio: '3:4',
             footerHeight: '0',
-            gutters: '16px',
+            gutters: '12px',
             margins: '24px',
             tileInfo: [{
               'rowspan': 1,
@@ -95,7 +95,7 @@ let moduleName = angular.module('shrine.constants', [])
             columns: 2,
             aspectRatio: '3:4',
             footerHeight: '0',
-            gutters: '16px',
+            gutters: '12px',
             margins: '24px',
             tileInfo: [{
               'rowspan': 1,
@@ -147,7 +147,7 @@ let moduleName = angular.module('shrine.constants', [])
             columns: 2,
             aspectRatio: '3:4',
             footerHeight: '0',
-            gutters: '16px',
+            gutters: '12px',
             margins: '24px',
             tileInfo: [{
               'rowspan': 1,
@@ -199,7 +199,7 @@ let moduleName = angular.module('shrine.constants', [])
             columns: 4,
             aspectRatio: '3:4',
             footerHeight: '0',
-            gutters: '16px',
+            gutters: '12px',
             margins: '24px',
             tileInfo: [{
               'rowspan': 1,
@@ -251,7 +251,7 @@ let moduleName = angular.module('shrine.constants', [])
             columns: 4,
             aspectRatio: '3:4',
             footerHeight: '0',
-            gutters: '16px',
+            gutters: '12px',
             margins: '24px',
             tileInfo: [{
               'rowspan': 1,
@@ -304,7 +304,7 @@ let moduleName = angular.module('shrine.constants', [])
             columns: 3,
             aspectRatio: '3:4',
             footerHeight: '0',
-            gutters: '16px',
+            gutters: '12px',
             margins: '24px',
             tileInfo: [{
               'rowspan': 1,
@@ -356,7 +356,7 @@ let moduleName = angular.module('shrine.constants', [])
             columns: 2,
             aspectRatio: '3:4',
             footerHeight: '0',
-            gutters: '16px',
+            gutters: '12px',
             margins: '24px',
             tileInfo: [{
               'rowspan': 1,
@@ -405,7 +405,7 @@ let moduleName = angular.module('shrine.constants', [])
             }]
           },
           detailView: {
-            columns: 2,
+            columns: 3,
             aspectRatio: '3:4',
             footerHeight: '0',
             gutters: '8px',
@@ -457,7 +457,7 @@ let moduleName = angular.module('shrine.constants', [])
             }]
           },
           detailView: {
-            columns: 2,
+            columns: 3,
             aspectRatio: '3:4',
             footerHeight: '0',
             gutters: '8px',

@@ -2,24 +2,19 @@
  * Controller for the home page.
  */
 class HomeController {
+  constructor($scope, $log, ShrineDomUtils) {
+    this.$log = $log.getInstance("HomeController");
+    this.$log.debug("instanceOf()");
 
-  constructor($scope, ShrineDomUtils, Utils) {
-    
-  }
-  
-  openSidenav() {
-    this.body_.classList.add('sidenav-open');
-    this.mdSidenav_('primary').open();
-  }
-
-  hideSidenav() {
-    this.body_.classList.remove('sidenav-open');
-    this.mdSidenav_('primary').close();
-  }
+    this.viewport = ShrineDomUtils.getViewport();
+    this.viewport.current.updated = () => {
+      this.$scope.$apply();
+    }
+  }  
 }
 
 HomeController.$inject = [
-    '$scope', 'ShrineDomUtils', 'Utils'
+    '$scope', '$log', 'ShrineDomUtils',
 ];
 
 export default HomeController;

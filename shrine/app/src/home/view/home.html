@@ -5,7 +5,7 @@
         <md-icon class="material-icons">menu</md-icon>
       </md-button>
       <div class="logo-container">
-        <img class="logo" src="https://www.gstatic.com/angular/material-adaptive/shrine/shrine_logo_withicon.svg">
+        <img class="logo" ng-src="{{(home.viewport.current.minWidth < 840 || home.viewport.current.display == 'mobile') && '../assets/shrine_logo.svg' || 'https://www.gstatic.com/angular/material-adaptive/shrine/shrine_logo_withicon.svg'}}">
       </div>
       <span flex></span>
       <md-button class="md-icon-button" aria-label="Add to cart" ng-click="wau()">
