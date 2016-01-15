@@ -1,41 +1,38 @@
-class Item {
+class Hero {
   constructor(params) {
     if (!params) params = {};
-    this.id = params.id || -1;
     this.title = params.title || '';
-    this.description = params.description || '';
+    this.quote = params.quote || '';
     this.imageUrl = params.imageUrl || '';
     this.price = params.price || '';
     this.storeName = params.storeName || '';
     this.storeAvatarUrl = params.storeAvatarUrl || '';
-    this.featured = params.featured || false;
+    this.category = params.category || '';
   }
 
   copy() {
-    return new Item({
-      id: json.id,
+    return new Hero({
       title: json.title,
-      description: json.description,
+      quote: json.quote,
       imageUrl: json.imageUrl,
       price: json.price,
       storeName: json.storeName,
       storeAvatarUrl: json.storeAvatarUrl,
-      featured: json.featured,
+      category: json.category,
     });
   }
 
   static fromJson(json) {
-    return new Item({
-      id: json.id,
+    return new Hero({
       title: json.title,
-      description: json.description,
+      quote: json.quote,
       imageUrl: json.imageUrl,
       price: json.price,
       storeName: json.storeName,
       storeAvatarUrl: json.storeAvatarUrl,
-      featured: json.featured,
+      category: json.category,
     })
   }
 }
 
-export default Item;
+export default Hero;

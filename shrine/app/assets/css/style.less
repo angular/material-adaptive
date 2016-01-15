@@ -3,6 +3,12 @@
 
 @card_internal_padding: 24px;
 
+body {
+  &.sidenav-open {
+    overflow: hidden;
+  }
+}
+
 base-view {
   display: block;
   height: 100%;
@@ -117,6 +123,12 @@ md-tabs {
     height: @tabs_height;
   }
 
+  &.no-show {
+    md-tabs-wrapper {
+      display: none;
+    }
+  }
+
   .md-tab.md-active {
     color: rgba(0, 0, 0, .9);
   }
@@ -124,6 +136,141 @@ md-tabs {
   md-ink-bar {
     background: @blue_shrine;
     color: @blue_shrine;
+  }
+}
+
+/************
+ * sidenav
+ ************/
+md-backdrop.md-sidenav-backdrop {
+  display: none;
+  z-index: -1;
+}
+
+sidenav-backdrop {
+  background-color: rgba(0, 0, 0, .5);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: -1;
+
+  .sidenav-open & {
+    visibility: visible;
+    z-index: 10;
+  }
+}
+
+main-view md-sidenav, main-view md-sidenav.md-locked-open {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  md-toolbar:not(.md-menu-toolbar) {
+    background-color: white;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    box-shadow: none;
+  }
+
+  .header {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin: 0 20px;
+    padding: 20px;
+
+    .avatar-container {
+      border-radius: 50%;
+      height: 75px;
+      overflow: hidden;
+      position: relative;
+      width: 75px;
+
+      .image {
+        background-image: url('http://www.gstatic.com/angular/material-adaptive/pesto/avatar.jpg');
+        background-repeat: no-repeat;
+        background-size: 145px;
+        background-position: -49px -5px;
+        border-radius: 50%;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .contact-info {
+      .name {
+        font-size: 3em;
+        font-weight: 500;
+        margin-left: 20px;
+      }
+    }
+
+    // .scroll & {
+    //   align-items: center;
+    //   width: 100%;
+
+    //   .image {
+    //     height: 34px;
+    //     width: 34px;
+    //   }
+    // }
+  }
+
+  .options {
+    li {
+      color: @gray_shrine;
+      cursor: pointer;
+      font-size: 25px;
+      font-weight: 500;
+      outline: none;
+      margin: 20px 0;
+      padding: 20px;
+      text-transform: uppercase;
+
+      &.selected {
+        color: @dark_shrine;
+      }
+
+      &[disabled] {
+        cursor: not-allowed;
+        opacity: .5;
+      }
+    }
+  }
+
+  md-content {
+    background-color: white;
+    position: relative;
+
+    // .scroll & {
+    //   top: 64px;
+    // }
+  }
+}
+
+md-sidenav.md-locked-open, md-sidenav.md-locked-open.md-closed, md-sidenav.md-locked-open.md-closed.md-sidenav-left, md-sidenav.md-locked-open.md-closed {
+  display: none;
+
+  .sidenav-open & {
+    display: block;
+  }
+}
+
+md-sidenav.md-locked-open {
+  z-index: -1;
+  visibility: hidden;
+
+  md-toolbar:not(.md-menu-toolbar) {
+    background-color: white;
+  }
+
+  .sidenav-open & {
+    visibility: visible;
+    z-index: 50;
   }
 }
 
@@ -1048,9 +1195,10 @@ details-view {
   }
 }
 
+/* Mobile Special - 361px */
 @media only screen
   and (max-width: 479px)
-  and (min-width: 381px) {
+  and (min-width: 361px) {
 
   body {
     font-size: 38%;

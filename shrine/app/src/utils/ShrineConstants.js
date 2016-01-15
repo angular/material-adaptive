@@ -365,6 +365,58 @@ let moduleName = angular.module('shrine.constants', [])
           }
         }
       }, {
+        maxWidth: 479, ///iPhone 6, iPhone 6+, Google Nexus 4, LG Optimus L70
+        minWidth: 361,
+        viewport: "vp-v",
+        display: "mobile",
+        name: "Special mobile",
+        orientation: false,
+        gridInfo: {
+          homeView: {
+            columns: 2,
+            aspectRatio: '2:3',
+            footerHeight: '56px',
+            gutters: '16px',
+            margins: '16px',
+            tileInfo: [{
+              'rowspan': 1,
+              'colspan': 1
+            }, {
+              'rowspan': 1,
+              'colspan': 1
+            }, {
+              'rowspan': 1,
+              'colspan': 1
+            }, {
+              'rowspan': 1,
+              'colspan': 1
+            }, {
+              'rowspan': 1,
+              'colspan': 1
+            }, {
+              'rowspan': 1,
+              'colspan': 1
+            }, {
+              'rowspan': 1,
+              'colspan': 2
+            }, {
+              'rowspan': 1,
+              'colspan': 2
+            }]
+          },
+          detailView: {
+            columns: 2,
+            aspectRatio: '3:4',
+            footerHeight: '0',
+            gutters: '12px',
+            margins: '24px',
+            tileInfo: [{
+              'rowspan': 1,
+              'colspan': 1
+            }]
+          }
+        }
+      }, {
         maxWidth: 1279,
         minWidth: 1024,
         viewport: "vp-tablet-land",

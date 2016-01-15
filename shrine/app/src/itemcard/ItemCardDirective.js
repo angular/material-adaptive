@@ -26,16 +26,16 @@ class ItemCardController {
 
 // Directive definition of the the ItemCard.
 class ItemCardDirective {
-    constructor() {
-        angular.extend(this, {
-          restrict         : 'E',
-          scope            : {  item: '=', showDetails: '=' },
-          bindToController : true,
-          controllerAs     : 'ctrl',
-          controller       : ItemCardController,
-          templateUrl      : 'src/itemcard/view/itemcard.html'
-        });
-    }
+  constructor() {
+    angular.extend(this, {
+      restrict         : 'E',
+      scope            : {  item: '=', showDetails: '=' },
+      bindToController : true,
+      controllerAs     : 'ctrl',
+      controller       : ItemCardController,
+      templateUrl      : 'src/itemcard/view/itemcard.html'
+    });
+  }
 }
 
 ItemCardDirective.$inject = ['$scope', 'ShrineDomUtils', 'ItemStorage'];

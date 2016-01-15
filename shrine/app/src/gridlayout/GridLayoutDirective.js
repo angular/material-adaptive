@@ -10,19 +10,21 @@ class GridLayoutController {
     }
     this._$itemStorage = ItemStorage;
     this.Utils = Utils;
-    this.fetchItems();
     this.gridInfoView = this.$scope.ctrl.gridName ||
         Object.keys(this.viewport.current.gridInfo)[0];
     this.reshuffle = this.$scope.ctrl.reshuffle || false;
+
+    this.fetchItems();
   }
 
   reshuffleItems(items) {
-    items = this.Utils.shuffle(items);
+    items = this.Utils.shuffle(items.slice(0, items.length));
 
-    items.forEach(function(item, index) {
-      var mod = index % 8;
-      item.featured = (mod === 6 || mod === 7);
-      console.log(item, index, mod, item.featured);
+    items.forEach(function(item, idx) {
+      var mod = idx % 8;
+      var _item = Object.assign({}, item);
+      _item.featured = (mod === 6 || mod === 7);
+      items[idx] = _item;
     }, this);
 
     return items;

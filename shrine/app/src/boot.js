@@ -58,7 +58,7 @@ angular
           .config( ['$provide', LogDecorator] );
 
     app.config(['$routeProvider', ($routeProvider) => {
-      $routeProvider.when('/', {
+      $routeProvider.when('/:category?', {
         templateUrl: 'src/home/view/home.html',
         controller: 'HomeController',
         controllerAs: 'home',
