@@ -156,6 +156,58 @@ let moduleName = angular.module('shrine.constants', [])
           }
         }
       }, {
+        maxWidth: 1279,
+        minWidth: 1024,
+        viewport: "vp-desktop-tablet",
+        display: "mobile",
+        name: "Tablet Land",
+        orientation: false,
+        gridInfo: {
+          homeView: {
+            columns: 2,
+            aspectRatio: '2:3',
+            footerHeight: '56px',
+            gutters: '8px',
+            margins: '8px',
+            tileInfo: [{
+              'rowspan': 1,
+              'colspan': 1
+            }, {
+              'rowspan': 1,
+              'colspan': 1
+            }, {
+              'rowspan': 1,
+              'colspan': 1
+            }, {
+              'rowspan': 1,
+              'colspan': 1
+            }, {
+              'rowspan': 1,
+              'colspan': 1
+            }, {
+              'rowspan': 1,
+              'colspan': 1
+            }, {
+              'rowspan': 1,
+              'colspan': 2
+            }, {
+              'rowspan': 1,
+              'colspan': 2
+            }]
+          },
+          detailView: {
+            columns: 3,
+            aspectRatio: '3:4',
+            footerHeight: '0',
+            gutters: '8px',
+            margins: '16px',
+            tileInfo: [{
+              'rowspan': 1,
+              'colspan': 1
+            }]
+          }
+        }
+      }, {
         maxWidth: 1023,
         minWidth: 960,
         viewport: "vp-med",
