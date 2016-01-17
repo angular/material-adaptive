@@ -164,11 +164,13 @@ sidenav-backdrop {
 }
 
 main-view md-sidenav, main-view md-sidenav.md-locked-open {
+  .box-shadow(@shadow-16dp);
   height: 100%;
   left: 0;
+  max-width: 320px;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: ~'calc(100% - 56px)';
 
   md-toolbar:not(.md-menu-toolbar) {
     background-color: white;
@@ -181,20 +183,24 @@ main-view md-sidenav, main-view md-sidenav.md-locked-open {
     display: flex;
     flex-direction: row;
     margin: 0 20px;
-    padding: 20px;
+    padding: 20px 0 35px 15px;
+
+    .md-button md-icon {
+      color: @dark_shrine;
+    }
 
     .avatar-container {
       border-radius: 50%;
-      height: 75px;
+      height: 48px;
       overflow: hidden;
       position: relative;
-      width: 75px;
+      width: 48px;
 
       .image {
         background-image: url('http://www.gstatic.com/angular/material-adaptive/pesto/avatar.jpg');
         background-repeat: no-repeat;
-        background-size: 145px;
-        background-position: -49px -5px;
+        background-size: 100px;
+        background-position: -38px -5px;
         border-radius: 50%;
         height: 100%;
         width: 100%;
@@ -203,7 +209,7 @@ main-view md-sidenav, main-view md-sidenav.md-locked-open {
 
     .contact-info {
       .name {
-        font-size: 3em;
+        font-size: 20px;
         font-weight: 500;
         margin-left: 20px;
       }
@@ -224,12 +230,12 @@ main-view md-sidenav, main-view md-sidenav.md-locked-open {
     li {
       color: @gray_shrine;
       cursor: pointer;
-      font-size: 25px;
+      font-size: 15px;
       font-weight: 500;
       outline: none;
-      margin: 20px 0;
-      padding: 20px;
-      text-transform: uppercase;
+      margin: 0;
+      padding: 16px;
+      text-transform: capitalize;
 
       &.selected {
         color: @dark_shrine;
@@ -249,6 +255,25 @@ main-view md-sidenav, main-view md-sidenav.md-locked-open {
     // .scroll & {
     //   top: 64px;
     // }
+  }
+
+  .social-container {
+    bottom: 0;
+    display: flex;
+    padding: 16px;
+    position: absolute;
+    width: 100%;
+
+    .md-button {
+      margin: 0;
+
+      img {
+        height: auto;
+        margin: auto 16px auto 0;
+        width: 24px;
+        vertical-align: middle;
+      }
+    }
   }
 }
 
@@ -548,7 +573,7 @@ details-view {
       display: flex;
       max-height: 450px;
       overflow: hidden;
-      margin: 0 60px 0 10px;
+      margin: 0 40px 0 55px;
 
       width: 40%;
 
@@ -759,6 +784,11 @@ details-view {
 
   .hero-image {
     height: @hero_height;
+
+    .image {
+      left: 3%;
+      width: 40%;
+    }
   }
 
   main-view {
@@ -837,6 +867,11 @@ details-view {
   .hero-image {
     height: @hero_height;
 
+    .image {
+      left: 3%;
+      width: 40%;
+    }
+
     .info {
       width: 40em;
     }
@@ -913,7 +948,7 @@ details-view {
     height: @hero_height;
 
     .image {
-      width: 60%;
+      width: 50%;
     }
 
     .info .description-content {
@@ -992,7 +1027,7 @@ details-view {
 
     .image {
       left: -1%;
-      width: 60%;
+      width: 50%;
     }
 
     .info .description-content {
@@ -1068,8 +1103,8 @@ details-view {
     height: @hero_height;
 
     .image {
-      left: -40%;
-      width: 100%;
+      left: -35%;
+      width: 80%;
     }
 
     .info {
@@ -1139,8 +1174,8 @@ details-view {
     height: @hero_height;
 
     .image {
-      left: -50%;
-      width: 100%;
+      left: -35%;
+      width: 80%;
     }
 
     .info {
@@ -1154,6 +1189,11 @@ details-view {
         }
       }
     }
+  }
+
+  item-card .card-footer .store-info {
+    bottom: 8px;
+    left: 8px;
   }
 
   grid-layout {
@@ -1206,8 +1246,8 @@ details-view {
 
   .hero-image {
     .image {
-      left: -45%;
-      width: 100%;
+      left: -35%;
+      width: 80%;
     }
 
     .info {
@@ -1303,8 +1343,8 @@ details-view {
     height: @hero_height;
 
     .image {
-      left: -10%;
-      width: 45em;
+      left: -15%;
+      width: 60%;
     }
 
     .info {
@@ -1404,8 +1444,8 @@ details-view {
     height: @hero_height;
 
     .image {
-      left: -25%;
-      width: 75%;
+      left: -20%;
+      width: 70%;
     }
 
     .info {
@@ -1507,6 +1547,18 @@ details-view {
   md-toolbar:not(.md-menu-toolbar) {
     height: @header_height;
   }
+
+  // main-view {
+  //   md-sidenav {
+  //     .header {
+
+  //     }
+
+  //     .avatar-container {
+
+  //     }
+
+  // }
 
   .price-tag {
     .featured & {
@@ -1678,8 +1730,8 @@ details-view {
     height: @hero_height;
 
     .image {
-      left: -83%;
-      width: 160%;
+      left: -70%;
+      width: 140%;
     }
 
     .info {

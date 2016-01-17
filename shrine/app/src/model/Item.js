@@ -1,13 +1,14 @@
 class Item {
   constructor(params) {
     if (!params) params = {};
-    this.id = params.id || -1;
+    this.id = params.id || 0;
     this.title = params.title || '';
     this.description = params.description || '';
     this.imageUrl = params.imageUrl || '';
     this.price = params.price || '';
     this.storeName = params.storeName || '';
     this.storeAvatarUrl = params.storeAvatarUrl || '';
+    this.storeDescription = params.storeDescription || '';
     this.featured = params.featured || false;
   }
 
@@ -20,6 +21,7 @@ class Item {
       price: json.price,
       storeName: json.storeName,
       storeAvatarUrl: json.storeAvatarUrl,
+      storeDescription: json.storeDescription,
       featured: json.featured,
     });
   }
@@ -33,6 +35,7 @@ class Item {
       price: json.price,
       storeName: json.storeName,
       storeAvatarUrl: json.storeAvatarUrl,
+      storeDescription: json.storeDescription,
       featured: json.featured,
     })
   }

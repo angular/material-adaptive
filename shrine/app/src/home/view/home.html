@@ -59,12 +59,24 @@
       <div class="contact-info">
         <p class="name">Jonathan</p>
       </div>
+      <span flex></span>
+      <md-button class="md-icon-button" aria-label="Settings" style="margin: 0; padding: 0;">
+        <md-icon class="material-icons">settings</md-icon>
+      </md-button>
     </div>
     <md-content layout-padding>
       <ul class="options">
         <li ng-repeat="hero in home.heros" ng-click="home.goToCategory($event, hero.category)" ng-class="{ 'selected': home.isCategorySelected(hero.category) }">{{ hero.category }}</li>
       </ul>
     </md-content>
+    <div class="social-container">
+       <md-button class="md-icon-button">
+         <img ng-src="../assets/icons/twitter.svg"/>
+       </md-button>
+       <md-button class="md-icon-button">
+         <img ng-src="../assets/icons/facebook.svg"/>
+       </md-button>
+    </div>
   </md-sidenav>
 
   <sidenav-backdrop ng-click="home.hideSidenav($event)" ng-show="{{ home.viewport.current.display == 'mobile' }}"></sidenav-backdrop>
