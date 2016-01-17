@@ -10,25 +10,25 @@ let STORE = [
     quote: 'Leave the tunnel and the rain is fallin amazing things happen when you wait',
     imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/chair.png',
     storeName: 'Ali’s shop',
-    storeAvatarUrl: '../assets/avatars/ali-connors.png',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/ali-connors.png',
     price: '$300',
     category: 'Feature'
   }),
   Hero.fromJson({
     title: 'Beautiful little teapot',
     quote: 'Leave the tunnel and the rain is fallin amazing things happen when you wait',
-    imageUrl: '../assets/images/beachball.png',
+    imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/beachball.png',
     storeName: 'Trevor’s shop',
-    storeAvatarUrl: '../assets/avatars/zach.jpg',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
     price: '$300',
     category: 'Latest'
   }),
   Hero.fromJson({
     title: 'Original Sunnies For U',
     quote: 'Leave the tunnel and the rain is fallin amazing things happen when you wait',
-    imageUrl: '../assets/images/chucks.png',
+    imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/chucks.png',
     storeName: 'Sandra’s shop',
-    storeAvatarUrl: '../assets/avatars/sandra-adams.jpg',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/sandra-adams.jpg',
     price: '$300',
     category: 'Fashion'
   }),
@@ -37,7 +37,7 @@ let STORE = [
     quote: 'Leave the tunnel and the rain is fallin amazing things happen when you wait',
     imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/lawn_chair.png',
     storeName: 'Stella’s shop',
-    storeAvatarUrl: '../assets/avatars/16c477b.jpg',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/16c477b.jpg',
     price: '$300',
     category: 'Furniture'
   }),
@@ -46,7 +46,7 @@ let STORE = [
     quote: 'Leave the tunnel and the rain is fallin amazing things happen when you wait',
     imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/heels.png',
     storeName: 'Peter’s shop',
-    storeAvatarUrl: '../assets/avatars/peter-carlsson.png',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/peter-carlsson.png',
     price: '$300',
     category: 'Beauty'
   }),
@@ -55,16 +55,16 @@ let STORE = [
     quote: 'Leave the tunnel and the rain is fallin amazing things happen when you wait',
     imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/popsicle.png',
     storeName: 'Trevor’s shop',
-    storeAvatarUrl: '../assets/avatars/zach.jpg',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
     price: '$300',
     category: 'Food'
   }),
   Hero.fromJson({
     title: 'Best gift for the traveler',
     quote: 'Leave the tunnel and the rain is fallin amazing things happen when you wait',
-    imageUrl: '../assets/images/backpack.png',
+    imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/backpack.png',
     storeName: 'Sandra’s shop',
-    storeAvatarUrl: '../assets/avatars/sandra-adams.jpg',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/sandra-adams.jpg',
     price: '$300',
     category: 'Travel'
   })];
