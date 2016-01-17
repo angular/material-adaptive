@@ -10,14 +10,15 @@ class HomeController {
     this.mdMedia = $mdMedia;
 
     this.body_ = $window.document.body;
+    this.body_.setAttribute('view', 'homepage-view');
     this.recipes = [];
-    
+
     // Window onscroll event. Updates the state on the body.
     const scrollListener = () => {
       if (this.body_.scrollTop > 0) {
         this.body_.classList.add('scroll');
       } else {
-        this.body_.classList.remove('scroll');  
+        this.body_.classList.remove('scroll');
       }
     };
     $window.addEventListener('scroll', scrollListener);
@@ -37,7 +38,7 @@ class HomeController {
       }
     });
   }
-  
+
   openSidenav() {
     this.body_.classList.add('sidenav-open');
     this.mdSidenav_('primary').open();
@@ -53,7 +54,7 @@ class HomeController {
     this.hideSidenav();
     this.location_.path(url);
   }
-  
+
   goToCard(ev, idx) {
     ev.stopPropagation();
     this.goTo(ev, '/recipe/' + idx);

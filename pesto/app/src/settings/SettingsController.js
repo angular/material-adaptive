@@ -4,6 +4,7 @@ class SettingsController {
     this.location_ = $location;
     this.mdToast_ = $mdToast;
     this.mdMedia_ = $mdMedia;
+    this.PestoDomUtils = PestoDomUtils;
     // "key" values should match properties in SettingsStorage.
     this.settings_data = [{
       "name": "Account",
@@ -31,6 +32,8 @@ class SettingsController {
         }
       ],
     }];
+    this.body_ = document.body;
+    this.body_.setAttribute('view', 'settings-view');
 
     this.SettingsStorage = SettingsStorage;
     this.userSettings = {};
@@ -41,6 +44,7 @@ class SettingsController {
   }
 
   isSmallDeviceScreen() {
+    console.log(this.PestoDomUtils.getViewport());
     return this.mdMedia_('max-width: 680px');
   }
 

@@ -4,6 +4,8 @@ class RecipeDetailController {
     this.mdBottomSheet_ = $mdBottomSheet;
     this.recipeStorage_ = RecipeStorage;
     this.PestoDomUtils = PestoDomUtils;
+    this.body_ = document.body;
+    this.body_.setAttribute('view', 'details-view');
 
     this.menuItems = [
       { name: 'Tweet recipe', icon: 'http://www.gstatic.com/angular/material-adaptive/pesto/twitter.png', materialIcon: false },
@@ -33,12 +35,13 @@ class RecipeDetailController {
 
     this.SettingsStorage = SettingsStorage;
     this.userSettings = {};
-    // TODO: Better async.
+
     this.SettingsStorage.readSettings().then((settings) => {
       this.userSettings = settings;
     });
 
     PestoDomUtils.updateViewportDOM();
+    window.scrollTo(0, 0);
   }
 
   goBack(ev) {
@@ -63,7 +66,7 @@ class RecipeDetailController {
       });
     } else {
       $mdOpenMenu(ev);
-    }      
+    }
   }
 
   isFavorite() {

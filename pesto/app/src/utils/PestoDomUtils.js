@@ -2,8 +2,13 @@ class PestoDomUtils {
   constructor($window, PESTO_W_SIZES) {
     this.window_ = $window;
     this.W_SIZES = PESTO_W_SIZES;
-    
+    this.VW = {};
+
     $window.addEventListener('resize', () => this.updateViewportDOM());
+  }
+
+  getViewport() {
+    return this.VW;
   }
 
   getViewportResolution() {
@@ -26,7 +31,7 @@ class PestoDomUtils {
   }
 
   updateViewportDOM() {
-    var vpRes = this.getViewportResolution();
+    this.VW = this.getViewportResolution();
     var _body = this.window_.document.body;
     var bodyCArr = _body.className.split(/\s+/);
 
@@ -36,8 +41,8 @@ class PestoDomUtils {
       }
     });
 
-    _body.classList.add(vpRes.viewport);
-    return vpRes;
+    _body.classList.add(this.VW.viewport);
+    return this.VW;
   }
 }
 
