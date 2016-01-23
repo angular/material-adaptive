@@ -76,7 +76,7 @@ angular
        .directive('gridLayout', () => new gridLayoutDirective)
        .directive('itemCard', () => new itemCardDirective);
 
-    angular.bootstrap( body, [ app.name ], { strictDi: false })
+    angular.bootstrap( body, [ app.name ], { strictDi: true })
 
   });
 

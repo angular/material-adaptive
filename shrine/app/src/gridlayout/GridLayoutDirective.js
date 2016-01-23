@@ -84,12 +84,11 @@ class GridLayoutDirective {
           scope            : { gridName: '=', showDetails: '=', reshuffle: '=' },
           bindToController : true,
           controllerAs     : 'ctrl',
-          controller       : GridLayoutController,
+          controller       : ["$scope", "$location", "ShrineDomUtils", "ItemStorage", "Utils", GridLayoutController],
           templateUrl      : 'src/gridlayout/view/gridlayout.html'
         });
     }
 }
 
-GridLayoutDirective.$inject = ['$scope', '$location', 'ShrineDomUtils',
-    'ItemStorage', 'Utils'];
+GridLayoutDirective.$inject = ['$scope', '$location', 'ShrineDomUtils', 'ItemStorage', 'Utils'];
 export default GridLayoutDirective;

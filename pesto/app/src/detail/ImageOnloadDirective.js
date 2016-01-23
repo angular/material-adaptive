@@ -7,10 +7,12 @@ var imageOnloadDirective = function($window, $timeout) {
         $timeout(function() {
           var animCard = $window.document.getElementById('animate-card');
           animCard.classList.add('animated', 'slideInUp');
-        }, 300);  
+        }, 300);
       });
     }
   }
 }
+
+imageOnloadDirective.$inject = ['$window', '$timeout'];
 
 export default imageOnloadDirective;

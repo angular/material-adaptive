@@ -13,7 +13,7 @@
 ![pesto_r2_c1](https://cloud.githubusercontent.com/assets/210413/9977757/1f82def2-5ed8-11e5-9632-58f99ab31022.jpg)
 
 
-##### Adaptive Card Details 
+##### Adaptive Card Details
 
 ![pesto_r3_c1](https://cloud.githubusercontent.com/assets/210413/9977759/3145d522-5ed8-11e5-9678-c51768e4b291.jpg)
 
@@ -44,3 +44,13 @@ Start the dev server like so.
 npm install http-server
 http-server app/
 ```
+
+
+# Bundle for production - Build process
+
+```
+cd app/
+jspm bundle-sfx app/boot --inject --skip-source-maps --minify
+```
+
+Use the dist.html as main file

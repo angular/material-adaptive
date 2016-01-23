@@ -29,4 +29,6 @@ class SettingsStorage {
   }
 }
 
+SettingsStorage.$inject = ['$q'];
+
 export default SettingsStorage;

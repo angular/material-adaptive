@@ -95,7 +95,7 @@ STORE[5] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 25),
   name: 'Chicken tostadas',
   author: 'Peter Carlsson',
-  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/IMG_5447.jpg',
+  mainImageUrl: '/assets/images/image5.png',
   ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/spicy.png',
   description: 'Crisp flavours and a bit of spice make this roasted chicken dish an easy go to when cooking for large groups. Top with Baja sauce for an extra kick of spice.',
   ingredients: [
@@ -136,7 +136,7 @@ STORE[7] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 25),
   name: 'Gin basil cocktail',
   author: 'Trevor Hansen',
-  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/fish-steaks.jpg',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/IMG_5447.jpg',
   ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/quick.png',
   description: 'This mellow and herb filled blending of simple ingredients is easy enough to mix that a novice host will feel like a seasoned bartender. Top with crushed basil, shake or stir.',
   ingredients: [
@@ -156,7 +156,7 @@ STORE[8] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 25),
   name: 'Seared sesame fish',
   author: 'Ali Connors',
-  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/IMG_5438.jpg',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/fish-steaks.jpg',
   ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/fish.png',
   description: 'Cuts of fish like this are perfect for simple searing with bright flavours. Try Sesame seeds on these fillets for crusty skin filled with crunch. For added flavour try dipping in a homemade ponzu sauce - delicious.',
   ingredients: [
@@ -178,7 +178,7 @@ STORE[9] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 25),
   name: 'Herb artichoke',
   author: 'Sandra Adams',
-  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/IMG_5332.jpg',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/IMG_5438.png',
   ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/healthy.png',
   description: 'This tasty and healthy veggie is a favorite. Artichoke like this can be paired with a hearty main or works well as a small meal with some white wine on the side. Simple and fresh, all foodies love tasty artichoke.',
   ingredients: [
@@ -200,7 +200,7 @@ STORE[10] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 25),
   name: 'Pesto bruschetta',
   author: 'Trevor Hansen',
-  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/bok-choy.jpg',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/IMG_5332.png',
   ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/veggie.png',
   description: 'Life is good when you add amazingly warm bread, fresh pesto sauce, and roasted tomatoes to the table. This a  classic starter to break out in a pinch. It’s easy to make and extra tasty.',
   ingredients: [
@@ -224,7 +224,7 @@ STORE[11] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 25),
   name: 'Garlic bok choy',
   author: 'Sandra Adams',
-  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/IMG_0575.jpg',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/bok-choy.jpg',
   ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/spicy.png',
   description: 'Great stir-fried bok choy starts at the market. For me, nothing says tasty like garlic and baby bok choy. Choose fresh, crisp greens. Once home, wash, chop, and then ready for the wok.  No family style spread is complete without these greens.',
   ingredients: [
@@ -250,11 +250,33 @@ STORE[12] = Recipe.fromJson({
   description: 'Satisfy a need for rich, creamy homemade goodness with this classic. Creamy fettuccine alfredo will have you hitting the gym the next day, but it’s so good it’s worth it.',
   ingredients: [
     {amount: '¾ cup', description: 'Milk'},
-    {amount: '1 ½  tsp', description: 'Salt'},
-    {amount: '1  tbsp', description: 'Olive oil'},
+    {amount: '1 ½ tsp', description: 'Salt'},
+    {amount: '1 tbsp', description: 'Olive oil'},
     {amount: '8oz', description: 'Fettuccine'},
     {amount: '½ cup', description: 'Fresh basil'},
     {amount: '½ cup', description: 'Fresh ground pepper'},
+  ],
+  steps: [
+    {duration: '3 min', description: 'Stir'},
+    {duration: '45 min', description: 'Cook'}
+  ],
+});
+
+STORE[13] = Recipe.fromJson({
+  id: 13,
+  dateCreated: new Date(2015, 0, 25),
+  name: 'Sicilian-Style sardines',
+  author: 'Peter Carlsson',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/IMG_0575.jpg',
+  ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/quick.png',
+  description: 'My go to way to eat sardines is with a splash of tangy lemon and fresh fennel drizzled on top. The best thing about this dish is the flavour it packs. Prepaid with wild caught sardines or canned.',
+  ingredients: [
+    {amount: '1/4 cup', description: 'Dry white wine'},
+    {amount: '1', description: 'Finely chopped shallot'},
+    {amount: '2 tbsp', description: 'Fresh lemon juice'},
+    {amount: '1 tbsp', description: 'Fennel seeds, crushed'},
+    {amount: '4 tbsp', description: 'Extra virgin olive oil, to taste'},
+    {amount: '2 cans', description: 'Sardines in oil, drained'},
   ],
   steps: [
     {duration: '3 min', description: 'Stir'},

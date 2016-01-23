@@ -5,10 +5,10 @@
   "private": true,
   "version": "0.0.0",
   "licenses": [
-   {
-     "type": "MIT",
-     "url": "https://github.com/angular/material/blob/master/LICENSE"
-   }
+    {
+      "type": "MIT",
+      "url": "https://github.com/angular/material/blob/master/LICENSE"
+    }
   ],
   "jspm": {
     "directories": {
@@ -26,6 +26,7 @@
       "text": "github:systemjs/plugin-text@^0.0.2"
     },
     "devDependencies": {
+      "clean-css": "npm:clean-css@^3.4.9",
       "traceur": "github:jmcriffey/bower-traceur@0.0.90",
       "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.90"
     }

@@ -33,6 +33,8 @@ class ItemCardDirective {
       bindToController : true,
       controllerAs     : 'ctrl',
       controller       : ItemCardController,
+      controller       : ["$scope", "ShrineDomUtils", "ItemStorage", ItemCardController],
+
       templateUrl      : 'src/itemcard/view/itemcard.html'
     });
   }

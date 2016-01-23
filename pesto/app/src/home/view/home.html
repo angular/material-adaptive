@@ -20,8 +20,10 @@
             <span>
               <img ng-src="{{card.ingredientsImageUrl}}">
             </span>
-            <p ng-click="home.goToCard($event, card.id)" class="title">{{card.name}}</p>
-            <div class="author">{{card.author}}</div>
+            <div class="right-content">
+              <p ng-click="home.goToCard($event, card.id)" class="title">{{card.name}}</p>
+              <div class="author">{{card.author}}</div>
+            </div>
           </div>
         </card-element>
     </layout-cards>

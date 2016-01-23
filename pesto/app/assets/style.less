@@ -301,18 +301,19 @@ main-view {
     }
 
     .card-info {
+      align-items: flex-start;
       background-color: #fff;
       bottom: 0;
+      display: flex;
+      flex-direction: row;
       height: 87px;
-      padding: 21px 0 0 70px;
+      padding: 21px 0 0 21px;
       position: absolute;
       width: 100%;
 
       span {
         height: 36px;
         display: inline-block;
-        left: 16px;
-        position: absolute;
         width: 36px;
 
         img {
@@ -320,6 +321,12 @@ main-view {
           opacity: 0.87;
           width: auto;
         }
+      }
+
+      .right-content {
+        flex: 1;
+        padding-left: 16px;
+        position: relative;
       }
 
       p.title {
@@ -330,6 +337,7 @@ main-view {
         outline: none;
         text-decoration: none;
         text-transform: none;
+        white-space: nowrap;
       }
 
       .author {

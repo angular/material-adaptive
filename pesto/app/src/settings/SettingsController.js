@@ -44,7 +44,6 @@ class SettingsController {
   }
 
   isSmallDeviceScreen() {
-    console.log(this.PestoDomUtils.getViewport());
     return this.mdMedia_('max-width: 680px');
   }
 

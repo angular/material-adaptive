@@ -55,7 +55,7 @@ angular
             pestoUtilsModule,
           ])
           .config( ['$provide', LogDecorator] );
-    
+
     app.config(['$routeProvider', ($routeProvider) => {
       $routeProvider.when('/home', {
         templateUrl: 'src/home/view/home.html',
@@ -74,12 +74,12 @@ angular
       })
       .otherwise({redirectTo: '/home'});
     }]);
-    
+
     app.controller('HomeController', HomeController)
         .controller('SettingsController', SettingsController)
         .controller('RecipeDetailController', RecipeDetailController);
 
-    angular.bootstrap( body, [ app.name ], { strictDi: false })
+    angular.bootstrap( body, [ app.name ], { strictDi: true })
 
   });
 
