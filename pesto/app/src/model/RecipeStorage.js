@@ -95,7 +95,7 @@ STORE[5] = Recipe.fromJson({
   dateCreated: new Date(2015, 0, 25),
   name: 'Chicken tostadas',
   author: 'Peter Carlsson',
-  mainImageUrl: '/assets/images/image5.png',
+  mainImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/image5.png',
   ingredientsImageUrl: 'http://www.gstatic.com/angular/material-adaptive/pesto/spicy.png',
   description: 'Crisp flavours and a bit of spice make this roasted chicken dish an easy go to when cooking for large groups. Top with Baja sauce for an extra kick of spice.',
   ingredients: [
