@@ -1,0 +1,17 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/bin/node /Users/cristobalchao/npm/bin/firebase deploy
+[debug] Platform:     darwin
+[debug] Node Version: v5.2.0
+[debug] Time:         Mon Jan 25 2016 14:10:46 GMT-0800 (PST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/firebase/material-adaptive-ui/token?token=XXX 
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/firebase/material-adaptive-ui/token?token=XXX 
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'material-adaptive-ui'...
+[info] 
+[info] i  deploying hosting
+[info] i  preparing . directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/firebase/material-adaptive-ui/uploads/-K8uphqddfo7hY8hUYmz?token=XXX&fileCount=2063&message= 
