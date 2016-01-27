@@ -411,15 +411,15 @@ item-card {
     .featured & {
       // .transform(scale(1.75) translateY(-10%));
 
-      justify-content: flex-start;
-      max-height: none;
-      width: 28em;
+      // justify-content: flex-start;
+      // max-height: none;
+      width: 30em;
 
-      img {
-        bottom: 0;
-        position: absolute;
-        width: 100%;
-      }
+      // img {
+      //   bottom: 0;
+      //   position: absolute;
+      //   width: 100%;
+      // }
     }
   }
 
@@ -1724,6 +1724,12 @@ details-view {
   }
 
   item-card {
+    .product-image {
+      .featured & {
+        width: 26em;
+      }
+    }
+
     .store-info {
       bottom: @card_internal_padding;
       left: @card_internal_padding;
