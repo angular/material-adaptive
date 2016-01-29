@@ -1,5 +1,5 @@
 {
-  "firebase": "material-adaptive-ui",
+  "firebase": "material-adaptive",
   "public": ".",
   "ignore": [
     "firebase.json",
@@ -7,7 +7,6 @@
     "**/node_modules/**",
     "crane/*",
     "file-browser/*",
-    "publishing/*",
-    "index.html"
+    "publishing/*"
   ]
 }
