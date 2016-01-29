@@ -1,5 +1,15 @@
 class RecipeDetailController {
-  constructor($location, $routeParams, $mdBottomSheet, PestoDomUtils, RecipeStorage, SettingsStorage) {
+  /**
+   * @constructor
+   * @param {!angular.Location} $location
+   * @param {!angular.routeParams} $routeParams
+   * @param {!md.bottomSheet} $mdBottomSheet
+   * @param {!Object} PestoDomUtils
+   * @param {!Object} RecipeStorage
+   * @param {!Object} SettingsStorage
+   */
+  constructor($location, $routeParams, $mdBottomSheet, PestoDomUtils,
+        RecipeStorage, SettingsStorage) {
     this.location_ = $location;
     this.mdBottomSheet_ = $mdBottomSheet;
     this.recipeStorage_ = RecipeStorage;
@@ -8,10 +18,10 @@ class RecipeDetailController {
     this.body_.setAttribute('view', 'details-view');
 
     this.menuItems = [
-      { name: 'Tweet recipe', icon: 'http://www.gstatic.com/angular/material-adaptive/pesto/twitter.png', materialIcon: false },
+      { name: 'Tweet recipe', icon: 'https://www.gstatic.com/angular/material-adaptive/pesto/twitter.png', materialIcon: false },
       { name: 'Email recipe', icon: 'mail', materialIcon: true },
       { name: 'Message recipe', icon: 'message', materialIcon: true },
-      { name: 'Share on Facebook', icon: 'http://www.gstatic.com/angular/material-adaptive/pesto/facebook.png', materialIcon: false },
+      { name: 'Share on Facebook', icon: 'https://www.gstatic.com/angular/material-adaptive/pesto/facebook.png', materialIcon: false },
     ];
     this.recipe = null;
     this.recipeId = $routeParams['id'];
@@ -44,11 +54,21 @@ class RecipeDetailController {
     window.scrollTo(0, 0);
   }
 
+  /**
+   * Redirects to the homepage.
+   * @param {!event} ev Click event.
+   */
   goBack(ev) {
     ev.stopPropagation();
     this.location_.path('/');
   }
 
+  /**
+   * Opens a different menu according to the current viewport.
+   * Menus: Overflow menu / Bottom sheet menu.
+   * @param {!md.openMenu} $mdOpenMenu
+   * @param {!event} ev Click event.
+   */
   openMenu($mdOpenMenu, ev) {
     ev.stopPropagation();
 
@@ -69,11 +89,19 @@ class RecipeDetailController {
     }
   }
 
+  /**
+   * Returns if the recipe has been favorited.
+   * @return {Boolean}
+   */
   isFavorite() {
     const favoriteIds = this.userSettings.favoriteRecipeIds;
     return !!(favoriteIds && this.recipe && favoriteIds[this.recipe.id]);
   }
 
+  /**
+   * Toggles the favorite recipe.
+   * @param {!event} ev Click event.
+   */
   toggleFavorite(ev) {
     ev.stopPropagation();
     let favoriteIds = this.userSettings.favoriteRecipeIds;

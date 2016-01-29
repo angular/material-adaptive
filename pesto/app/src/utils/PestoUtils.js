@@ -6,4 +6,3 @@ let moduleName = angular.module('pesto.utils', [constantsModuleName])
     .name;
 
 export default moduleName;
-    

@@ -1,5 +1,13 @@
 class SettingsController {
 
+  /**
+   * @constructor
+   * @param {!angular.Location} $location
+   * @param {!md.$toast} $mdToast
+   * @param {!md.$media} $mdMedia
+   * @param {!Object} PestoDomUtils
+   * @param {!Object} SettingsStorage
+   */
   constructor($location, $mdToast, $mdMedia, PestoDomUtils, SettingsStorage) {
     this.location_ = $location;
     this.mdToast_ = $mdToast;
@@ -37,26 +45,41 @@ class SettingsController {
 
     this.SettingsStorage = SettingsStorage;
     this.userSettings = {};
-    // TODO: Better async.
+
     this.SettingsStorage.readSettings().then((settings) => {
       this.userSettings = settings;
     });
   }
 
+  /**
+   * Returns if device screen is small.
+   */
   isSmallDeviceScreen() {
     return this.mdMedia_('max-width: 680px');
   }
 
+  /**
+   * Toggles the content.
+   * @param {!event} ev Click event.
+   * @param {!Object} settingOption
+   */
   toggleContent(ev, settingOption) {
     ev.stopPropagation();
     settingOption.show_content_default = !settingOption.show_content_default;
   }
 
+  /**
+   * Closes settings.
+   */
   close(ev) {
     ev.stopPropagation();
     this.location_.path('/');
   }
 
+  /**
+   * Saves settings.
+   * @param {!event} ev Click event.
+   */
   save(ev) {
     ev.stopPropagation();
     this.SettingsStorage.saveSettings(this.userSettings).then(() => {

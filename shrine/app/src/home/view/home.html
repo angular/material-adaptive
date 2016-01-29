@@ -5,13 +5,13 @@
         <md-icon class="material-icons">menu</md-icon>
       </md-button>
       <div class="logo-container">
-        <img class="logo" ng-src="{{(home.viewport.current.minWidth < 840 || home.viewport.current.display == 'mobile') && 'https://www.gstatic.com/angular/material-adaptive/shrine/shrine_logo.svg' || 'https://www.gstatic.com/angular/material-adaptive/shrine/shrine_logo_withicon.svg'}}">
+        <img class="logo" ng-src="{{(home.viewport.current.minWidth < 840 || home.viewport.current.display == 'mobile') && 'https://www.gstatic.com/angular/material-adaptive/shrine/shrine_logo.svg' || 'https://www.gstatic.com/angular/material-adaptive/shrine/shrine_logo_withicon.svg'}}" ng-class="{ 'mobile': (home.viewport.current.minWidth < 840 || home.viewport.current.display == 'mobile') }">
       </div>
       <span flex></span>
-      <md-button class="md-icon-button" aria-label="Add to cart" ng-click="wau()">
+      <md-button class="md-icon-button" aria-label="Add to cart" aria-label="Shopping cart">
         <md-icon class="material-icons">shopping_cart</md-icon>
       </md-button>
-      <md-button class="md-icon-button" aria-label="More options" ng-click="wau()">
+      <md-button class="md-icon-button" aria-label="More options" aria-label="More">
         <md-icon class="material-icons">more_vert</md-icon>
       </md-button>
     </div>
@@ -32,7 +32,7 @@
 
                   <div class="store-info">
                     <div class="avatar">
-                      <img src="{{ hero.storeAvatarUrl }}">
+                      <img ng-src="{{ hero.storeAvatarUrl }}">
                     </div>
                     <p>{{ hero.storeName }}</p>
                   </div>
@@ -70,11 +70,11 @@
       </ul>
     </md-content>
     <div class="social-container">
-       <md-button class="md-icon-button">
-         <img ng-src="http://www.gstatic.com/angular/material-adaptive/shrine/twitter.svg"/>
+       <md-button class="md-icon-button" aria-label="Twitter link">
+         <img ng-src="https://www.gstatic.com/angular/material-adaptive/shrine/twitter.svg"/>
        </md-button>
-       <md-button class="md-icon-button">
-         <img ng-src="http://www.gstatic.com/angular/material-adaptive/shrine/facebook.svg"/>
+       <md-button class="md-icon-button" aria-label="Facebook link">
+         <img ng-src="https://www.gstatic.com/angular/material-adaptive/shrine/facebook.svg"/>
        </md-button>
     </div>
   </md-sidenav>

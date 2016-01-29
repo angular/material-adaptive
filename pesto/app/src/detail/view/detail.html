@@ -21,7 +21,7 @@
           <md-menu-item ng-repeat="item in detail.menuItems">
             <md-button ng-click="detail.redial($event)">
               <md-icon class="material-icons" ng-show="{{ item.materialIcon }}">{{ item.icon }}</md-icon>
-              <img ng-src="{{ item.icon }}" ng-show="{{ !item.materialIcon }}"/>
+              <img ng-src="{{!item.materialIcon && item.icon || ''}}" ng-show="!item.materialIcon"/>
               {{ item.name }}
             </md-button>
           </md-menu-item>

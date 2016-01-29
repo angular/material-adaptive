@@ -44,7 +44,6 @@ angular
     let $log = new ExternalLogger();
 
     $log = $log.getInstance( "BOOTSTRAP" );
-    $log.debug( "Initializing '{0}'", [ appName ] );
 
     const body = document.getElementsByTagName("body")[0];
 

@@ -1,6 +1,6 @@
 let moduleName = angular.module('shrine.constants', [])
     .constant('SHRINE_ADAPTIVE_DATA', [{
-        maxWidth: -1,
+        maxWidth: Number.MAX_SAFE_INTEGER,
         minWidth: 1600,
         viewport: "vp-xxlg",
         display: "desktop",

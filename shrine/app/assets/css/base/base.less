@@ -16,7 +16,7 @@
 @ambientShadowOpacity: 0.12;
 
 @tile_box_shadow: 0 2px 4px -1px rgba(0, 0, 0, @keyUmbraOpacity),
-              0 4px 5px 0 rgba(0, 0, 0, @keyPenumbraOpacity), 
+              0 4px 5px 0 rgba(0, 0, 0, @keyPenumbraOpacity),
               0 1px 10px 0 rgba(0, 0, 0, @ambientShadowOpacity);
 
 @shadow-2dp: 0 3px 1px -2px rgba(0, 0, 0, @keyUmbraOpacity),
@@ -28,7 +28,7 @@
               0 1px 8px 0 rgba(0, 0, 0, @ambientShadowOpacity);
 
 @shadow-4dp: 0 2px 4px -1px rgba(0, 0, 0, @keyUmbraOpacity),
-              0 4px 5px 0 rgba(0, 0, 0, @keyPenumbraOpacity), 
+              0 4px 5px 0 rgba(0, 0, 0, @keyPenumbraOpacity),
               0 1px 10px 0 rgba(0, 0, 0, @ambientShadowOpacity);
 
 @shadow-6dp: 0 3px 5px -1px rgba(0, 0, 0, @keyUmbraOpacity),
@@ -36,7 +36,7 @@
               0 1px 18px 0 rgba(0, 0, 0, @ambientShadowOpacity);
 
 @shadow-8dp: 0 5px 5px -3px rgba(0, 0, 0, @keyUmbraOpacity),
-              0 8px 10px 1px rgba(0, 0, 0, @keyPenumbraOpacity), 
+              0 8px 10px 1px rgba(0, 0, 0, @keyPenumbraOpacity),
               0 3px 14px 2px rgba(0, 0, 0, @ambientShadowOpacity);
 
 @shadow-16dp: 0  8px 10px -5px rgba(0, 0, 0, @keyUmbraOpacity),
@@ -94,9 +94,9 @@
   border-bottom-left-radius:          @bottomleft;
   border-top-left-radius:             @topleft;
 
-  -moz-background-clip:    padding; 
-  -webkit-background-clip: padding-box; 
-  background-clip:         padding-box; 
+  -moz-background-clip:    padding;
+  -webkit-background-clip: padding-box;
+  background-clip:         padding-box;
 }
 
 .opacity (@opacity: 0.5) {
@@ -129,27 +129,27 @@
 }
 
 .transition ( @property, @duration, @delay: 0, @style: ease-in-out ) {
-  -webkit-transition-property: @property;  
+  -webkit-transition-property: @property;
   -webkit-transition-duration: @duration;
   -webkit-transition-timing-function: @style;
-  -webkit-transition-delay:   @delay; 
-     
-  -moz-transition-property: @property;  
+  -webkit-transition-delay:   @delay;
+
+  -moz-transition-property: @property;
   -moz-transition-duration: @duration;
   -moz-transition-timing-function: @style;
   -moz-transition-delay:   @delay;
 
-  -ms-transition-property: @property;  
+  -ms-transition-property: @property;
   -ms-transition-duration: @duration;
   -ms-transition-timing-function: @style;
   -ms-transition-delay:   @delay;
 
-  -o-transition-property: @property;  
+  -o-transition-property: @property;
   -o-transition-duration: @duration;
   -o-transition-timing-function: @style;
   -o-transition-delay:   @delay;
 
-  transition-property: @property;  
+  transition-property: @property;
   transition-duration: @duration;
   transition-timing-function: @style;
   transition-delay:   @delay;

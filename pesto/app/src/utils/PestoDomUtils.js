@@ -1,4 +1,9 @@
 class PestoDomUtils {
+  /**
+   * @constructor
+   * @param {!Object} $window
+   * @param {!Object} PESTO_W_SIZES
+   */
   constructor($window, PESTO_W_SIZES) {
     this.window_ = $window;
     this.W_SIZES = PESTO_W_SIZES;
@@ -7,10 +12,18 @@ class PestoDomUtils {
     $window.addEventListener('resize', () => this.updateViewportDOM());
   }
 
+  /**
+   * Returns viewport object.
+   * @return {Object}
+   */
   getViewport() {
     return this.VW;
   }
 
+  /**
+   * Gets viewport resolution.
+   * @return {Object}
+   */
   getViewportResolution() {
     var w = this.window_.innerWidth;
     var w_sizes = this.W_SIZES;
@@ -30,6 +43,10 @@ class PestoDomUtils {
     }
   }
 
+  /**
+   * Updates the viewport dom.
+   * @return {Object} Current viewport
+   */
   updateViewportDOM() {
     this.VW = this.getViewportResolution();
     var _body = this.window_.document.body;

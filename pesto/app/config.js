@@ -36,9 +36,9 @@ System.config({
       "angular": "github:angular/bower-angular@1.4.7"
     },
     "github:angular/bower-material@master": {
-      "angular": "npm:angular@1.4.7",
-      "angular-animate": "npm:angular-animate@1.4.7",
-      "angular-aria": "npm:angular-aria@1.4.7",
+      "angular": "github:angular/bower-angular@1.4.7",
+      "angular-animate": "github:angular/bower-angular-animate@1.4.7",
+      "angular-aria": "github:angular/bower-angular-aria@1.4.7",
       "css": "github:systemjs/plugin-css@0.1.19"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -83,12 +83,6 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "module": "github:jspm/nodelibs-module@0.1.0",
       "path": "github:jspm/nodelibs-path@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:angular-animate@1.4.7": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:angular@1.4.7": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:assert@1.3.0": {

@@ -1,13 +1,13 @@
 <div class="price-tag" ng-show="ctrl.showDetails">
   <p>{{ ctrl.item.price }}</p>
 </div>
-<div class="product-container" 
+<div class="product-container"
   flex
   layout-align="space-around center"
   layout="row"
   layout-sm="column">
   <md-content class="product-image">
-    <img ng-src="{{ ctrl.item.imageUrl }}" />    
+    <img ng-src="{{ ctrl.item.imageUrl }}" />
   </md-content>
 </div>
 <div class="card-footer" style="height: {{ ctrl.getViewportFooterHeight() }}" ng-show="ctrl.showDetails">

@@ -2,9 +2,20 @@
  * Controller for the home page.
  */
 class HomeController {
-  constructor($scope, $location, $routeParams, $log, $mdSidenav, $mdMedia, ShrineDomUtils, HeroStorage) {
+  /**
+   * @constructor
+   * @param {!angular.Scope} $scope
+   * @param {!angular.Location} $location
+   * @param {!angular.routeParams} $routeParams
+   * @param {!angular.Log} $log
+   * @param {!md.$sidenav} $mdSidenav
+   * @param {!md.$media} $mdMedia
+   * @param {!Object} ShrineDomUtils
+   * @param {!Object} HeroStorage
+   */
+  constructor($scope, $location, $routeParams, $log, $mdSidenav, $mdMedia,
+        ShrineDomUtils, HeroStorage) {
     this.$log = $log.getInstance("HomeController");
-    this.$log.debug("instanceOf()");
     this.$scope = $scope;
     this.$location = $location;
     this.category = $routeParams.category || 0;
@@ -20,20 +31,9 @@ class HomeController {
     this.fetchHeros();
   }
 
-  selectCategory(name) {
-    var idx = this.heros.findIndex((hero) => {
-        return hero.category.toLowerCase() === name.toString().toLowerCase();
-      });
-    if (idx !== -1) {
-      this.selectedIndex = idx;
-    }
-  }
-
-  goToCategory(ev, categoryName) {
-    this.$location.path(categoryName.toLowerCase());
-    this.hideSidenav();
-  }
-
+  /**
+   * Fetches the heros and renders them.
+   */
   fetchHeros() {
     this._$heroStorage.getAllHeros().then((heros) => {
       if (!angular.equals(heros, this.heros)) {
@@ -43,22 +43,55 @@ class HomeController {
     });
   }
 
+  /**
+   * Opens sidenav
+   */
+  openSidenav() {
+    this._$body.classList.add('sidenav-open');
+    this._$mdSidenav('primary').open();
+  }
+
+  /**
+   * Hides sidenav
+   */
+  hideSidenav() {
+    this._$body.classList.remove('sidenav-open');
+    this._$mdSidenav('primary').close();
+  }
+
+  /**
+   * Selects the category tab by name of category.
+   * @param {!String} name
+   */
+  selectCategory(name) {
+    var idx = this.heros.findIndex((hero) => {
+        return hero.category.toLowerCase() === name.toString().toLowerCase();
+      });
+    if (idx !== -1) {
+      this.selectedIndex = idx;
+    }
+  }
+
+  /**
+   * Redirects to the category tab.
+   * @param {!event} ev Click event.
+   * @param {!String} categoryName
+   */
+  goToCategory(ev, categoryName) {
+    this.$location.path(categoryName.toLowerCase());
+    this.hideSidenav();
+  }
+
+  /**
+   * Returns if the category is the selected one.
+   * @param {!String} categoryName
+   */
   isCategorySelected(categoryName) {
     var idx = this.heros.findIndex((hero) => {
         return hero.category.toLowerCase() === categoryName.toLowerCase();
       });
 
     return idx === this.selectedIndex;
-  }
-
-  openSidenav() {
-    this._$body.classList.add('sidenav-open');
-    this._$mdSidenav('primary').open();
-  }
-
-  hideSidenav() {
-    this._$body.classList.remove('sidenav-open');
-    this._$mdSidenav('primary').close();
   }
 }
 

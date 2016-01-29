@@ -2,6 +2,10 @@ import Ingredient from 'model/Ingredient';
 import Step from 'model/Step';
 
 class Recipe {
+  /**
+   * @constructor
+   * @param {!Object} params
+   */
   constructor(params) {
     if (!params) params = {};
     this.id = params.id || 0;
@@ -15,6 +19,10 @@ class Recipe {
     this.steps = angular.copy(params.steps || []);
   }
 
+  /**
+   * Clones the model.
+   * @return {Object}
+   */
   copy() {
     return new Recipe({
       id: this.id,
@@ -29,6 +37,11 @@ class Recipe {
     });
   }
 
+  /**
+   * Clones a json object.
+   * @param {!Object} json
+   * @return {Object}
+   */
   static fromJson(json) {
     const ingredients = [];
     for (let i of json.ingredients) {

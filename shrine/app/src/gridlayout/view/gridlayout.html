@@ -1,4 +1,4 @@
-<div class="grid-container" style="width: 100%">
+<div class="grid-container">
   <md-grid-list md-row-height="{{ ctrl.getViewportRowHeight() }}" md-gutter="{{ ctrl.getViewportGutter() }}" md-cols="{{ ctrl.getViewportColumns() }}" style="margin: {{ ctrl.getViewportMargin() }}">
     <md-grid-tile md-rowspan="{{ ctrl.getViewportRowSpan($index) }}" md-colspan="{{ ctrl.getViewportColSpan($index) }}" ng-repeat="item in ctrl.items" ng-class="{ 'featured': ctrl.showDetails && item.featured }" ng-click="ctrl.goToDetails($event, item.id)">
       <item-card item="item" show-details="ctrl.showDetails"></item-card>

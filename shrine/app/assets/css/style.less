@@ -48,6 +48,10 @@ md-toolbar:not(.md-menu-toolbar) {
     height: 60%;
     max-height: 45px;
     width: auto;
+
+    &.mobile {
+      max-width: 75px;
+    }
   }
 
   .md-button:not(.md-raised) {
@@ -207,7 +211,7 @@ main-view md-sidenav, main-view md-sidenav.md-locked-open {
       width: 48px;
 
       .image {
-        background-image: url('http://www.gstatic.com/angular/material-adaptive/pesto/avatar.jpg');
+        background-image: url('https://www.gstatic.com/angular/material-adaptive/pesto/avatar.jpg');
         background-repeat: no-repeat;
         background-size: 100px;
         background-position: -38px -5px;
@@ -224,16 +228,6 @@ main-view md-sidenav, main-view md-sidenav.md-locked-open {
         margin-left: 20px;
       }
     }
-
-    // .scroll & {
-    //   align-items: center;
-    //   width: 100%;
-
-    //   .image {
-    //     height: 34px;
-    //     width: 34px;
-    //   }
-    // }
   }
 
   .options {
@@ -261,10 +255,6 @@ main-view md-sidenav, main-view md-sidenav.md-locked-open {
   md-content {
     background-color: white;
     position: relative;
-
-    // .scroll & {
-    //   top: 64px;
-    // }
   }
 
   .social-container {
@@ -409,17 +399,7 @@ item-card {
     }
 
     .featured & {
-      // .transform(scale(1.75) translateY(-10%));
-
-      // justify-content: flex-start;
-      // max-height: none;
       width: 30em;
-
-      // img {
-      //   bottom: 0;
-      //   position: absolute;
-      //   width: 100%;
-      // }
     }
   }
 
@@ -513,6 +493,7 @@ grid-layout {
     display: table;
     height: 100%;
     margin: 0 auto;
+    width: 100%
   }
 
   md-grid-list md-grid-tile {
@@ -562,9 +543,7 @@ details-view {
 
   .items-container {
     background-color: @background_color_gray;
-    // flex: 1 1 35%;
     max-height: 100%;
-    // max-width: 35%;
     position: relative;
   }
 
@@ -572,8 +551,6 @@ details-view {
     align-items: center;
     background-color: rgba(255, 255, 255, 1);
     display: flex;
-    // flex: 1 1 65%;
-    // max-width: 65%;
     padding: 64px 0;
     position: relative;
 
@@ -1560,18 +1537,6 @@ details-view {
   md-toolbar:not(.md-menu-toolbar) {
     height: @header_height;
   }
-
-  // main-view {
-  //   md-sidenav {
-  //     .header {
-
-  //     }
-
-  //     .avatar-container {
-
-  //     }
-
-  // }
 
   .price-tag {
     .featured & {
