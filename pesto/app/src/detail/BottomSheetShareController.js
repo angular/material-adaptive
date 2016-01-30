@@ -1,5 +1,5 @@
 class BottomSheetShareController {
-	/**
+  /**
    * @constructor
    * @param {!md.$bottomSheet} $mdBottomSheet
    * @param {!Object} items
