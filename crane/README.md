@@ -1,3 +1,5 @@
+**Note: This demo is in-progress/unreleased. Not intended for reuse.**
+
 > Below are some design layouts; prepared as target guides for implementation with 
 *  Angular Material (HEAD), and 
 *  Angular v1.4.6 (or greater).
