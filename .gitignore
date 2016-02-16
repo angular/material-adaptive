@@ -21,3 +21,5 @@ tmp
 .DS_Store
 .idea
 !.gitkeep
+assets/*jpg
+assets/*JPG
