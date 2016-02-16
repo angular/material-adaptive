@@ -1,5 +1,7 @@
 # Angular Material-Start (ES6 Tutorials)
 
+**Note: This demo is in-progress/unreleased. Not intended for reuse.**
+
 This branch contains the tutorial steps and processes used to implement the start-app shown below:
 
 ![material-starter-ux2](https://cloud.githubusercontent.com/assets/210413/6448551/70864488-c0e0-11e4-8767-c4e1e4c2f343.png)

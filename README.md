@@ -15,8 +15,5 @@ Our goals for creating these Material Adaptive applications are:
 
 Here are links to individual, live Adaptive demos:
 
-*  [Crane](https://material-adaptive.firebaseapp.com/crane/app/index.html)
-*  [File Browser](https://material-adaptive.firebaseapp.com/file-browser/app/index.html)
 *  [Pesto](https://material-adaptive.firebaseapp.com/pesto/app/index.html)
-*  [Publishing](https://material-adaptive.firebaseapp.com/publishing/app/index.html)
 *  [Shrine](https://material-adaptive.firebaseapp.com/shrine/app/index.html)

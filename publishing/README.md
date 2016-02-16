@@ -1,5 +1,7 @@
 # Angular Material Publishing Adaptive Demo
 
+**Note: This demo is in-progress/unreleased. Not intended for reuse.**
+
 # Getting started
 
 Clone the repo and run the following commands:
