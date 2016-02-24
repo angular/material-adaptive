@@ -13,7 +13,7 @@ You can also view them as standalone examples:
 Our goals for creating these Material Adaptive applications are:
 
 * Validate ease-of-use to create applications with [Angular Material](http://material.angularjs.org)
-* Tests implementations of adaptive layouts with Angular Material
+* Test implementations of adaptive layouts with Angular Material
 * Provide both applications and code as sample for developer starter project
 * Demonstrate code styles and best practices
 
