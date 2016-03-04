@@ -33,7 +33,7 @@
 Clone the repo and run the following commands:
 
 ```
-npm install jspm -g
+npm install -g http-server jspm
 npm install
 jspm install
 ```
@@ -41,7 +41,6 @@ jspm install
 Start the dev server like so.
 
 ```
-npm install http-server
 http-server app/
 ```
 
