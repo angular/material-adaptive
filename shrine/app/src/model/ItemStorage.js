@@ -4,7 +4,7 @@
 
 import Item from 'model/Item';
 
-let STORE = [
+const STORE = [
   Item.fromJson({
     id: 0,
     title: 'Vintage Bluetooth Radio',
@@ -14,7 +14,8 @@ let STORE = [
     storeName: 'Sandra’s shop',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/sandra-adams.jpg',
     storeDescription: 'Sandra specializes in furniture, beauty and travel products with a classic vibe. Custom orders are available if you’re looking for a certain color or material.',
-    featured: false
+    featured: false,
+    categories: ['furniture', 'latest']
   }),
   Item.fromJson({
     id: 1,
@@ -25,7 +26,8 @@ let STORE = [
     storeName: 'Trevor’s shop',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
     storeDescription: 'Trevor Hanson sources housewares and styles from just about everywhere. Super cool and extra awesome all of his shop’s goods are handmade with love.',
-    featured: false
+    featured: false,
+    categories:['travel', 'fashion', 'beauty']
   }),
   Item.fromJson({
     id: 2,
@@ -36,7 +38,8 @@ let STORE = [
     storeName: 'Trevor’s shop',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
     storeDescription: 'Trevor Hanson sources housewares and styles from just about everywhere. Super cool and extra awesome all of his shop’s goods are handmade with love.',
-    featured: false
+    featured: false,
+    categories:['furniture']
   }),
   Item.fromJson({
     id: 3,
@@ -47,7 +50,42 @@ let STORE = [
     storeName: 'Stella’s shop',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/16c477b.jpg',
     storeDescription: 'Stella sells awesome stuff at lovely prices. made by hand and sometimes by machine, but always with love and care. Custom orders are available upon request if you need something extra special.',
-    featured: false
+    featured: false,
+    categories:['food', 'fashion']
+  }),
+  Item.fromJson({
+    id: 47,
+    title: 'Folding Chair',
+    description: 'Leave the tunnel and the rain is fallin amazing things happen when you wait',
+    imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/lawn_chair.png',
+    price: '$63',
+    storeName: 'Stella’s shop',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/16c477b.jpg',
+    storeDescription: 'Stella sells awesome stuff at lovely prices. made by hand and sometimes by machine, but always with love and care. Custom orders are available upon request if you need something extra special.',
+    featured:true,
+    categories: ['furniture']
+  }),
+  Item.fromJson({
+    id:48,
+    title: 'Green comfort chair',
+    description: 'Leave the tunnel and the rain is fallin amazing things happen when you wait',
+    imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/chair.png',
+    price: '$36',
+    storeName: 'Ali’s shop',
+    storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/16c477b.jpg',
+    storeDescription: 'Ali sells awesome stuff at lovely prices. made by hand and sometimes by machine, but always with love and care. Custom orders are available upon request if you need something extra special.',
+    featured:true,
+    categories: ['furniture']
+  }),
+  Item.fromJson({
+      id: 51,
+      title: 'Better wearing heels',
+      description: 'Leave the tunnel and the rain is fallin amazing things happen when you wait',
+      imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/heels.png',
+      storeName: 'Sandra’s shop',
+      storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/peter-carlsson.png',
+      price: '$125',
+      categories: ['beauty']
   }),
   Item.fromJson({
     id: 4,
@@ -58,7 +96,8 @@ let STORE = [
     storeName: 'Sandra’s shop',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/sandra-adams.jpg',
     storeDescription: 'Sandra specializes in furniture, beauty and travel products with a classic vibe. Custom orders are available if you’re looking for a certain color or material.',
-    featured: false
+    featured: false,
+    categories:['travel', 'fashion']
   }),
   Item.fromJson({
     id: 5,
@@ -69,7 +108,8 @@ let STORE = [
     storeName: 'Ali’s shop',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/ali-connors.png',
     storeDescription: 'Ali Connor’s makes custom goods for folks of all shapes and sizes made by hand and sometimes by machine, but always with love and care. Custom orders are available upon request if you need something extra special.',
-    featured: false
+    featured: false,
+    categories:['furniture', 'fashion']
   }),
   Item.fromJson({
     id: 6,
@@ -80,7 +120,8 @@ let STORE = [
     storeName: 'Trevor’s shop',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/zach.jpg',
     storeDescription: 'Trevor Hanson sources housewares and styles from just about everywhere. Super cool and extra awesome all of his shop’s goods are handmade with love.',
-    featured: true
+    featured: true,
+    categories:['travel', 'fashion']
   }),
   Item.fromJson({
     id: 7,
@@ -91,7 +132,8 @@ let STORE = [
     storeName: 'Stella’s shop',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/16c477b.jpg',
     storeDescription: 'Stella sells awesome stuff at lovely prices. made by hand and sometimes by machine, but always with love and care. Custom orders are available upon request if you need something extra special.',
-    featured: true
+    featured: true,
+    categories:['fashion', 'beauty']
   }),
   Item.fromJson({
     id: 8,
@@ -102,7 +144,8 @@ let STORE = [
     storeName: 'Ali’s shop',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/ali-connors.png',
     storeDescription: 'Ali Connor’s makes custom goods for folks of all shapes and sizes made by hand and sometimes by machine, but always with love and care. Custom orders are available upon request if you need something extra special.',
-    featured: false
+    featured: false,
+    categories:['latest', 'furniture']
   }),
   Item.fromJson({
     id: 9,
@@ -113,7 +156,8 @@ let STORE = [
     storeName: 'Sandra’s shop',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/sandra-adams.jpg',
     storeDescription: 'Sandra specializes in furniture, beauty and travel products with a classic vibe. Custom orders are available if you’re looking for a certain color or material.',
-    featured: false
+    featured: false,
+    categories:['fashion', 'beauty']
   }),
   Item.fromJson({
     id: 10,
@@ -124,7 +168,8 @@ let STORE = [
     storeName: 'Peter’s shop',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/peter-carlsson.png',
     storeDescription: 'Peter makes great stuff for awesome people like you.  Super cool and extra awesome all of his shop’s goods are handmade with love. Custom orders are available upon request if you need something extra special.',
-    featured: false
+    featured: false,
+    categories:['travel', 'fashion']
   }),
   Item.fromJson({
     id: 11,
@@ -135,18 +180,20 @@ let STORE = [
     storeName: 'Ali’s shop',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/ali-connors.png',
     storeDescription: 'Ali Connor’s makes custom goods for folks of all shapes and sizes made by hand and sometimes by machine, but always with love and care. Custom orders are available upon request if you need something extra special.',
-    featured: false
+    featured: false,
+    categories:['travel', 'fashion', 'latest']
   }),
   Item.fromJson({
     id: 12,
     title: 'Beachball',
     description: 'Are you at a baseball game and feeling bored? At a pool party and looking for a laugh? Do you need something to take your anger out on? Beachball, by inflatable fun, is the perfect outlet.',
     imageUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/beachball.png',
-    price: '$25',
-    storeName: 'Peter’s shop',
+    price: '$17',
+    storeName: 'Trevor’s shop',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/peter-carlsson.png',
-    storeDescription: 'Peter makes great stuff for awesome people like you.  Super cool and extra awesome all of his shop’s goods are handmade with love. Custom orders are available upon request if you need something extra special.',
-    featured: false
+    storeDescription: 'Trevor makes great stuff for awesome people like you.  Super cool and extra awesome all of his shop’s goods are handmade with love. Custom orders are available upon request if you need something extra special.',
+    featured: false,
+    categories:['latest']
   }),
   Item.fromJson({
     id: 13,
@@ -157,7 +204,8 @@ let STORE = [
     storeName: 'Stella’s shop',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/16c477b.jpg',
     storeDescription: 'Stella sells awesome stuff at lovely prices. made by hand and sometimes by machine, but always with love and care. Custom orders are available upon request if you need something extra special.',
-    featured: false
+    featured: false,
+    categories:['travel', 'fashion', 'latest']
   }),
   Item.fromJson({
     id: 14,
@@ -168,7 +216,8 @@ let STORE = [
     storeName: 'Peter’s shop',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/peter-carlsson.png',
     storeDescription: 'Peter makes great stuff for awesome people like you.  Super cool and extra awesome all of his shop’s goods are handmade with love. Custom orders are available upon request if you need something extra special.',
-    featured: true
+    featured: true,
+    categories:['travel', 'fashion', 'beauty']
   }),
   Item.fromJson({
     id: 15,
@@ -179,24 +228,9 @@ let STORE = [
     storeName: 'Stella’s shop',
     storeAvatarUrl: 'https://www.gstatic.com/angular/material-adaptive/shrine/16c477b.jpg',
     storeDescription: 'Stella sells awesome stuff at lovely prices. made by hand and sometimes by machine, but always with love and care. Custom orders are available upon request if you need something extra special.',
-    featured: true
+    featured: true,
+    categories:['travel', 'latest']
   })];
 
-class ItemStorage {
 
-  constructor($q) {
-    this.q_ = $q;
-  }
-
-  getAllItems() {
-    return this.q_.when(STORE);
-  }
-
-  getItem(id) {
-    return this.q_.when(STORE[id]);
-  }
-}
-
-ItemStorage.$inject = ['$q'];
-
-export default ItemStorage;
+export default STORE;

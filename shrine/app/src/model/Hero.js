@@ -5,6 +5,7 @@ class Hero {
    */
   constructor(params) {
     if (!params) params = {};
+    this.id = params.id || '';
     this.title = params.title || '';
     this.quote = params.quote || '';
     this.imageUrl = params.imageUrl || '';
@@ -20,13 +21,14 @@ class Hero {
    */
   copy() {
     return new Hero({
+      id : this.id,
       title: this.title,
       quote: this.quote,
       imageUrl: this.imageUrl,
       price: this.price,
       storeName: this.storeName,
       storeAvatarUrl: this.storeAvatarUrl,
-      category: this.category,
+      category: this.category
     });
   }
 
@@ -36,15 +38,7 @@ class Hero {
    * @return {Object}
    */
   static fromJson(json) {
-    return new Hero({
-      title: json.title,
-      quote: json.quote,
-      imageUrl: json.imageUrl,
-      price: json.price,
-      storeName: json.storeName,
-      storeAvatarUrl: json.storeAvatarUrl,
-      category: json.category,
-    })
+    return new Hero(json);
   }
 }
 
