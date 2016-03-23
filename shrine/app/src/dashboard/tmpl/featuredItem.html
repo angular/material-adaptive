@@ -1,0 +1,27 @@
+<md-content class="md-padding">
+  <div class="hero-image featured">
+    <div class="image" style="background-image: url('{{ item.imageUrl }}')"></div>
+    <div class="info">
+      <h3>{{ item.title }}</h3>
+      <div class="description">
+        <div class="description-flex">
+          <span flex></span>
+          <div class="description-content">
+            <p>{{ item.quote }}</p>
+
+            <div class="store-info">
+              <div class="avatar">
+                <img ng-src="{{ item.storeAvatarUrl }}">
+              </div>
+              <p>{{ item.storeName }}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="price-tag">
+      <p>{{ item.price }}</p>
+    </div>
+  </div>
+</md-content>
