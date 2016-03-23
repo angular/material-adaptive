@@ -14,6 +14,7 @@ class Item {
     this.storeAvatarUrl = params.storeAvatarUrl || '';
     this.storeDescription = params.storeDescription || '';
     this.featured = params.featured || false;
+    this.categories = params.categories || undefined;
   }
 
   /**
@@ -40,17 +41,7 @@ class Item {
    * @return {Object}
    */
   static fromJson(json) {
-    return new Item({
-      id: json.id,
-      title: json.title,
-      description: json.description,
-      imageUrl: json.imageUrl,
-      price: json.price,
-      storeName: json.storeName,
-      storeAvatarUrl: json.storeAvatarUrl,
-      storeDescription: json.storeDescription,
-      featured: json.featured,
-    })
+    return new Item(json);
   }
 }
 

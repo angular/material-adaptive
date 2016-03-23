@@ -1,18 +1,21 @@
 <details-view>
   <md-toolbar>
-    <div class="md-toolbar-tools" ng-class="{ 'mini-toolbar': detail.viewport.current.minWidth < 840 || detail.viewport.current.display == 'mobile' }">
+    <div class="md-toolbar-tools" ng-class="{ 'mini-toolbar': detail.isMobile }">
       <md-button class="md-icon-button" aria-label="Back to homepage" ng-click="detail.goToHomepage($event)">
         <md-icon class="material-icons">arrow_back</md-icon>
+        <md-tooltip>Navigate Home</md-tooltip>
       </md-button>
       <div class="logo-container">
-        <img class="logo" ng-src="{{(detail.viewport.current.minWidth < 840 || detail.viewport.current.display == 'mobile') && 'https://www.gstatic.com/angular/material-adaptive/shrine/shrine_logo.svg' || 'https://www.gstatic.com/angular/material-adaptive/shrine/shrine_logo_withicon.svg'}}">
+        <img class="logo" ng-src="{{ detail.isMobile ? 'https://www.gstatic.com/angular/material-adaptive/shrine/shrine_logo.svg' : 'https://www.gstatic.com/angular/material-adaptive/shrine/shrine_logo_withicon.svg'}}">
       </div>
       <span flex></span>
-      <md-button class="md-icon-button" aria-label="Add to cart" ng-click="wau()">
+      <md-button class="md-icon-button" aria-label="Add to cart" ng-click="null">
         <md-icon class="material-icons">shopping_cart</md-icon>
+        <md-tooltip>Add '{{ detail.selectedItem.title }}' to Cart</md-tooltip>
       </md-button>
-      <md-button class="md-icon-button" aria-label="More options" ng-click="wau()">
+      <md-button class="md-icon-button" aria-label="More options" ng-click="null">
         <md-icon class="material-icons">more_vert</md-icon>
+        <md-tooltip>More Options</md-tooltip>
       </md-button>
     </div>
   </md-toolbar>
@@ -59,7 +62,7 @@
       </md-content>
     </div>
     <div class="items-container">
-      <grid-layout grid-name="'detailView'"></grid-layout>
+      <product-grid grid-name="'detailView'" items="detail.items" show-details="false"></product-grid>
     </div>
   </div>
 </details-view>
