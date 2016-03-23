@@ -1,0 +1,31 @@
+ <div class="header">
+   <div class="avatar-container">
+     <div class="image"></div>
+   </div>
+   <div class="contact-info">
+     <p class="name">Jonathan</p>
+   </div>
+   <span flex></span>
+   <md-button class="md-icon-button" aria-label="Settings" style="margin: 0; padding: 0;">
+     <md-icon class="material-icons">settings</md-icon>
+     <md-tooltip>Settings</md-tooltip>
+   </md-button>
+ </div>
+
+ <md-list layout-padding>
+   <md-list-item ng-repeat="it in ctrl.categories">
+       <md-button ng-click="ctrl.goToCategory(it.category)"
+                  ng-class="{ 'selected': ctrl.isCategorySelected(it.category) }" >
+         {{ it.category }}
+       </md-button>
+   </md-list-item>
+ </md-list>
+
+ <div class="social-container">
+    <md-button class="md-icon-button" aria-label="Twitter link">
+      <img ng-src="https://www.gstatic.com/angular/material-adaptive/shrine/twitter.svg"/>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="Facebook link">
+      <img ng-src="https://www.gstatic.com/angular/material-adaptive/shrine/facebook.svg"/>
+    </md-button>
+ </div>

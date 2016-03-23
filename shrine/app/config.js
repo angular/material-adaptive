@@ -17,31 +17,35 @@ System.config({
   },
 
   map: {
-    "angular": "github:angular/bower-angular@1.4.7",
-    "angular-animate": "github:angular/bower-angular-animate@1.4.7",
-    "angular-aria": "github:angular/bower-angular-aria@1.4.7",
+    "angular": "github:angular/bower-angular@1.5.1",
+    "angular-animate": "github:angular/bower-angular-animate@1.5.1",
+    "angular-aria": "github:angular/bower-angular-aria@1.5.1",
     "angular-material": "github:angular/bower-material@master",
-    "angular-route": "github:angular/bower-angular-route@1.4.7",
-    "clean-css": "npm:clean-css@3.4.9",
-    "css": "github:systemjs/plugin-css@0.1.19",
+    "angular-route": "github:angular/bower-angular-route@1.5.1",
+    "clean-css": "npm:clean-css@3.4.10",
+    "css": "github:systemjs/plugin-css@0.1.20",
     "json": "github:systemjs/plugin-json@0.1.0",
     "text": "github:systemjs/plugin-text@0.0.2",
-    "traceur": "github:jmcriffey/bower-traceur@0.0.90",
-    "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.90",
-    "github:angular/bower-angular-animate@1.4.7": {
-      "angular": "github:angular/bower-angular@1.4.7"
+    "traceur": "github:jmcriffey/bower-traceur@0.0.92",
+    "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.92",
+    "github:angular/bower-angular-animate@1.5.1": {
+      "angular": "github:angular/bower-angular@1.5.1"
     },
-    "github:angular/bower-angular-aria@1.4.7": {
-      "angular": "github:angular/bower-angular@1.4.7"
+    "github:angular/bower-angular-aria@1.5.1": {
+      "angular": "github:angular/bower-angular@1.5.1"
     },
-    "github:angular/bower-angular-route@1.4.7": {
-      "angular": "github:angular/bower-angular@1.4.7"
+    "github:angular/bower-angular-messages@1.5.1": {
+      "angular": "github:angular/bower-angular@1.5.1"
+    },
+    "github:angular/bower-angular-route@1.5.1": {
+      "angular": "github:angular/bower-angular@1.5.1"
     },
     "github:angular/bower-material@master": {
-      "angular": "github:angular/bower-angular@1.4.7",
-      "angular-animate": "github:angular/bower-angular-animate@1.4.7",
-      "angular-aria": "github:angular/bower-angular-aria@1.4.7",
-      "css": "github:systemjs/plugin-css@0.1.19"
+      "angular": "github:angular/bower-angular@1.5.1",
+      "angular-animate": "github:angular/bower-angular-animate@1.5.1",
+      "angular-aria": "github:angular/bower-angular-aria@1.5.1",
+      "angular-messages": "github:angular/bower-angular-messages@1.5.1",
+      "css": "github:systemjs/plugin-css@0.1.20"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -98,7 +102,7 @@ System.config({
       "isarray": "npm:isarray@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:clean-css@3.4.9": {
+    "npm:clean-css@3.4.10": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "commander": "npm:commander@2.8.1",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
