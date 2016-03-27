@@ -1,6 +1,6 @@
 import BaseAdaptiveController from './../utils/BaseAdaptiveController'
 
-class ItemBrowserController extends  BaseAdaptiveController {
+class ProductViewerController extends  BaseAdaptiveController {
   /**
    * @constructor
    * @param {!angular.Scope} $scope
@@ -10,22 +10,34 @@ class ItemBrowserController extends  BaseAdaptiveController {
    * @param {!Object} $shrineItems
    * @param {!Object} $shrineMQObserver
    */
-  constructor($scope, $shrineMQObserver, $shrineCatalog, $routeParams, $location, $log ) {
-    super($scope, $shrineMQObserver, $log.getInstance("ItemBrowserController"));
+  constructor($scope, $shrineMQObserver, $shrineCatalog, $log ) {
+    super($scope, $shrineMQObserver, $log.getInstance("ProductViewerController"));
 
     this._$routeParams = $routeParams;
     this._$location = $location;
     this._catalog = $shrineCatalog;
-
   }
 
+  $routerOnActivate(next, previous) {
+    // Get the product ID identified by the route parameter
+    this._loadStoreProducts( next.params.id );
+  };
+
   $onInit() {
-    this._loadStoreProducts( this._$routeParams.id );
     this._listenForAdaptiveChanges();
   }
 
-  $onChanges(changes) {
-    //this.items = changes.currentValue.items;
+  /**
+   * Redirects to the homepage.
+   * @param {!event} ev Click event.
+   * @param {!String} idItem
+   */
+  goToHomepage(event) {
+    let url = this.selectedItem.categories[0];
+    this._$log.debug(`goToCategory( '/${url}' )`);
+
+    event.stopPropagation();
+    this._$location.path(`/${url}`);
   }
 
   /**
@@ -43,20 +55,6 @@ class ItemBrowserController extends  BaseAdaptiveController {
         this.selectedItem = item;
       })
   }
-
-  /**
-   * Redirects to the homepage.
-   * @param {!event} ev Click event.
-   * @param {!String} idItem
-   */
-  goToHomepage(ev) {
-    let url = this.selectedItem.categories[0];
-    this._$log.debug(`goToCategory( '/${url}' )`);
-
-    ev.stopPropagation();
-    this._$location.path(`/${url}`);
-  }
-
 
   /**
    * Listen for Adaptive changes and update the view
@@ -85,10 +83,11 @@ class ItemBrowserController extends  BaseAdaptiveController {
 }
 
 export default {
-  name : 'itemBrowser',
+  name : 'productViewer',
   config : {
-    controllerAs : 'detail',
-    controller : [ '$scope', '$shrineMQObserver', '$shrineCatalog', '$routeParams', '$location', '$log', ItemBrowserController ],
-    templateUrl : 'src/products/tmpl/itemBrowser.html'
+    bindings : {$router: '<'},
+    controllerAs : 'viewer',
+    controller : ProductViewerController,
+    templateUrl : 'src/products/tmpl/productViewer.html'
   }
 };

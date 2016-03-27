@@ -2,12 +2,16 @@
  * Configure the shrine 'Products' module
  */
 
-import ItemBrowser from './ItemBrowser';
-import ProductGrid from './ProductGrid';
-import ProductCard from './ProductCard';
+import ProductViewer  from './ProductViewer';
+import ProductGrid    from './ProductGrid';
+import ProductHeader  from './ProductHeader';
+import ProductCard    from './ProductCard';
+import ProductDetails from './ProductDetails';
 
 export default angular
     .module('shrine.products', [ ] )
-    .component( ItemBrowser.name  , ItemBrowser.config )
-    .component( ProductGrid.name  , ProductGrid.config )
-    .component( ProductCard.name  , ProductCard.config )
+    .component( ProductViewer.name   , ProductViewer.config )
+    .component( ProductHeader.name   , ProductHeader.config )
+    .component( ProductDetails.name  , ProductDetails.config )
+    .component( ProductGrid.name     , ProductGrid.config )
+    .component( ProductCard.name     , ProductCard.config )

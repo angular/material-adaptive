@@ -133,7 +133,7 @@ class DashboardController extends  BaseAdaptiveController {
 export default {
   name : 'dashboard',
   config : {
-    controllerAs: 'home',
+    controllerAs: 'dashboard',
     controller: [ '$scope', '$shrineMQObserver', '$shrineCatalog', '$mdSidenav', '$location','$routeParams', '$log', DashboardController ],
     templateUrl : 'src/dashboard/tmpl/dashboard.html'
   }

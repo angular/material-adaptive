@@ -1,28 +1,28 @@
 <main-view>
 
-  <nav-bar isMobile="home.isMobile" on-open-sidenav="home.openSidenav()"></nav-bar>
+  <nav-bar isMobile="dashboard.isMobile" on-open-sidenav="dashboard.openSidenav()"></nav-bar>
 
   <md-tabs
-      md-selected="home.selectedIndex"
+      md-selected="dashboard.selectedIndex"
       md-dynamic-height md-border-bottom
-      md-swipe-content="{{ home.isMobile }}"
-      ng-class="{ 'no-show': home.isMobile }" >
+      md-swipe-content="{{ dashboard.isMobile }}"
+      ng-class="{ 'no-show': dashboard.isMobile }" >
 
     <md-tab
         label="{{ it.category }}"
-        ng-repeat="it in home.categories"
-        md-on-select="home.goToCategory(it.category)" >
+        ng-repeat="it in dashboard.categories"
+        md-on-select="dashboard.goToCategory(it.category)" >
       <featured-item item="it"></featured-item>
     </md-tab>
 
   </md-tabs>
 
-  <product-grid grid-name="homeView" show-details="true" items="home.items" ></product-grid>
+  <product-grid grid-name="homeView" show-details="true" items="dashboard.items" ></product-grid>
 
   <md-sidenav
       class="md-sidenav-left md-whiteframe-z2"
       md-component-id="primary" >
-    <side-bar categories="home.categories" selected="home.category"></side-bar>
+    <side-bar categories="dashboard.categories" selected="dashboard.category"></side-bar>
   </md-sidenav>
 
 </main-view>

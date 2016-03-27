@@ -1,5 +1,5 @@
-<div class="price-tag" ng-show="ctrl.showDetails">
-  <p>{{ ctrl.item.price }}</p>
+<div class="price-tag" ng-show="card.showDetails">
+  <p>{{ card.item.price }}</p>
 </div>
 <div class="product-container"
   flex
@@ -7,28 +7,28 @@
   layout="row"
   layout-sm="column">
   <md-content class="product-image">
-    <img ng-src="{{ ctrl.item.imageUrl }}" />
+    <img ng-src="{{ card.item.imageUrl }}" />
   </md-content>
 </div>
-<div class="card-footer" style="height: {{ ctrl.footerHeight }}" ng-show="ctrl.showDetails">
+<div class="card-footer" style="height: {{ card.footerHeight }}" ng-show="card.showDetails">
   <div class="store-info">
     <div class="avatar">
-      <img ng-src="{{ ctrl.item.storeAvatarUrl }}" />
+      <img ng-src="{{ card.item.storeAvatarUrl }}" />
     </div>
-    <p>{{ ctrl.item.storeName }}</p>
+    <p>{{ card.item.storeName }}</p>
   </div>
 </div>
-<div class="backdrop" ng-show="ctrl.showDetails">
+<div class="backdrop" ng-show="card.showDetails">
   <div class="header">
-    <md-button class="md-icon-button" aria-label="Add to cart" ng-click="ctrl.addItemToCart($event, item)" ng-class="{ 'added': ctrl.item.addedToCard }">
+    <md-button class="md-icon-button" aria-label="Add to cart" ng-click="card.addItemToCart(item, $event)" ng-class="{ 'added': card.item.addedToCard }">
       <md-icon class="material-icons">shopping_cart</md-icon>
     </md-button>
-    <md-button class="md-icon-button" aria-label="Favorite" ng-click="ctrl.addItemToFavs($event, item)" ng-class="{ 'added': ctrl.item.addedToFavs }">
+    <md-button class="md-icon-button" aria-label="Favorite" ng-click="card.addItemToFavs(item, $event)" ng-class="{ 'added': card.item.addedToFavs }">
       <md-icon class="material-icons">favorite</md-icon>
     </md-button>
   </div>
   <div class="container">
-    <h4>{{ ctrl.item.title }} </h4>
+    <h4>{{ card.item.title }} </h4>
   </div>
-  <div class="footer" style="height: {{ ctrl.getViewportFooterHeight() }}"></div>
+  <div class="footer" style="height: {{ card.footerHeight }}"></div>
 </div>

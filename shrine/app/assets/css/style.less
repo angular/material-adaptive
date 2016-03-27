@@ -1,6 +1,11 @@
 @import 'base/reset.css';
 @import 'base/base.less';
 
+/* Hide when Angular is not yet loaded and initialized */
+[ng-cloak] {
+  display: none;
+}
+
 @card_internal_padding: 24px;
 
 body {

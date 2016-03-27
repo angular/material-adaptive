@@ -1,0 +1,20 @@
+<md-toolbar>
+  <div class="md-toolbar-tools" ng-class="{ 'mini-toolbar': $ctrl.isMobile }">
+    <md-button class="md-icon-button" aria-label="Back to homepage" ng-click="$ctrl.goToHomepage($event)">
+      <md-icon class="material-icons">arrow_back</md-icon>
+      <md-tooltip>Go to Dashboard</md-tooltip>
+    </md-button>
+    <div class="logo-container">
+      <img class="logo" ng-src="{{ $ctrl.logoURL }}">
+    </div>
+    <span flex></span>
+    <md-button class="md-icon-button" aria-label="Add to cart" ng-click="null">
+      <md-icon class="material-icons">shopping_cart</md-icon>
+      <md-tooltip>Add '{{ $ctrl.title }}' to Cart</md-tooltip>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="More options" ng-click="null">
+      <md-icon class="material-icons">more_vert</md-icon>
+      <md-tooltip>More Options</md-tooltip>
+    </md-button>
+  </div>
+</md-toolbar>

@@ -1,5 +1,9 @@
 (node) util.print is deprecated. Use console.log instead.
 @import 'base/reset.css';
+/* Hide when Angular is not yet loaded and initialized */
+[ng-cloak] {
+  display: none;
+}
 body {
   background-color: #8c9eff;
 }

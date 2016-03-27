@@ -55,10 +55,10 @@ class ProductGridController extends  BaseAdaptiveController {
    */
   goToDetails(ev, item) {
 
-    this._$log.debug(`goToDetails( '/item/${item.id}' )`);
+    this._$log.debug(`goToDetails( '/product/${item.id}' )`);
 
     ev.stopPropagation();
-    this.$location.path('/item/'+ item.id);
+    this.$location.path('/product/'+ item.id);
   }
 }
 
