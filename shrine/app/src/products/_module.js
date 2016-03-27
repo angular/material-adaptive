@@ -8,7 +8,8 @@ import ProductHeader  from './ProductHeader';
 import ProductCard    from './ProductCard';
 import ProductDetails from './ProductDetails';
 
-export default angular.module('shrine.products', [ ] )
+export default angular
+    .module('shrine.products', [ ] )
     .component( ProductViewer.name   , ProductViewer.config )
     .component( ProductHeader.name   , ProductHeader.config )
     .component( ProductDetails.name  , ProductDetails.config )

@@ -1,11 +1,11 @@
 <md-toolbar>
    <div class="md-toolbar-tools">
-     <md-button class="md-icon-button" hide-gt-sm ng-click="home.openSidenav($event)" aria-label="Menu">
+     <md-button class="md-icon-button" hide-gt-sm ng-click="$ctrl.onOpenSidenav()" aria-label="Menu">
        <md-icon class="material-icons">menu</md-icon>
        <md-tooltip md-autohide>Open SideNav</md-tooltip>
      </md-button>
      <div class="logo-container">
-       <img class="logo" ng-class="{ 'mobile' : home.isMobile }" ng-src="https://www.gstatic.com/angular/material-adaptive/shrine/shrine_logo_withicon.svg">
+       <img class="logo" ng-class="{ 'mobile' : $ctrl.isMobile }" ng-src="https://www.gstatic.com/angular/material-adaptive/shrine/shrine_logo_withicon.svg">
      </div>
      <span flex></span>
      <md-button class="md-icon-button" aria-label="View cart" aria-label="View Shopping cart">
