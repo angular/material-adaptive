@@ -1,4 +1,4 @@
-import BaseAdaptiveController from './../../utils/BaseAdaptiveController'
+import BaseAdaptiveController from './../utils/BaseAdaptiveController'
 
 // Controller for the item card.
 class SideBarController extends  BaseAdaptiveController {
@@ -9,15 +9,9 @@ class SideBarController extends  BaseAdaptiveController {
    */
   constructor($scope, $shrineMQObserver, $location, $log) {
     super($scope, $shrineMQObserver, $log.getInstance("SideBarController"));
-
     this._$log = $log;
     this._$location = $location
     this._$scope = $scope;
-
-    this._$log.debug(`_listenForAdaptiveChanges( )`);
-    this.subscribeToAdaptiveChanges((viewPort) => {
-      // Do nothing for now...
-    });
   }
 
   /**
@@ -41,6 +35,12 @@ class SideBarController extends  BaseAdaptiveController {
 
 }
 
-SideBarController.$inject = [ '$scope', '$shrineMQObserver', '$location', '$log' ];
-export default SideBarController;
-
+export default {
+  name : 'sideBar',
+  config : {
+    controllerAs: '$ctrl',
+    bindings : {  categories : '<', selected : '<' },
+    controller: [ '$scope', '$shrineMQObserver', '$location', '$log',SideBarController ],
+    templateUrl : 'src/dashboard/tmpl/sideBar.html'
+  }
+};

@@ -1,4 +1,4 @@
-import BaseAdaptiveController from './../../utils/BaseAdaptiveController';
+import BaseAdaptiveController from './../utils/BaseAdaptiveController';
 
 class ProductGridController extends  BaseAdaptiveController {
   /**
@@ -14,7 +14,9 @@ class ProductGridController extends  BaseAdaptiveController {
 
     this.$scope = $scope;
     this.$location = $location;
+  }
 
+  $onInit() {
     this._$log.debug(`_listenForAdaptiveChanges( )`);
     this.subscribeToAdaptiveChanges((viewPort) => {
       this._$log.debug(`onAdaptiveChange( ${viewPort.viewport} )`);
@@ -26,7 +28,9 @@ class ProductGridController extends  BaseAdaptiveController {
     });
   }
 
-
+  $onChanges(changes) {
+    this.items = changes.currentValue.items;
+  }
 
   /**
    * Gets viewport rowspan.
@@ -58,4 +62,11 @@ class ProductGridController extends  BaseAdaptiveController {
   }
 }
 
-export default ProductGridController;
+export default {
+  name : 'productGrid',
+  config : {
+    bindings : {  gridName : '@', items: '<', showDetails : '@'},
+    controller : ['$scope', '$shrineMQObserver', '$location', '$log', ProductGridController ],
+    templateUrl : 'src/products/tmpl/productGrid.html'
+  }
+};

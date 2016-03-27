@@ -1,4 +1,4 @@
-import BaseAdaptiveController from './../../utils/BaseAdaptiveController'
+import BaseAdaptiveController from './../utils/BaseAdaptiveController'
 
 // Controller for the item card.
 class ProductCardController extends  BaseAdaptiveController {
@@ -10,7 +10,9 @@ class ProductCardController extends  BaseAdaptiveController {
    */
   constructor($scope, $shrineMQObserver, $log) {
     super($scope, $shrineMQObserver, $log.getInstance("ProductCardController"));
+  }
 
+  $onInit() {
     //this._$log.debug(`_listenForAdaptiveChanges( )`);
     this.subscribeToAdaptiveChanges((viewPort) => {
       //this._$log.debug(`onAdaptiveChange( ${viewPort.viewport} )`);
@@ -44,4 +46,13 @@ class ProductCardController extends  BaseAdaptiveController {
   }
 }
 
-export default ProductCardController;
+export default {
+  name : 'productCard',
+  config : {
+    controllerAs : 'ctrl',
+    bindings : {  item: '<', showDetails: '@' },
+    controller : ["$scope", "$shrineMQObserver", '$log', ProductCardController],
+    templateUrl : 'src/products/tmpl/productCard.html'
+  }
+};
+

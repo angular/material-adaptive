@@ -1,6 +1,6 @@
 <main-view>
 
-  <nav-bar></nav-bar>
+  <nav-bar isMobile="home.isMobile" onOpenSideNav="home.openSidenav($event)"></nav-bar>
 
   <md-tabs
       md-selected="home.selectedIndex"
@@ -17,7 +17,7 @@
 
   </md-tabs>
 
-  <product-grid grid-name="'homeView'" show-details="true" items="home.items" ></product-grid>
+  <product-grid grid-name="homeView" show-details="true" items="home.items" ></product-grid>
 
   <md-sidenav
       class="md-sidenav-left md-whiteframe-z2"

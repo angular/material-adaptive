@@ -1,6 +1,6 @@
-import BaseAdaptiveController from './../../utils/BaseAdaptiveController'
+import BaseAdaptiveController from './../utils/BaseAdaptiveController'
 
-class StoreProductsController extends  BaseAdaptiveController {
+class ItemBrowserController extends  BaseAdaptiveController {
   /**
    * @constructor
    * @param {!angular.Scope} $scope
@@ -11,19 +11,27 @@ class StoreProductsController extends  BaseAdaptiveController {
    * @param {!Object} $shrineMQObserver
    */
   constructor($scope, $shrineMQObserver, $shrineCatalog, $routeParams, $location, $log ) {
-    super($scope, $shrineMQObserver, $log.getInstance("StoreProductsController"));
+    super($scope, $shrineMQObserver, $log.getInstance("ItemBrowserController"));
 
+    this._$routeParams = $routeParams;
     this._$location = $location;
     this._catalog = $shrineCatalog;
 
-    this._loadStoreProductss(  $routeParams.id );
+  }
+
+  $onInit() {
+    this._loadStoreProducts( this._$routeParams.id );
     this._listenForAdaptiveChanges();
+  }
+
+  $onChanges(changes) {
+    //this.items = changes.currentValue.items;
   }
 
   /**
    *
    */
-  _loadStoreProductss(itemID) {
+  _loadStoreProducts(itemID) {
     this._loadItemStoreProductss( itemID || 0 )
       .then( item => {
         let category = item.categories[0];
@@ -75,6 +83,12 @@ class StoreProductsController extends  BaseAdaptiveController {
   }
 
 }
-StoreProductsController.$inject = [ '$scope', '$shrineMQObserver', '$shrineCatalog', '$routeParams', '$location', '$log' ];
 
-export default StoreProductsController;
+export default {
+  name : 'itemBrowser',
+  config : {
+    controllerAs : 'detail',
+    controller : [ '$scope', '$shrineMQObserver', '$shrineCatalog', '$routeParams', '$location', '$log', ItemBrowserController ],
+    templateUrl : 'src/products/tmpl/itemBrowser.html'
+  }
+};

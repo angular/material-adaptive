@@ -2,18 +2,11 @@ class AppRoutes {
 
   static configure($routeProvider) {
     $routeProvider
-      .when('/:category?', {
-        templateUrl: 'src/dashboard/tmpl/dashboard.html',
-        controller: 'DashboardController',
-        controllerAs: 'home'
-      })
-      .when('/item/:id', {
-        templateUrl: 'src/products/tmpl/storeDetails.html',
-        controller: 'StoreProductsController',
-        controllerAs: 'detail'
-      })
+      .when('/:category?' , { template : '<dashboard></dashboard>' })
+      .when('/item/:id'   , { template : '<item-browser></item-browser>' })
       .otherwise({redirectTo: '/'});
   }
+
 }
 
 export default AppRoutes;
