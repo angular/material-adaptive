@@ -1,4 +1,4 @@
-import BaseAdaptiveController from './../../utils/BaseAdaptiveController'
+import BaseAdaptiveController from './../utils/BaseAdaptiveController'
 
 // Controller for the item card.
 class FeaturedItemController extends  BaseAdaptiveController {
@@ -10,14 +10,18 @@ class FeaturedItemController extends  BaseAdaptiveController {
    */
   constructor($scope, $shrineMQObserver, $log) {
     super($scope, $shrineMQObserver, $log.getInstance("FeaturedItemController"));
-
-    this._$log.debug(`_listenForAdaptiveChanges( )`);
-    this.subscribeToAdaptiveChanges((viewPort) => {
-      // Do nothing for now...
-    });
   }
+
 }
 
-FeaturedItemController.$inject = [ '$scope', '$shrineMQObserver', '$log' ];
-export default FeaturedItemController;
+
+export default {
+  name : 'featuredItem',
+  config : {
+    controllerAs: '$ctrl',
+    controller : [ '$scope', '$shrineMQObserver', '$log', FeaturedItemController ],
+    bindings : {  item : '<' },
+    templateUrl : 'src/dashboard/tmpl/featuredItem.html'
+  }
+};
 

@@ -15,7 +15,7 @@ angular
   .element( document )
   .ready( function() {
     let body = document.getElementsByTagName("body")[0];
-    angular.bootstrap( body, [ ShrineApp.name, material ], { strictDi: true })
+    angular.bootstrap( body, [ ShrineApp.name, material, 'ngRoute' ], { strictDi: true })
   });
 
 

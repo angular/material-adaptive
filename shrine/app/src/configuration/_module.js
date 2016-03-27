@@ -6,5 +6,5 @@ export default angular
     .constant('$shrineViewConfigurations', ViewConfigurations )
     .config( [ '$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
        ShrineRoutes.configure($routeProvider);
-       $locationProvider.html5Mode(true).hashPrefix('!');
+       $locationProvider.html5Mode(true);
      }]);

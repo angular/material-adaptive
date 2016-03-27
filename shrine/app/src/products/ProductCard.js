@@ -1,4 +1,4 @@
-import BaseAdaptiveController from './../../utils/BaseAdaptiveController'
+import BaseAdaptiveController from './../utils/BaseAdaptiveController'
 
 // Controller for the item card.
 class ProductCardController extends  BaseAdaptiveController {
@@ -10,7 +10,9 @@ class ProductCardController extends  BaseAdaptiveController {
    */
   constructor($scope, $shrineMQObserver, $log) {
     super($scope, $shrineMQObserver, $log.getInstance("ProductCardController"));
+  }
 
+  $onInit() {
     //this._$log.debug(`_listenForAdaptiveChanges( )`);
     this.subscribeToAdaptiveChanges((viewPort) => {
       //this._$log.debug(`onAdaptiveChange( ${viewPort.viewport} )`);
@@ -24,10 +26,10 @@ class ProductCardController extends  BaseAdaptiveController {
    * @param {!event} ev Click event.
    * @param {!Object} item
    */
-  addItemToCart(ev, item) {
+  addItemToCart(item, event) {
     this._$log.debug(`addItemToCart( ${item.title} )`);
 
-    ev.stopPropagation();
+    event.stopPropagation();
     item.addedToCard = !item.addedToCard;
   }
 
@@ -36,12 +38,21 @@ class ProductCardController extends  BaseAdaptiveController {
    * @param {!event} ev Click event.
    * @param {!Object} item
    */
-  addItemToFavs(ev, item) {
+  addItemToFavs(item,event) {
     this._$log.debug(`addItemToFavs( ${item.title} )`);
 
-    ev.stopPropagation();
+    event.stopPropagation();
     item.addedToFavs = !item.addedToFavs;
   }
 }
 
-export default ProductCardController;
+export default {
+  name : 'productCard',
+  config : {
+    controllerAs : 'card',
+    bindings : {  item: '<', showDetails: '@' },
+    controller : ["$scope", "$shrineMQObserver", '$log', ProductCardController],
+    templateUrl : 'src/products/tmpl/productCard.html'
+  }
+};
+

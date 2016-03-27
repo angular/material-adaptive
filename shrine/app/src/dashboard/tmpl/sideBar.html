@@ -13,9 +13,9 @@
  </div>
 
  <md-list layout-padding>
-   <md-list-item ng-repeat="it in ctrl.categories">
-       <md-button ng-click="ctrl.goToCategory(it.category)"
-                  ng-class="{ 'selected': ctrl.isCategorySelected(it.category) }" >
+   <md-list-item ng-repeat="it in $ctrl.categories">
+       <md-button ng-click="$ctrl.goToCategory(it.category)"
+                  ng-class="{ 'selected': $ctrl.isCategorySelected(it.category) }" >
          {{ it.category }}
        </md-button>
    </md-list-item>
