@@ -1,0 +1,40 @@
+  <md-content class="image-content">
+    <img ng-src="{{$ctrl.item.imageUrl}}">
+  </md-content>
+  <md-content class="info-content">
+    <div class="left-col">
+      <md-button class="md-icon-button info-btn" aria-label="Info item" ng-click="null">
+        <md-icon class="material-icons" style="color: rgba(255, 223, 223, 1)">info_outline</md-icon>
+      </md-button>
+    </div>
+    <div>
+      <h3 flex class="md-display-1">
+        {{$ctrl.item.title}}
+      </h3>
+      <div flex class="description">
+        {{$ctrl.item.description}}
+      </div>
+      <div layout="row" class="select-content">
+        <md-select ng-model="quantitySelected"
+                   placeholder="Select a quantity">
+          <md-option ng-repeat="(i, quantity) in [1, 2, 3, 4, 5]" ng-value="quantity"
+                     ng-selected="i == 0 ? true:false">Quantity {{quantity}}
+          </md-option>
+        </md-select>
+        <span flex></span>
+        <md-button class="md-fab"
+                   ng-disabled="!quantitySelected"
+                   aria-label="Add to cart">
+          <md-icon class="material-icons">add_shopping_cart</md-icon>
+          <md-tooltip>Add to Cart</md-tooltip>
+        </md-button>
+        <span flex></span>
+      </div>
+      <div class="store-details">
+        <h5>{{$ctrl.item.storeName}}</h5>
+        <p>
+          {{$ctrl.item.storeDescription}}
+        </p>
+      </div>
+    </div>
+  </md-content>

@@ -2,8 +2,19 @@ class BaseAdaptiveController {
 
   constructor($scope, $shrineMQObserver, $log ) {
      this._$log = $log;
-     this._$scope = $scope;
      this._$shrineMQObserver = $shrineMQObserver;
+  }
+
+
+  $onInit() {
+    this._$log.debug(`_listenForAdaptiveChanges( )`);
+    this.subscribeToAdaptiveChanges((viewPort) => {
+      // Do nothing for now...
+    });
+  }
+
+  $onDestroy() {
+    this._$shrineMQObserver.unsubscribe( this._watcher );
   }
 
   /**
@@ -13,13 +24,8 @@ class BaseAdaptiveController {
    */
   subscribeToAdaptiveChanges(onAdaptiveChange) {
     // Make sure to bind to the correct context...
-    let self = this, subscriber = onAdaptiveChange.bind(this);
-
-    this._$shrineMQObserver.subscribe( subscriber );
-    this._$scope.$on('$destroy', () => {
-      self._$shrineMQObserver.unsubscribe( subscriber );
-    });
-
+    let subscriber = onAdaptiveChange.bind(this);
+    this._$shrineMQObserver.subscribe( this._watcher = subscriber );
   }
 
 }

@@ -119,7 +119,7 @@ class MediaQueryObserver {
    * Loads the media query viewport listeners.
    * @param {!Object} mql
    * @param {!Object} w_size
-   */
+  */
   _attachViewportListeners() {
     this._$log.debug(`_attachViewportListeners(): `);
 
