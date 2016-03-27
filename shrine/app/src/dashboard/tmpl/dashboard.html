@@ -1,6 +1,6 @@
 <main-view>
 
-  <nav-bar isMobile="home.isMobile" onOpenSideNav="home.openSidenav($event)"></nav-bar>
+  <nav-bar isMobile="home.isMobile" on-open-sidenav="home.openSidenav()"></nav-bar>
 
   <md-tabs
       md-selected="home.selectedIndex"
@@ -22,7 +22,7 @@
   <md-sidenav
       class="md-sidenav-left md-whiteframe-z2"
       md-component-id="primary" >
-    <side-bar categories="home.categories" selected="home.selectedCategory"></side-bar>
+    <side-bar categories="home.categories" selected="home.category"></side-bar>
   </md-sidenav>
 
 </main-view>

@@ -19,14 +19,12 @@ class DashboardController extends  BaseAdaptiveController {
 
     this._$routeParams = $routeParams;
     this._$body = document.body;
+    this.$scope = $scope;
+    this.$location = $location;
     this._sideNav = $mdSidenav;
     this._catalog = $shrineCatalog;
 
-    this.selectedCategory = 'feature';
-
-    this.$scope = $scope;
-    this.$location = $location;
-
+    this.category = 'feature';
   }
 
   $onInit() {
@@ -62,7 +60,7 @@ class DashboardController extends  BaseAdaptiveController {
    * @param {!String} categoryName
    */
   goToCategory(categoryName) {
-    categoryName = (categoryName || "").toLowerCase();
+    categoryName = (categoryName || "feature").toLowerCase();
     this._$log.debug(`goToCategory( ${categoryName} )`);
 
     this.hideSidenav();
@@ -76,13 +74,13 @@ class DashboardController extends  BaseAdaptiveController {
   /**
     * Build model for the Navigation bar (mdTabs)
     */
-   _gatherCategories( selectedCategory ) {
+   _gatherCategories( category ) {
      this._catalog
          .loadByCategory('feature')
          .then(items => {
            this.categories = items;
 
-           this._findCategoryIndex(selectedCategory);
+           this._findCategoryIndex(category);
            this._watchCategorySelection();
          });
    }
@@ -95,7 +93,7 @@ class DashboardController extends  BaseAdaptiveController {
       angular.forEach( this.categories,(it, index) => {
         if (it.category.toLowerCase() == category) {
           this.selectedIndex = index;
-          this.selectedCategory = category;
+          this.category = category;
         }
       });
    }
@@ -113,7 +111,7 @@ class DashboardController extends  BaseAdaptiveController {
            .loadByCategory(category)
            .then(items => {
              self.items = items;
-             self.selectedCategory = category;
+             self.category = category;
            });
      });
    }

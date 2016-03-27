@@ -28,9 +28,9 @@ class ProductGridController extends  BaseAdaptiveController {
     });
   }
 
-  $onChanges(changes) {
-    this.items = changes.currentValue.items;
-  }
+  // $onChanges(changes) {
+  //   this.items = changes.currentValue.items;
+  // }
 
   /**
    * Gets viewport rowspan.

@@ -38,7 +38,6 @@ class SideBarController extends  BaseAdaptiveController {
 export default {
   name : 'sideBar',
   config : {
-    controllerAs: '$ctrl',
     bindings : {  categories : '<', selected : '<' },
     controller: [ '$scope', '$shrineMQObserver', '$location', '$log',SideBarController ],
     templateUrl : 'src/dashboard/tmpl/sideBar.html'
