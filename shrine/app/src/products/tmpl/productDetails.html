@@ -1,6 +1,5 @@
-<div class="main-container">
   <md-content class="image-content">
-    <img ng-src="{{$ctrl.selectedItem.imageUrl}}">
+    <img ng-src="{{$ctrl.item.imageUrl}}">
   </md-content>
   <md-content class="info-content">
     <div class="left-col">
@@ -10,10 +9,10 @@
     </div>
     <div>
       <h3 flex class="md-display-1">
-        {{$ctrl.selectedItem.title}}
+        {{$ctrl.item.title}}
       </h3>
       <div flex class="description">
-        {{$ctrl.selectedItem.description}}
+        {{$ctrl.item.description}}
       </div>
       <div layout="row" class="select-content">
         <md-select ng-model="quantitySelected"
@@ -32,11 +31,10 @@
         <span flex></span>
       </div>
       <div class="store-details">
-        <h5>{{$ctrl.selectedItem.storeName}}</h5>
+        <h5>{{$ctrl.item.storeName}}</h5>
         <p>
-          {{$ctrl.selectedItem.storeDescription}}
+          {{$ctrl.item.storeDescription}}
         </p>
       </div>
     </div>
   </md-content>
-</div>

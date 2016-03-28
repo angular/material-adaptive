@@ -24,7 +24,7 @@ class ProductHeaderController extends  BaseAdaptiveController {
 export default {
   name : 'productHeader',
   config : {
-    bindings : {  title: '@', isMobile:'<' },
+    bindings : {  item: '<', isMobile:'<' },
     controller : ["$scope", "$shrineMQObserver", '$log', ProductHeaderController],
     templateUrl : 'src/products/tmpl/productHeader.html'
   }

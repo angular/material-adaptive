@@ -56,7 +56,6 @@ class DashboardController extends  BaseAdaptiveController {
 
   /**
    * Redirects to the category tab.
-   * @param {!event} ev Click event.
    * @param {!String} categoryName
    */
   goToCategory(categoryName) {

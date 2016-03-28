@@ -28,10 +28,6 @@ class ProductGridController extends  BaseAdaptiveController {
     });
   }
 
-  // $onChanges(changes) {
-  //   this.items = changes.currentValue.items;
-  // }
-
   /**
    * Gets viewport rowspan.
    */
@@ -53,12 +49,11 @@ class ProductGridController extends  BaseAdaptiveController {
    * @param {!event} ev Click event.
    * @param {!String} idItem
    */
-  goToDetails(ev, item) {
-
+  goToDetails(item, event) {
     this._$log.debug(`goToDetails( '/product/${item.id}' )`);
 
-    ev.stopPropagation();
-    this.$location.path('/product/'+ item.id);
+    event.stopPropagation();
+    this.$location.path(`/product/${item.id}`);
   }
 }
 

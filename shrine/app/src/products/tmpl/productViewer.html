@@ -1,16 +1,12 @@
 <details-view>
 
-  <product-header is-mobile="viewer.isMobile" title="viewer.selectedItem.title"></product-header>
+  <product-header is-mobile="viewer.isMobile" item="viewer.selectedItem" ></product-header>
 
   <div class="details-container">
 
-    <product-details item="viewer.selectedItem"></product-details>
+    <product-details item="viewer.selectedItem" class="main-container"></product-details>
 
-    <div class="items-container">
-
-      <product-grid grid-name="detailView" items="viewer.items" show-details="true"></product-grid>
-
-    </div>
+    <product-grid grid-name="detailView" items="viewer.items" show-details="true" class="items-container"></product-grid>
 
   </div>
 

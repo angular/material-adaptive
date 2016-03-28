@@ -5,7 +5,7 @@
           md-colspan="{{ $ctrl.getViewportColSpan($index) }}"
           ng-repeat="item in $ctrl.items"
           ng-class="{ 'featured': $ctrl.showDetails && item.featured }"
-          ng-click="$ctrl.goToDetails($event, item)" >
+          ng-click="$ctrl.goToDetails(item, $event)" >
       <product-card item="item" show-details="$ctrl.showDetails"></product-card>
     </md-grid-tile>
   </md-grid-list>

@@ -5,7 +5,6 @@ class ProductViewerController extends  BaseAdaptiveController {
    * @constructor
    * @param {!angular.Scope} $scope
    * @param {!angular.RouteParams} $routeParams
-   * @param {!angular.Location} $location
    * @param {!angular.Log} $log
    * @param {!Object} $shrineItems
    * @param {!Object} $shrineMQObserver
@@ -14,7 +13,6 @@ class ProductViewerController extends  BaseAdaptiveController {
     super($scope, $shrineMQObserver, $log.getInstance("ProductViewerController"));
 
     this._$routeParams = $routeParams;
-    this._$location = $location;
     this._catalog = $shrineCatalog;
   }
 
@@ -43,8 +41,8 @@ class ProductViewerController extends  BaseAdaptiveController {
   /**
    *
    */
-  _loadStoreProducts(itemID) {
-    this._loadItemStoreProductss( itemID || 0 )
+  _loadStoreProducts(productID) {
+    this._loadItemStoreProductss( productID || 0 )
       .then( item => {
         let category = item.categories[0];
         this._catalog
@@ -56,6 +54,9 @@ class ProductViewerController extends  BaseAdaptiveController {
       })
   }
 
+
+
+
   /**
    * Listen for Adaptive changes and update the view
    */
@@ -65,7 +66,7 @@ class ProductViewerController extends  BaseAdaptiveController {
     this.subscribeToAdaptiveChanges((viewPort) => {
       this._$log.debug(`onAdaptiveChange( ${viewPort.viewport} )`);
 
-      this.viewPort = viewPort.gridInfo["StoreProductsView"];
+      this.viewPort = viewPort.gridInfo["detailView"];
       this.isMobile = (viewPort.minWidth < 840 || viewPort.display == 'mobile');
     });
 
@@ -75,9 +76,9 @@ class ProductViewerController extends  BaseAdaptiveController {
    * Using the ID specified in the routeParam (or default to ID == 0)
    * load the item from the `database`
    */
-  _loadItemStoreProductss(itemID) {
-    this._$log.debug(`_loadItemByID( ${itemID} )`);
-    return this._catalog.findItemByID(itemID);
+  _loadItemStoreProductss(productID) {
+    this._$log.debug(`_loadItemByID( ${productID} )`);
+    return this._catalog.findItemByID(productID);
   }
 
 }
@@ -87,7 +88,7 @@ export default {
   config : {
     bindings : {$router: '<'},
     controllerAs : 'viewer',
-    controller : ProductViewerController,
+    controller : ['$scope', '$shrineMQObserver', '$shrineCatalog', '$routeParams', '$log', ProductViewerController],
     templateUrl : 'src/products/tmpl/productViewer.html'
   }
 };
