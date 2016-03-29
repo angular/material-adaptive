@@ -1,9 +1,0 @@
-<md-bottom-sheet class="md-list md-has-header" ng-cloak>
-  <md-list>
-    <md-list-item ng-repeat="item in sheetCtrl.items" ng-click="sheetCtrl.listItemClick($index)">
-      <md-icon class="material-icons" style="margin-left: 0; margin-top: 9px;" ng-show="{{ item.materialIcon }}">{{ item.icon }}</md-icon>
-      <img ng-src="{{!item.materialIcon && item.icon || ''}}" ng-show="!item.materialIcon"/>
-      <span class="md-inline-list-icon-label">{{ item.name }}</span>
-    </md-list-item>
-  </md-list>
-</md-bottom-sheet>
