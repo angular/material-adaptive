@@ -5,12 +5,12 @@ class ProductGridController extends  BaseAdaptiveController {
    * @constructor
    * @param {!angular.Scope} $scope
    * @param {!Object} $shrineItems
-   * @param {!Object} $shrineMQObserver
-   * @param {!Object} $shrineUtils
+   * @param {!Object} shrineMQObserver
+   * @param {!Object} shrineUtils
    * @param {!angular.Location} $location
    */
-  constructor($scope, $shrineMQObserver, $location, $log ) {
-    super($scope, $shrineMQObserver,  $log.getInstance("GridLayoutController"));
+  constructor($scope, shrineMQObserver, $location, $log ) {
+    super($scope, shrineMQObserver,  $log.getInstance("GridLayoutController"));
 
     this.$scope = $scope;
     this.$location = $location;
@@ -25,8 +25,6 @@ class ProductGridController extends  BaseAdaptiveController {
       this.viewPort = viewPort.gridInfo[key];
     });
   }
-
-
 
   /**
    * Gets viewport rowspan.
@@ -49,13 +47,14 @@ class ProductGridController extends  BaseAdaptiveController {
    * @param {!event} ev Click event.
    * @param {!String} idItem
    */
-  goToDetails(ev, item) {
+  goToDetails(item, event) {
 
-    this._$log.debug(`goToDetails( '/item/${item.id}' )`);
+    this._$log.debug(`goToDetails( '/product/${item.id}' )`);
 
-    ev.stopPropagation();
-    this.$location.path('/item/'+ item.id);
+    event.stopPropagation();
+    this.$location.path('/product/'+ item.id);
   }
 }
 
+ProductGridController.$inject = [ '$scope', 'shrineMQObserver', '$location', '$log' ];
 export default ProductGridController;

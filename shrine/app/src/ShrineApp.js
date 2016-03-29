@@ -1,11 +1,11 @@
 // Load custom application controllers and modules.
 
 
-import ShrineDashboard      from './dashboard/Dashboard'
-import ShrineProducts       from './products/Products'
-import ShrineModels         from './model/Models';
-import ShrineUtils          from './utils/Utils';
-import ShrineConfigurations from './configuration/Configuration';
+import ShrineDashboard      from './dashboard/_module'
+import ShrineProducts       from './products/_module'
+import ShrineModels         from './model/_module';
+import ShrineUtils          from './utils/_module';
+import ShrineConfigurations from './configuration/_module';
 
 // Load loggers for injection and pre-angular debugging
 import { LogDecorator } from 'utils/LogDecorator';

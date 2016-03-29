@@ -8,7 +8,7 @@ class SideBarDirective {
       scope            : {  categories: '=', selected : "=?" },
       bindToController : true,
       controllerAs     : 'ctrl',
-      controller       : ["$scope", '$shrineMQObserver', '$location', '$log', SideBarController],
+      controller       : ["$scope", 'shrineMQObserver', '$location', '$log', SideBarController],
       templateUrl      : 'src/dashboard/tmpl/sideBar.html'
     });
   }

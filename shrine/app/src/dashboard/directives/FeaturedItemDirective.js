@@ -6,7 +6,7 @@ class FeaturedItemDirective {
     angular.extend(this, {
       restrict         : 'E',
       scope            : {  item: '=' },
-      controller       : ["$scope", '$shrineMQObserver', '$log', FeaturedItemController],
+      controller       : ["$scope", 'shrineMQObserver', '$log', FeaturedItemController],
       templateUrl      : 'src/dashboard/tmpl/featuredItem.html'
     });
   }
