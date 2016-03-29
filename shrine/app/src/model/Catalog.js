@@ -3,9 +3,9 @@ import PRODUCTS from './ItemStorage';
 
 class Catalog {
 
-  constructor($shrineUtils, $q) {
+  constructor(shrineUtils, $q) {
     this._$q = $q;
-    this._utils = $shrineUtils;
+    this._utils = shrineUtils;
     this._heroes = HEROES;
     this._store = PRODUCTS;
   }
@@ -80,6 +80,6 @@ class Catalog {
   }
 }
 
-Catalog.$inject = [ '$shrineUtils', '$q' ];
+Catalog.$inject = [ 'shrineUtils', '$q' ];
 
 export default Catalog;

@@ -5,10 +5,10 @@ class SideBarController extends  BaseAdaptiveController {
   /**
    * @constructor
    * @param {!angular.Scope} $scope
-   * @param {!Object} $shrineMQObserver
+   * @param {!Object} shrineMQObserver
    */
-  constructor($scope, $shrineMQObserver, $location, $log) {
-    super($scope, $shrineMQObserver, $log.getInstance("SideBarController"));
+  constructor($scope, shrineMQObserver, $location, $log) {
+    super($scope, shrineMQObserver, $log.getInstance("SideBarController"));
     this._$location = $location
   }
 
@@ -39,7 +39,7 @@ export default {
   name : 'sideBar',
   config : {
     bindings : {  categories : '<', selected : '<' },
-    controller: [ '$scope', '$shrineMQObserver', '$location', '$log',SideBarController ],
+    controller: [ '$scope', 'shrineMQObserver', '$location', '$log',SideBarController ],
     templateUrl : 'src/dashboard/tmpl/sideBar.html'
   }
 };

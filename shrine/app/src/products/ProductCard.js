@@ -5,17 +5,18 @@ class ProductCardController extends  BaseAdaptiveController {
   /**
    * @constructor
    * @param {!angular.Scope} $scope
-   * @param {!Object} $shrineMQObserver
-   * @param {!Object} $shrineItems
+   * @param {!Object} shrineMQObserver
+   * @param {!Object} shrineItems
    */
-  constructor($scope, $shrineMQObserver, $log) {
-    super($scope, $shrineMQObserver, $log.getInstance("ProductCardController"));
+  constructor($scope, shrineMQObserver, $log) {
+    super($scope, shrineMQObserver, $log.getInstance("ProductCardController"));
   }
 
   $onInit() {
-    //this._$log.debug(`_listenForAdaptiveChanges( )`);
+    this._$log.debug(`_listenForAdaptiveChanges( )`);
     this.subscribeToAdaptiveChanges((viewPort) => {
-      //this._$log.debug(`onAdaptiveChange( ${viewPort.viewport} )`);
+      this._$log.debug(`onAdaptiveChange( ${viewPort.viewport} )`);
+      this._$log.debug(`card.showDetails == ${this.showDetails} `);
 
       this.footerHeight = viewPort.footerHeight;
     });
@@ -50,8 +51,8 @@ export default {
   name : 'productCard',
   config : {
     controllerAs : 'card',
-    bindings : {  item: '<', showDetails: '@' },
-    controller : ["$scope", "$shrineMQObserver", '$log', ProductCardController],
+    bindings : {  item: '<', showDetails: '<' },
+    controller : ["$scope", "shrineMQObserver", '$log', ProductCardController],
     templateUrl : 'src/products/tmpl/productCard.html'
   }
 };

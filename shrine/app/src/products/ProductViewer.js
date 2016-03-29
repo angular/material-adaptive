@@ -6,14 +6,14 @@ class ProductViewerController extends  BaseAdaptiveController {
    * @param {!angular.Scope} $scope
    * @param {!angular.RouteParams} $routeParams
    * @param {!angular.Log} $log
-   * @param {!Object} $shrineItems
-   * @param {!Object} $shrineMQObserver
+   * @param {!Object} shrineItems
+   * @param {!Object} shrineMQObserver
    */
-  constructor($scope, $shrineMQObserver, $shrineCatalog, $routeParams, $log ) {
-    super($scope, $shrineMQObserver, $log.getInstance("ProductViewerController"));
+  constructor($scope, shrineMQObserver, shrineCatalog, $routeParams, $log ) {
+    super($scope, shrineMQObserver, $log.getInstance("ProductViewerController"));
 
     this._$routeParams = $routeParams;
-    this._catalog = $shrineCatalog;
+    this._catalog = shrineCatalog;
   }
 
   $onInit() {
@@ -70,7 +70,7 @@ export default {
   name : 'productViewer',
   config : {
     controllerAs : 'viewer',
-    controller : ['$scope', '$shrineMQObserver', '$shrineCatalog', '$routeParams', '$log', ProductViewerController],
+    controller : ['$scope', 'shrineMQObserver', 'shrineCatalog', '$routeParams', '$log', ProductViewerController],
     templateUrl : 'src/products/tmpl/productViewer.html'
   }
 };

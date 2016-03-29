@@ -7,22 +7,22 @@ class DashboardController extends  BaseAdaptiveController {
   /**
    * @constructor
    * @param {!angular.Scope} $scope
-   * @param {!Object} $shrineMQObserver
-   * @param {!Object} $shrineHeroes
+   * @param {!Object} shrineMQObserver
+   * @param {!Object} shrineHeroes
    * @param {!md.$sidenav} $mdSidenav
    * @param {!angular.Location} $location
    * @param {!angular.routeParams} $routeParams
    * @param {!angular.Log} $log
    */
-  constructor($scope, $shrineMQObserver, $shrineCatalog, $mdSidenav, $location, $routeParams, $log ) {
-    super($scope, $shrineMQObserver, $log.getInstance("DashboardController"));
+  constructor($scope, shrineMQObserver, shrineCatalog, $mdSidenav, $location, $routeParams, $log ) {
+    super($scope, shrineMQObserver, $log.getInstance("DashboardController"));
 
     this._$routeParams = $routeParams;
     this._$body = document.body;
     this.$scope = $scope;
     this.$location = $location;
     this._sideNav = $mdSidenav;
-    this._catalog = $shrineCatalog;
+    this._catalog = shrineCatalog;
 
     this.category = 'feature';
   }
@@ -132,7 +132,7 @@ class DashboardController extends  BaseAdaptiveController {
 export default {
   name : 'dashboard',
   config : {
-    controller: [ '$scope', '$shrineMQObserver', '$shrineCatalog', '$mdSidenav', '$location','$routeParams', '$log', DashboardController ],
+    controller: [ '$scope', 'shrineMQObserver', 'shrineCatalog', '$mdSidenav', '$location','$routeParams', '$log', DashboardController ],
     templateUrl : 'src/dashboard/tmpl/dashboard.html'
   }
 };

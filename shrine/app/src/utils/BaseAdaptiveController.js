@@ -1,8 +1,8 @@
 class BaseAdaptiveController {
 
-  constructor($scope, $shrineMQObserver, $log ) {
+  constructor($scope, shrineMQObserver, $log ) {
      this._$log = $log;
-     this._$shrineMQObserver = $shrineMQObserver;
+     this._shrineMQObserver = shrineMQObserver;
   }
 
 
@@ -14,18 +14,18 @@ class BaseAdaptiveController {
   }
 
   $onDestroy() {
-    this._$shrineMQObserver.unsubscribe( this._watcher );
+    this._shrineMQObserver.unsubscribe( this._watcher );
   }
 
   /**
-   * Special callback subscription to the $shrineMQObserver
+   * Special callback subscription to the shrineMQObserver
    * which will notify (via callback) this subscriber
    * when the view configuration matches the current media query
    */
   subscribeToAdaptiveChanges(onAdaptiveChange) {
     // Make sure to bind to the correct context...
     let subscriber = onAdaptiveChange.bind(this);
-    this._$shrineMQObserver.subscribe( this._watcher = subscriber );
+    this._shrineMQObserver.subscribe( this._watcher = subscriber );
   }
 
 }

@@ -4,13 +4,13 @@ class ProductGridController extends  BaseAdaptiveController {
   /**
    * @constructor
    * @param {!angular.Scope} $scope
-   * @param {!Object} $shrineItems
-   * @param {!Object} $shrineMQObserver
-   * @param {!Object} $shrineUtils
+   * @param {!Object} shrineItems
+   * @param {!Object} shrineMQObserver
+   * @param {!Object} shrineUtils
    * @param {!angular.Location} $location
    */
-  constructor($scope, $shrineMQObserver, $location, $log ) {
-    super($scope, $shrineMQObserver,  $log.getInstance("ProductGridController"));
+  constructor($scope, shrineMQObserver, $location, $log ) {
+    super($scope, shrineMQObserver,  $log.getInstance("ProductGridController"));
 
     this.$scope = $scope;
     this.$location = $location;
@@ -61,7 +61,7 @@ export default {
   name : 'productGrid',
   config : {
     bindings : {  gridName : '@', items: '<', showDetails : '@'},
-    controller : ['$scope', '$shrineMQObserver', '$location', '$log', ProductGridController ],
+    controller : ['$scope', 'shrineMQObserver', '$location', '$log', ProductGridController ],
     templateUrl : 'src/products/tmpl/productGrid.html'
   }
 };

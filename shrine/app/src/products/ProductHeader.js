@@ -8,11 +8,11 @@ class ProductHeaderController extends  BaseAdaptiveController {
   /**
    * @constructor
    * @param {!angular.Scope} $scope
-   * @param {!Object} $shrineMQObserver
-   * @param {!Object} $shrineItems
+   * @param {!Object} shrineMQObserver
+   * @param {!Object} shrineItems
    */
-  constructor($scope, $shrineMQObserver, $location, $log) {
-    super($scope, $shrineMQObserver, $log.getInstance("ProductHeaderController"));
+  constructor($scope, shrineMQObserver, $location, $log) {
+    super($scope, shrineMQObserver, $log.getInstance("ProductHeaderController"));
     this._$location = $location;
   }
 
@@ -38,7 +38,7 @@ export default {
   name : 'productHeader',
   config : {
     bindings : {  item: '<', isMobile:'<' },
-    controller : ["$scope", "$shrineMQObserver", '$location', '$log', ProductHeaderController],
+    controller : ["$scope", "shrineMQObserver", '$location', '$log', ProductHeaderController],
     templateUrl : 'src/products/tmpl/productHeader.html'
   }
 };
