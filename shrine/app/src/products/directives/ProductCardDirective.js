@@ -5,10 +5,10 @@ class ProductCardDirective {
   constructor() {
     angular.extend(this, {
       restrict         : 'E',
-      scope            : {  item: '=', showDetails: '=' },
+      scope            : {  item: '=', showDetails: '@' },
       bindToController : true,
-      controllerAs     : 'ctrl',
-      controller       : ["$scope", "$shrineMQObserver", '$log', ProductCardController],
+      controllerAs     : '$ctrl',
+      controller       : ["$scope", "shrineMQObserver", '$log', ProductCardController],
       templateUrl      : 'src/products/tmpl/productCard.html'
     });
   }

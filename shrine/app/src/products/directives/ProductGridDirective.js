@@ -5,10 +5,10 @@ class ProductGridDirective {
     constructor() {
         angular.extend(this, {
           restrict         : 'E',
-          scope            : { gridName: '=', showDetails: '=', items: "=" },
+          scope            : { gridName: '@', showDetails: '@', items: "=" },
           bindToController : true,
-          controllerAs     : 'ctrl',
-          controller       : ['$scope', '$shrineMQObserver', '$location', '$log', ProductGridController ],
+          controllerAs     : '$ctrl',
+          controller       : ['$scope', 'shrineMQObserver', '$location', '$log', ProductGridController ],
           templateUrl      : 'src/products/tmpl/productGrid.html'
         });
     }

@@ -1,16 +1,20 @@
 class AppRoutes {
 
+  /**
+   * Current application uses full-page navigation and only has two
+   * primary views:  Dashboard and ProductViewer
+   */
   static configure($routeProvider) {
     $routeProvider
       .when('/:category?', {
         templateUrl: 'src/dashboard/tmpl/dashboard.html',
-        controller: 'DashboardController',
-        controllerAs: 'home'
+        controller: 'LandingPageController',
+        controllerAs: '$ctrl'
       })
-      .when('/item/:id', {
-        templateUrl: 'src/products/tmpl/storeDetails.html',
-        controller: 'StoreProductsController',
-        controllerAs: 'detail'
+      .when('/product/:id', {
+        templateUrl: 'src/products/tmpl/productViewer.html',
+        controller: 'ProductViewerController',
+        controllerAs: 'viewer'
       })
       .otherwise({redirectTo: '/'});
   }

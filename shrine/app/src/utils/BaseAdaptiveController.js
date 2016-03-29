@@ -1,13 +1,13 @@
 class BaseAdaptiveController {
 
-  constructor($scope, $shrineMQObserver, $log ) {
+  constructor($scope, shrineMQObserver, $log ) {
      this._$log = $log;
      this._$scope = $scope;
-     this._$shrineMQObserver = $shrineMQObserver;
+     this._$shrineMQObserver = shrineMQObserver;
   }
 
   /**
-   * Special callback subscription to the $shrineMQObserver
+   * Special callback subscription to the shrineMQObserver
    * which will notify (via callback) this subscriber
    * when the view configuration matches the current media query
    */

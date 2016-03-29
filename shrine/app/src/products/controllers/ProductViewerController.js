@@ -1,25 +1,28 @@
 import BaseAdaptiveController from './../../utils/BaseAdaptiveController'
 
-class StoreProductsController extends  BaseAdaptiveController {
+class ProductViewerController extends  BaseAdaptiveController {
   /**
    * @constructor
    * @param {!angular.Scope} $scope
    * @param {!angular.RouteParams} $routeParams
-   * @param {!angular.Location} $location
    * @param {!angular.Log} $log
    * @param {!Object} $shrineItems
-   * @param {!Object} $shrineMQObserver
+   * @param {!Object} shrineMQObserver
    */
-  constructor($scope, $shrineMQObserver, $shrineCatalog, $routeParams, $location, $log ) {
-    super($scope, $shrineMQObserver, $log.getInstance("StoreProductsController"));
+  constructor($scope, shrineMQObserver, shrineCatalog, $routeParams, $log ) {
+    super($scope, shrineMQObserver, $log.getInstance("ProductViewerController"));
 
-    this._$location = $location;
-    this._catalog = $shrineCatalog;
+    this._catalog = shrineCatalog;
 
     this._loadStoreProductss(  $routeParams.id );
     this._listenForAdaptiveChanges();
   }
 
+
+  // ******************************************
+  // Private Methods
+  // ******************************************
+  
   /**
    *
    */
@@ -34,19 +37,6 @@ class StoreProductsController extends  BaseAdaptiveController {
             });
         this.selectedItem = item;
       })
-  }
-
-  /**
-   * Redirects to the homepage.
-   * @param {!event} ev Click event.
-   * @param {!String} idItem
-   */
-  goToHomepage(ev) {
-    let url = this.selectedItem.categories[0];
-    this._$log.debug(`goToCategory( '/${url}' )`);
-
-    ev.stopPropagation();
-    this._$location.path(`/${url}`);
   }
 
 
@@ -75,6 +65,6 @@ class StoreProductsController extends  BaseAdaptiveController {
   }
 
 }
-StoreProductsController.$inject = [ '$scope', '$shrineMQObserver', '$shrineCatalog', '$routeParams', '$location', '$log' ];
 
-export default StoreProductsController;
+ProductViewerController.$inject = [ '$scope', 'shrineMQObserver', 'shrineCatalog', '$routeParams', '$log' ];
+export default ProductViewerController;

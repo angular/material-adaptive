@@ -12,16 +12,16 @@ class MediaQueryObserver {
   /**
    * @constructor
    * @param {!Object} $window
-   * @param {!Object} $shrineViewConfigurations
+   * @param {!Object} shrineViewConfigurations
    */
-  constructor($shrineViewConfigurations, $rootScope, $window, $log) {
+  constructor(shrineViewConfigurations, $rootScope, $window, $log) {
     this._$log = $log.getInstance("MediaQueryObserver");
     this._$window = $window;
     this._$body = this._$window.document.body;
     this._$rootScope = $rootScope;
 
     this._subscribers = [ ];
-    this._configurations = $shrineViewConfigurations;
+    this._configurations = shrineViewConfigurations;
 
     // Now build MediaQuery listeners for each viewPort configuration
     // and notify subscribers when the mq match triggers
@@ -186,6 +186,6 @@ class MediaQueryObserver {
   }
 }
 
-MediaQueryObserver.$inject = ['$shrineViewConfigurations', '$rootScope', '$window', '$log'];
+MediaQueryObserver.$inject = ['shrineViewConfigurations', '$rootScope', '$window', '$log'];
 
 export default MediaQueryObserver;

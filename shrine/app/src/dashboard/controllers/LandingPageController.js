@@ -3,24 +3,24 @@ import BaseAdaptiveController from './../../utils/BaseAdaptiveController'
 /**
  * Controller for the home page.
  */
-class DashboardController extends  BaseAdaptiveController {
+class LandingPageController extends  BaseAdaptiveController {
   /**
    * @constructor
    * @param {!angular.Scope} $scope
-   * @param {!Object} $shrineMQObserver
+   * @param {!Object} shrineMQObserver
    * @param {!Object} $shrineHeroes
    * @param {!md.$sidenav} $mdSidenav
    * @param {!angular.Location} $location
    * @param {!angular.routeParams} $routeParams
    * @param {!angular.Log} $log
    */
-  constructor($scope, $shrineMQObserver, $shrineCatalog, $mdSidenav, $location, $routeParams, $log ) {
-    super($scope, $shrineMQObserver, $log.getInstance("DashboardController"));
+  constructor($scope, shrineMQObserver, shrineCatalog, $mdSidenav, $location, $routeParams, $log ) {
+    super($scope, shrineMQObserver, $log.getInstance("LandingPageController"));
 
     this._$body = document.body;
     this._sideNav = $mdSidenav;
-    this._catalog = $shrineCatalog;
-    
+    this._catalog = shrineCatalog;
+
     this.selectedCategory = 'feature';
 
     this.$scope = $scope;
@@ -50,7 +50,7 @@ class DashboardController extends  BaseAdaptiveController {
     this._sideNav('primary').close();
   }
 
-  
+
 
   /**
    * Redirects to the category tab.
@@ -91,7 +91,7 @@ class DashboardController extends  BaseAdaptiveController {
       angular.forEach( this.categories,(it, index) => {
         if (it.category.toLowerCase() == category) {
           this.selectedIndex = index;
-          this.selectedCategory = category;
+          this.category = category;
         }
       });
    }
@@ -109,7 +109,7 @@ class DashboardController extends  BaseAdaptiveController {
            .loadByCategory(category)
            .then(items => {
              self.items = items;
-             self.selectedCategory = category;
+             self.category = category;
            });
      });
    }
@@ -127,6 +127,6 @@ class DashboardController extends  BaseAdaptiveController {
      });
    }
 }
-DashboardController.$inject = [ '$scope', '$shrineMQObserver', '$shrineCatalog', '$mdSidenav', '$location','$routeParams', '$log' ];
+LandingPageController.$inject = [ '$scope', 'shrineMQObserver', 'shrineCatalog', '$mdSidenav', '$location','$routeParams', '$log' ];
 
-export default DashboardController;
+export default LandingPageController;

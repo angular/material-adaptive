@@ -5,12 +5,11 @@ class SideBarController extends  BaseAdaptiveController {
   /**
    * @constructor
    * @param {!angular.Scope} $scope
-   * @param {!Object} $shrineMQObserver
+   * @param {!Object} shrineMQObserver
    */
-  constructor($scope, $shrineMQObserver, $location, $log) {
-    super($scope, $shrineMQObserver, $log.getInstance("SideBarController"));
+  constructor($scope, shrineMQObserver, $location, $log) {
+    super($scope, shrineMQObserver, $log.getInstance("SideBarController"));
 
-    this._$log = $log;
     this._$location = $location
     this._$scope = $scope;
 
@@ -35,12 +34,13 @@ class SideBarController extends  BaseAdaptiveController {
    * @param {!String} categoryName
    */
   goToCategory(categoryName) {
-    this._$log.debug(`goToCategory( ${categoryName.toLowerCase()} )`);
-    this._$location.path(categoryName.toLowerCase());
+    let category = categoryName.toLowerCase();
+    this._$log.debug(`goToCategory( ${category} )`);
+    this._$location.path(category);
   }
 
 }
 
-SideBarController.$inject = [ '$scope', '$shrineMQObserver', '$location', '$log' ];
+SideBarController.$inject = [ '$scope', 'shrineMQObserver', '$location', '$log' ];
 export default SideBarController;
 

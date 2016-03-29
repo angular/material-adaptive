@@ -5,15 +5,15 @@ class ProductCardController extends  BaseAdaptiveController {
   /**
    * @constructor
    * @param {!angular.Scope} $scope
-   * @param {!Object} $shrineMQObserver
+   * @param {!Object} shrineMQObserver
    * @param {!Object} $shrineItems
    */
-  constructor($scope, $shrineMQObserver, $log) {
-    super($scope, $shrineMQObserver, $log.getInstance("ProductCardController"));
+  constructor($scope, shrineMQObserver, $log) {
+    super($scope, shrineMQObserver, $log.getInstance("ProductCardController"));
 
-    //this._$log.debug(`_listenForAdaptiveChanges( )`);
+    this._$log.debug(`_listenForAdaptiveChanges( )`);
     this.subscribeToAdaptiveChanges((viewPort) => {
-      //this._$log.debug(`onAdaptiveChange( ${viewPort.viewport} )`);
+      this._$log.debug(`onAdaptiveChange( ${viewPort.viewport} )`);
 
       this.footerHeight = viewPort.footerHeight;
     });
@@ -24,10 +24,10 @@ class ProductCardController extends  BaseAdaptiveController {
    * @param {!event} ev Click event.
    * @param {!Object} item
    */
-  addItemToCart(ev, item) {
+  addItemToCart(item,event) {
     this._$log.debug(`addItemToCart( ${item.title} )`);
 
-    ev.stopPropagation();
+    event.stopPropagation();
     item.addedToCard = !item.addedToCard;
   }
 
@@ -36,12 +36,13 @@ class ProductCardController extends  BaseAdaptiveController {
    * @param {!event} ev Click event.
    * @param {!Object} item
    */
-  addItemToFavs(ev, item) {
+  addItemToFavs(item, event) {
     this._$log.debug(`addItemToFavs( ${item.title} )`);
 
-    ev.stopPropagation();
+    event.stopPropagation();
     item.addedToFavs = !item.addedToFavs;
   }
 }
 
+ProductCardController.$inject = [ '$scope', 'shrineMQObserver', '$log' ];
 export default ProductCardController;
