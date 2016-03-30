@@ -117,7 +117,7 @@ Clone the repo and run the following commands:
 ```
 npm install jspm -g
 npm install
-jspm install
+cd ./app; jspm install
 ```
 
 Start the dev server like so.
