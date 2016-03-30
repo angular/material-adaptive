@@ -1,8 +1,36 @@
 ### SHRINE
 
+#### Using Angular 1.5.x Component API
+
 This implementation of Shrine uses Angular 1.5.x and the new [`.component( )` API](https://docs.angularjs.org/guide/component). Building Shrine with *components* dramatically simplified the project/code structures and allows developers to easily understand how the UI designs are implemented as Angular Components. 
 
 > Implementing your Angular 1.5.x application with Components also means your migration to Angular 2 will be significantly easier...
+
+The Component API is a shorthand for registering a special type of directive, which represents a self-contained UI component in your application. Such components are always isolated (i.e. `scope: {}`) and are always restricted to elements (i.e. `restrict: 'E'`).
+
+Component definitions are very simple and do not require as much configuration as defining general directives. Component definitions usually consist only of a template and a controller backing it.
+
+In order to make the definition easier, components enforce best practices like use of `controllerAs`, `bindToController`. They always have **isolate scope** and are restricted to elements.
+
+<br/>
+
+#### Best Practices 
+
+Similar to the original version of Shrine, this implementation of Shrine also uses ES6, JSPM, Angular Material, and demonstrates Angular Best Practices. 
+
+> These best practices are also discussed in John Papa's [Angular 1 Style Guide](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md) and Pluralsight Course: [Clean Code](http://jpapa.me/ngclean)
+
+[![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+
+The Shrine application has coding styles, packaging, and architecture patterns implemented as guides for developers implementing their own Angular 1.x SPA(s). This application also serves to demonstrate Adaptive user experiences achieved using specialized [view configurations](https://github.com/angular/material-adaptive/blob/components/shrine/app/src/configuration/ViewConfigurations.js) and a [mediaQuery Observer](https://github.com/angular/material-adaptive/blob/components/shrine/app/src/utils/MediaQueryObserver.js) pattern.
+
+ 
+
+<br/>
+
+---
+
+### Illustrating UX-to-Components
 
 Below are some illustrations that map portions of those Shrine UI views to actual Angular components. Shrine has two (2) primary views:
 
@@ -27,7 +55,7 @@ Below are some illustrations that map portions of those Shrine UI views to actua
 </dashboard>
 ```
 
-> Definition of the Dashboard module:
+> Definition of the [Dashboard](https://github.com/angular/material-adaptive/blob/components/shrine/app/src/dashboard/_module.js) module:
 
 ```js
 /**
@@ -65,7 +93,7 @@ export default angular.module('shrine.dashboard', [ ] )
 </product-viewer>
 ```
 
-> Definition of the Product module:
+> Definition of the [Product](https://github.com/angular/material-adaptive/blob/components/shrine/app/src/products/_module.js) module:
 
 
 ```js
@@ -88,13 +116,10 @@ export default angular.module('shrine.products', [ ] )
 ```
 
 
-
 <br/>
 ---
 
-### Angular Material Adaptive
-
-#### Adaptive Features
+### Adaptive Angular Material
 
 In addition to using the powerful [Angular Material UI Components](https://material.angularjs.org/HEAD/) and [**Layout**](https://material.angularjs.org/latest/layout/introduction) features, Shrine also implements an architecture to support custom view configurations and mediaQueries. These features enable Shrine to both resize the UI components **and** change the UI components positions and configurations... as needed to adapt to different viewport display sizes:
 
@@ -102,6 +127,18 @@ In addition to using the powerful [Angular Material UI Components](https://mater
 
 *  <a href="https://material-adaptive.firebaseapp.com/shrine/app/index.html" target="_blank"> Shrine Live </a>
 *  <a href="http://design.google.com/resizer/#url=https%3A%2F%2Fmaterial-adaptive.firebaseapp.com%2Fshrine%2Fapp%2Fdist.html" target="_blank"> Google's Resizer with Shrine Live </a>
+
+
+<br/>
+
+----
+
+<br/>
+
+
+### Additional Features
+
+> This branch does **not** use the new Angular 2 Router:  `ngComponentRouter`. Instead, `<ng-view>` and the Angular 1 ngRouter are currently used.
 
 
 <br/>
@@ -115,7 +152,7 @@ Clone the repo and run the following commands:
 ```
 npm install jspm -g
 npm install
-jspm install
+cd ./app; jspm install
 ```
 
 Start the dev server like so.
