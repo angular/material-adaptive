@@ -2,7 +2,7 @@
 
 This implementation of Shrine uses Angular 1.5.x and the new [`.component( )` API](https://docs.angularjs.org/guide/component). Building Shrine with *components* dramatically simplified the project/code structures and allows developers to easily understand how the UI designs are implemented as Angular Components. 
 
-> Implementing your Angular 1.5.x application with Components also means your migration to Angular 2 will be significantly easier... This branch does **NOT** use ngComponentRouter (new Angular 2 Router); currently Angular 1 ngRouter is used.
+> Implementing your Angular 1.5.x application with Components also means your migration to Angular 2 will be significantly easier... 
 
 Below are some illustrations that map portions of those Shrine UI views to actual Angular components. Shrine has two (2) primary views:
 
@@ -87,7 +87,9 @@ export default angular.module('shrine.products', [ ] )
     .component( ProductCard.name     , ProductCard.config );
 ```
 
+<br/>
 
+> This branch does **NOT** use ngComponentRouter (new Angular 2 Router); currently Angular 1 ngRouter is used.
 
 <br/>
 ---
