@@ -116,7 +116,7 @@ In addition to using the powerful [Angular Material UI Components](https://mater
 
 ### Additional Features
 
-> This `angular/material-adaptive/tree/master` branch uses **traditional** AngularJS 1 coding solutions... this branch does **NOT** use the Angular 1.5.x and the new [`.component( )` API](https://docs.angularjs.org/guide/component). 
+> This `angular/material-adaptive/tree/master` branch uses **traditional** AngularJS 1 coding solutions... this branch does **NOT** use the new Angular 1.5.x [`.component( )` API](https://docs.angularjs.org/guide/component). 
 
 > A next-gen version of Shrine [using the Angular 1.5.x Component API] can be found in the [`angular/material-adaptive/tree/components`](https://github.com/angular/material-adaptive/tree/components/shrine) branch.
 
