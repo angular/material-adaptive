@@ -1,4 +1,4 @@
-### SHRINE (with Components API)
+### SHRINE
 
 #### Using Angular 1.5.x Component API
 
@@ -7,6 +7,8 @@ This implementation of Shrine uses Angular 1.5.x and the new [`.component( )` AP
 > Implementing your Angular 1.5.x application with Components also means your migration to Angular 2 will be significantly easier...
 
 <br/>
+
+#### Best Practices 
 
 Similar to the original version of Shrine, this implementation of Shrine also uses ES6, JSPM, Angular Material, and demonstrates Angular Best Practices. 
 
