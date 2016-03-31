@@ -1,28 +1,139 @@
-## Adaptive Template: SHRINE
+### SHRINE
 
-> Below are some design snapshots; prepared as target guides for implementation with Angular Material and Angular v1.4.6 (or greater).
+This implementation of Shrine uses ES6, JSPM, Angular Material, and demonstrates Angular Best Practices. 
+
+> These best practices are also discussed in John Papa's [Angular 1 Style Guide](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md) and Pluralsight Course: [Clean Code](http://jpapa.me/ngclean)
+
+[![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+
+The Shrine application has coding styles, packaging, and architecture patterns implemented as guides for developers implementing their own Angular 1.x SPA(s). This application also serves to demonstrate Adaptive user experiences achieved using specialized [view configurations](https://github.com/angular/material-adaptive/blob/master/shrine/app/src/configuration/ViewConfigurations.js) and a [mediaQuery Observer](https://github.com/angular/material-adaptive/blob/master/shrine/app/src/utils/MediaQueryObserver.js) pattern.
+
+---
+
+Below are some illustrations that map portions of those Shrine UI views to actual Angular components. Shrine has two (2) primary views:
+
+#### Dashboard
+
+![dashboard](https://cloud.githubusercontent.com/assets/210413/14126204/006e906c-f5d5-11e5-8b42-004f5e142406.png)
+
+> HTML markup for the <a href="https://github.com/angular/material-adaptive/blob/master/shrine/app/src/dashboard/tmpl/dashboard.html#L20"  target="_blank">Dashboard</a> page:
+
+```html
+<dashboard>
+  <nav-bar isMobile="$ctrl.isMobile" on-open-sidenav="$ctrl.openSidenav()"></nav-bar>
+  <md-tabs >
+    <md-tab ng-repeat="it in $ctrl.categories" >
+      <featured-item item="it"></featured-item>
+    </md-tab>
+  </md-tabs>
+  <product-grid grid-name="homeView" show-details="true" items="$ctrl.items" ></product-grid>
+  <md-sidenav >
+    <side-bar categories="$ctrl.categories" selected="$ctrl.category"></side-bar>
+  </md-sidenav>
+</dashboard>
+```
+
+> Definition of the [Dashboard](https://github.com/angular/material-adaptive/blob/master/shrine/app/src/dashboard/_module.js) module:
+
+```js
+/**
+ * Configure the shrine 'Dashboard' module
+ * Register the dashboard component and its child components
+ */
+
+import Dashboard      from './Dashboard';
+import NavBar         from './NavBar';
+import SideBar        from './SideBar';
+import FeaturedItem   from './FeaturedItem';
+
+export default angular.module('shrine.dashboard', [ ] )
+    .component( Dashboard.name    , Dashboard.config )
+    .component( FeaturedItem.name , FeaturedItem.config )
+    .component( NavBar.name       , NavBar.config )
+    .component( SideBar.name      , SideBar.config );
+```
+
+<br/>
+
+#### Product Viewer
+
+![productviewer](https://cloud.githubusercontent.com/assets/210413/14126209/0208e850-f5d5-11e5-9813-1c880514df0e.png)
+
+> HTML markup for the <a href="https://github.com/angular/material-adaptive/blob/master/shrine/app/src/products/tmpl/productViewer.html#L3" target="_blank">ProductViewer</a> page:
+
+```html
+<product-viewer>
+  <product-header is-mobile="viewer.isMobile" item="viewer.selectedItem" ></product-header>
+  <div class="details-container">
+    <product-details item="viewer.selectedItem" ></product-details>
+    <product-grid grid-name="detailView" items="viewer.items" show-details="false" ></product-grid>
+  </div>
+</product-viewer>
+```
+
+> Definition of the [Product](https://github.com/angular/material-adaptive/blob/master/shrine/app/src/products/_module.js) module:
 
 
-##### Main View (Cards with Details Zoom)
+```js
+/**
+ * Configure the shrine 'Products' module
+ */
 
-![shrine_r1_c1](https://cloud.githubusercontent.com/assets/2279571/13825331/408437da-eb6f-11e5-880f-7b08f1111abd.png)
+import ProductViewer  from './ProductViewer';
+import ProductGrid    from './ProductGrid';
+import ProductHeader  from './ProductHeader';
+import ProductCard    from './ProductCard';
+import ProductDetails from './ProductDetails';
 
-##### Progress Enhancement View
+export default angular.module('shrine.products', [ ] )
+    .component( ProductViewer.name   , ProductViewer.config )
+    .component( ProductHeader.name   , ProductHeader.config )
+    .component( ProductDetails.name  , ProductDetails.config )
+    .component( ProductGrid.name     , ProductGrid.config )
+    .component( ProductCard.name     , ProductCard.config );
+```
 
-![shrine_r2_c1](https://cloud.githubusercontent.com/assets/2279571/13825334/4090f2d6-eb6f-11e5-81f9-aca7f1f9d7e4.png)
 
-##### SideBar and BottomSheet Views
+<br/>
+---
 
-![shrine_r3_c1](https://cloud.githubusercontent.com/assets/2279571/13825395/9b7d42d0-eb6f-11e5-81cd-dcb4f0a550a8.png)
+### Adaptive Angular Material 
 
-# Getting started
+In addition to using the powerful [Angular Material UI Components](https://material.angularjs.org/HEAD/) and [**Layout**](https://material.angularjs.org/latest/layout/introduction) features, Shrine also implements an architecture to support custom view configurations and mediaQueries. These features enable Shrine to both resize the UI components **and** change the UI components positions and configurations... as needed to adapt to different viewport display sizes:
+
+![shrine_adaptiveviews](https://cloud.githubusercontent.com/assets/210413/14126526/1d3ea496-f5d7-11e5-945b-5beacaa59f5a.png)
+
+*  <a href="https://material-adaptive.firebaseapp.com/shrine/app/index.html" target="_blank"> Shrine Live </a>
+*  <a href="http://design.google.com/resizer/#url=https%3A%2F%2Fmaterial-adaptive.firebaseapp.com%2Fshrine%2Fapp%2Fdist.html" target="_blank"> Google's Resizer with Shrine Live </a>
+
+
+<br/>
+
+----
+
+<br/>
+
+
+### Additional Features
+
+> This `angular/material-adaptive/tree/master` branch uses **traditional** AngularJS 1 coding solutions... this branch does **NOT** use the new Angular 1.5.x [`.component( )` API](https://docs.angularjs.org/guide/component). Nor does this branch use ngComponentRouter (new Angular 2 Router). The Angular 1 ngRouter is currently used.
+
+> A next-gen version of Shrine [using the Angular 1.5.x Component API] can be found in the [`angular/material-adaptive/tree/components`](https://github.com/angular/material-adaptive/tree/components/shrine) branch.
+
+
+
+<br/>
+
+---
+
+### Getting started
 
 Clone the repo and run the following commands:
 
 ```
 npm install jspm -g
 npm install
-jspm install
+cd ./app; jspm install
 ```
 
 Start the dev server like so.
