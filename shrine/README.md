@@ -116,9 +116,9 @@ In addition to using the powerful [Angular Material UI Components](https://mater
 
 ### Additional Features
 
-> This branch uses **traditional** AngularJS 1 coding solutions... this branch does **NOT** use the Angular 1.5.x and the new [`.component( )` API](https://docs.angularjs.org/guide/component). 
+> This `material-adaptive/master` branch uses **traditional** AngularJS 1 coding solutions... this branch does **NOT** use the Angular 1.5.x and the new [`.component( )` API](https://docs.angularjs.org/guide/component). 
 
-> A next-gen version of Shrine [using the Angular 1.5.x Component API] can be found in the [`components`](https://github.com/angular/material-adaptive/tree/components/shrine) branch.
+> A next-gen version of Shrine [using the Angular 1.5.x Component API] can be found in the [`material-adaptive/components`](https://github.com/angular/material-adaptive/tree/components/shrine) branch.
 
 > This branch does **NOT** use ngComponentRouter (new Angular 2 Router); currently Angular 1 ngRouter is used.
 
