@@ -6,6 +6,12 @@ This implementation of Shrine uses Angular 1.5.x and the new [`.component( )` AP
 
 > Implementing your Angular 1.5.x application with Components also means your migration to Angular 2 will be significantly easier...
 
+The Component API is a shorthand for registering a special type of directive, which represents a self-contained UI component in your application. Such components are always isolated (i.e. `scope: {}`) and are always restricted to elements (i.e. `restrict: 'E'`).
+
+Component definitions are very simple and do not require as much configuration as defining general directives. Component definitions usually consist only of a template and a controller backing it.
+
+In order to make the definition easier, components enforce best practices like use of `controllerAs`, `bindToController`. They always have **isolate scope** and are restricted to elements.
+
 <br/>
 
 #### Best Practices 
