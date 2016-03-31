@@ -1,4 +1,4 @@
-### SHRINE
+### SHRINE (with Components API)
 
 This implementation of Shrine uses ES6, JSPM, Angular Material, and demonstrates Angular Best Practices. 
 
