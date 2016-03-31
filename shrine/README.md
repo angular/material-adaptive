@@ -91,22 +91,11 @@ export default angular.module('shrine.products', [ ] )
     .component( ProductCard.name     , ProductCard.config );
 ```
 
-<br/>
-
-
-##### Additional Features
-
-> This branch does **NOT** use the Angular 1.5.x and the new [`.component( )` API](https://docs.angularjs.org/guide/component). A next-gen version of Shrine [using the Angular 1.5.x Component API] can be found in the [`components`](https://github.com/angular/material-adaptive/tree/components/shrine) branch.
-
-
-> This branch does **NOT** use ngComponentRouter (new Angular 2 Router); currently Angular 1 ngRouter is used.
 
 <br/>
 ---
 
-### Angular Material Adaptive
-
-#### Adaptive Features
+### Adaptive Angular Material 
 
 In addition to using the powerful [Angular Material UI Components](https://material.angularjs.org/HEAD/) and [**Layout**](https://material.angularjs.org/latest/layout/introduction) features, Shrine also implements an architecture to support custom view configurations and mediaQueries. These features enable Shrine to both resize the UI components **and** change the UI components positions and configurations... as needed to adapt to different viewport display sizes:
 
@@ -114,6 +103,21 @@ In addition to using the powerful [Angular Material UI Components](https://mater
 
 *  <a href="https://material-adaptive.firebaseapp.com/shrine/app/index.html" target="_blank"> Shrine Live </a>
 *  <a href="http://design.google.com/resizer/#url=https%3A%2F%2Fmaterial-adaptive.firebaseapp.com%2Fshrine%2Fapp%2Fdist.html" target="_blank"> Google's Resizer with Shrine Live </a>
+
+
+<br/>
+
+----
+
+<br/>
+
+
+### Additional Features
+
+> This branch does **NOT** use the Angular 1.5.x and the new [`.component( )` API](https://docs.angularjs.org/guide/component). A next-gen version of Shrine [using the Angular 1.5.x Component API] can be found in the [`components`](https://github.com/angular/material-adaptive/tree/components/shrine) branch.
+
+
+> This branch does **NOT** use ngComponentRouter (new Angular 2 Router); currently Angular 1 ngRouter is used.
 
 
 <br/>
