@@ -8,11 +8,15 @@ The Shrine application has coding styles, packaging, and architecture patterns i
 
 [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
+#### Using Angular 1.5.x Component API
+
 This implementation of Shrine also uses Angular 1.5.x and the new [`.component( )` API](https://docs.angularjs.org/guide/component). Building Shrine with *components* dramatically simplified the project/code structures and allows developers to easily understand how the UI designs are implemented as Angular Components. 
 
 > Implementing your Angular 1.5.x application with Components also means your migration to Angular 2 will be significantly easier... 
 
---- 
+---
+
+### Illustrating UX-to-Components
 
 Below are some illustrations that map portions of those Shrine UI views to actual Angular components. Shrine has two (2) primary views:
 
