@@ -8,8 +8,6 @@ This implementation of Shrine uses Angular Best Practices, ES6, and JSPM. The Sh
 
 This application also serves to demonstrate Adapative user experiences achieved using specialized [view configurations](https://github.com/angular/material-adaptive/blob/master/shrine/app/src/configuration/ViewConfigurations.js) and a [mediaQuery Observer](https://github.com/angular/material-adaptive/blob/master/shrine/app/src/utils/MediaQueryObserver.js) pattern.
 
-> Note: this branch does **not** use the Angular 1.5.x and the new [`.component( )` API](https://docs.angularjs.org/guide/component). A next-gen version of Shrine [using the Angular 1.5.x Component API] can be found in the [`components`](https://github.com/angular/material-adaptive/tree/components/shrine) branch.
-
 Below are some illustrations that map portions of those Shrine UI views to actual Angular components. Shrine has two (2) primary views:
 
 #### Dashboard
@@ -94,6 +92,12 @@ export default angular.module('shrine.products', [ ] )
 ```
 
 <br/>
+
+
+##### Additional Features
+
+> This branch does **NOT** use the Angular 1.5.x and the new [`.component( )` API](https://docs.angularjs.org/guide/component). A next-gen version of Shrine [using the Angular 1.5.x Component API] can be found in the [`components`](https://github.com/angular/material-adaptive/tree/components/shrine) branch.
+
 
 > This branch does **NOT** use ngComponentRouter (new Angular 2 Router); currently Angular 1 ngRouter is used.
 
