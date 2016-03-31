@@ -1,6 +1,14 @@
 ### SHRINE (with Components API)
 
-This implementation of Shrine uses ES6, JSPM, Angular Material, and demonstrates Angular Best Practices. 
+#### Using Angular 1.5.x Component API
+
+This implementation of Shrine uses Angular 1.5.x and the new [`.component( )` API](https://docs.angularjs.org/guide/component). Building Shrine with *components* dramatically simplified the project/code structures and allows developers to easily understand how the UI designs are implemented as Angular Components. 
+
+> Implementing your Angular 1.5.x application with Components also means your migration to Angular 2 will be significantly easier...
+
+<br/>
+
+Similar to the original version of Shrine, this implementation of Shrine also uses ES6, JSPM, Angular Material, and demonstrates Angular Best Practices. 
 
 > These best practices are also discussed in John Papa's [Angular 1 Style Guide](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md) and Pluralsight Course: [Clean Code](http://jpapa.me/ngclean)
 
@@ -8,13 +16,7 @@ This implementation of Shrine uses ES6, JSPM, Angular Material, and demonstrates
 
 The Shrine application has coding styles, packaging, and architecture patterns implemented as guides for developers implementing their own Angular 1.x SPA(s). This application also serves to demonstrate Adaptive user experiences achieved using specialized [view configurations](https://github.com/angular/material-adaptive/blob/components/shrine/app/src/configuration/ViewConfigurations.js) and a [mediaQuery Observer](https://github.com/angular/material-adaptive/blob/components/shrine/app/src/utils/MediaQueryObserver.js) pattern.
 
-<br/>
-
-#### Using Angular 1.5.x Component API
-
-This implementation of Shrine also uses Angular 1.5.x and the new [`.component( )` API](https://docs.angularjs.org/guide/component). Building Shrine with *components* dramatically simplified the project/code structures and allows developers to easily understand how the UI designs are implemented as Angular Components. 
-
-> Implementing your Angular 1.5.x application with Components also means your migration to Angular 2 will be significantly easier... 
+ 
 
 <br/>
 
