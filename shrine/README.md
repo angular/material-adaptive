@@ -1,6 +1,6 @@
 ### SHRINE
 
-This implementation of Shrine uses ES6, JSPM, and demonstrates Angular Best Practices. 
+This implementation of Shrine uses ES6, JSPM, Angular Material, and demonstrates Angular Best Practices. 
 
 The Shrine application has coding styles, packaging, and architecture patterns implemented as guides for developers implementing their own Angular 1.x SPA(s). This application also serves to demonstrate Adaptive user experiences achieved using specialized [view configurations](https://github.com/angular/material-adaptive/blob/master/shrine/app/src/configuration/ViewConfigurations.js) and a [mediaQuery Observer](https://github.com/angular/material-adaptive/blob/master/shrine/app/src/utils/MediaQueryObserver.js) pattern.
 
