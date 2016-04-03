@@ -2,7 +2,7 @@
  * In-memory implementation of hero store.
  */
 
-import Hero from 'Hero';
+import Hero from './Hero';
 
 const STORE = [
   Hero.fromJson({
