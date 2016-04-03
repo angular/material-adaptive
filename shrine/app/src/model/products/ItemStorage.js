@@ -2,7 +2,7 @@
  * In-memory implementation of item store.
  */
 
-import Item from 'Item';
+import Item from './Item';
 
 const STORE = [
   Item.fromJson({
