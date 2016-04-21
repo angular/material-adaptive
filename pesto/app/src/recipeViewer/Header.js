@@ -56,7 +56,12 @@ class HeaderController extends BaseAdaptiveController {
     if (this.isSmallDeviceScreen) {
       let self = this;
       this._$mdBottomSheet.show({
-        resolve : { menuItems : () => self.menuItems },
+        locals : {
+          menuItems : self.menuItems
+        },
+        controllerAs : "$ctrl",
+        bindToController : true,
+        controller : function (){ /* empty controller injecting 'locals' */ },
         template: `<bottom-sheet-share items="$ctrl.menuItems"></bottom-sheet-share>`
       });
     } else {
