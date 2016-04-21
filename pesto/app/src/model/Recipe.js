@@ -1,5 +1,5 @@
-import Ingredient from 'model/Ingredient';
-import Step from 'model/Step';
+import Ingredient from './Ingredient';
+import Step from './Step';
 
 class Recipe {
   /**

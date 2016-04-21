@@ -1,0 +1,22 @@
+<section id="main-section">
+  <layout-cards>
+      <card-element ng-repeat="recipe in $ctrl.items" style="background-image: url('{{ recipe.mainImageUrl }}')">
+        <md-button class="card-button" ng-click="$ctrl.goToRecipe($event, recipe.id)" aria-label="{{ recipe.name }}"></md-button>
+        <div class="card-info">
+          <span>
+            <img ng-src="{{ recipe.ingredientsImageUrl }}">
+          </span>
+          <div class="right-content">
+            <p ng-click="$ctrl.goToRecipe($event, recipe.id)" class="title">{{ recipe.name }}</p>
+            <div class="author">{{ recipe.author }}</div>
+          </div>
+        </div>
+      </card-element>
+  </layout-cards>
+</section>
+
+<adaptive-controls>
+  <md-button class="md-fab main-fab" aria-label="Edit">
+    <md-icon class="material-icons">edit</md-icon>
+  </md-button>
+</adaptive-controls>

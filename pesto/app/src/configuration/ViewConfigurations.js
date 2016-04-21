@@ -1,0 +1,95 @@
+let VIEW_ADAPTIONS = [{
+          maxWidth: Number.MAX_SAFE_INTEGER,
+          minWidth: 1600,
+          viewport: "vp-xxlg",
+          display: "desktop",
+          name: "Desktop XXLG",
+          orientation: false,
+        }, {
+          maxWidth: 1599,
+          minWidth: 1440,
+          viewport: "vp-xlg",
+          display: "desktop",
+          name: "Desktop XLG",
+          orientation: false,
+        }, {
+          maxWidth: 1439,
+          minWidth: 1280,
+          viewport: "vp-lg",
+          display: "desktop",
+          name: "Desktop LG",
+          orientation: false,
+        }, {
+          maxWidth: 1279,
+          minWidth: 1024,
+          viewport: "vp-desktop-tablet",
+          display: "mobile",
+          name: "Tablet Land",
+          orientation: false,
+        }, {
+          maxWidth: 1023,
+          minWidth: 960,
+          viewport: "vp-med",
+          display: "desktop",
+          name: "Desktop MED",
+          orientation: false,
+        }, {
+          maxWidth: 959,
+          minWidth: 840,
+          viewport: "vp-sm",
+          display: "desktop",
+          name: "Desktop SM",
+          orientation: false,
+        }, {
+        maxWidth: 719,
+        minWidth: 600,
+        minHeight: 361, //Interferes with Mobile landscape (in resizer). Added (+1) as a hack
+        viewport: "vp-xsm",
+        display: "desktop",
+        name: "Desktop XSM",
+        orientation: false,
+      }, {
+        maxWidth: 599,
+        minWidth: 480,
+        viewport: "vp-xs",
+        display: "desktop",
+        name: "Desktop XS",
+        orientation: false,
+      }, {
+        maxWidth: 479, ///iPhone 6, iPhone 6+, Google Nexus 4, LG Optimus L70
+        minWidth: 361,
+        viewport: "vp-v",
+        display: "mobile",
+        name: "Special mobile",
+        orientation: false,
+      }, {
+        maxWidth: 1279,
+        minWidth: 1024,
+        viewport: "vp-tablet-land",
+        display: "mobile",
+        name: "Tablet Land",
+        orientation: "landscape",
+      }, {
+        maxWidth: 839,
+        minWidth: 720,
+        viewport: "vp-tablet-port",
+        display: "mobile",
+        name: "Tablet Port",
+        orientation: false,
+      }, {
+        maxWidth: 600,
+        minWidth: 0,
+        viewport: "vp-mobile-land",
+        display: "mobile",
+        name: "Mobile Land",
+        orientation: "landscape",
+      }, {
+        maxWidth: 360,
+        minWidth: -1,
+        viewport: "vp-mobile-port",
+        display: "mobile",
+        name: "Mobile Port",
+        orientation: false,
+      }];
+
+export default VIEW_ADAPTIONS;
