@@ -1,0 +1,46 @@
+<settings-view>
+  <div class="header">
+    <md-button class="md-icon-button icon-right" aria-label="Back" ng-click="$ctrl.close($event)">
+      <md-icon class="material-icons">close</md-icon>
+    </md-button>
+    <div class="title">
+      Settings
+    </div>
+  </div>
+  <section class="card-info">
+    <ul>
+      <li class="option-item" ng-repeat="setting_opt in $ctrl.settings.properties">
+        <div class="option-header" ng-click="$ctrl.toggleContent($event, setting_opt)">
+          <p ng-class="{ 'active': setting_opt.show_content_default || !$ctrl.isSmallDeviceScreen }">{{setting_opt.name}}</p>
+          <span class="flex"></span>
+          <md-button class="md-icon-button icon-right" aria-label="Hide content" ng-if="$ctrl.isSmallDeviceScreen">
+            <md-icon class="material-icons" ng-if="setting_opt.show_content_default">keyboard_arrow_up</md-icon>
+            <md-icon class="material-icons" ng-if="!setting_opt.show_content_default">keyboard_arrow_down</md-icon>
+          </md-button>
+        </div>
+        <div class="option-content" ng-if="setting_opt.show_content_default || !$ctrl.isSmallDeviceScreen">
+          <div class="user-info" ng-if="setting_opt.show_user_name">
+            <div class="avatar-container">
+              <div class="image"></div>
+            </div>
+            <span>{{$ctrl.settings.userName}}</span>
+          </div>
+          <md-list>
+            <md-list-item ng-repeat="opt in setting_opt.options">
+              <p ng-class="{ 'active': opt.value == true }">{{opt.name}}</p>
+              <md-checkbox class="md-secondary"
+                           ng-model="$ctrl.settings[opt.key]"
+                           ng-if="!$ctrl.isSmallDeviceScreen" ng-change="$ctrl.saveState()"></md-checkbox>
+              <md-switch class="md-secondary" ng-model="$ctrl.settings[opt.key]" ng-if="$ctrl.isSmallDeviceScreen" ng-change="$ctrl.saveState()"></md-switch>
+            </md-list-item>
+          </md-list>
+        </div>
+      </li>
+    </ul>
+    <div class="action-buttons">
+      <span flex></span>
+      <md-button ng-click="$ctrl.close($event)">Cancel</md-button>
+      <md-button class="md-raised md-primary" ng-click="$ctrl.save($event)">Save</md-button>
+    </div>
+  </section>
+</settings-view>

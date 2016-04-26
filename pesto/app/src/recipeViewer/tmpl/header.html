@@ -1,0 +1,30 @@
+<div class="header">
+  <div class="actions-left">
+    <md-button class="md-icon-button icon-right" aria-label="Back" ng-click="$ctrl.goBack($event)">
+      <md-icon class="material-icons">arrow_back</md-icon>
+    </md-button>
+  </div>
+  <span class="flex"></span>
+  <div class="actions-right">
+    <md-button class="md-icon-button icon-right" aria-label="Timer">
+      <md-icon class="material-icons">timer</md-icon>
+    </md-button>
+    <md-button class="md-icon-button icon-right" aria-label="Share">
+      <md-icon class="material-icons">share</md-icon>
+    </md-button>
+    <md-menu md-position-mode="target-right target">
+      <md-button aria-label="Open menu" class="md-icon-button" ng-click="$ctrl.openMenu($mdOpenMenu, $event)">
+        <md-icon class="material-icons">more_vert</md-icon>
+      </md-button>
+      <md-menu-content width="4">
+        <md-menu-item ng-repeat="item in $ctrl.menuItems">
+          <md-button ng-click="$ctrl.redial($event)">
+            <md-icon class="material-icons" ng-show="{{ item.materialIcon }}">{{ item.icon }}</md-icon>
+            <img ng-src="{{!item.materialIcon && item.icon || ''}}" ng-show="!item.materialIcon"/>
+            {{ item.name }}
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+  </div>
+</div>

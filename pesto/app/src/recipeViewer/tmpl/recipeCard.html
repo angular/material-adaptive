@@ -1,0 +1,25 @@
+<div id="animate-card" class="card-info">
+  <div class="main-container">
+    <div class="main-info">
+      <span><img class="info-ingredients" src="{{$ctrl.recipe.ingredientsImageUrl}}"/></span>
+      <div class="text">
+        <div class="title">{{ $ctrl.recipe.name }}</div>
+        <div class="descr editable">{{ $ctrl.recipe.description }}</div>
+      </div>
+    </div>
+    <div class="ingredients">
+      <ul>
+        <li ng-repeat="ingr in $ctrl.recipe.ingredients">
+          <span class="lbs editable">{{ ingr.amount }}</span>
+          <span class="name editable">{{ ingr.description }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <adaptive-controls>
+    <md-button class="md-fab details-fab" aria-label="Favorite" ng-click="$ctrl.toggleFavorite($event)">
+      <md-icon class="material-icons" ng-show="!$ctrl.isFavorite()">favorite_border</md-icon>
+      <md-icon class="material-icons" ng-show="$ctrl.isFavorite()">favorite</md-icon>
+    </md-button>
+  </adaptive-controls>
+</div>

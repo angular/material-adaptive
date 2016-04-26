@@ -1,0 +1,45 @@
+html.pesto, body.pesto {
+  background: rgb(0, 170, 141);
+  font-family: 'Roboto', sans-serif;
+  font-size:14px;
+  height:100%;
+  margin: 0;
+  padding: 0;
+}
+
+.pesto-page {
+  height: 100%;
+  text-align: center;
+}
+
+/*
+.pesto-page.ng-enter, .pesto-page.ng-leave {
+  transition:0.5s linear all;
+}
+
+.pesto-page.ng-enter {
+  transform:translateX(100%);
+}
+.pesto-page.ng-enter.ng-enter-active, .pesto-page.ng-leave {
+  transform:translateX(0%);
+}
+.pesto-page.ng-leave.ng-leave-active {
+  transform:translateX(-100%);
+}
+*/
+
+.anchortest.ng-anchor {
+  /* this animation will last for 1 second since there are
+         two phases to the animation (an `in` and an `out` phase) */
+  transition:0.5s linear all;
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+	from 	{ transform:translateX(100%); }
+	to 		{ transform: translateX(0); }
+}
+
+@keyframes slideOutLeft {
+	to 		{ transform: translateX(-100%); }
+}

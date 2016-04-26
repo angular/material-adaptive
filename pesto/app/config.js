@@ -4,10 +4,8 @@ System.config({
   paths: {
     "utils/*": "src/utils/*.js",
     "app/*": "src/*.js",
-    "home/*": "src/home/*.js",
     "detail/*": "src/detail/*.js",
-    "gridlayout/*": "src/gridlayout/*.js",
-    "itemcard/*": "src/itemcard/*.js",
+    "home/*": "src/home/*.js",
     "model/*": "src/model/*.js",
     "settings/*": "src/settings/*.js",
     "store/*": "src/store/*.js",
