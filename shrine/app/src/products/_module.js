@@ -2,15 +2,16 @@
  * Configure the shrine 'Products' module
  */
 
-import ProductViewerController  from './controllers/ProductViewerController';
-import ProductHeaderDirective   from './directives/ProductHeaderDirective';
-import ProductDetailsDirective  from './directives/ProductDetailsDirective';
-import ProductGridDirective     from './directives/ProductGridDirective';
-import ProductCardDirective     from './directives/ProductCardDirective';
+import ProductViewer  from './ProductViewer';
+import ProductGrid    from './ProductGrid';
+import ProductHeader  from './ProductHeader';
+import ProductCard    from './ProductCard';
+import ProductDetails from './ProductDetails';
 
-export default angular.module('shrine.products', [ ] )
-    .controller('ProductViewerController', ProductViewerController)   // no directive... @see RouteConfiguration
-    .directive('productHeader'           , () => new ProductHeaderDirective)
-    .directive('productDetails'          , () => new ProductDetailsDirective)
-    .directive('productGrid'             , () => new ProductGridDirective)
-    .directive('productCard'             , () => new ProductCardDirective);
+export default angular
+    .module('shrine.products', [ ] )
+    .component( ProductViewer.name   , ProductViewer.config )
+    .component( ProductHeader.name   , ProductHeader.config )
+    .component( ProductDetails.name  , ProductDetails.config )
+    .component( ProductGrid.name     , ProductGrid.config )
+    .component( ProductCard.name     , ProductCard.config )

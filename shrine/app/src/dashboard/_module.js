@@ -1,16 +1,17 @@
 /**
  * Configure the shrine 'Dashboard' module
+ * Register the dashboard component and its child components
  */
 
-import LandingPageController  from './controllers/LandingPageController';
-import FeaturedItemDirective  from './directives/FeaturedItemDirective';
-import SideBarDirective       from './directives/SideBarDirective';
-import NavBarDirective        from './directives/NavBarDirective';
+import Dashboard      from './Dashboard';
+import NavBar         from './NavBar';
+import SideBar        from './SideBar';
+import FeaturedItem   from './FeaturedItem';
 
+export default angular
+    .module('shrine.dashboard', [ ] )
+    .component( Dashboard.name    , Dashboard.config )
+    .component( FeaturedItem.name , FeaturedItem.config )
+    .component( NavBar.name       , NavBar.config )
+    .component( SideBar.name      , SideBar.config );
 
-export default angular.module('shrine.dashboard', [ ] )
-    .controller('LandingPageController' , LandingPageController)    // no directive... @see RouteConfiguration
-
-    .directive('sideBar'              , () => new SideBarDirective)
-    .directive('featuredItem'         , () => new FeaturedItemDirective)
-    .directive('navBar'               , () => new NavBarDirective);

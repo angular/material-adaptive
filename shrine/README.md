@@ -1,73 +1,78 @@
 ### SHRINE
 
-This implementation of Shrine uses ES6, JSPM, Angular Material, and demonstrates Angular Best Practices. 
+#### Using Angular 1.5.x Component API
+
+This implementation of Shrine uses Angular 1.5.x and the new [`.component( )` API](https://docs.angularjs.org/guide/component). Building Shrine with *components* dramatically simplified the project/code structures and allows developers to easily understand how the UI designs are implemented as Angular Components. 
+
+> Implementing your Angular 1.5.x application with Components also means your migration to Angular 2 will be significantly easier...
+
+The Component API is a shorthand for registering a special type of directive, which represents a self-contained UI component in your application. Such components are always isolated (i.e. `scope: {}`) and are always restricted to elements (i.e. `restrict: 'E'`).
+
+Component definitions are very simple and do not require as much configuration as defining general directives. Component definitions usually consist only of a template and a controller backing it.
+
+In order to make the definition easier, components enforce best practices like use of `controllerAs`, `bindToController`. They always have **isolate scope** and are restricted to elements.
+
+<br/>
+
+#### Best Practices 
+
+Similar to the original version of Shrine, this implementation of Shrine also uses ES6, JSPM, Angular Material, and demonstrates Angular Best Practices. 
 
 > These best practices are also discussed in John Papa's [Angular 1 Style Guide](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md) and Pluralsight Course: [Clean Code](http://jpapa.me/ngclean)
 
 [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
-The Shrine application has coding styles, packaging, and architecture patterns implemented as guides for developers implementing their own Angular 1.x SPA(s). This application also serves to demonstrate Adaptive user experiences achieved using specialized [view configurations](https://github.com/angular/material-adaptive/blob/master/shrine/app/src/configuration/ViewConfigurations.js) and a [mediaQuery Observer](https://github.com/angular/material-adaptive/blob/master/shrine/app/src/utils/MediaQueryObserver.js) pattern.
+The Shrine application has coding styles, packaging, and architecture patterns implemented as guides for developers implementing their own Angular 1.x SPA(s). This application also serves to demonstrate Adaptive user experiences achieved using specialized [view configurations](https://github.com/angular/material-adaptive/blob/components/shrine/app/src/configuration/ViewConfigurations.js) and a [mediaQuery Observer](https://github.com/angular/material-adaptive/blob/components/shrine/app/src/utils/MediaQueryObserver.js) pattern.
+
+ 
+
+<br/>
 
 ---
 
-Below are some illustrations that map portions of those Shrine UI views using traditional Angular best practices. Shrine has two (2) primary views:
+### Illustrating UX-to-Components
+
+Below are some illustrations that map portions of those Shrine UI views to actual Angular components. Shrine has two (2) primary views:
 
 #### Dashboard
 
 ![dashboard](https://cloud.githubusercontent.com/assets/210413/14126204/006e906c-f5d5-11e5-8b42-004f5e142406.png)
 
-> HTML markup for the <a href="https://github.com/angular/material-adaptive/blob/master/shrine/app/src/dashboard/tmpl/dashboard.html#L20"  target="_blank">Dashboard</a> page:
+> HTML markup for the <a href="https://github.com/angular/material-adaptive/blob/components/shrine/app/src/dashboard/tmpl/dashboard.html#L20"  target="_blank">Dashboard</a> page:
 
 ```html
-<main-view>
-
+<dashboard>
   <nav-bar isMobile="$ctrl.isMobile" on-open-sidenav="$ctrl.openSidenav()"></nav-bar>
-
-  <md-tabs
-      md-selected="$ctrl.selectedIndex"
-      md-dynamic-height md-border-bottom
-      md-swipe-content="{{ $ctrl.isMobile }}"
-      ng-class="{ 'no-show': $ctrl.isMobile }" >
-
-    <md-tab
-        label="{{ it.category }}"
-        ng-repeat="it in $ctrl.categories"
-        md-on-select="$ctrl.goToCategory(it.category)" >
+  <md-tabs >
+    <md-tab ng-repeat="it in $ctrl.categories" >
       <featured-item item="it"></featured-item>
     </md-tab>
-
   </md-tabs>
-
   <product-grid grid-name="homeView" show-details="true" items="$ctrl.items" ></product-grid>
-
-  <md-sidenav
-      class="md-sidenav-left md-whiteframe-z2"
-      md-component-id="primary" >
+  <md-sidenav >
     <side-bar categories="$ctrl.categories" selected="$ctrl.category"></side-bar>
   </md-sidenav>
-
-</main-view>
+</dashboard>
 ```
 
-> Definition of the [Dashboard](https://github.com/angular/material-adaptive/blob/master/shrine/app/src/dashboard/_module.js) module:
+> Definition of the [Dashboard](https://github.com/angular/material-adaptive/blob/components/shrine/app/src/dashboard/_module.js) module:
 
 ```js
 /**
  * Configure the shrine 'Dashboard' module
+ * Register the dashboard component and its child components
  */
 
-import LandingPageController  from './controllers/LandingPageController';
-import FeaturedItemDirective  from './directives/FeaturedItemDirective';
-import SideBarDirective       from './directives/SideBarDirective';
-import NavBarDirective        from './directives/NavBarDirective';
-
+import Dashboard      from './Dashboard';
+import NavBar         from './NavBar';
+import SideBar        from './SideBar';
+import FeaturedItem   from './FeaturedItem';
 
 export default angular.module('shrine.dashboard', [ ] )
-    .controller('LandingPageController' , LandingPageController)    // no directive... @see RouteConfiguration
-
-    .directive('sideBar'              , () => new SideBarDirective)
-    .directive('featuredItem'         , () => new FeaturedItemDirective)
-    .directive('navBar'               , () => new NavBarDirective);
+    .component( Dashboard.name    , Dashboard.config )
+    .component( FeaturedItem.name , FeaturedItem.config )
+    .component( NavBar.name       , NavBar.config )
+    .component( SideBar.name      , SideBar.config );
 ```
 
 <br/>
@@ -76,7 +81,7 @@ export default angular.module('shrine.dashboard', [ ] )
 
 ![productviewer](https://cloud.githubusercontent.com/assets/210413/14126209/0208e850-f5d5-11e5-9813-1c880514df0e.png)
 
-> HTML markup for the <a href="https://github.com/angular/material-adaptive/blob/master/shrine/app/src/products/tmpl/productViewer.html#L3" target="_blank">ProductViewer</a> page:
+> HTML markup for the <a href="https://github.com/angular/material-adaptive/blob/components/shrine/app/src/products/tmpl/productViewer.html#L3" target="_blank">ProductViewer</a> page:
 
 ```html
 <product-viewer>
@@ -88,7 +93,7 @@ export default angular.module('shrine.dashboard', [ ] )
 </product-viewer>
 ```
 
-> Definition of the [Product](https://github.com/angular/material-adaptive/blob/master/shrine/app/src/products/_module.js) module:
+> Definition of the [Product](https://github.com/angular/material-adaptive/blob/components/shrine/app/src/products/_module.js) module:
 
 
 ```js
@@ -96,25 +101,25 @@ export default angular.module('shrine.dashboard', [ ] )
  * Configure the shrine 'Products' module
  */
 
-import ProductViewerController  from './controllers/ProductViewerController';
-import ProductHeaderDirective   from './directives/ProductHeaderDirective';
-import ProductDetailsDirective  from './directives/ProductDetailsDirective';
-import ProductGridDirective     from './directives/ProductGridDirective';
-import ProductCardDirective     from './directives/ProductCardDirective';
+import ProductViewer  from './ProductViewer';
+import ProductGrid    from './ProductGrid';
+import ProductHeader  from './ProductHeader';
+import ProductCard    from './ProductCard';
+import ProductDetails from './ProductDetails';
 
 export default angular.module('shrine.products', [ ] )
-    .controller('ProductViewerController', ProductViewerController)   // no directive... @see RouteConfiguration
-    .directive('productHeader'           , () => new ProductHeaderDirective)
-    .directive('productDetails'          , () => new ProductDetailsDirective)
-    .directive('productGrid'             , () => new ProductGridDirective)
-    .directive('productCard'             , () => new ProductCardDirective);
+    .component( ProductViewer.name   , ProductViewer.config )
+    .component( ProductHeader.name   , ProductHeader.config )
+    .component( ProductDetails.name  , ProductDetails.config )
+    .component( ProductGrid.name     , ProductGrid.config )
+    .component( ProductCard.name     , ProductCard.config );
 ```
 
 
 <br/>
 ---
 
-### Adaptive Angular Material 
+### Adaptive Angular Material
 
 In addition to using the powerful [Angular Material UI Components](https://material.angularjs.org/HEAD/) and [**Layout**](https://material.angularjs.org/latest/layout/introduction) features, Shrine also implements an architecture to support custom view configurations and mediaQueries. These features enable Shrine to both resize the UI components **and** change the UI components positions and configurations... as needed to adapt to different viewport display sizes:
 
@@ -133,10 +138,7 @@ In addition to using the powerful [Angular Material UI Components](https://mater
 
 ### Additional Features
 
-> This `angular/material-adaptive/tree/master` branch uses **traditional** AngularJS 1 coding solutions... this branch does **NOT** use the new Angular 1.5.x [`.component( )` API](https://docs.angularjs.org/guide/component). Nor does this branch use ngComponentRouter (new Angular 2 Router). The Angular 1 ngRouter is currently used.
-
-> A next-gen version of Shrine [using the Angular 1.5.x Component API] can be found in the [`angular/material-adaptive/tree/components`](https://github.com/angular/material-adaptive/tree/components/shrine) branch.
-
+> This branch does **not** use the new Angular 2 Router:  `ngComponentRouter`. Instead, `<ng-view>` and the Angular 1 ngRouter are currently used.
 
 
 <br/>

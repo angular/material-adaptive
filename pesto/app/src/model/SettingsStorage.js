@@ -2,7 +2,7 @@
  * In-memory implementation of settings store.
  */
 
-const DEFAULT_SETTINGS = {
+const STORE = {
   userName: 'Jonathan',
   publicProfile: true,
   dailyDigest: false,
@@ -10,25 +10,32 @@ const DEFAULT_SETTINGS = {
   textNotifications: false,
   // This would be an ES6 Set but angular.copy doesn't suport it.
   favoriteRecipeIds: {},
+  properties: [{
+    "name": "Account",
+    "show_content_default": true,
+    "options": [
+      {
+        "name": "Public profile",
+        "key": "publicProfile",
+      }, {
+        "name": "Subscribe to daily digest",
+        "key": "dailyDigest",
+      }
+    ],
+    "show_user_name": true,
+  }, {
+    "name": "Notification",
+    "show_content_default": true,
+    "options": [
+      {
+        "name": "Get email notifications",
+        "key": "emailNotifications",
+      }, {
+        "name": "Get text notifications",
+        "key": "textNotifications",
+      }
+    ],
+  }]
 };
 
-class SettingsStorage {
-  constructor($q) {
-    this.q_ = $q;
-    this.settings = DEFAULT_SETTINGS;
-  }
-
-  // Simulate async reads and writes by returning promises.
-  readSettings() {
-    return this.q_.when(angular.copy(this.settings));
-  }
-
-  saveSettings(settings) {
-    this.settings = angular.copy(settings);
-    return this.q_.when();
-  }
-}
-
-SettingsStorage.$inject = ['$q'];
-
-export default SettingsStorage;
+export default STORE;

@@ -1,5 +1,5 @@
-import HEROES from './featured/HeroStorage';
-import PRODUCTS from './products/ItemStorage';
+import HEROES from './HeroStorage';
+import PRODUCTS from './ItemStorage';
 
 class Catalog {
 
