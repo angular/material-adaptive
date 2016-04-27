@@ -10,7 +10,7 @@ The Shrine application has coding styles, packaging, and architecture patterns i
 
 ---
 
-Below are some illustrations that map portions of those Shrine UI views to actual Angular components. Shrine has two (2) primary views:
+Below are some illustrations that map portions of those Shrine UI views using traditional Angular best practices. Shrine has two (2) primary views:
 
 #### Dashboard
 
@@ -19,18 +19,34 @@ Below are some illustrations that map portions of those Shrine UI views to actua
 > HTML markup for the <a href="https://github.com/angular/material-adaptive/blob/master/shrine/app/src/dashboard/tmpl/dashboard.html#L20"  target="_blank">Dashboard</a> page:
 
 ```html
-<dashboard>
+<main-view>
+
   <nav-bar isMobile="$ctrl.isMobile" on-open-sidenav="$ctrl.openSidenav()"></nav-bar>
-  <md-tabs >
-    <md-tab ng-repeat="it in $ctrl.categories" >
+
+  <md-tabs
+      md-selected="$ctrl.selectedIndex"
+      md-dynamic-height md-border-bottom
+      md-swipe-content="{{ $ctrl.isMobile }}"
+      ng-class="{ 'no-show': $ctrl.isMobile }" >
+
+    <md-tab
+        label="{{ it.category }}"
+        ng-repeat="it in $ctrl.categories"
+        md-on-select="$ctrl.goToCategory(it.category)" >
       <featured-item item="it"></featured-item>
     </md-tab>
+
   </md-tabs>
+
   <product-grid grid-name="homeView" show-details="true" items="$ctrl.items" ></product-grid>
-  <md-sidenav >
+
+  <md-sidenav
+      class="md-sidenav-left md-whiteframe-z2"
+      md-component-id="primary" >
     <side-bar categories="$ctrl.categories" selected="$ctrl.category"></side-bar>
   </md-sidenav>
-</dashboard>
+
+</main-view>
 ```
 
 > Definition of the [Dashboard](https://github.com/angular/material-adaptive/blob/master/shrine/app/src/dashboard/_module.js) module:
@@ -38,19 +54,20 @@ Below are some illustrations that map portions of those Shrine UI views to actua
 ```js
 /**
  * Configure the shrine 'Dashboard' module
- * Register the dashboard component and its child components
  */
 
-import Dashboard      from './Dashboard';
-import NavBar         from './NavBar';
-import SideBar        from './SideBar';
-import FeaturedItem   from './FeaturedItem';
+import LandingPageController  from './controllers/LandingPageController';
+import FeaturedItemDirective  from './directives/FeaturedItemDirective';
+import SideBarDirective       from './directives/SideBarDirective';
+import NavBarDirective        from './directives/NavBarDirective';
+
 
 export default angular.module('shrine.dashboard', [ ] )
-    .component( Dashboard.name    , Dashboard.config )
-    .component( FeaturedItem.name , FeaturedItem.config )
-    .component( NavBar.name       , NavBar.config )
-    .component( SideBar.name      , SideBar.config );
+    .controller('LandingPageController' , LandingPageController)    // no directive... @see RouteConfiguration
+
+    .directive('sideBar'              , () => new SideBarDirective)
+    .directive('featuredItem'         , () => new FeaturedItemDirective)
+    .directive('navBar'               , () => new NavBarDirective);
 ```
 
 <br/>
@@ -79,18 +96,18 @@ export default angular.module('shrine.dashboard', [ ] )
  * Configure the shrine 'Products' module
  */
 
-import ProductViewer  from './ProductViewer';
-import ProductGrid    from './ProductGrid';
-import ProductHeader  from './ProductHeader';
-import ProductCard    from './ProductCard';
-import ProductDetails from './ProductDetails';
+import ProductViewerController  from './controllers/ProductViewerController';
+import ProductHeaderDirective   from './directives/ProductHeaderDirective';
+import ProductDetailsDirective  from './directives/ProductDetailsDirective';
+import ProductGridDirective     from './directives/ProductGridDirective';
+import ProductCardDirective     from './directives/ProductCardDirective';
 
 export default angular.module('shrine.products', [ ] )
-    .component( ProductViewer.name   , ProductViewer.config )
-    .component( ProductHeader.name   , ProductHeader.config )
-    .component( ProductDetails.name  , ProductDetails.config )
-    .component( ProductGrid.name     , ProductGrid.config )
-    .component( ProductCard.name     , ProductCard.config );
+    .controller('ProductViewerController', ProductViewerController)   // no directive... @see RouteConfiguration
+    .directive('productHeader'           , () => new ProductHeaderDirective)
+    .directive('productDetails'          , () => new ProductDetailsDirective)
+    .directive('productGrid'             , () => new ProductGridDirective)
+    .directive('productCard'             , () => new ProductCardDirective);
 ```
 
 
