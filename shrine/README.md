@@ -2,7 +2,7 @@
 
 #### Using Angular 1.5.x Component API
 
-This implementation of Shrine uses Angular 1.5.x and the new [`.component( )` API](https://docs.angularjs.org/guide/component). Building Shrine with *components* dramatically simplified the project/code structures and allows developers to easily understand how the UI designs are implemented as Angular Components. 
+This implementation of Shrine uses ngMaterial with Angular 1.5.x and the new [`.component( )` API](https://docs.angularjs.org/guide/component). Building Shrine with *components* dramatically simplified the project/code structures and allows developers to easily understand how the UI designs are implemented as Angular Components. 
 
 > Implementing your Angular 1.5.x application with Components also means your migration to Angular 2 will be significantly easier...
 
